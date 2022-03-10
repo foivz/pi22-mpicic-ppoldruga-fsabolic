@@ -1,36 +1,31 @@
-# Inicijalne upute za prijavu projekta iz Programskog inženjerstva
-
-Poštovane kolegice i kolege, 
-
-čestitamo vam jer ste uspješno prijavili svoj projektni tim na kolegiju Programsko inženjerstvo, te je za vas automatski kreiran repozitorij koji ćete koristiti za verzioniranje vašega koda, ali i za pisanje dokumentacije.
-
-Ovaj dokument (README.md) predstavlja **osobnu iskaznicu vašeg projekta**. Vaš prvi zadatak, ukoliko niste odabrali da želite raditi na projektu sa nastavnicima ili u sklopu WBL-a je **prijaviti vlastiti projektni prijedlog** na način da ćete prijavu vašeg projekta, sukladno uputama danim u ovom tekstu, napisati upravo u ovaj dokument, umjesto ovoga teksta.
-
-Za upute o sintaksi koju možete koristiti u ovom dokumentu i kod pisanje vaše projektne dokumentacije pogledajte [ovaj link](https://guides.github.com/features/mastering-markdown/).
-Sav programski kod potrebno je verzionirati u glavnoj **master** grani i **obvezno** smjestiti u mapu Software. Sve artefakte (npr. slike) koje ćete koristiti u vašoj dokumentaciju obvezno verzionirati u posebnoj grani koja je već kreirana i koja se naziva **master-docs** i smjestiti u mapu Documentation.
-
-Nakon vaše prijave bit će vam dodijeljen mentor s kojim ćete tijekom semestra raditi na ovom projektu. A sada, vrijeme je da prijavite vaš projekt. Za prijavu vašeg projektnog prijedloga molimo vas koristite **predložak** koji je naveden u nastavku, a započnite tako da kliknete na *olovku* u desnom gornjem kutu ovoga dokumenta :) 
-
-# Naziv projekta
-(u redak iznad navedite kratki proizvoljni naziv projekta prikladan akademskoj zajednici, a ovaj tekst obrišite)
-
+# Bibly
 ## Projektni tim
 
 Ime i prezime | E-mail adresa (FOI) | JMBAG | Github korisničko ime
 ------------  | ------------------- | ----- | ---------------------
-Ime i prezime | mojaadresa@foi.hr | 000000000 | githubuser
-Ime i prezime | ... | ... | ...
+Marta Marija Picić | mpicic@foi.hr | 0016142854 | MartaMarija
+Patricio Poldrugač | ppoldruga@foi.hr | 0016142508 | ppoldrugac
+Fran Sabolić | fsabolic@foi.hr | 0016141404 | fsabolic
 
 ## Opis domene
-Umjesto ovih uputa opišite domenu ili problem koji pokrivate vašim  projektom. Domena može biti proizvoljna, ali obratite pozornost da sukladno ishodima učenja, domena omogući primjenu zahtijevanih koncepata kako je to navedeno u sljedećem poglavlju. Priložite odgovarajuće skice gdje je to prikladno.
-
+Bibly je aplikacija za lakše rukovanje inventarom knjižnice, ali i za olakšano korištenje usluga knjižnice od strane njenih korisnika. Aplikacija omogućava pregledno pretraživanje željenih knjiga i njihove dostupnosti po danim kriterijima. Pomoću praćenja datuma posuđivanja i rezervacije, Bibly ukazuje korisniku kada knjiga mora biti vraćena ili preuzeta za rezervaciju.
 ## Specifikacija projekta
-Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
-
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
-F01 | Login | Za pristup dnevniku potrebnba je autentikacija korisnika pomoću login funkcionalnosti. Korisnik se logira s podacima koji su mu dodijeljeni prilikom ... | Zlatko Stapić
-F02 | Pregled dnevnika | .... | ...
+F01 | Login | Korisnik, moderator ili administrator se pri ulasku u aplikaciju mora prijaviti koristeći podatke koje je dobio registriranjem u knjižnicu. Ovisno o ulozi, otvara se odgovarajuće sučelje. | Fran Sabolić
+F02 | Upravljanje ulogama | Administrator ima mogućnost dodjeljivanja uloga i izmjena prava. Osim toga, administrator može vršiti CRUD operacije nad pripadnicima uloga. | Marta Marija Picić
+F03 |Upravljanje općim informacijama |Administrator može mijenjati opće informacije o knjižnici koje se prikazuju svim korisnicima (cjenik, radno vrijeme, adresa, broj telefona… ).| Fran Sabolić
+F04 |Upravljanje katalogom |Moderator može pretraživati katalog i vršiti CRUD operacije nad knjigama.| Marta Marija Picić
+F05 |Upravljanje korisnicima (dodavanje, brisanje...) |Moderator može dodavati i brisati korisnike te ažurirati njihove podatke.| Patricio Poldrugač
+F06 |Upravljanje posudbama i rezervacijama |Prilikom posuđivanja, rezerviranja ili vraćanja knjige od strane korisnika moderator vrši ažuriranje nad stanjima knjiga (npr. skeniranje bar koda knjige). | Marta Marija Picić
+F07 |Pregled kataloga |Korisnik može pretraživati knjige po različitim kriterijima (po autoru, nazivu, godini izdanja…). Pritom korisnik može vidjeti dostupnost knjige, opis i ostale podatke o knjizi.| Fran Sabolić
+F08 |Dodavanje rezervacije |Prilikom pretraživanja knjige, korisnik ju može rezervirati nakon čega mu se ispisuje datum do kojeg vrijedi rezervacija i kada će biti dostupna ako je već posuđena.| Patricio Poldrugač
+F09 |Produljenje posudbe |Korisnik može ograničen broj puta produljiti istu knjigu ukoliko već nije rezervirana.|Fran Sabolić
+F10 | Pregled posuđenih i rezerviranih knjiga | Korisnik može vidjeti koliko mu je dana ostalo do povrata posuđene knjige, do kada mu traje rezervacija i kada će određena rezervirana knjiga biti dostupna za preuzimanje.|Patricio Poldrugač
 
 ## Tehnologije i oprema
-Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
+- Visual Studio 2022
+- MySQL, MySQL Workbench 
+- GitHub
+- Draw.io
+- Word
