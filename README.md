@@ -29,8 +29,11 @@ F12|Upravljanje posudbama i rezervacijama|Moderator i administrator mogu pregled
 
 
 ## Tehnologije i oprema
-- Visual Studio 2022
-- MySQL, MySQL Workbench 
+- C#, Visual Studio 2022
+- MSSQL, MSSQL Server Managment Studio
+- MySQL Workbench 
 - GitHub
-- Draw.io
+- Visual Paradigm Online, Visual Paradigm Community Edition
 - Word
+- Balsamiq
+- Hatchful.com
