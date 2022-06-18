@@ -8,5 +8,6 @@ namespace BazaPodataka
 {
     public class Class1
     {
+        public int Broj { get; set; }
     }
 }

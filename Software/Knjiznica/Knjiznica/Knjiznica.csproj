@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BazaPodataka\BazaPodataka.csproj">
+      <Project>{6aa6d7c7-c4c7-428e-924b-ff26c7546b39}</Project>
+      <Name>BazaPodataka</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
