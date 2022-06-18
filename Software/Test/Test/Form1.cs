@@ -19,7 +19,12 @@ namespace Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ovo je rezultat prvog commita");
+            List<int> lista = new List<int>()
+            {
+                1,2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+            };
+
+            dataGridView1.DataSource = lista;
         }
     }
 }
