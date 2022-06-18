@@ -9,5 +9,6 @@ namespace BazaPodataka
     public class Class1
     {
         public int Broj { get; set; }
+        private string Ime { get;set;}
     }
 }
