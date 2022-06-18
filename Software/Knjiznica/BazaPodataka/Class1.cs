@@ -10,5 +10,6 @@ namespace BazaPodataka
     {
         public int Broj { get; set; }
         private string Ime { get;set;}
+        public static double Brojko { get; set; }
     }
 }
