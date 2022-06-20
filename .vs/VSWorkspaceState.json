@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Software"
+    "\\Software",
+    "\\Software\\Bibly",
+    "\\Software\\Bibly\\Bibly"
   ],
-  "SelectedNode": "\\Software",
+  "SelectedNode": "\\Software\\Bibly\\Bibly\\OpcenitaForma.cs",
   "PreviewInSolutionExplorer": false
 }
