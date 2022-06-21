@@ -28,7 +28,8 @@ namespace Prijava
         public int PrijavaKorisnika(string email, string lozinka)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email)
-                || string.IsNullOrEmpty(lozinka) || string.IsNullOrWhiteSpace(lozinka)) {
+                || string.IsNullOrEmpty(lozinka) || string.IsNullOrWhiteSpace(lozinka))
+            {
                 return -1;
             }
 
@@ -54,6 +55,34 @@ namespace Prijava
             return 1;
 
         }
+
+        public int UlogaKorisnika()
+        {
+            if (PostojiLogiranKorisnik())
+            {
+                return logiraniKorisnik.TipKorisnika.ID;
+            }
+            return -1;
+        }
+
+        public bool PostojiLogiranKorisnik()
+        {
+            return (logiraniKorisnik == null) ? false : true;
+        }
+
+        public bool OdjavaKorisnika()
+        {
+            if (PostojiLogiranKorisnik())
+            {
+                logiraniKorisnik = null;
+                return true;
+            }
+
+            return false;
+
+        }
+
+
 
 
 
