@@ -45,7 +45,7 @@ namespace Prijava
             {
                 return -4;
             }
-            else if (korisnik.DatumIstekaClanarine >= DateTime.Now)
+            else if (korisnik.DatumIstekaClanarine < DateTime.Now)
             {
                 return -5;
             }

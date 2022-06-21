@@ -70,7 +70,7 @@ namespace Prijava
                     DateTime.Parse(reader["k.datum_uclanjivanja"].ToString()),
                     DateTime.Parse(reader["k.datum_isteka_clanarine"].ToString()),
                     reader["k.lozinka"].ToString(),
-                    false,
+                    int.Parse(reader["k.blokiran"].ToString()),
                     new TipKorisnika(
                         int.Parse(reader["tk.id_tip_korisnika"].ToString()),
                         reader["tk.naziv"].ToString()
@@ -147,7 +147,7 @@ namespace Prijava
                     DateTime.Parse(reader["k.datum_uclanjivanja"].ToString()),
                     DateTime.Parse(reader["k.datum_isteka_clanarine"].ToString()),
                     reader["k.lozinka"].ToString(),
-                    false,
+                    int.Parse(reader["k.blokiran"].ToString()),
                     new TipKorisnika(
                         int.Parse(reader["tk.id_tip_korisnika"].ToString()),
                         reader["tk.naziv"].ToString()

@@ -33,7 +33,7 @@ namespace Prijava
         }
         public Korisnik(string oib, string ime, string prezime, string brojMobitela, string email,
             Mjesto prebivaliste, string adresaPrebivalista, Mjesto boraviste, string adresaBoravista,
-            DateTime datumUclanjivanja, DateTime datumIstekaClanarine, string lozinka, bool blokiran,TipKorisnika tipKorisnika)
+            DateTime datumUclanjivanja, DateTime datumIstekaClanarine, string lozinka, int blokiran,TipKorisnika tipKorisnika)
         {
             OIB = oib;
             Ime = ime;
@@ -47,7 +47,7 @@ namespace Prijava
             DatumUclanjivanja = datumUclanjivanja;
             DatumIstekaClanarine = datumIstekaClanarine;
             Lozinka = lozinka;
-            Blokiran = blokiran;
+            Blokiran = blokiran==0?false:true;
             TipKorisnika = tipKorisnika;
         }
 
