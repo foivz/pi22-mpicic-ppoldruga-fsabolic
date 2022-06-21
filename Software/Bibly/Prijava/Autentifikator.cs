@@ -10,14 +10,14 @@ namespace Prijava
     {
         private Korisnik logiraniKorisnik = null;
 
-        private static Autentifikator instance;
-        public static Autentifikator Instance
+        private static Autentifikator instanca;
+        public static Autentifikator Instanca
         {
             get
             {
-                if (instance == null)
-                    instance = new Autentifikator();
-                return instance;
+                if (instanca == null)
+                    instanca = new Autentifikator();
+                return instanca;
             }
         }
         private Autentifikator()
