@@ -13,9 +13,9 @@ namespace Prijava
     {
         public static List<Korisnik> DohvatiSveKorisnike()
         {
-            BazaPodataka.Instance.Connect();
+            BazaPodataka.Instanca.UspostaviVezu();
 
-            string sql =
+            string upit =
                     "SELECT " +
                     "k.OIB as 'k.OIB'," +
                     "k.ime AS 'k.ime'," +
@@ -46,7 +46,7 @@ namespace Prijava
 
             List<Korisnik> korisnici = new List<Korisnik>();
 
-            IDataReader reader = BazaPodataka.Instance.GetReader(sql);
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
                 korisnici.Add(new Korisnik(
@@ -82,16 +82,16 @@ namespace Prijava
             }
             reader.Close();
 
-            BazaPodataka.Instance.Disconnect();
+            BazaPodataka.Instanca.PrekiniVezu();
 
             return korisnici;
         }
 
         public static Korisnik DohvatiKorisnika_Mail(string email)
         {
-            BazaPodataka.Instance.Connect();
+            BazaPodataka.Instanca.UspostaviVezu();
 
-            string sql =
+            string upit =
                     "SELECT " +
                     "k.OIB as 'k.OIB'," +
                     "k.ime AS 'k.ime'," +
@@ -123,7 +123,7 @@ namespace Prijava
 
             Korisnik korisnik = null;
 
-            IDataReader reader = BazaPodataka.Instance.GetReader(sql);
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
                korisnik = new Korisnik(
@@ -158,7 +158,7 @@ namespace Prijava
             }
             reader.Close();
 
-            BazaPodataka.Instance.Disconnect();
+            BazaPodataka.Instanca.PrekiniVezu();
 
             return korisnik;
         }
