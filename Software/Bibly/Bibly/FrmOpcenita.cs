@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using Prijava;
 
 namespace Bibly
 {
@@ -27,12 +28,7 @@ namespace Bibly
                 return;
             }
 
-            // --  TO DO --
-            //Dohvaćanje uloge iz autentifikatora
-            // int uloga = Autentifikator.VratiUlogu();
-            // --  TO DO --
-
-            //trenutno za potrebe testiranja koristim ovu varijablu (uloga):
+            //int uloga = Autentifikator.Instanca.UlogaKorisnika();
 
             int uloga = 4;
             if (uloga == 1)
@@ -58,6 +54,7 @@ namespace Bibly
 
         private void tsmiOdjava_Click(object sender, EventArgs e)
         {
+            //Autentifikator.Instanca.OdjaviKorisnika();
             FrmPrijava frm = new FrmPrijava();
             OtvoriNovuFormu(frm);
         }
