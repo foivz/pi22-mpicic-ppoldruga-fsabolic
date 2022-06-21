@@ -16,6 +16,8 @@ namespace Bibly
         {
             InitializeComponent();
             lblUclanjivanje.ForeColor = System.Drawing.Color.Blue;
+            this.CenterToScreen();
+
         }
 
         private void lblUclanjivanje_MouseHover(object sender, EventArgs e)
