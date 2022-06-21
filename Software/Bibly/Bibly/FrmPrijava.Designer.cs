@@ -60,7 +60,7 @@
             // 
             this.lblUclanjivanje.AutoSize = true;
             this.lblUclanjivanje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUclanjivanje.Location = new System.Drawing.Point(156, 290);
+            this.lblUclanjivanje.Location = new System.Drawing.Point(166, 292);
             this.lblUclanjivanje.Name = "lblUclanjivanje";
             this.lblUclanjivanje.Size = new System.Drawing.Size(120, 18);
             this.lblUclanjivanje.TabIndex = 6;
@@ -72,9 +72,9 @@
             // 
             this.btnPrijava.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnPrijava.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrijava.Location = new System.Drawing.Point(169, 245);
+            this.btnPrijava.Location = new System.Drawing.Point(178, 256);
             this.btnPrijava.Name = "btnPrijava";
-            this.btnPrijava.Size = new System.Drawing.Size(100, 33);
+            this.btnPrijava.Size = new System.Drawing.Size(94, 33);
             this.btnPrijava.TabIndex = 5;
             this.btnPrijava.Text = "Prijava";
             this.btnPrijava.UseVisualStyleBackColor = false;
