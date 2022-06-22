@@ -91,6 +91,18 @@
     <Compile Include="FrmPromijeniLozinku.Designer.cs">
       <DependentUpon>FrmPromijeniLozinku.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmKatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKatalog.Designer.cs">
+      <DependentUpon>FrmKatalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKatalogPrikazKnjige.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKatalogPrikazKnjige.Designer.cs">
+      <DependentUpon>FrmKatalogPrikazKnjige.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAdmin.resx">
