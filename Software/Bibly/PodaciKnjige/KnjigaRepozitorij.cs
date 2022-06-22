@@ -9,9 +9,9 @@ using Baza;
 
 namespace PodaciKnjige
 {
-    public class KnjigaRepozitorij
+    public static class KnjigaRepozitorij
     {
-        public List<Knjiga> DohvatiSveKnjige()
+        public static List<Knjiga> DohvatiSveKnjige()
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
@@ -65,24 +65,24 @@ namespace PodaciKnjige
             return knjige;
         }
 
-        public List<Knjiga> DohvatiNajcitanijeKnjige()
+        public static List<Knjiga> DohvatiNajcitanijeKnjige()
         {
             List<Knjiga> knjiga = new List<Knjiga>();
             return knjiga;
         }
-        public int DodajKnjigu(Knjiga dodanaKnjiga)
+        public static int DodajKnjigu(Knjiga dodanaKnjiga)
         {
             return 0;
         }
-        public int ObrisiKnjigu(Knjiga dodanaKnjiga)
+        public static int ObrisiKnjigu(Knjiga dodanaKnjiga)
         {
             return 0;
         }
-        public int AzurirajKnjigu(Knjiga dodanaKnjiga)
+        public static int AzurirajKnjigu(Knjiga dodanaKnjiga)
         {
             return 0;
         }
-        public List<Knjiga> DohvatiKnjiguPoKriteriju()
+        public static List<Knjiga> DohvatiKnjiguPoKriteriju()
         {
             List<Knjiga> knjiga = new List<Knjiga>();
             return knjiga;
