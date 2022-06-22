@@ -20,5 +20,10 @@ namespace PodaciKnjige
             Id = id;
             Naziv = naziv;
         }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

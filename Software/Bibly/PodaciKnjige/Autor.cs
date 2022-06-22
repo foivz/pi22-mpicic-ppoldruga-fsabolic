@@ -18,10 +18,9 @@ namespace PodaciKnjige
             Ime = ime;
             Prezime = prezime;
         }
-
         public override string ToString()
         {
-            return Ime + " " + Prezime;
+            return Ime +" "+Prezime;
         }
     }
 }

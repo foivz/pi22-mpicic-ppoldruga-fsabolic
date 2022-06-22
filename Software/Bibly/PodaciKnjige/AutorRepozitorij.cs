@@ -16,23 +16,14 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.UspostaviVezu();
 
             string upit =
-                    "SELECT k.ISBN AS 'k.ISBN'" +
-                    ", k.naziv AS 'k.naziv'" +
-                    ", k.id_izdavac AS 'k.id_izdavac'" +
-                    ", k.id_zanr AS 'k.id_zanr'" +
-                    ", k.datum_izdavanja AS 'k.datum_izdavanja'" +
-                    ", k.broj_stranica AS 'k.broj_stranica'" +
-                    ", k.opis_knjige AS 'k.opis_knjige'" +
-                    ", k.naslovnica AS 'k.naslovnica'" +
-                    ", i.id_izdavac AS 'i.id_izdavac'" +
-                    ", i.naziv AS 'i.naziv'" +
-                    ", z.id_zanr AS 'z.id_zanr'" +
-                    ", z.naziv AS 'z.naziv'" +
-                    " FROM knjige k" +
-                    " JOIN izdavaci i" +
-                    " ON i.id_izdavac = k.id_izdavac" +
-                    " JOIN zanrovi z" +
-                    " ON z.id_zanr = k.id_zanr";
+                    "SELECT a.ime AS 'a.ime'" +
+                    ", a.prezime AS 'a.prezime'" +
+                    " FROM autori a" +
+                    " JOIN autor_knjige ak" +
+                    " ON a.id_autor = ak.id_autor" +
+                    " JOIN knjige k" +
+                    " ON k.ISBN = ak.ISBN" +
+                    " WHERE k.ISBN = " + ISBN;
 
             List<Autor> autori = new List<Autor>();
 
@@ -40,21 +31,8 @@ namespace PodaciKnjige
             while (reader.Read())
             {
                 autori.Add(new Autor(
-                   reader["k.ISBN"].ToString(),
-                   reader["k.naziv"].ToString(),
-                   new Izdavac(
-                        int.Parse(reader["i.id_izdavac"].ToString()),
-                        reader["i.naziv"].ToString()
-                        ),
-                   new Zanr(
-                        int.Parse(reader["z.id_zanr"].ToString()),
-                        reader["z.naziv"].ToString()
-                        ),
-                    DateTime.Parse(reader["k.datum_izdavanja"].ToString()),
-                    int.Parse(reader["k.broj_stranica"].ToString()),
-                    reader["k.opis_knjige"].ToString(),
-                    reader["k.naslovnica"].ToString(),
-                    null
+                   reader["a.ime"].ToString(),
+                   reader["a.prezime"].ToString()
                    ));
             }
             reader.Close();

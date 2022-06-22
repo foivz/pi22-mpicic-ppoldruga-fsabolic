@@ -16,7 +16,7 @@ namespace PodaciKnjige
         public int BrojStranica { get; set; }
         public string Opis { get; set; }
         public string Naslovnica { get; set; }
-        public List<Autor> Autor { get; set; }
+        public List<Autor> ListaAutora { get; set; }
 
         public Knjiga()
         {
@@ -33,7 +33,7 @@ namespace PodaciKnjige
             BrojStranica = brojStranica;
             Opis = opis;
             Naslovnica = naslovnica;
-            Autor = autori;
+            ListaAutora = autori;
         }
     }
 }

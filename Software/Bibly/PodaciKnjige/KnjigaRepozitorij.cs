@@ -37,6 +37,7 @@ namespace PodaciKnjige
             List<Knjiga> knjige = new List<Knjiga>();
 
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            AutorRepozitorij repozitorij = new AutorRepozitorij();
             while (reader.Read())
             {
                 knjige.Add(new Knjiga(
@@ -54,7 +55,7 @@ namespace PodaciKnjige
                     int.Parse(reader["k.broj_stranica"].ToString()),
                     reader["k.opis_knjige"].ToString(),
                     reader["k.naslovnica"].ToString(),
-                    null
+                    repozitorij.DohvatiAutoreKnjige(reader["k.ISBN"].ToString())
                    ));
             }
             reader.Close();
