@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblUclanjivanje = new System.Windows.Forms.Label();
             this.btnPrijava = new System.Windows.Forms.Button();
@@ -78,6 +77,7 @@
             this.btnPrijava.TabIndex = 5;
             this.btnPrijava.Text = "Prijava";
             this.btnPrijava.UseVisualStyleBackColor = false;
+            this.btnPrijava.Click += new System.EventHandler(this.btnPrijava_Click);
             // 
             // txtLozinka
             // 
@@ -146,8 +146,6 @@
         }
 
         #endregion
-
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPrijava;
         private System.Windows.Forms.Label lblUclanjivanje;

@@ -54,7 +54,8 @@ namespace Bibly
 
         private void tsmiOdjava_Click(object sender, EventArgs e)
         {
-            //Autentifikator.Instanca.OdjaviKorisnika();
+            //if(!Autentifikator.Instanca.OdjaviKorisnika())
+            //  MessageBox.Show("Došlo je do pogreške u radu aplikacije! Ponovno upalite aplikaciju");
             FrmPrijava frm = new FrmPrijava();
             OtvoriNovuFormu(frm);
         }
@@ -152,7 +153,7 @@ namespace Bibly
             FrmKorisnici frm = new FrmKorisnici();
             OtvoriNovuFormu(frm);
         }
-        private void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
+        public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
         {
             this.Hide();
             frm.CenterToScreen();
