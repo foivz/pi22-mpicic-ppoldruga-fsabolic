@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Ikona\books.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,12 +49,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs" />
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdmin.Designer.cs">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAzurirajKorisnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAzurirajKorisnika.Designer.cs">
+      <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKorisnici.Designer.cs">
+      <DependentUpon>FrmKorisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrijava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrijava.Designer.cs">
+      <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOpcenita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOpcenita.Designer.cs">
+      <DependentUpon>FrmOpcenita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProfil.Designer.cs">
+      <DependentUpon>FrmProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPromijeniLozinku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPromijeniLozinku.Designer.cs">
+      <DependentUpon>FrmPromijeniLozinku.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAzurirajKorisnika.resx">
+      <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKorisnici.resx">
+      <DependentUpon>FrmKorisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrijava.resx">
+      <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOpcenita.resx">
+      <DependentUpon>FrmOpcenita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProfil.resx">
+      <DependentUpon>FrmProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPromijeniLozinku.resx">
+      <DependentUpon>FrmPromijeniLozinku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,6 +135,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Baza\Baza.csproj">
+      <Project>{af93170b-21c0-452b-acdf-53e9b055ba3d}</Project>
+      <Name>Baza</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prijava\Prijava.csproj">
+      <Project>{1ea4b4be-01e1-4b24-988b-4a6ba42d4b69}</Project>
+      <Name>Prijava</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ikona\books.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
