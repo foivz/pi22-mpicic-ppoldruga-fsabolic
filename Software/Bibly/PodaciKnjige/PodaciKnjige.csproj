@@ -51,5 +51,11 @@
     <Compile Include="Zanr.cs" />
     <Compile Include="ZanrRepozitorij.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Baza\Baza.csproj">
+      <Project>{af93170b-21c0-452b-acdf-53e9b055ba3d}</Project>
+      <Name>Baza</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
