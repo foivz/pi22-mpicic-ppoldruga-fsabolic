@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using Prijava;
+using Prijava;
 
 namespace Bibly
 {
@@ -28,10 +28,9 @@ namespace Bibly
                 return;
             }
 
-            //int uloga = Autentifikator.Instanca.UlogaKorisnika();
+            int uloga = Autentifikator.Instanca.UlogaKorisnika();
 
-            int uloga = 4;
-            if (uloga == 1)
+            if (uloga == -1 || uloga==1)
             {
                 glavniMenu.Visible = false;
             }
@@ -54,8 +53,8 @@ namespace Bibly
 
         private void tsmiOdjava_Click(object sender, EventArgs e)
         {
-            //if(!Autentifikator.Instanca.OdjaviKorisnika())
-            //  MessageBox.Show("Došlo je do pogreške u radu aplikacije! Ponovno upalite aplikaciju");
+            if (!Autentifikator.Instanca.OdjavaKorisnika())
+                MessageBox.Show("Došlo je do pogreške u radu aplikacije! Ponovno upalite aplikaciju");
             FrmPrijava frm = new FrmPrijava();
             OtvoriNovuFormu(frm);
         }
