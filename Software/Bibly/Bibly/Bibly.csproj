@@ -105,11 +105,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCKnjigaKatalog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCKnjigaKatalog.Designer.cs">
+      <DependentUpon>UCKnjigaKatalog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAzurirajKorisnika.resx">
       <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKatalog.resx">
+      <DependentUpon>FrmKatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKorisnici.resx">
       <DependentUpon>FrmKorisnici.cs</DependentUpon>
@@ -135,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCKnjigaKatalog.resx">
+      <DependentUpon>UCKnjigaKatalog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,6 +164,10 @@
     <ProjectReference Include="..\Baza\Baza.csproj">
       <Project>{af93170b-21c0-452b-acdf-53e9b055ba3d}</Project>
       <Name>Baza</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PodaciKnjige\PodaciKnjige.csproj">
+      <Project>{33418b32-f8a9-4fbf-94db-8e3affefe72e}</Project>
+      <Name>PodaciKnjige</Name>
     </ProjectReference>
     <ProjectReference Include="..\Prijava\Prijava.csproj">
       <Project>{1ea4b4be-01e1-4b24-988b-4a6ba42d4b69}</Project>

@@ -79,13 +79,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 548);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1049, 622);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.tboxUnosKljucneRijeci);
             this.Controls.Add(this.cboxKriteriji);
             this.Controls.Add(this.naslov);
             this.Name = "FrmKatalog";
             this.Text = "Katalog knjiga";
+            this.Load += new System.EventHandler(this.FrmKatalog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
