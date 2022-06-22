@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Bibly
 {
-    public partial class Form1 : Form
+    public partial class FrmPromijeniLozinku : FrmOpcenita
     {
-        public Form1()
+        public FrmPromijeniLozinku()
         {
             InitializeComponent();
+            PostaviGlavniMenu(1);
+            this.CenterToScreen();
         }
     }
 }
