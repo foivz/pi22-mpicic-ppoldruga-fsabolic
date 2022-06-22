@@ -24,13 +24,18 @@ namespace Bibly
 
             string autori = "";
             int brojAutora = knjiga.ListaAutora.Count;
-            for (int i = 0; i < brojAutora; i++)
+            for (int indexAutora = 0; indexAutora < brojAutora; indexAutora++)
             {
-                autori += knjiga.ListaAutora[i].Ime + " " + knjiga.ListaAutora[i].Prezime;
-                autori += (i == brojAutora - 1) ? "" : ", ";
+                autori += knjiga.ListaAutora[indexAutora].Ime + " " + knjiga.ListaAutora[indexAutora].Prezime;
+                autori += (indexAutora == brojAutora - 1) ? "" : ", ";
             }
             lblAutor.Text = autori;
 
+            lblBrojStranica.Text = knjiga.BrojStranica.ToString();
+
+            lblIzdavac.Text = knjiga.Izdavac.ToString();
+
+            lblOpisKnjige.Text = knjiga.Opis;
         }
     }
 }
