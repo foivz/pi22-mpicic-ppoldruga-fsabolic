@@ -10,16 +10,16 @@ namespace Baza
     public class BazaPodataka
     {
         private string connectionString = @"Data Source = 31.147.204.119\PISERVER,1433;Initial Catalog =PI2237_DB;User =PI2237_User;Password =3z@LEwQV";
-        private SqlConnection Connection { get; set; }
+        private SqlConnection Veza { get; set; }
 
-        private static BazaPodataka instance;
-        public static BazaPodataka Instance
+        private static BazaPodataka instanca;
+        public static BazaPodataka Instanca
         {
             get
             {
-                if (instance == null)
-                    instance = new BazaPodataka();
-                return instance;
+                if (instanca == null)
+                    instanca = new BazaPodataka();
+                return instanca;
             }
         }
         private BazaPodataka()
@@ -27,32 +27,32 @@ namespace Baza
         
         }
 
-        public void Connect()
+        public void UspostaviVezu()
         {
-            Connection = new SqlConnection(connectionString);
-            Connection.Open();
+            Veza = new SqlConnection(connectionString);
+            Veza.Open();
         }
 
-        public void Disconnect()
+        public void PrekiniVezu()
         {
-            if (Connection.State != ConnectionState.Closed)
+            if (Veza.State != ConnectionState.Closed)
             {
-                Connection.Close();
+                Veza.Close();
             }
         }
-        public IDataReader GetReader(string query)
+        public IDataReader DohvatiDataReader(string upit)
         {
-            SqlCommand sqlCommand = new SqlCommand(query, Connection);
+            SqlCommand sqlCommand = new SqlCommand(upit, Veza);
             return sqlCommand.ExecuteReader();
         }
-        public object GetValue(string query)
+        public object DohvatiVrijednost(string upit)
         {
-            SqlCommand sqlCommand = new SqlCommand(query, Connection);
+            SqlCommand sqlCommand = new SqlCommand(upit, Veza);
             return sqlCommand.ExecuteScalar();
         }
-        public int ExecuteCommand(string query)
+        public int IzvrsiNaredbu(string upit)
         {
-            SqlCommand sqlCommand = new SqlCommand(query, Connection);
+            SqlCommand sqlCommand = new SqlCommand(upit, Veza);
             return sqlCommand.ExecuteNonQuery();
         }
     }
