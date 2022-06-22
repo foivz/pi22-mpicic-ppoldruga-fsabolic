@@ -38,7 +38,7 @@
             // 
             this.naslov.AutoSize = true;
             this.naslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naslov.Location = new System.Drawing.Point(433, 81);
+            this.naslov.Location = new System.Drawing.Point(482, 81);
             this.naslov.Name = "naslov";
             this.naslov.Size = new System.Drawing.Size(215, 46);
             this.naslov.TabIndex = 0;
@@ -49,7 +49,12 @@
             // 
             this.cboxKriteriji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxKriteriji.FormattingEnabled = true;
-            this.cboxKriteriji.Location = new System.Drawing.Point(282, 167);
+            this.cboxKriteriji.Items.AddRange(new object[] {
+            "Autor",
+            "Izdavač",
+            "Naslov knjige",
+            "Žanr"});
+            this.cboxKriteriji.Location = new System.Drawing.Point(331, 167);
             this.cboxKriteriji.Name = "cboxKriteriji";
             this.cboxKriteriji.Size = new System.Drawing.Size(174, 28);
             this.cboxKriteriji.TabIndex = 2;
@@ -59,35 +64,42 @@
             // 
             this.tboxUnosKljucneRijeci.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.tboxUnosKljucneRijeci.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxUnosKljucneRijeci.Location = new System.Drawing.Point(462, 169);
+            this.tboxUnosKljucneRijeci.Location = new System.Drawing.Point(511, 169);
             this.tboxUnosKljucneRijeci.Name = "tboxUnosKljucneRijeci";
             this.tboxUnosKljucneRijeci.Size = new System.Drawing.Size(201, 26);
             this.tboxUnosKljucneRijeci.TabIndex = 3;
             // 
             // btnPretrazi
             // 
+            this.btnPretrazi.AutoSize = true;
             this.btnPretrazi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnPretrazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPretrazi.Location = new System.Drawing.Point(669, 166);
+            this.btnPretrazi.Location = new System.Drawing.Point(718, 166);
             this.btnPretrazi.Name = "btnPretrazi";
             this.btnPretrazi.Size = new System.Drawing.Size(110, 32);
             this.btnPretrazi.TabIndex = 4;
             this.btnPretrazi.Text = "Pretaži";
             this.btnPretrazi.UseVisualStyleBackColor = false;
+            this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
             // 
             // FrmKatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1049, 622);
+            this.ClientSize = new System.Drawing.Size(1172, 622);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.tboxUnosKljucneRijeci);
             this.Controls.Add(this.cboxKriteriji);
             this.Controls.Add(this.naslov);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmKatalog";
             this.Text = "Katalog knjiga";
             this.Load += new System.EventHandler(this.FrmKatalog_Load);
+            this.Controls.SetChildIndex(this.naslov, 0);
+            this.Controls.SetChildIndex(this.cboxKriteriji, 0);
+            this.Controls.SetChildIndex(this.tboxUnosKljucneRijeci, 0);
+            this.Controls.SetChildIndex(this.btnPretrazi, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
