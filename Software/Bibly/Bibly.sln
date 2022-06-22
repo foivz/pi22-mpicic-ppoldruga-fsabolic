@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibly", "Bibly\Bibly.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baza", "Baza\Baza.csproj", "{AF93170B-21C0-452B-ACDF-53E9B055BA3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodaciKnjige", "PodaciKnjige\PodaciKnjige.csproj", "{33418B32-F8A9-4FBF-94DB-8E3AFFEFE72E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AF93170B-21C0-452B-ACDF-53E9B055BA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF93170B-21C0-452B-ACDF-53E9B055BA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF93170B-21C0-452B-ACDF-53E9B055BA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33418B32-F8A9-4FBF-94DB-8E3AFFEFE72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33418B32-F8A9-4FBF-94DB-8E3AFFEFE72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33418B32-F8A9-4FBF-94DB-8E3AFFEFE72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33418B32-F8A9-4FBF-94DB-8E3AFFEFE72E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
