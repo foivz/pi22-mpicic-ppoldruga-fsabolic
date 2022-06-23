@@ -39,8 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblISBN = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -97,9 +95,9 @@
             // 
             this.lblOpisKnjige.BackColor = System.Drawing.Color.White;
             this.lblOpisKnjige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpisKnjige.Location = new System.Drawing.Point(281, 180);
+            this.lblOpisKnjige.Location = new System.Drawing.Point(281, 148);
             this.lblOpisKnjige.Name = "lblOpisKnjige";
-            this.lblOpisKnjige.Size = new System.Drawing.Size(761, 95);
+            this.lblOpisKnjige.Size = new System.Drawing.Size(761, 127);
             this.lblOpisKnjige.TabIndex = 4;
             this.lblOpisKnjige.Text = "label5";
             this.lblOpisKnjige.Click += new System.EventHandler(this.UCKnjigaKataloga_Click);
@@ -154,7 +152,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(227, 180);
+            this.label4.Location = new System.Drawing.Point(227, 148);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 9;
@@ -164,8 +162,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.lblISBN);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblOpisKnjige);
             this.panel1.Location = new System.Drawing.Point(3, 28);
@@ -173,28 +169,6 @@
             this.panel1.Size = new System.Drawing.Size(1098, 299);
             this.panel1.TabIndex = 10;
             this.panel1.Click += new System.EventHandler(this.UCKnjigaKataloga_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(227, 151);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "ISBN:";
-            // 
-            // lblISBN
-            // 
-            this.lblISBN.AutoSize = true;
-            this.lblISBN.BackColor = System.Drawing.Color.White;
-            this.lblISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblISBN.Location = new System.Drawing.Point(281, 151);
-            this.lblISBN.Name = "lblISBN";
-            this.lblISBN.Size = new System.Drawing.Size(46, 17);
-            this.lblISBN.TabIndex = 11;
-            this.lblISBN.Text = "label4";
             // 
             // UCKnjigaKatalog
             // 
@@ -233,7 +207,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblISBN;
     }
 }
