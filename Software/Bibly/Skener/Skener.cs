@@ -32,6 +32,7 @@ namespace Skener
         public static string DesifrirajKod(Image barkod)
         {
             BarcodeReader barKodCitac = new BarcodeReader();
+            
             var rezultat = barKodCitac.Decode((Bitmap)barkod);
             if (rezultat != null)
             {
