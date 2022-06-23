@@ -47,7 +47,10 @@
     <Compile Include="IzdavacRepozitorij.cs" />
     <Compile Include="Knjiga.cs" />
     <Compile Include="KnjigaRepozitorij.cs" />
+    <Compile Include="Primjerak.cs" />
+    <Compile Include="PrimjerakRepozitorij.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusPrimjerka.cs" />
     <Compile Include="Zanr.cs" />
     <Compile Include="ZanrRepozitorij.cs" />
   </ItemGroup>
