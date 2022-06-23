@@ -61,8 +61,6 @@ namespace Bibly
             }
             else
             {
-                Posudba rezervacija = new Posudba(3, Autentifikator.Instanca.OIBKorisnika(), )
-                RezervacijaRepozitorij.DodajRezervaciju();
                 OsvjeziPrimjerke();
             }
         }

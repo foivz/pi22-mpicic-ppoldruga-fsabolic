@@ -47,6 +47,7 @@
             // 
             // cboxKriteriji
             // 
+            this.cboxKriteriji.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxKriteriji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxKriteriji.FormattingEnabled = true;
             this.cboxKriteriji.Items.AddRange(new object[] {
@@ -58,7 +59,6 @@
             this.cboxKriteriji.Name = "cboxKriteriji";
             this.cboxKriteriji.Size = new System.Drawing.Size(174, 28);
             this.cboxKriteriji.TabIndex = 2;
-            this.cboxKriteriji.Text = "Kriterij pretraživanja";
             // 
             // tboxUnosKljucneRijeci
             // 

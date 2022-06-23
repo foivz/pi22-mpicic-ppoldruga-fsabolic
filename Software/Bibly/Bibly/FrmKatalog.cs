@@ -26,6 +26,7 @@ namespace Bibly
         {
             listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
             DodajUCKnjigaKatalog(listaKnjiga);
+            cboxKriteriji.SelectedIndex = 0;
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)

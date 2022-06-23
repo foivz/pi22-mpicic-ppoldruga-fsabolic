@@ -117,8 +117,9 @@
     <Compile Include="UCSkenerKnjiga.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCSkenerKnjiga.Designer.cs">
-      <DependentUpon>UCSkenerKnjiga.cs</DependentUpon>
+	  <Compile Include="UCSkenerKnjiga.Designer.cs">
+		  <DependentUpon>UCSkenerKnjiga.cs</DependentUpon>
+	  </Compile>
     <Compile Include="UCKnjigaKatalog.cs">
       <SubType>UserControl</SubType>
     </Compile>
