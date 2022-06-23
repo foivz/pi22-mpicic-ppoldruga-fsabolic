@@ -11,11 +11,19 @@ namespace PodaciKnjige
         public int Id { get; set; }
         public StatusPrimjerka Status { get; set; }
         public Knjiga Knjiga { get; set; }
+        public string DoKadaJeNedostupan { get; set; }
         public Primjerak(int id, StatusPrimjerka status, Knjiga knjiga)
         {
             Id = id;
             Status = status;
             Knjiga = knjiga;
+        }
+        public Primjerak(int id, StatusPrimjerka status, Knjiga knjiga, string doKadaJeNedostupan)
+        {
+            Id = id;
+            Status = status;
+            Knjiga = knjiga;
+            DoKadaJeNedostupan = doKadaJeNedostupan;
         }
     }
 }

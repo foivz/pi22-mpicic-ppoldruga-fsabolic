@@ -20,25 +20,77 @@ namespace PodaciKnjige
                     ", p.ISBN AS 'p.ISBN'" +
                     ", p.id_status AS 'p.id_status'" +
                     ", sp.naziv AS 'sp.naziv'" +
+                    ", po.datum_posudbe AS 'po.datum_posudbe'" +
+                    ", po.predviden_datum_vracanja AS 'po.predviden_datum_vracanja'" +
+                    ", po.stvarni_datum_vracanja AS 'po.stvarni_datum_vracanja'" +
+                    ", po.do_kada_vrijedi_rezervacija AS 'po.do_kada_vrijedi_rezervacija'" +
+                    ", po.rezervacija_potvrdena AS 'po.rezervacija_potvrdena'" +
                     " FROM primjerci p" +
                     " JOIN statusi_primjeraka sp" +
                     " ON sp.id_statusa = p.id_status" +
                     " JOIN knjige k" +
                     " ON k.ISBN = p.ISBN" +
-                    " WHERE p.ISBN = " + knjiga.ISBN;
+                    " LEFT JOIN posudbe po" +
+                    " ON po.id_primjerak = p.id_primjerak" +
+                    " WHERE (po.stvarni_datum_vracanja IS NULL" +
+                    " OR rezervacija_potvrdena != 1)" +
+                    " AND p.ISBN = " + knjiga.ISBN;
 
             List<Primjerak> primjerci = new List<Primjerak>();
-            DateTime datumPosudbe, predvideniDatumVracanja, stvarniDatumVracanja, 
+            string datumPosudbe, predvideniDatumVracanja, stvarniDatumVracanja,
                 doKadaVrijediRezervacija;
             int rezervacijaPotvrdena;
 
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
+                StatusPrimjerka status = new StatusPrimjerka();
+                switch (reader["sp.naziv"])
+                {
+                    case "Dostupan":
+                        status = StatusPrimjerka.Dostupan;
+                        break;
+                    case "Posuden":
+                        status = StatusPrimjerka.Posuđen;
+                        break;
+                    case "Rezerviran":
+                        status = StatusPrimjerka.Rezerviran;
+                        break;
+                }
+
+                DateTime fakeDatum = new DateTime(1970,01,01);
+                string doKadaJeNedostupan = "";
+                datumPosudbe =reader["po.datum_posudbe"].ToString();
+                predvideniDatumVracanja = reader["po.predviden_datum_vracanja"].ToString();
+                predvideniDatumVracanja = predvideniDatumVracanja.Split(' ')[0];
+                stvarniDatumVracanja = reader["po.stvarni_datum_vracanja"].ToString();
+                doKadaVrijediRezervacija = reader["po.do_kada_vrijedi_rezervacija"].ToString();
+                doKadaVrijediRezervacija = doKadaVrijediRezervacija.Split(' ')[0];
+
+                if (!reader.IsDBNull(8))
+                {
+                    rezervacijaPotvrdena = int.Parse(reader["po.rezervacija_potvrdena"].ToString());
+                }
+                else
+                {
+                    //ne postoji nikakva rezervacija
+                    rezervacijaPotvrdena = -1;
+                }
+
+                if (stvarniDatumVracanja == "" && datumPosudbe != "" && rezervacijaPotvrdena != 1)
+                {
+                    doKadaJeNedostupan = predvideniDatumVracanja;
+                }
+                else if (rezervacijaPotvrdena == 0)
+                {
+                    doKadaJeNedostupan = doKadaVrijediRezervacija;
+                }
+
                 primjerci.Add(new Primjerak(
                    int.Parse(reader["p.id_primjerak"].ToString()),
-                   StatusPrimjerka.Dostupan,
-                   KnjigaRepozitorij.DohvatiKnjigu(reader["p.ISBN"].ToString())
+                   status,
+                   KnjigaRepozitorij.DohvatiKnjigu(reader["p.ISBN"].ToString()),
+                   doKadaJeNedostupan
                    ));
             }
             reader.Close();

@@ -48,10 +48,13 @@ namespace Bibly
 
         private void OsvjeziPrimjerke()
         {
-            dgvPrimjerci.DataSource = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
-            dgvPrimjerci.Columns[0].Width = 100;
-            dgvPrimjerci.Columns[1].Width = 100;
-            dgvPrimjerci.Columns[2].Width = 453;
+            List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
+            dgvPrimjerci.DataSource = listaPrimjeraka;
+            dgvPrimjerci.Columns[0].Width = 120;
+            dgvPrimjerci.Columns[1].Width = 150;
+            dgvPrimjerci.Columns[2].Visible = false;
+            dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
+            dgvPrimjerci.Columns[3].Width = 383;
         }
 
         private void btnRezerviraj_Click(object sender, EventArgs e)
