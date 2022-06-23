@@ -120,6 +120,9 @@
     <EmbeddedResource Include="FrmKatalog.resx">
       <DependentUpon>FrmKatalog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmKatalogPrikazKnjige.resx">
+      <DependentUpon>FrmKatalogPrikazKnjige.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKorisnici.resx">
       <DependentUpon>FrmKorisnici.cs</DependentUpon>
     </EmbeddedResource>
