@@ -14,7 +14,10 @@ namespace PodaciKnjige
         public Knjiga Knjiga { get; set; }
         public Primjerak(int id, string isbn, StatusPrimjerka status, Knjiga knjiga)
         {
-
+            Id = id;
+            ISBN = isbn;
+            Status = status;
+            Knjiga = knjiga;
         }
     }
 }
