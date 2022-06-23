@@ -235,7 +235,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiZanrovi;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfil;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Korisnici;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_Katalog_Click;
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
     }
 }
