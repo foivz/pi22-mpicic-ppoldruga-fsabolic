@@ -145,6 +145,10 @@
       <Project>{1ea4b4be-01e1-4b24-988b-4a6ba42d4b69}</Project>
       <Name>Prijava</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skener\Skener.csproj">
+      <Project>{187ce4b6-5077-4ece-b9ec-511bed022b96}</Project>
+      <Name>Skener</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ikona\books.ico" />
