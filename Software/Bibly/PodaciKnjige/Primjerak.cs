@@ -9,13 +9,11 @@ namespace PodaciKnjige
     public class Primjerak
     {
         public int Id { get; set; }
-        public string ISBN { get; set; }
         public StatusPrimjerka Status { get; set; }
         public Knjiga Knjiga { get; set; }
-        public Primjerak(int id, string isbn, StatusPrimjerka status, Knjiga knjiga)
+        public Primjerak(int id, StatusPrimjerka status, Knjiga knjiga)
         {
             Id = id;
-            ISBN = isbn;
             Status = status;
             Knjiga = knjiga;
         }

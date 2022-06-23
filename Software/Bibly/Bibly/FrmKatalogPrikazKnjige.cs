@@ -39,6 +39,8 @@ namespace Bibly
 
             lblZanr.Text = knjiga.Zanr.ToString();
 
+            lblISBN.Text = knjiga.ISBN;
+
             lblOpisKnjige.Text = knjiga.Opis;
 
             OsvjeziPrimjerke();
@@ -46,7 +48,10 @@ namespace Bibly
 
         private void OsvjeziPrimjerke()
         {
-
+            dgvPrimjerci.DataSource = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
+            dgvPrimjerci.Columns[0].Width = 100;
+            dgvPrimjerci.Columns[1].Width = 100;
+            dgvPrimjerci.Columns[2].Width = 453;
         }
 
         private void btnRezerviraj_Click(object sender, EventArgs e)

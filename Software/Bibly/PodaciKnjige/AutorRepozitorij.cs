@@ -9,9 +9,9 @@ using Baza;
 
 namespace PodaciKnjige
 {
-    public class AutorRepozitorij
+    public static class AutorRepozitorij
     {
-        public List<Autor> DohvatiAutoreKnjige(string ISBN)
+        public static List<Autor> DohvatiAutoreKnjige(string ISBN)
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
