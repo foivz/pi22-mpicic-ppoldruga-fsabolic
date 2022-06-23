@@ -65,6 +65,15 @@ namespace Prijava
             return -1;
         }
 
+        public string OIBKorisnika()
+        {
+            if (PostojiLogiranKorisnik())
+            {
+                return logiraniKorisnik.OIB;
+            }
+            return "";
+        }
+
         public bool PostojiLogiranKorisnik()
         {
             return (logiraniKorisnik == null) ? false : true;
