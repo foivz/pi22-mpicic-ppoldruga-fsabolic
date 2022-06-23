@@ -44,6 +44,7 @@ namespace PodaciKnjige
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
+                //provjera statusa primjerka
                 StatusPrimjerka status = new StatusPrimjerka();
                 switch (reader["sp.naziv"])
                 {
@@ -57,26 +58,13 @@ namespace PodaciKnjige
                         status = StatusPrimjerka.Rezerviran;
                         break;
                 }
-
-                DateTime fakeDatum = new DateTime(1970,01,01);
+                //provjera dostupnosti
                 string doKadaJeNedostupan = "";
                 datumPosudbe =reader["po.datum_posudbe"].ToString();
-                predvideniDatumVracanja = reader["po.predviden_datum_vracanja"].ToString();
-                predvideniDatumVracanja = predvideniDatumVracanja.Split(' ')[0];
+                predvideniDatumVracanja = reader["po.predviden_datum_vracanja"].ToString().Split(' ')[0];
                 stvarniDatumVracanja = reader["po.stvarni_datum_vracanja"].ToString();
-                doKadaVrijediRezervacija = reader["po.do_kada_vrijedi_rezervacija"].ToString();
-                doKadaVrijediRezervacija = doKadaVrijediRezervacija.Split(' ')[0];
-
-                if (!reader.IsDBNull(8))
-                {
-                    rezervacijaPotvrdena = int.Parse(reader["po.rezervacija_potvrdena"].ToString());
-                }
-                else
-                {
-                    //ne postoji nikakva rezervacija
-                    rezervacijaPotvrdena = -1;
-                }
-
+                doKadaVrijediRezervacija = reader["po.do_kada_vrijedi_rezervacija"].ToString().Split(' ')[0];
+                rezervacijaPotvrdena = (!reader.IsDBNull(8)) ? int.Parse(reader["po.rezervacija_potvrdena"].ToString()) : -1;
                 if (stvarniDatumVracanja == "" && datumPosudbe != "" && rezervacijaPotvrdena != 1)
                 {
                     doKadaJeNedostupan = predvideniDatumVracanja;
@@ -85,7 +73,6 @@ namespace PodaciKnjige
                 {
                     doKadaJeNedostupan = doKadaVrijediRezervacija;
                 }
-
                 primjerci.Add(new Primjerak(
                    int.Parse(reader["p.id_primjerak"].ToString()),
                    status,

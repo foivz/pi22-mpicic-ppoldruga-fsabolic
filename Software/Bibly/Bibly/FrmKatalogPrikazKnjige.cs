@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PodaciKnjige;
+using PosudbeIRezervacije;
 
 namespace Bibly
 {
@@ -23,7 +24,6 @@ namespace Bibly
         private void FrmKatalogPrikazKnjige_Load(object sender, EventArgs e)
         {
             lblNaslov.Text = knjiga.Naziv;
-
             string autori = "";
             int brojAutora = knjiga.ListaAutora.Count;
             for (int indexAutora = 0; indexAutora < brojAutora; indexAutora++)
@@ -32,17 +32,11 @@ namespace Bibly
                 autori += (indexAutora == brojAutora - 1) ? "" : ", ";
             }
             lblAutor.Text = autori;
-
             lblBrojStranica.Text = knjiga.BrojStranica.ToString();
-
             lblIzdavac.Text = knjiga.Izdavac.ToString();
-
             lblZanr.Text = knjiga.Zanr.ToString();
-
             lblISBN.Text = knjiga.ISBN;
-
             lblOpisKnjige.Text = knjiga.Opis;
-
             OsvjeziPrimjerke();
         }
 
@@ -59,12 +53,21 @@ namespace Bibly
 
         private void btnRezerviraj_Click(object sender, EventArgs e)
         {
-            OsvjeziPrimjerke();
+            Primjerak odabraniPrimjerak = dgvPrimjerci.CurrentRow.DataBoundItem as Primjerak;
+            if(odabraniPrimjerak.Status != StatusPrimjerka.Dostupan)
+            {
+                MessageBox.Show("Ne možete rezervirati primjerak koji nije dostupan!");
+            }
+            else
+            {
+                RezervacijaRepozitorij.
+                OsvjeziPrimjerke();
+            }
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }
