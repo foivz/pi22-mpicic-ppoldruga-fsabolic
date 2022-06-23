@@ -152,6 +152,13 @@ namespace Bibly
             FrmKorisnici frm = new FrmKorisnici();
             OtvoriNovuFormu(frm);
         }
+
+        private void tsmiKatalog_Click(object sender, EventArgs e)
+        {
+            FrmKatalog frm = new FrmKatalog();
+            OtvoriNovuFormu(frm);
+        }
+
         public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
         {
             this.Hide();
@@ -160,7 +167,5 @@ namespace Bibly
             frm.ShowDialog();
             this.Close();
         }
-
-
     }
 }
