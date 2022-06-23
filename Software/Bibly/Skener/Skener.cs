@@ -29,7 +29,7 @@ namespace Skener
             return barKodGenerator.Write(unos);
         }
 
-        public static string DesifrirajBarKod(Image barkod)
+        public static string DesifrirajKod(Image barkod)
         {
             BarcodeReader barKodCitac = new BarcodeReader();
             var rezultat = barKodCitac.Decode((Bitmap)barkod);
@@ -42,6 +42,8 @@ namespace Skener
                 return "";
             }
         }
+        
+
 
     }
 }
