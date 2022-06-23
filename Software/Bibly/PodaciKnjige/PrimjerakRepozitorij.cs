@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PodaciKnjige
 {
-    public class PrimjerakRepozitorij
+    public static class PrimjerakRepozitorij
     {
         public List<Primjerak> DohvatiPrimjerkeKnjige(Knjiga knjiga)
         {
