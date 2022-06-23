@@ -8,8 +8,8 @@ namespace PodaciKnjige
 {
     public enum StatusPrimjerka
     {
-        Posuden,
-        Dostupn,
+        Posuđen,
+        Dostupan,
         Rezerviran
     }
 }
