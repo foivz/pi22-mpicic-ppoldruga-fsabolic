@@ -13,6 +13,7 @@ namespace Bibly
 {
     public partial class UCKnjigaKatalog : UserControl
     {
+        private Knjiga prikazanaKnjiga = new Knjiga();
         public UCKnjigaKatalog()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace Bibly
 
         public void PostaviLabele(Knjiga knjiga)
         {
+            prikazanaKnjiga = knjiga;
             lblNaslov.Text = knjiga.Naziv;
 
             string autori = "";
@@ -36,13 +38,13 @@ namespace Bibly
             lblIzdavac.Text = knjiga.Izdavac.ToString();
 
             lblOpisKnjige.Text = knjiga.Opis;
-
-            lblISBN.Text = knjiga.ISBN;
         }
 
         private void UCKnjigaKataloga_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("2");
+            FrmKatalogPrikazKnjige frm = new FrmKatalogPrikazKnjige(prikazanaKnjiga);
+            FrmOpcenita forma = new FrmOpcenita(); 
+            forma.OtvoriNovuFormu(frm);
         }
     }
 }
