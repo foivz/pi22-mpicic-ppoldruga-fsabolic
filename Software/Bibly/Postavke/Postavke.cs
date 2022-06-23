@@ -18,5 +18,7 @@ namespace Postavke
                 return instanca;
             }
         }
+
+
     }
 }

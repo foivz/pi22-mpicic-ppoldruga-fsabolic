@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prijava", "Prijava\Prijava.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosudbeIRezervacije", "PosudbeIRezervacije\PosudbeIRezervacije.csproj", "{4FA5B3B1-97F6-4CA9-A794-B93FDDD703D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postavke", "Postavke\Postavke.csproj", "{51C3B82F-F42D-4E7D-B091-745CFFB44467}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4FA5B3B1-97F6-4CA9-A794-B93FDDD703D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA5B3B1-97F6-4CA9-A794-B93FDDD703D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA5B3B1-97F6-4CA9-A794-B93FDDD703D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

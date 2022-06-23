@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PodaciKnjige;
 using PosudbeIRezervacije;
+using Prijava;
 
 namespace Bibly
 {
@@ -60,7 +61,8 @@ namespace Bibly
             }
             else
             {
-                RezervacijaRepozitorij.
+                Posudba rezervacija = new Posudba(3, Autentifikator.Instanca.OIBKorisnika(), )
+                RezervacijaRepozitorij.DodajRezervaciju();
                 OsvjeziPrimjerke();
             }
         }
