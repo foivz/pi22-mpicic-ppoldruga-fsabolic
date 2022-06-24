@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 using Baza;
 
 namespace Postavke
@@ -11,8 +13,24 @@ namespace Postavke
     {
         public static int VratiTrajanjeRezervacije()
         {
+            BazaPodataka.Instanca.UspostaviVezu();
 
-            return 0;
+            string upit =
+                    "SELECT trajanje_rezervacije" +
+                    " FROM postavke";
+
+            List<int> trajanjeRezervacije = new List<int>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                trajanjeRezervacije.Add(int.Parse(reader["trajanje_rezervacije"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return trajanjeRezervacije[0];
         }
     }
 }
