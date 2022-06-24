@@ -1,6 +1,6 @@
 ﻿namespace Bibly
 {
-    partial class UCSkenerKnjiga
+    partial class UCSkener
     {
         /// <summary> 
         /// Required designer variable.

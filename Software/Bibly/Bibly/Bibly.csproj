@@ -114,12 +114,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCSkenerKnjiga.cs">
+    <Compile Include="UCSkener.cs">
       <SubType>UserControl</SubType>
     </Compile>
-	  <Compile Include="UCSkenerKnjiga.Designer.cs">
-		  <DependentUpon>UCSkenerKnjiga.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="UCSkener.Designer.cs">
+      <DependentUpon>UCSkener.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCKnjigaKatalog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,8 +162,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UCSkenerKnjiga.resx">
-      <DependentUpon>UCSkenerKnjiga.cs</DependentUpon>
+    <EmbeddedResource Include="UCSkener.resx">
+      <DependentUpon>UCSkener.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <EmbeddedResource Include="UCKnjigaKatalog.resx">

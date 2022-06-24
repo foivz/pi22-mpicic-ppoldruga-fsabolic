@@ -14,7 +14,7 @@ using Skener;
 using PodaciKnjige;
 namespace Bibly
 {
-    public partial class UCSkenerKnjiga : UserControl
+    public partial class UCSkener : UserControl
     {
         private ComboBox cmbKnjige = null;
         private ComboBox cmbKorisnici = null;
@@ -22,7 +22,7 @@ namespace Bibly
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
 
-        public UCSkenerKnjiga()
+        public UCSkener()
         {
             InitializeComponent();
             this.pbSken.Padding = new System.Windows.Forms.Padding(3);
