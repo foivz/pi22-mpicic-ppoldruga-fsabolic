@@ -36,12 +36,11 @@ namespace PosudbeIRezervacije
         }
 
         //konstruktor za Rezervaciju
-        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
+        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
         {
             Korisnik = korisnik;
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-            RezervacijaPotvrdena = rezervacijaPotvrdena;
         }
     }
 }

@@ -17,22 +17,18 @@ namespace PosudbeIRezervacije
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
-            string upit =
-                    "INSERT INTO posudbe " +
-                       "(id_primjerak" +
-                       ", id_korisnik" +
-                       ", do_kada_vrijedi_rezervacija" +
-                       ", rezervacija_potvrdena)" +
-                    " VALUES" +
-                        "(" + rezervacija.Primjerak.Id +
-                        ", '" + rezervacija.Korisnik.OIB + "'" +
-                        ", " + rezervacija.DoKadaVrijediRezervacija.ToShortDateString() +
-                        ", " + rezervacija.RezervacijaPotvrdena +
-                        ")";
+            string upit = "INSERT INTO posudbe " +
+                "(id_primjerak, id_korisnik, do_kada_vrijedi_rezervacija, rezervacija_potvrdena)" +
+                " VALUES" +
+                "(" + rezervacija.Primjerak.Id +
+                ", '" + rezervacija.Korisnik.OIB + "'" +
+                ", '" + rezervacija.DoKadaVrijediRezervacija.ToShortDateString() + "'" +
+                ", 0)";
 
+            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
 
-            return 0;
+            return i;
         }
     }
 }
