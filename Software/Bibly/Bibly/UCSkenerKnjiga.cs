@@ -29,6 +29,14 @@ namespace Bibly
             UcitajKamere();
         }
 
+        public void PostaviUCSkener(FrmOpcenita frm, ComboBox _cmbKnjige, ComboBox _cmbKorisnici)
+        {
+            frm.FormClosed += new FormClosedEventHandler(frm_FormClosed);
+            cmbKnjige = _cmbKnjige;
+            cmbKorisnici = _cmbKorisnici;
+
+        }
+
         private void UcitajKamere()
         {
             cmbKamere.Items.Clear();
@@ -42,7 +50,7 @@ namespace Bibly
 
         private void btnSkeniraj_Click(object sender, EventArgs e)
         {
-            if (cmbKnjige == null && cmbKorisnici == null)
+            if (!PostojiBaremJedanCMB())
             {
                 IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
 
@@ -54,34 +62,6 @@ namespace Bibly
                 ZapocniSkeniranje();
             }
         }
-
-        private void IspisGreske(string poruka)
-        {
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
-            txtGreske.BackColor = Color.LightCoral;
-            txtGreske.Text = "";
-            txtGreske.Text = poruka;
-        }
-
-        private void btnZaustavi_Click(object sender, EventArgs e)
-        {
-            if (this.txtISBN.InvokeRequired)
-            {
-                PrekidSkeniranjeCallback d = new PrekidSkeniranjeCallback(UspjesnoSkeniranje);
-                this.Invoke(d);
-                PrekidSkeniranja();
-                pbSken.Image = null;
-
-            }
-            else
-            {
-                ZaustaviSkeniranje();
-                PrekidSkeniranja();
-                pbSken.Image = null;
-            }
-        }
-
-        delegate void PrekidSkeniranjeCallback();
 
         private void ZapocniSkeniranje()
         {
@@ -119,12 +99,59 @@ namespace Bibly
 
         }
 
+        private void btnZaustavi_Click(object sender, EventArgs e)
+        {
+            if (this.txtISBN.InvokeRequired)
+            {
+                PrekidSkeniranjeCallback d = new PrekidSkeniranjeCallback(UspjesnoSkeniranje);
+                this.Invoke(d);
+                PrekidSkeniranja();
+                pbSken.Image = null;
+
+            }
+            else
+            {
+                PrekidSkeniranja();
+                pbSken.Image = null;
+            }
+        }
+
+        delegate void PrekidSkeniranjeCallback();
+        public void PrekidSkeniranja()
+        {
+            PromijeniBojuObrubaSkenera(Color.Gray);
+            txtISBN.Text = "";
+            txtGreske.BackColor = Color.FromArgb(254, 255, 242);
+            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            ZaustaviSkeniranje();
+        }
+
+        private void PopuniCMBKnjige(Knjiga knjiga)
+        {
+            List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
+            foreach (Knjiga k in knjige)
+            {
+                cmbKnjige.Items.Add(k);
+            }
+            cmbKnjige.SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == knjiga.ISBN));
+        }
+
+        private void PopuniCMBKorisnici(Korisnik korisnik)
+        {
+            List<Korisnik> korisnici = KorisnikRepozitorij.DohvatiSveKorisnike();
+            foreach (Korisnik k in korisnici)
+            {
+                cmbKorisnici.Items.Add(k);
+            }
+            cmbKorisnici.SelectedIndex = korisnici.IndexOf(korisnici.Find(x => x.OIB == korisnik.OIB));
+        }
+
         delegate void UspjesnoSkeniranjeCallback();
 
         public void UspjesnoSkeniranje()
         {
 
-            if (cmbKnjige == null && cmbKorisnici == null)
+            if (!PostojiBaremJedanCMB())
             {
                 IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
                 return;
@@ -132,12 +159,11 @@ namespace Bibly
 
 
             string skeniranaVrijednost = txtISBN.Text;
-            long ignore = -1;
-            if (long.TryParse(skeniranaVrijednost, out ignore))
+            if (UnesenISBNBroj(skeniranaVrijednost))
             {
                 if (cmbKnjige == null)
                 {
-                    IspisGreske("Uočen barkod! Traži se QR kod!");
+                    IspisGreske("Uočen barkod! Pokušajte s QR kodom!");
                     return;
                 }
 
@@ -154,12 +180,7 @@ namespace Bibly
                     return;
                 }
 
-                List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
-                foreach (Knjiga k in knjige)
-                {
-                    cmbKnjige.Items.Add(k);
-                }
-                cmbKnjige.SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == knjiga.ISBN));
+                PopuniCMBKnjige(knjiga);
 
 
             }
@@ -167,7 +188,7 @@ namespace Bibly
             {
                 if (cmbKorisnici == null)
                 {
-                    IspisGreske("Uočen QR kod! Traži se barkod!");
+                    IspisGreske("Uočen QR kod! Pokušajte s barkodom!");
                     return;
                 }
 
@@ -178,12 +199,7 @@ namespace Bibly
                     return;
                 }
 
-                List<Korisnik> korisnici = KorisnikRepozitorij.DohvatiSveKorisnike();
-                foreach (Korisnik k in korisnici)
-                {
-                    cmbKorisnici.Items.Add(k);
-                }
-                cmbKorisnici.SelectedIndex = korisnici.IndexOf(korisnici.Find(x => x.OIB == korisnik.OIB));
+                PopuniCMBKorisnici(korisnik);
 
             }
             PromijeniBojuObrubaSkenera(Color.LimeGreen);
@@ -192,14 +208,7 @@ namespace Bibly
             ZaustaviSkeniranje();
         }
 
-        public void PrekidSkeniranja()
-        {
-            PromijeniBojuObrubaSkenera(Color.Gray);
-            txtISBN.Text = "";
-            txtGreske.BackColor = Color.FromArgb(254, 255, 242);
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
-            ZaustaviSkeniranje();
-        }
+
         public void ZaustaviSkeniranje()
         {
             if (videoCaptureDevice.IsRunning)
@@ -209,9 +218,16 @@ namespace Bibly
                 btnZaustavi.Enabled = false;
                 txtGreske.Text = "";
                 txtISBN.BackColor = Color.FromArgb(254, 255, 242);
-
             }
 
+        }
+
+        private void IspisGreske(string poruka)
+        {
+            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            txtGreske.BackColor = Color.LightCoral;
+            txtGreske.Text = "";
+            txtGreske.Text = poruka;
         }
 
         public void PromijeniBojuObrubaSkenera(Color boja)
@@ -219,11 +235,23 @@ namespace Bibly
             pbSken.BackColor = boja;
         }
 
-        public void PostaviUCSkener(ComboBox _cmbKnjige, ComboBox _cmbKorisnici)
+        private bool PostojiBaremJedanCMB()
         {
-            cmbKnjige = _cmbKnjige;
-            cmbKorisnici = _cmbKorisnici;
+            return !(cmbKnjige == null && cmbKorisnici == null);
+        }
 
+        private bool UnesenISBNBroj(string unos)
+        {
+            long ignore = -1;
+            return long.TryParse(unos, out ignore);
+        }
+
+        private void frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (videoCaptureDevice != null)
+            {
+                ZaustaviSkeniranje();
+            }
         }
     }
 }
