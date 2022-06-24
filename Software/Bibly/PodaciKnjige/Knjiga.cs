@@ -35,5 +35,10 @@ namespace PodaciKnjige
             Naslovnica = naslovnica;
             ListaAutora = autori;
         }
+
+        public override string ToString()
+        {
+            return $"{Naziv} - ({ISBN})";
+        }
     }
 }
