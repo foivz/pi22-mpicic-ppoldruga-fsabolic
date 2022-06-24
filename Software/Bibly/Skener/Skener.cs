@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using QRCoder;
 using ZXing;
+using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace Skener
 {
@@ -43,8 +45,30 @@ namespace Skener
                 return "";
             }
         }
-        
 
+        private static void Isprintaj(Image slika)
+        {
+            //OVO SE MORA UKLJUČIT GORE JER INAČE NE RADI
+            //using System.Drawing;
+            //using System.Drawing.Printing;
+            PrintDialog pd = new PrintDialog();
+            PrintDocument printDocument1 = new PrintDocument();
+            
+            printDocument1.PrintPage += delegate (object sender, PrintPageEventArgs e) { printDocument1_PrintPage(sender, e, slika); };
+            pd.Document = printDocument1;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+
+            }
+        }
+
+        private static void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e,Image slika)
+        {
+            //OVA ZAKOMENTIRANA LINIJA GOVORI ŠTA DA SE PRINTA, U NAŠEM SLUČAJU SLIKA IZ PICTUREBOXA
+            e.Graphics.DrawImage(slika, 0, 0);
+
+        }
 
     }
 }
