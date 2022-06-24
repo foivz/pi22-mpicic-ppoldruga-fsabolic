@@ -103,7 +103,7 @@ namespace PodaciKnjige
                     " ON i.id_izdavac = k.id_izdavac" +
                     " JOIN zanrovi z" +
                     " ON z.id_zanr = k.id_zanr" +
-                    " WHERE k.ISBN = " + ISBN;
+                    " WHERE k.ISBN = '" + ISBN+"'";
 
             List<Knjiga> knjige = new List<Knjiga>();
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
@@ -132,6 +132,10 @@ namespace PodaciKnjige
             reader.Close();
 
             BazaPodataka.Instanca.PrekiniVezu();
+            if (knjige.Count==0)
+            {
+                return null;
+            }
 
             return knjige[0];
         }
