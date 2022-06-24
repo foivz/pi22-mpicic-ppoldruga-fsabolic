@@ -11,6 +11,7 @@ using AForge.Video.DirectShow;
 using AForge.Video;
 using Prijava;
 using Skener;
+using PodaciKnjige;
 namespace Bibly
 {
     public partial class UCSkenerKnjiga : UserControl
@@ -41,17 +42,17 @@ namespace Bibly
 
         private void btnSkeniraj_Click(object sender, EventArgs e)
         {
-            //if (cmbKnjige == null && cmbKorisnici == null)
-            //{
-            //    IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+            if (cmbKnjige == null && cmbKorisnici == null)
+            {
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
 
-            //}
-            //else
-            //{
-            btnSkeniraj.Enabled = false;
-            btnZaustavi.Enabled = true;
-            ZapocniSkeniranje();
-            //}
+            }
+            else
+            {
+                btnSkeniraj.Enabled = false;
+                btnZaustavi.Enabled = true;
+                ZapocniSkeniranje();
+            }
         }
 
         private void IspisGreske(string poruka)
@@ -81,8 +82,6 @@ namespace Bibly
         }
 
         delegate void PrekidSkeniranjeCallback();
-
-
 
         private void ZapocniSkeniranje()
         {
@@ -125,22 +124,43 @@ namespace Bibly
         public void UspjesnoSkeniranje()
         {
 
-            //if (cmbKnjige == null && cmbKorisnici == null)
-            //{
-            //    IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
-            //    return;
-            //}
+            if (cmbKnjige == null && cmbKorisnici == null)
+            {
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+                return;
+            }
 
 
             string skeniranaVrijednost = txtISBN.Text;
-            long ignore;
-            if(long.TryParse(skeniranaVrijednost,out ignore))
+            long ignore = -1;
+            if (long.TryParse(skeniranaVrijednost, out ignore))
             {
                 if (cmbKnjige == null)
                 {
                     IspisGreske("Uočen barkod! Traži se QR kod!");
                     return;
                 }
+
+                if (skeniranaVrijednost.Length > 13)
+                {
+                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    return;
+                }
+
+                Knjiga knjiga = KnjigaRepozitorij.DohvatiKnjigu(skeniranaVrijednost);
+                if (knjiga == null)
+                {
+                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    return;
+                }
+
+                List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
+                foreach (Knjiga k in knjige)
+                {
+                    cmbKnjige.Items.Add(k);
+                }
+                cmbKnjige.SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == knjiga.ISBN));
+
 
             }
             else
@@ -152,7 +172,7 @@ namespace Bibly
                 }
 
                 Korisnik korisnik = KorisnikRepozitorij.DohvatiKorisnika_Mail(skeniranaVrijednost);
-                if (korisnik==null)
+                if (korisnik == null)
                 {
                     IspisGreske($"Korisnik s e-mailom {skeniranaVrijednost} nije pronađen!");
                     return;
@@ -194,13 +214,12 @@ namespace Bibly
 
         }
 
-
         public void PromijeniBojuObrubaSkenera(Color boja)
         {
             pbSken.BackColor = boja;
         }
 
-        public void PostaviUCSkener(ComboBox _cmbKnjige,ComboBox _cmbKorisnici)
+        public void PostaviUCSkener(ComboBox _cmbKnjige, ComboBox _cmbKorisnici)
         {
             cmbKnjige = _cmbKnjige;
             cmbKorisnici = _cmbKorisnici;

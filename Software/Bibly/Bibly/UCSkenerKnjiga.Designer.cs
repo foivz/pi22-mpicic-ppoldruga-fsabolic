@@ -141,7 +141,7 @@
             this.Controls.Add(this.pbSken);
             this.Controls.Add(this.cmbKamere);
             this.Name = "UCSkenerKnjiga";
-            this.Size = new System.Drawing.Size(384, 525);
+            this.Size = new System.Drawing.Size(384, 491);
             ((System.ComponentModel.ISupportInitialize)(this.pbSken)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
