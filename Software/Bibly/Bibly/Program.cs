@@ -16,7 +16,7 @@ namespace Bibly
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmKatalog());
+            Application.Run(new FrmPrijava());
         }
     }
 }

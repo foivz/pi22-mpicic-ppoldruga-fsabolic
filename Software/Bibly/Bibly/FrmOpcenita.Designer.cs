@@ -55,11 +55,11 @@
             this.glavniMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(159)))), ((int)(((byte)(181)))));
             this.glavniMenu.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.glavniMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiKatalog,
             this.tsmi_Korisnici,
             this.tsmiAdmin,
             this.tsmiProfil,
-            this.tsmiOdjava,
-            this.tsmiKatalog});
+            this.tsmiOdjava});
             this.glavniMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.glavniMenu.Location = new System.Drawing.Point(0, 0);
             this.glavniMenu.Name = "glavniMenu";
