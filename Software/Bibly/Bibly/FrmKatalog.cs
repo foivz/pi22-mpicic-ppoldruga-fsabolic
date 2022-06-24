@@ -20,6 +20,7 @@ namespace Bibly
         public FrmKatalog()
         {
             InitializeComponent();
+            ucSkenerKnjiga1.PostaviUCSkener(comboBox1, comboBox2);
         }
 
         private void FrmKatalog_Load(object sender, EventArgs e)
