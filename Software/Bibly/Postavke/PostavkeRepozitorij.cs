@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baza;
 
 namespace Postavke
 {
@@ -10,6 +11,7 @@ namespace Postavke
     {
         public static int VratiTrajanjeRezervacije()
         {
+
             return 0;
         }
     }
