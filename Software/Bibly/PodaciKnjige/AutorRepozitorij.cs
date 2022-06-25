@@ -23,7 +23,7 @@ namespace PodaciKnjige
                     " ON a.id_autor = ak.id_autor" +
                     " JOIN knjige k" +
                     " ON k.ISBN = ak.ISBN" +
-                    " WHERE k.ISBN = " + ISBN;
+                    $" WHERE k.ISBN = '{ISBN}'";
 
             List<Autor> autori = new List<Autor>();
 
