@@ -37,9 +37,8 @@ namespace Bibly
                 Controls.Remove(item);
             }
             top = 200;
-
             string kriterijPretrazivanja = cboxKriteriji.Text;
-            string kljucnaRijec = tboxUnosKljucneRijeci.Text;
+            string kljucnaRijec = tboxUnosKljucneRijeci.Text.ToLower();
             if (kljucnaRijec == "" || kriterijPretrazivanja == "Kriterij pretraživanja")
             {
                 listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
@@ -54,7 +53,7 @@ namespace Bibly
                         {
                             foreach (Knjiga knjiga in listaKnjiga)
                             {
-                                if (knjiga.Izdavac.Naziv.Contains(kljucnaRijec))
+                                if (knjiga.Izdavac.Naziv.ToLower().Contains(kljucnaRijec))
                                 {
                                     listaKnjigaSTrazenomRijecju.Add(knjiga);
                                 }
@@ -67,7 +66,7 @@ namespace Bibly
                             {
                                 foreach(Autor autor in knjiga.ListaAutora)
                                 {
-                                    if((autor.Ime.Contains(kljucnaRijec) || autor.Prezime.Contains(kljucnaRijec)) && !listaKnjigaSTrazenomRijecju.Contains(knjiga))
+                                    if((autor.Ime.ToLower().Contains(kljucnaRijec) || autor.Prezime.ToLower().Contains(kljucnaRijec)) && !listaKnjigaSTrazenomRijecju.Contains(knjiga))
                                     {
                                         listaKnjigaSTrazenomRijecju.Add(knjiga);
                                     }
@@ -79,7 +78,7 @@ namespace Bibly
                         {
                             foreach (Knjiga knjiga in listaKnjiga)
                             {
-                                if (knjiga.Naziv.Contains(kljucnaRijec))
+                                if (knjiga.Naziv.ToLower().Contains(kljucnaRijec))
                                 {
                                     listaKnjigaSTrazenomRijecju.Add(knjiga);
                                 }
