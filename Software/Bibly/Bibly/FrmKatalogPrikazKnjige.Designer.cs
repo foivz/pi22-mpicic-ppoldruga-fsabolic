@@ -41,7 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbNaslovnica = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@
             this.lblISBN = new System.Windows.Forms.Label();
             this.btnOdustani = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimjerci)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,13 +192,14 @@
             this.label10.TabIndex = 17;
             this.label10.Text = "Autori:";
             // 
-            // pictureBox1
+            // pbNaslovnica
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(58, 162);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 250);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.pbNaslovnica.Location = new System.Drawing.Point(58, 162);
+            this.pbNaslovnica.Name = "pbNaslovnica";
+            this.pbNaslovnica.Size = new System.Drawing.Size(186, 250);
+            this.pbNaslovnica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbNaslovnica.TabIndex = 16;
+            this.pbNaslovnica.TabStop = false;
             // 
             // label5
             // 
@@ -296,7 +297,7 @@
             this.ClientSize = new System.Drawing.Size(774, 986);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnRezerviraj);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbNaslovnica);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.naslov);
             this.Controls.Add(this.dgvPrimjerci);
@@ -307,11 +308,11 @@
             this.Controls.SetChildIndex(this.dgvPrimjerci, 0);
             this.Controls.SetChildIndex(this.naslov, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.pbNaslovnica, 0);
             this.Controls.SetChildIndex(this.btnRezerviraj, 0);
             this.Controls.SetChildIndex(this.btnOdustani, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimjerci)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -332,7 +333,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbNaslovnica;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;

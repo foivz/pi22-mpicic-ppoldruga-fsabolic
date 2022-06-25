@@ -38,6 +38,9 @@ namespace Bibly
             lblIzdavac.Text = knjiga.Izdavac.ToString();
 
             lblOpisKnjige.Text = knjiga.Opis;
+
+            pbNaslovnica.Image = knjiga.Naslovnica;
+            
         }
 
         private void UCKnjigaKataloga_Click(object sender, EventArgs e)

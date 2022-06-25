@@ -39,6 +39,7 @@ namespace Bibly
             lblZanr.Text = knjiga.Zanr.ToString();
             lblISBN.Text = knjiga.ISBN;
             lblOpisKnjige.Text = knjiga.Opis;
+            pbNaslovnica.Image = knjiga.Naslovnica;
             OsvjeziPrimjerke();
         }
 
