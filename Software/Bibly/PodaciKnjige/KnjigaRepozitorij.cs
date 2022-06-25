@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using Baza;
+using System.Drawing;
+using System.IO;
 
 namespace PodaciKnjige
 {
@@ -53,7 +55,7 @@ namespace PodaciKnjige
                     DateTime.Parse(reader["k.datum_izdavanja"].ToString()),
                     int.Parse(reader["k.broj_stranica"].ToString()),
                     reader["k.opis_knjige"].ToString(),
-                    reader["k.naslovnica"].ToString(),
+                    DohvatiNaslovnicuKnjige(reader),
                     AutorRepozitorij.DohvatiAutoreKnjige(reader["k.ISBN"].ToString())
                    ));
             }
@@ -124,7 +126,7 @@ namespace PodaciKnjige
                 DateTime.Parse(reader["k.datum_izdavanja"].ToString()),
                 int.Parse(reader["k.broj_stranica"].ToString()),
                 reader["k.opis_knjige"].ToString(),
-                reader["k.naslovnica"].ToString(),
+                DohvatiNaslovnicuKnjige(reader),
                 AutorRepozitorij.DohvatiAutoreKnjige(reader["k.ISBN"].ToString())
             ));
             }
@@ -138,6 +140,17 @@ namespace PodaciKnjige
             }
 
             return knjige[0];
+        }
+
+        private static Image DohvatiNaslovnicuKnjige(IDataReader reader)
+        {
+            Image slika = null;
+            if (!reader.IsDBNull(7))
+            {
+                MemoryStream stream = new MemoryStream(((SqlDataReader)reader).GetSqlBytes(7).Buffer);
+                slika = Image.FromStream(stream);
+            }
+            return slika;
         }
     }
 }
