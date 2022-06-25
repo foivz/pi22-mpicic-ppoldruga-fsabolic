@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PodaciKnjige;
 using PosudbeIRezervacije;
 using Prijava;
+using Postavke;
 
 namespace Bibly
 {
@@ -61,7 +62,32 @@ namespace Bibly
             }
             else
             {
-                OsvjeziPrimjerke();
+                Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
+                int trajanjeRezervacije = PostavkeRepozitorij.VratiTrajanjeRezervacije();
+                DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
+                Posudba rezervacija = new Posudba(
+                    trenutniKorisnik,
+                    odabraniPrimjerak,
+                    datumDoKojegVrijediRezervacija
+                );
+                int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
+                int maxBrojMogucihPosudbi = PostavkeRepozitorij.VratiMaksimalanBrojMogucihPosudbi();
+                if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
+                {
+                    if (RezervacijaRepozitorij.DodajRezervaciju(rezervacija) == 1)
+                    {
+                        PrimjerakRepozitorij.AzurirajStatusPrimjerka(odabraniPrimjerak.Id, StatusPrimjerka.Rezerviran);
+                        OsvjeziPrimjerke();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rezervacija nije moguća! Primjerak nije dostupan.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Rezervacija nije moguća! Prešli ste maximalan broj posudbi. Maksimalan broj posudbi je {maxBrojMogucihPosudbi}.");
+                }
             }
         }
 

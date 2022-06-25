@@ -191,6 +191,10 @@
       <Project>{33418b32-f8a9-4fbf-94db-8e3affefe72e}</Project>
       <Name>PodaciKnjige</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Postavke\Postavke.csproj">
+      <Project>{51c3b82f-f42d-4e7d-b091-745cffb44467}</Project>
+      <Name>Postavke</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PosudbeIRezervacije\PosudbeIRezervacije.csproj">
       <Project>{4fa5b3b1-97f6-4ca9-a794-b93fddd703d8}</Project>
       <Name>PosudbeIRezervacije</Name>

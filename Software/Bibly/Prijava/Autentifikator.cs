@@ -74,6 +74,15 @@ namespace Prijava
             return "";
         }
 
+        public Korisnik VratiKorisnika()
+        {
+            if (PostojiLogiranKorisnik())
+            {
+                return logiraniKorisnik;
+            }
+            return null;
+        }
+
         public bool PostojiLogiranKorisnik()
         {
             return (logiraniKorisnik == null) ? false : true;

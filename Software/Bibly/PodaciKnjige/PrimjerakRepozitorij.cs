@@ -14,7 +14,6 @@ namespace PodaciKnjige
         public static List<Primjerak> DohvatiPrimjerkeKnjige(Knjiga knjiga)
         {
             BazaPodataka.Instanca.UspostaviVezu();
-
             string upit =
                     "SELECT p.id_primjerak AS 'p.id_primjerak'" +
                     ", p.ISBN AS 'p.ISBN'" +
@@ -34,57 +33,95 @@ namespace PodaciKnjige
                     " ON po.id_primjerak = p.id_primjerak" +
                     " WHERE (po.stvarni_datum_vracanja IS NULL" +
                     " OR rezervacija_potvrdena != 1)" +
-                    " AND p.ISBN = " + knjiga.ISBN;
-
+                    $" AND p.ISBN = '{knjiga.ISBN}'";
             List<Primjerak> primjerci = new List<Primjerak>();
-            string datumPosudbe, predvideniDatumVracanja, stvarniDatumVracanja,
-                doKadaVrijediRezervacija;
-            int rezervacijaPotvrdena;
-
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
-                //provjera statusa primjerka
-                StatusPrimjerka status = new StatusPrimjerka();
-                switch (reader["sp.naziv"])
-                {
-                    case "Dostupan":
-                        status = StatusPrimjerka.Dostupan;
-                        break;
-                    case "Posuden":
-                        status = StatusPrimjerka.Posuđen;
-                        break;
-                    case "Rezerviran":
-                        status = StatusPrimjerka.Rezerviran;
-                        break;
-                }
-                //provjera dostupnosti
-                string doKadaJeNedostupan = "";
-                datumPosudbe =reader["po.datum_posudbe"].ToString();
-                predvideniDatumVracanja = reader["po.predviden_datum_vracanja"].ToString().Split(' ')[0];
-                stvarniDatumVracanja = reader["po.stvarni_datum_vracanja"].ToString();
-                doKadaVrijediRezervacija = reader["po.do_kada_vrijedi_rezervacija"].ToString().Split(' ')[0];
-                rezervacijaPotvrdena = (!reader.IsDBNull(8)) ? int.Parse(reader["po.rezervacija_potvrdena"].ToString()) : -1;
-                if (stvarniDatumVracanja == "" && datumPosudbe != "" && rezervacijaPotvrdena != 1)
-                {
-                    doKadaJeNedostupan = predvideniDatumVracanja;
-                }
-                else if (rezervacijaPotvrdena == 0)
-                {
-                    doKadaJeNedostupan = doKadaVrijediRezervacija;
-                }
+                int rezervacijaPotvrdena = (!reader.IsDBNull(8)) ? int.Parse(reader["po.rezervacija_potvrdena"].ToString()) : -1;
+                int idPrimjerka = int.Parse(reader["p.id_primjerak"].ToString());
+                string doKadaJeDostupno = VratiDostupnost(idPrimjerka, reader["po.datum_posudbe"].ToString(), 
+                    reader["po.predviden_datum_vracanja"].ToString(), reader["po.stvarni_datum_vracanja"].ToString(), 
+                    reader["po.do_kada_vrijedi_rezervacija"].ToString(), rezervacijaPotvrdena);
                 primjerci.Add(new Primjerak(
-                   int.Parse(reader["p.id_primjerak"].ToString()),
-                   status,
+                   idPrimjerka,
+                   VratiStatusKaoEnum(reader["sp.naziv"].ToString()),
                    KnjigaRepozitorij.DohvatiKnjigu(reader["p.ISBN"].ToString()),
-                   doKadaJeNedostupan
+                   doKadaJeDostupno
                    ));
             }
             reader.Close();
-
             BazaPodataka.Instanca.PrekiniVezu();
-
             return primjerci;
+        }
+
+        public static int AzurirajStatusPrimjerka(int idPrimjerka, StatusPrimjerka noviStatus)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            int brojStatusa = VratiStatusKaoBroj(noviStatus);
+            string upit = $"UPDATE primjerci " +
+                $"SET id_status = '{brojStatusa}' WHERE id_primjerak = {idPrimjerka}";
+            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+            BazaPodataka.Instanca.PrekiniVezu();
+            return i;
+        }
+
+        private static int VratiStatusKaoBroj(StatusPrimjerka status)
+        {
+            int brojStatusa = 0;
+            switch (status)
+            {
+                case StatusPrimjerka.Dostupan:
+                    brojStatusa = 1;
+                    break;
+                case StatusPrimjerka.Posuđen:
+                    brojStatusa = 2;
+                    break;
+                case StatusPrimjerka.Rezerviran:
+                    brojStatusa = 3;
+                    break;
+            }
+            return brojStatusa;
+        }
+
+        private static StatusPrimjerka VratiStatusKaoEnum(string status)
+        {
+            switch (status)
+            {
+                case "Dostupan":
+                    return StatusPrimjerka.Dostupan;
+                case "Posuden":
+                    return StatusPrimjerka.Posuđen;
+                case "Rezerviran":
+                    return StatusPrimjerka.Rezerviran;
+            }
+            return StatusPrimjerka.Greska;
+        }
+
+        private static string VratiDostupnost(int idPrimjerka, string datumPosudbe, string predvideniDatumVracanja, string stvarniDatumVracanja, string doKadaVrijediRezervacija, int rezervacijaPotvrdena)
+        {
+            if (stvarniDatumVracanja == "" && datumPosudbe != "" && rezervacijaPotvrdena != 1)
+            {
+                //format je yyyy-mm-dd hh:mm:ss i želim uzeti samo datum
+                return predvideniDatumVracanja.Split(' ')[0];
+            }
+            else if (rezervacijaPotvrdena == 0)
+            {
+                DateTime datumDoKadaVrijediRezervacija = DateTime.Parse(doKadaVrijediRezervacija).Date;
+                if(datumDoKadaVrijediRezervacija > DateTime.Now.Date)
+                {
+                    AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
+                    return "";
+                }
+                else
+                {
+                    return doKadaVrijediRezervacija.Split(' ')[0];
+                }
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

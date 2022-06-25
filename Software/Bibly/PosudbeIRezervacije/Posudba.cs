@@ -28,20 +28,19 @@ namespace PosudbeIRezervacije
             PredvideniVratumVracanja = predvideniDatumVracanja;
             StvarniDatumVracanja = stvarniDatumVracanja;
             BrojProduljivanja = brojProduljivanja;
-            Zakasnina = Zakasnina;
+            Zakasnina = zakasnina;
             Korisnik = korisnik;
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
             RezervacijaPotvrdena = rezervacijaPotvrdena;
         }
 
-        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
+        //konstruktor za Rezervaciju
+        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
         {
-            Zakasnina = Zakasnina;
             Korisnik = korisnik;
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-            RezervacijaPotvrdena = rezervacijaPotvrdena;
         }
     }
 }

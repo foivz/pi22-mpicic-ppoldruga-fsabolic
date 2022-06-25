@@ -10,6 +10,7 @@ namespace PodaciKnjige
     {
         Posuđen,
         Dostupan,
-        Rezerviran
+        Rezerviran,
+        Greska
     }
 }

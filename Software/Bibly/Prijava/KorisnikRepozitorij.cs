@@ -163,6 +163,22 @@ namespace Prijava
             return korisnik;
         }
 
-
+        public static int TrenutniBrojPosudbi(Korisnik korisnik)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = "SELECT COUNT(*) AS 'broj_posudbi'" +
+                " FROM posudbe po" +
+                " WHERE (stvarni_datum_vracanja IS NULL OR rezervacija_potvrdena != 1)" +
+                $" AND id_korisnik = '{korisnik.OIB}'";
+            List<int> brojPosudbi = new List<int>();
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                brojPosudbi.Add(int.Parse(reader["broj_posudbi"].ToString()));
+            }
+            reader.Close();
+            BazaPodataka.Instanca.PrekiniVezu();
+            return brojPosudbi[0];
+        }
     }
 }
