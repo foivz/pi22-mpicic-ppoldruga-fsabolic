@@ -73,7 +73,38 @@ namespace PodaciKnjige
         }
         public static int DodajKnjigu(Knjiga dodanaKnjiga)
         {
-            return 0;
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = "INSERT INTO knjige" +
+                        "(ISBN" +
+                        ", naziv" +
+                        ", id_izdavac" +
+                        ", id_zanr" +
+                        ", datum_izdavanja" +
+                        ", broj_stranica" +
+                        ", opis_knjige" +
+                        $", naslovnica) VALUES('{dodanaKnjiga.ISBN}','{dodanaKnjiga.Naziv}',{dodanaKnjiga.Izdavac.Id},{dodanaKnjiga.Zanr.Id},'{dodanaKnjiga.DatumIzdavanja.Date.ToString("yyyy-MM-dd")}'," +
+                        $"{dodanaKnjiga.BrojStranica},'{dodanaKnjiga.Opis}',NULL)";
+
+            
+            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            DodajNaslovnicuKnjige(dodanaKnjiga.ISBN, dodanaKnjiga.Naslovnica);
+
+            return i;
+        }
+
+        public static void DodajNaslovnicuKnjige(string ISBN,Image slika)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = $"UPDATE knjige SET naslovnica = @slika WHERE ISBN='{ISBN}'";
+
+            BazaPodataka.Instanca.IzvrsiNaredbuParamImage(upit,slika);
+
+            BazaPodataka.Instanca.PrekiniVezu();
         }
         public static int ObrisiKnjigu(Knjiga dodanaKnjiga)
         {
@@ -105,7 +136,7 @@ namespace PodaciKnjige
                     " ON i.id_izdavac = k.id_izdavac" +
                     " JOIN zanrovi z" +
                     " ON z.id_zanr = k.id_zanr" +
-                    " WHERE k.ISBN = '" + ISBN+"'";
+                    " WHERE k.ISBN = '" + ISBN + "'";
 
             List<Knjiga> knjige = new List<Knjiga>();
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
@@ -134,7 +165,7 @@ namespace PodaciKnjige
             reader.Close();
 
             BazaPodataka.Instanca.PrekiniVezu();
-            if (knjige.Count==0)
+            if (knjige.Count == 0)
             {
                 return null;
             }
