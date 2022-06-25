@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
 namespace PodaciKnjige
 {
     public class Knjiga
@@ -15,7 +15,7 @@ namespace PodaciKnjige
         public DateTime DatumIzdavanja { get; set; }
         public int BrojStranica { get; set; }
         public string Opis { get; set; }
-        public string Naslovnica { get; set; }
+        public Image Naslovnica { get; set; }
         public List<Autor> ListaAutora { get; set; }
 
         public Knjiga()
@@ -23,7 +23,7 @@ namespace PodaciKnjige
              
         }
 
-        public Knjiga(string isbn, string naziv, Izdavac izdavac, Zanr zanr, DateTime datumIzdavanja, int brojStranica, string opis, string naslovnica, List<Autor> autori)
+        public Knjiga(string isbn, string naziv, Izdavac izdavac, Zanr zanr, DateTime datumIzdavanja, int brojStranica, string opis, Image naslovnica, List<Autor> autori)
         {
             ISBN = isbn;
             Naziv = naziv;
