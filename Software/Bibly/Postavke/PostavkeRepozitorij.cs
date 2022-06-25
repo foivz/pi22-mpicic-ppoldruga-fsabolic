@@ -32,5 +32,26 @@ namespace Postavke
 
             return trajanjeRezervacije[0];
         }
+        public static int VratiMaksimalanBrojMogucihPosudbi()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT max_broj_posudbi" +
+                    " FROM postavke";
+
+            List<int> maxBrojPosudbi = new List<int>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                maxBrojPosudbi.Add(int.Parse(reader["max_broj_posudbi"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return maxBrojPosudbi[0];
+        }
     }
 }
