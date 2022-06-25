@@ -20,7 +20,7 @@ namespace Bibly
         public FrmKatalog()
         {
             InitializeComponent();
-          
+            
         }
 
         private void FrmKatalog_Load(object sender, EventArgs e)
@@ -28,6 +28,7 @@ namespace Bibly
             listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
             DodajUCKnjigaKatalog(listaKnjiga);
             cboxKriteriji.SelectedIndex = 0;
+            top = 200;
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)
