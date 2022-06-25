@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+
 namespace Baza
 {
     public class BazaPodataka
@@ -53,6 +55,14 @@ namespace Baza
         public int IzvrsiNaredbu(string upit)
         {
             SqlCommand sqlCommand = new SqlCommand(upit, Veza);
+            return sqlCommand.ExecuteNonQuery();
+        }
+
+        public int IzvrsiNaredbuParamImage(string upit,Image parametar)
+        {
+            SqlCommand sqlCommand = new SqlCommand(upit, Veza);
+            var slika = new ImageConverter().ConvertTo(parametar, typeof(Byte[]));
+            sqlCommand.Parameters.AddWithValue("@slika",slika);
             return sqlCommand.ExecuteNonQuery();
         }
     }
