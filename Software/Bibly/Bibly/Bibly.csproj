@@ -76,6 +76,12 @@
     <Compile Include="FrmKorisnici.Designer.cs">
       <DependentUpon>FrmKorisnici.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPosudbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPosudbe.Designer.cs">
+      <DependentUpon>FrmPosudbe.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,8 +118,20 @@
     <Compile Include="FrmKatalogPrikazKnjige.Designer.cs">
       <DependentUpon>FrmKatalogPrikazKnjige.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRezervacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRezervacije.Designer.cs">
+      <DependentUpon>FrmRezervacije.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCRezervacijeKnjiga.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCRezervacijeKnjiga.Designer.cs">
+      <DependentUpon>UCRezervacijeKnjiga.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCSkener.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +159,9 @@
     <EmbeddedResource Include="FrmKorisnici.resx">
       <DependentUpon>FrmKorisnici.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPosudbe.resx">
+      <DependentUpon>FrmPosudbe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +174,9 @@
     <EmbeddedResource Include="FrmPromijeniLozinku.resx">
       <DependentUpon>FrmPromijeniLozinku.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRezervacije.resx">
+      <DependentUpon>FrmRezervacije.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -162,6 +186,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCRezervacijeKnjiga.resx">
+      <DependentUpon>UCRezervacijeKnjiga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCSkener.resx">
       <DependentUpon>UCSkener.cs</DependentUpon>
     </EmbeddedResource>
