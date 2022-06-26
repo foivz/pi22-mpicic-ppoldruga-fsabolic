@@ -44,6 +44,7 @@ namespace Bibly
 
         private void OsvjeziPrimjerke()
         {
+            RezervacijaRepozitorij.ProvjeriIstekleRezervacije();
             List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
             dgvPrimjerci.DataSource = listaPrimjeraka;
             dgvPrimjerci.Columns[0].Width = 120;
