@@ -91,7 +91,7 @@ namespace PosudbeIRezervacije
                 " VALUES" +
                 "(" + rezervacija.Primjerak.Id +
                 ", '" + rezervacija.Korisnik.OIB + "'" +
-                ", '" + rezervacija.DoKadaVrijediRezervacija.ToShortDateString() + "'" +
+                ", '" + rezervacija.DoKadaVrijediRezervacija.ToString("yyyy-MM-dd") + "'" +
                 ", 0)";
 
             int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
