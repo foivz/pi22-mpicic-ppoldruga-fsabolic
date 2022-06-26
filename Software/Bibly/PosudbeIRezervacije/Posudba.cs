@@ -42,5 +42,12 @@ namespace PosudbeIRezervacije
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
         }
+        public Posudba(int id, Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
+        {
+            Id = id;
+            Korisnik = korisnik;
+            Primjerak = primjerak;
+            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
+        }
     }
 }
