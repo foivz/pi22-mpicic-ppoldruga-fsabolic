@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOpcenita));
             this.glavniMenu = new System.Windows.Forms.MenuStrip();
+            this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_Korisnici = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutor_Knjige = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,8 @@
             this.tsmiZanrovi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
+            this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.posudbeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +59,8 @@
             this.glavniMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiKatalog,
             this.tsmi_Korisnici,
+            this.rezervacijeToolStripMenuItem,
+            this.posudbeToolStripMenuItem,
             this.tsmiAdmin,
             this.tsmiProfil,
             this.tsmiOdjava});
@@ -66,6 +70,13 @@
             this.glavniMenu.Size = new System.Drawing.Size(1080, 29);
             this.glavniMenu.TabIndex = 0;
             this.glavniMenu.Text = "menuStrip1";
+            // 
+            // tsmiKatalog
+            // 
+            this.tsmiKatalog.Name = "tsmiKatalog";
+            this.tsmiKatalog.Size = new System.Drawing.Size(74, 25);
+            this.tsmiKatalog.Text = "Katalog";
+            this.tsmiKatalog.Click += new System.EventHandler(this.tsmiKatalog_Click);
             // 
             // tsmi_Korisnici
             // 
@@ -191,12 +202,18 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
-            // tsmiKatalog
+            // rezervacijeToolStripMenuItem
             // 
-            this.tsmiKatalog.Name = "tsmiKatalog";
-            this.tsmiKatalog.Size = new System.Drawing.Size(74, 25);
-            this.tsmiKatalog.Text = "Katalog";
-            this.tsmiKatalog.Click += new System.EventHandler(this.tsmiKatalog_Click);
+            this.rezervacijeToolStripMenuItem.Name = "rezervacijeToolStripMenuItem";
+            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(100, 25);
+            this.rezervacijeToolStripMenuItem.Text = "Rezervacije";
+            this.rezervacijeToolStripMenuItem.Click += new System.EventHandler(this.tsmiRezervacije);
+            // 
+            // posudbeToolStripMenuItem
+            // 
+            this.posudbeToolStripMenuItem.Name = "posudbeToolStripMenuItem";
+            this.posudbeToolStripMenuItem.Size = new System.Drawing.Size(81, 25);
+            this.posudbeToolStripMenuItem.Text = "Posudbe";
             // 
             // FrmOpcenita
             // 
@@ -236,6 +253,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProfil;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Korisnici;
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
+        private System.Windows.Forms.ToolStripMenuItem rezervacijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem posudbeToolStripMenuItem;
     }
 }
 

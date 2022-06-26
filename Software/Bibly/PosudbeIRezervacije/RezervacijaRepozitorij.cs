@@ -37,9 +37,6 @@ namespace PosudbeIRezervacije
                     PrimjerakRepozitorij.DohvatiPrimjerak(idPrimjerka),
                     doKadaVrijediRezervacija
                 ));
-
-                //    PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
-                //    ZatvoriRezervaciju(idRezervacije);
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
@@ -49,7 +46,6 @@ namespace PosudbeIRezervacije
             }
             return trenutneRezervacijeKorisnika;
         }
-
         public static void ProvjeriIstekleRezervacije()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -67,15 +63,15 @@ namespace PosudbeIRezervacije
                 DateTime doKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString());
                 if (DateTime.Compare(doKadaVrijediRezervacija.Date, DateTime.Now.Date) < 0)
                 {
-                    PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
-                    ZatvoriRezervaciju(idRezervacije);
+                    ZatvoriRezervaciju(idRezervacije, idPrimjerka);
                 }
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
         }
-        public static int ZatvoriRezervaciju(int idRezervacije)
+        public static int ZatvoriRezervaciju(int idRezervacije, int idPrimjerka)
         {
+            PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
                 $"SET rezervacija_potvrdena = 1 WHERE id_posudba = {idRezervacije}";

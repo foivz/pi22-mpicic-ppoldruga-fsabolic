@@ -90,7 +90,6 @@ namespace Prijava
         public static Korisnik DohvatiKorisnika_Mail(string email)
         {
             BazaPodataka.Instanca.UspostaviVezu();
-
             string upit =
                     "SELECT " +
                     "k.OIB as 'k.OIB'," +
@@ -119,10 +118,7 @@ namespace Prijava
                     "JOIN tipovi_korisnika tk " +
                     "ON tk.id_tip_korisnika = k.id_tip_korisnika "+
                     $"WHERE k.email='{email}'";
-
-
             Korisnik korisnik = null;
-
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
@@ -153,13 +149,9 @@ namespace Prijava
                         reader["tk.naziv"].ToString()
                         )
                    );
-
-
             }
             reader.Close();
-
             BazaPodataka.Instanca.PrekiniVezu();
-
             return korisnik;
         }
 
@@ -168,7 +160,8 @@ namespace Prijava
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = "SELECT COUNT(*) AS 'broj_posudbi'" +
                 " FROM posudbe po" +
-                " WHERE (stvarni_datum_vracanja IS NULL OR rezervacija_potvrdena != 1)" +
+                " WHERE (po.rezervacija_potvrdena = 0" +
+                " OR (po.datum_posudbe IS NOT NULL AND po.stvarni_datum_vracanja IS NULL))" +
                 $" AND id_korisnik = '{korisnik.OIB}'";
             List<int> brojPosudbi = new List<int>();
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
