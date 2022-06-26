@@ -38,8 +38,8 @@ namespace PosudbeIRezervacije
                     doKadaVrijediRezervacija
                 ));
 
-                    PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
-                    ZatvoriRezervaciju(idRezervacije);
+                //    PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
+                //    ZatvoriRezervaciju(idRezervacije);
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
@@ -49,6 +49,7 @@ namespace PosudbeIRezervacije
             }
             return trenutneRezervacijeKorisnika;
         }
+
         public static void ProvjeriIstekleRezervacije()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -57,15 +58,14 @@ namespace PosudbeIRezervacije
                     ", id_primjerak" +
                     ", do_kada_vrijedi_rezervacija" +
                     " FROM posudbe" +
-                    " WHERE datum_posudbe IS NULL" +
-                    " AND rezervacija_potvrdena = 0";
+                    " WHERE rezervacija_potvrdena = 0";
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
                 int idRezervacije = int.Parse(reader["id_posudba"].ToString());
                 int idPrimjerka = int.Parse(reader["id_primjerak"].ToString());
                 DateTime doKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString());
-                if (!VrijediLiRezervacija(doKadaVrijediRezervacija))
+                if (DateTime.Compare(doKadaVrijediRezervacija.Date, DateTime.Now.Date) < 0)
                 {
                     PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);
                     ZatvoriRezervaciju(idRezervacije);
@@ -97,17 +97,6 @@ namespace PosudbeIRezervacije
             int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
             return i;
-        }
-        private static bool VrijediLiRezervacija(DateTime doKadaVrijediRezervacija)
-        {
-            if (DateTime.Compare(doKadaVrijediRezervacija.Date, DateTime.Now.Date) < 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
     }
 }

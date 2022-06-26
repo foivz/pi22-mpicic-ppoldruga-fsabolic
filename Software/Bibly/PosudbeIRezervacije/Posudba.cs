@@ -20,6 +20,10 @@ namespace PosudbeIRezervacije
         public Primjerak Primjerak { get; set; }
         public DateTime DoKadaVrijediRezervacija { get; set; }
         public int RezervacijaPotvrdena { get; set; }
+        public Posudba()
+        {
+
+        }
 
         public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
         {
