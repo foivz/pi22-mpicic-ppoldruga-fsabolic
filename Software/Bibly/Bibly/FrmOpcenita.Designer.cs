@@ -30,7 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOpcenita));
             this.glavniMenu = new System.Windows.Forms.MenuStrip();
+            this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_Korisnici = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRezervacijeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPosudbeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutor_Knjige = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutori = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +49,6 @@
             this.tsmiZanrovi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +59,8 @@
             this.glavniMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiKatalog,
             this.tsmi_Korisnici,
+            this.tsmiRezervacijeKorisnika,
+            this.tsmiPosudbeKorisnika,
             this.tsmiAdmin,
             this.tsmiProfil,
             this.tsmiOdjava});
@@ -67,12 +71,33 @@
             this.glavniMenu.TabIndex = 0;
             this.glavniMenu.Text = "menuStrip1";
             // 
+            // tsmiKatalog
+            // 
+            this.tsmiKatalog.Name = "tsmiKatalog";
+            this.tsmiKatalog.Size = new System.Drawing.Size(74, 25);
+            this.tsmiKatalog.Text = "Katalog";
+            this.tsmiKatalog.Click += new System.EventHandler(this.tsmiKatalog_Click);
+            // 
             // tsmi_Korisnici
             // 
             this.tsmi_Korisnici.Name = "tsmi_Korisnici";
             this.tsmi_Korisnici.Size = new System.Drawing.Size(81, 25);
             this.tsmi_Korisnici.Text = "Korisnici";
             this.tsmi_Korisnici.Click += new System.EventHandler(this.tsmi_Korisnici_Click);
+            // 
+            // tsmiRezervacijeKorisnika
+            // 
+            this.tsmiRezervacijeKorisnika.Name = "tsmiRezervacijeKorisnika";
+            this.tsmiRezervacijeKorisnika.Size = new System.Drawing.Size(100, 25);
+            this.tsmiRezervacijeKorisnika.Text = "Rezervacije";
+            this.tsmiRezervacijeKorisnika.Click += new System.EventHandler(this.tsmiRezervacijeKorisnika_Click);
+            // 
+            // tsmiPosudbeKorisnika
+            // 
+            this.tsmiPosudbeKorisnika.Name = "tsmiPosudbeKorisnika";
+            this.tsmiPosudbeKorisnika.Size = new System.Drawing.Size(81, 25);
+            this.tsmiPosudbeKorisnika.Text = "Posudbe";
+            this.tsmiPosudbeKorisnika.Click += new System.EventHandler(this.tsmiPosudbeKorisnika_Click);
             // 
             // tsmiAdmin
             // 
@@ -191,13 +216,6 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
-            // tsmiKatalog
-            // 
-            this.tsmiKatalog.Name = "tsmiKatalog";
-            this.tsmiKatalog.Size = new System.Drawing.Size(74, 25);
-            this.tsmiKatalog.Text = "Katalog";
-            this.tsmiKatalog.Click += new System.EventHandler(this.tsmiKatalog_Click);
-            // 
             // FrmOpcenita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +254,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProfil;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Korisnici;
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRezervacijeKorisnika;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPosudbeKorisnika;
     }
 }
 
