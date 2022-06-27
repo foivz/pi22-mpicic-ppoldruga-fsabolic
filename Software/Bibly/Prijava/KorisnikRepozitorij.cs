@@ -163,6 +163,11 @@ namespace Prijava
             return korisnik;
         }
 
+        public static bool DohvatiKorisnika_OIB()
+        {
+            return true;
+        }
+
         public static int TrenutniBrojPosudbi(Korisnik korisnik)
         {
             BazaPodataka.Instanca.UspostaviVezu();
