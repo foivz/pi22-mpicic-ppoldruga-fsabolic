@@ -46,8 +46,10 @@
     <Compile Include="Korisnik.cs" />
     <Compile Include="KorisnikRepozitorij.cs" />
     <Compile Include="Mjesto.cs" />
+    <Compile Include="MjestoRepozitorij.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipKorisnika.cs" />
+    <Compile Include="TipKorisnikaRepozitorij.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Baza\Baza.csproj">
