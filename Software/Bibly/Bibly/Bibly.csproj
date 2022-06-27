@@ -64,6 +64,12 @@
     <Compile Include="FrmAdmin.Designer.cs">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAdminDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdminDodaj.Designer.cs">
+      <DependentUpon>FrmAdminDodaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAzurirajKorisnika.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdminDodaj.resx">
+      <DependentUpon>FrmAdminDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAzurirajKorisnika.resx">
       <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
