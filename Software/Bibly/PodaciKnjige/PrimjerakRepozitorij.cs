@@ -122,11 +122,6 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.PrekiniVezu();
             return doKadaJeNedostupan;
         }
-
-
-
-
-
         public static int AzurirajStatusPrimjerka(int idPrimjerka, StatusPrimjerka noviStatus)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -137,7 +132,6 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.PrekiniVezu();
             return i;
         }
-
         private static int VratiStatusKaoBroj(StatusPrimjerka status)
         {
             int brojStatusa = 0;
@@ -155,7 +149,6 @@ namespace PodaciKnjige
             }
             return brojStatusa;
         }
-
         private static StatusPrimjerka VratiStatusKaoEnum(string status)
         {
             switch (status)
