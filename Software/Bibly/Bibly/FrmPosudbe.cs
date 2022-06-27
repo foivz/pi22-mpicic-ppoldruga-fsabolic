@@ -7,19 +7,79 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PosudbeIRezervacije;
+using Prijava;
 
 namespace Bibly
 {
     public partial class FrmPosudbe : FrmOpcenita
     {
+        private static int top = 200;
+        private List<Posudba> listaPosudbi = new List<Posudba>();
         public FrmPosudbe()
         {
             InitializeComponent();
         }
-
         private void FrmPosudbe_Load(object sender, EventArgs e)
         {
-
+            top = 200;
+            DohvatiTrenutneRezervacije();
+            DohvatiProsleRezervacije();
+        }
+        private void DohvatiTrenutneRezervacije()
+        {
+            listaPosudbi = PosudbaRepozitorij.DohvatiTrenutnePosudbeKorisnika(Autentifikator.Instanca.VratiKorisnika());
+            if (listaPosudbi != null)
+            {
+                DodajUCPosudbeKnjigaTretnutna(listaPosudbi);
+                lblObavijest.Visible = false;
+            }
+            else
+            {
+                lblObavijest.Visible = true;
+                top = lblObavijest.Top + 50;
+            }
+        }
+        private void DodajUCPosudbeKnjigaTretnutna(List<Posudba> listaPosudbi)
+        {
+            foreach (Posudba posudba in listaPosudbi)
+            {
+                UCPosudbeKnjigaTretnutna ucPosudbeKnjigaTretnutna = new UCPosudbeKnjigaTretnutna();
+                ucPosudbeKnjigaTretnutna.Top = top;
+                ucPosudbeKnjigaTretnutna.Left = 20;
+                ucPosudbeKnjigaTretnutna.PostaviLabele(posudba);
+                Controls.Add(ucPosudbeKnjigaTretnutna);
+                top += 350;
+            }
+        }
+        private void DohvatiProsleRezervacije()
+        {
+            lblProslePosudbe.Visible = true;
+            lblProslePosudbe.Top = top;
+            top += 50;
+            listaPosudbi = PosudbaRepozitorij.DohvatiProslePosudbeKorisnika(Autentifikator.Instanca.VratiKorisnika());
+            if (listaPosudbi != null)
+            {
+                DodajUCPosudbeKnjigaProsla(listaPosudbi);
+                lblObavijest2.Visible = false;
+            }
+            else
+            {
+                lblObavijest2.Visible = true;
+                lblObavijest2.Top = top;
+            }
+        }
+        private void DodajUCPosudbeKnjigaProsla(List<Posudba> listaPosudbi)
+        {
+            foreach (Posudba posudba in listaPosudbi)
+            {
+                UCPosudbeKnjigaProsla ucPosudbeKnjigaProsla = new UCPosudbeKnjigaProsla();
+                ucPosudbeKnjigaProsla.Top = top;
+                ucPosudbeKnjigaProsla.Left = 20;
+                ucPosudbeKnjigaProsla.PostaviLabele(posudba);
+                Controls.Add(ucPosudbeKnjigaProsla);
+                top += 350;
+            }
         }
     }
 }

@@ -173,5 +173,17 @@ namespace Bibly
             FrmRezervacije frm = new FrmRezervacije();
             OtvoriNovuFormu(frm);
         }
+
+        private void tsmiPosudbeKorisnika_Click(object sender, EventArgs e)
+        {
+            FrmPosudbe frm = new FrmPosudbe();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiRezervacijeKorisnika_Click(object sender, EventArgs e)
+        {
+            FrmRezervacije frm = new FrmRezervacije();
+            OtvoriNovuFormu(frm);
+        }
     }
 }

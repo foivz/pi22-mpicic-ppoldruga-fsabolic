@@ -32,6 +32,8 @@
             this.glavniMenu = new System.Windows.Forms.MenuStrip();
             this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_Korisnici = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRezervacijeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPosudbeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutor_Knjige = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutori = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,8 +49,6 @@
             this.tsmiZanrovi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
-            this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.posudbeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,8 +59,8 @@
             this.glavniMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiKatalog,
             this.tsmi_Korisnici,
-            this.rezervacijeToolStripMenuItem,
-            this.posudbeToolStripMenuItem,
+            this.tsmiRezervacijeKorisnika,
+            this.tsmiPosudbeKorisnika,
             this.tsmiAdmin,
             this.tsmiProfil,
             this.tsmiOdjava});
@@ -84,6 +84,20 @@
             this.tsmi_Korisnici.Size = new System.Drawing.Size(81, 25);
             this.tsmi_Korisnici.Text = "Korisnici";
             this.tsmi_Korisnici.Click += new System.EventHandler(this.tsmi_Korisnici_Click);
+            // 
+            // tsmiRezervacijeKorisnika
+            // 
+            this.tsmiRezervacijeKorisnika.Name = "tsmiRezervacijeKorisnika";
+            this.tsmiRezervacijeKorisnika.Size = new System.Drawing.Size(100, 25);
+            this.tsmiRezervacijeKorisnika.Text = "Rezervacije";
+            this.tsmiRezervacijeKorisnika.Click += new System.EventHandler(this.tsmiRezervacijeKorisnika_Click);
+            // 
+            // tsmiPosudbeKorisnika
+            // 
+            this.tsmiPosudbeKorisnika.Name = "tsmiPosudbeKorisnika";
+            this.tsmiPosudbeKorisnika.Size = new System.Drawing.Size(81, 25);
+            this.tsmiPosudbeKorisnika.Text = "Posudbe";
+            this.tsmiPosudbeKorisnika.Click += new System.EventHandler(this.tsmiPosudbeKorisnika_Click);
             // 
             // tsmiAdmin
             // 
@@ -202,19 +216,6 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
-            // rezervacijeToolStripMenuItem
-            // 
-            this.rezervacijeToolStripMenuItem.Name = "rezervacijeToolStripMenuItem";
-            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(100, 25);
-            this.rezervacijeToolStripMenuItem.Text = "Rezervacije";
-            this.rezervacijeToolStripMenuItem.Click += new System.EventHandler(this.tsmiRezervacije);
-            // 
-            // posudbeToolStripMenuItem
-            // 
-            this.posudbeToolStripMenuItem.Name = "posudbeToolStripMenuItem";
-            this.posudbeToolStripMenuItem.Size = new System.Drawing.Size(81, 25);
-            this.posudbeToolStripMenuItem.Text = "Posudbe";
-            // 
             // FrmOpcenita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,8 +254,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProfil;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Korisnici;
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
-        private System.Windows.Forms.ToolStripMenuItem rezervacijeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem posudbeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRezervacijeKorisnika;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPosudbeKorisnika;
     }
 }
 

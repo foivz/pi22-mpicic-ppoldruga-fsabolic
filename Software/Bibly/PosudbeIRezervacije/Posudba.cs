@@ -12,7 +12,7 @@ namespace PosudbeIRezervacije
     {
         public int Id { get; set; }
         public DateTime DatumPosudbe { get; set; }
-        public DateTime PredvideniVratumVracanja { get; set; }
+        public DateTime PredvideniDatumVracanja { get; set; }
         public DateTime StvarniDatumVracanja { get; set; }
         public int BrojProduljivanja { get; set; }
         public double Zakasnina { get; set; }
@@ -25,21 +25,30 @@ namespace PosudbeIRezervacije
 
         }
 
-        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
+        //konstruktor za Prošle posudbe
+        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
         {
             Id = id;
             DatumPosudbe = datumPosudbe;
-            PredvideniVratumVracanja = predvideniDatumVracanja;
+            PredvideniDatumVracanja = predvideniDatumVracanja;
             StvarniDatumVracanja = stvarniDatumVracanja;
             BrojProduljivanja = brojProduljivanja;
             Zakasnina = zakasnina;
             Korisnik = korisnik;
             Primjerak = primjerak;
-            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-            RezervacijaPotvrdena = rezervacijaPotvrdena;
         }
-
-        //konstruktor za Rezervaciju
+        //konstruktor za Trenutne posudbe
+        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
+        {
+            Id = id;
+            DatumPosudbe = datumPosudbe;
+            PredvideniDatumVracanja = predvideniDatumVracanja;
+            BrojProduljivanja = brojProduljivanja;
+            Zakasnina = zakasnina;
+            Korisnik = korisnik;
+            Primjerak = primjerak;
+        }
+        //konstruktori za Rezervaciju
         public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
         {
             Korisnik = korisnik;

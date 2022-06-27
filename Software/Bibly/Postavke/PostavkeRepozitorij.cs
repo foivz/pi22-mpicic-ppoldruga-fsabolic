@@ -53,5 +53,47 @@ namespace Postavke
 
             return maxBrojPosudbi[0];
         }
+        public static int VratiMaksimalanBrojProduljivanjaPosudbe()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT trajanje_produljenja" +
+                    " FROM postavke";
+
+            List<int> maxBrojProduljenja = new List<int>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                maxBrojProduljenja.Add(int.Parse(reader["trajanje_produljenja"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return maxBrojProduljenja[0];
+        }
+        public static double VratiIznosZakasnine()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT zakasnina" +
+                    " FROM postavke";
+
+            List<double> maxBrojProduljenja = new List<double>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                maxBrojProduljenja.Add(double.Parse(reader["zakasnina"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return maxBrojProduljenja[0];
+        }
     }
 }
