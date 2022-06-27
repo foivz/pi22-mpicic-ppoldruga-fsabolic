@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.dgvTablica = new System.Windows.Forms.DataGridView();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnAzuriraj = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
-            this.txtPretrazivanje = new System.Windows.Forms.TextBox();
             this.lblNazivTablice = new System.Windows.Forms.Label();
-            this.btnPretrazi = new System.Windows.Forms.Button();
-            this.cmbKriterijPretrazivanja = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,9 +50,22 @@
             // 
             // dgvTablica
             // 
+            this.dgvTablica.AllowUserToAddRows = false;
+            this.dgvTablica.AllowUserToDeleteRows = false;
+            this.dgvTablica.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvTablica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTablica.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTablica.Location = new System.Drawing.Point(32, 183);
             this.dgvTablica.Name = "dgvTablica";
+            this.dgvTablica.ReadOnly = true;
+            this.dgvTablica.RowTemplate.Height = 35;
             this.dgvTablica.Size = new System.Drawing.Size(1002, 398);
             this.dgvTablica.TabIndex = 3;
             // 
@@ -68,6 +79,7 @@
             this.btnDodaj.TabIndex = 4;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // btnAzuriraj
             // 
@@ -79,6 +91,7 @@
             this.btnAzuriraj.TabIndex = 5;
             this.btnAzuriraj.Text = "Ažuriraj";
             this.btnAzuriraj.UseVisualStyleBackColor = false;
+            this.btnAzuriraj.Click += new System.EventHandler(this.btnAzuriraj_Click);
             // 
             // btnObrisi
             // 
@@ -91,15 +104,6 @@
             this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = false;
             // 
-            // txtPretrazivanje
-            // 
-            this.txtPretrazivanje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.txtPretrazivanje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPretrazivanje.Location = new System.Drawing.Point(707, 148);
-            this.txtPretrazivanje.Name = "txtPretrazivanje";
-            this.txtPretrazivanje.Size = new System.Drawing.Size(193, 24);
-            this.txtPretrazivanje.TabIndex = 7;
-            // 
             // lblNazivTablice
             // 
             this.lblNazivTablice.AutoSize = true;
@@ -110,35 +114,12 @@
             this.lblNazivTablice.TabIndex = 8;
             this.lblNazivTablice.Text = "Tablica";
             // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnPretrazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPretrazi.Location = new System.Drawing.Point(906, 144);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(128, 33);
-            this.btnPretrazi.TabIndex = 9;
-            this.btnPretrazi.Text = "Pretraži";
-            this.btnPretrazi.UseVisualStyleBackColor = false;
-            // 
-            // cmbKriterijPretrazivanja
-            // 
-            this.cmbKriterijPretrazivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbKriterijPretrazivanja.FormattingEnabled = true;
-            this.cmbKriterijPretrazivanja.Location = new System.Drawing.Point(580, 148);
-            this.cmbKriterijPretrazivanja.Name = "cmbKriterijPretrazivanja";
-            this.cmbKriterijPretrazivanja.Size = new System.Drawing.Size(121, 26);
-            this.cmbKriterijPretrazivanja.TabIndex = 10;
-            // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 654);
-            this.Controls.Add(this.cmbKriterijPretrazivanja);
-            this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.lblNazivTablice);
-            this.Controls.Add(this.txtPretrazivanje);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnAzuriraj);
             this.Controls.Add(this.btnDodaj);
@@ -152,10 +133,7 @@
             this.Controls.SetChildIndex(this.btnDodaj, 0);
             this.Controls.SetChildIndex(this.btnAzuriraj, 0);
             this.Controls.SetChildIndex(this.btnObrisi, 0);
-            this.Controls.SetChildIndex(this.txtPretrazivanje, 0);
             this.Controls.SetChildIndex(this.lblNazivTablice, 0);
-            this.Controls.SetChildIndex(this.btnPretrazi, 0);
-            this.Controls.SetChildIndex(this.cmbKriterijPretrazivanja, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -169,9 +147,6 @@
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnAzuriraj;
         private System.Windows.Forms.Button btnObrisi;
-        private System.Windows.Forms.TextBox txtPretrazivanje;
         private System.Windows.Forms.Label lblNazivTablice;
-        private System.Windows.Forms.Button btnPretrazi;
-        private System.Windows.Forms.ComboBox cmbKriterijPretrazivanja;
     }
 }
