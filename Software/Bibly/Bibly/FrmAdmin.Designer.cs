@@ -68,6 +68,7 @@
             this.dgvTablica.RowTemplate.Height = 35;
             this.dgvTablica.Size = new System.Drawing.Size(1002, 398);
             this.dgvTablica.TabIndex = 3;
+            this.dgvTablica.SelectionChanged += new System.EventHandler(this.dgvTablica_SelectionChanged);
             // 
             // btnDodaj
             // 
@@ -103,6 +104,7 @@
             this.btnObrisi.TabIndex = 6;
             this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // lblNazivTablice
             // 

@@ -22,6 +22,7 @@ namespace Prijava
         public DateTime DatumUclanjivanja { get; set; }
         public DateTime DatumIstekaClanarine { get; set; }
 
+        public int PokusajiPrijave { get; set; }
         public string Lozinka { get; set; }
         public bool Blokiran { get; set; }
 
@@ -33,7 +34,7 @@ namespace Prijava
         }
         public Korisnik(string oib, string ime, string prezime, string brojMobitela, string email,
             Mjesto prebivaliste, string adresaPrebivalista, Mjesto boraviste, string adresaBoravista,
-            DateTime datumUclanjivanja, DateTime datumIstekaClanarine, string lozinka, int blokiran,TipKorisnika tipKorisnika)
+            DateTime datumUclanjivanja, DateTime datumIstekaClanarine, string lozinka, int blokiran,TipKorisnika tipKorisnika,int pokusajiPrijave=0)
         {
             OIB = oib;
             Ime = ime;
@@ -49,6 +50,7 @@ namespace Prijava
             Lozinka = lozinka;
             Blokiran = blokiran==0?false:true;
             TipKorisnika = tipKorisnika;
+            PokusajiPrijave = pokusajiPrijave;
         }
 
         public override string ToString()

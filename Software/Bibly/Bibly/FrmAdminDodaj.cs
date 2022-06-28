@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Prijava;
 using System.Text.RegularExpressions;
+using PodaciKnjige;
+
 namespace Bibly
 {
     public partial class FrmAdminDodaj : FrmOpcenita
@@ -31,7 +33,7 @@ namespace Bibly
             switch (NazivTablice)
             {
                 case "autor_knjige":
-
+                    PostaviFormu_AutorKnjige();
                     break;
                 case "autori":
 
@@ -72,6 +74,31 @@ namespace Bibly
             }
         }
 
+        private void PostaviFormu_AutorKnjige()
+        {
+
+            ComboBox autor = PostaviComboBox("cmbAutor", "lblAutor", "Autor");
+            foreach (Autor a in AutorRepozitorij.DohvatiSveAutore())
+            {
+                autor.Items.Add(a);
+            }
+            autor.SelectedIndex = 0;
+            this.Controls.Add(autor);
+            ComboBox knjiga = PostaviComboBox("cmbKnjiga", "lblKnjiga", "Knjiga");
+            foreach (Knjiga k in KnjigaRepozitorij.DohvatiSveKnjige())
+            {
+                knjiga.Items.Add(k);
+            }
+            knjiga.SelectedIndex = 0;
+            this.Controls.Add(knjiga);
+
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(KorisnikValidacija);
+            if (TrenutniObjekt != null)
+            {
+            }
+        }
+
         private void PostaviFormu_Korisnici()
         {
             this.Controls.Add(PostaviTextBox("txtOIB", "lblOIB", "OIB"));
@@ -80,30 +107,97 @@ namespace Bibly
             this.Controls.Add(PostaviTextBox("txtBrojMobitela", "lblBrojMobitela", "Broj mobitela"));
             this.Controls.Add(PostaviTextBox("txtEmail", "lblEmail", "E-mail"));
             ComboBox prebivaliste = PostaviComboBox("cmbPrebivaliste", "lblPrebivaliste", "Prebivalište");
-            prebivaliste.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
+            foreach (Mjesto m in MjestoRepozitorij.DohvatiSvaMjesta())
+            {
+                prebivaliste.Items.Add(m);
+            }
+            prebivaliste.SelectedIndex = 0;
             this.Controls.Add(prebivaliste);
             this.Controls.Add(PostaviTextBox("txtAdresaPrebivalista", "lblAdresaPrebivalista", "Adresa prebivališta"));
             ComboBox boraviste = PostaviComboBox("cmbBoraviste", "lblBoraviste", "Boravište");
-            boraviste.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
+            foreach (Mjesto m in MjestoRepozitorij.DohvatiSvaMjesta())
+            {
+                boraviste.Items.Add(m);
+            }
+            boraviste.SelectedIndex = 0;
             this.Controls.Add(boraviste);
             this.Controls.Add(PostaviTextBox("txtAdresaBoravista", "lblAdresaBoravista", "Adresa boravišta"));
             this.Controls.Add(PostaviTextBox("txtDatumUclanjivanja", "lblDatumUclanjivanja", "Datum učlanjivanja"));
-            this.Controls.Add(PostaviTextBox("txtDatumIsteklaClanarine", "lblDatumIsteklaClanarine", "Datum istekla članarine"));
+            this.Controls.Add(PostaviTextBox("txtDatumIstekaClanarine", "lblDatumIstekaClanarine", "Datum isteka članarine"));
             this.Controls.Add(PostaviTextBox("txtLozinka", "lblLozinka", "Lozinka"));
             this.Controls.Add(PostaviTextBox("txtPokusajiPrijave", "lblPokusajiPrijave", "Pokušaji prijave"));
             this.Controls.Add(PostaviCheckBox("txtBlokiran", "lblBlokiran", "Blokiran"));
             ComboBox tip_korisnika = PostaviComboBox("cmbTipKorisnika", "lblTipKorisnika", "Tip korisnika");
-            tip_korisnika.DataSource = TipKorisnikaRepozitorij.DohvatiSveTipoveKorisnika();
+            foreach (TipKorisnika tk in TipKorisnikaRepozitorij.DohvatiSveTipoveKorisnika())
+            {
+                tip_korisnika.Items.Add(tk);
+            }
+            tip_korisnika.SelectedIndex = 0;
             this.Controls.Add(tip_korisnika);
             btnSpremi.Top = top + 15;
             btnSpremi.Click += new EventHandler(KorisnikValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Korisnik korisnik = TrenutniObjekt as Korisnik;
+                ((TextBox)this.Controls.Find("txtOIB", true)[0]).Text = korisnik.OIB;
+                ((TextBox)this.Controls.Find("txtIme", true)[0]).Text = korisnik.Ime;
+                ((TextBox)this.Controls.Find("txtPrezime", true)[0]).Text = korisnik.Prezime;
+                ((TextBox)this.Controls.Find("txtBrojMobitela", true)[0]).Text = korisnik.BrojMobitela;
+                ((TextBox)this.Controls.Find("txtEmail", true)[0]).Text = korisnik.Email;
+                List<Mjesto> mjesta = MjestoRepozitorij.DohvatiSvaMjesta();
+                ((ComboBox)this.Controls.Find("cmbPrebivaliste", true)[0]).SelectedIndex = mjesta.IndexOf(mjesta.Find(x => x.ID == korisnik.Prebivaliste.ID));
+                ((TextBox)this.Controls.Find("txtAdresaPrebivalista", true)[0]).Text = korisnik.AdresaPrebivalista;
+                ((ComboBox)this.Controls.Find("cmbBoraviste", true)[0]).SelectedIndex = mjesta.IndexOf(mjesta.Find(x => x.ID == korisnik.Boraviste.ID));
+                ((TextBox)this.Controls.Find("txtAdresaBoravista", true)[0]).Text = korisnik.AdresaBoravista;
+                ((TextBox)this.Controls.Find("txtDatumUclanjivanja", true)[0]).Text = korisnik.DatumUclanjivanja.ToString("yyyy-MM-dd");
+                ((TextBox)this.Controls.Find("txtDatumIstekaClanarine", true)[0]).Text = korisnik.DatumIstekaClanarine.ToString("yyyy-MM-dd");
+                ((TextBox)this.Controls.Find("txtLozinka", true)[0]).Text = korisnik.Lozinka;
+                ((CheckBox)this.Controls.Find("txtBlokiran", true)[0]).Checked = korisnik.Blokiran;
+                List<TipKorisnika> tipoviKorisnika = TipKorisnikaRepozitorij.DohvatiSveTipoveKorisnika();
+                ((ComboBox)this.Controls.Find("cmbTipKorisnika", true)[0]).SelectedIndex = tipoviKorisnika.IndexOf(tipoviKorisnika.Find(x => x.ID == korisnik.TipKorisnika.ID));
+                ((TextBox)this.Controls.Find("txtPokusajiPrijave", true)[0]).Text = korisnik.PokusajiPrijave.ToString();
+            }
 
         }
 
         private void KorisnikValidacija(object sender, EventArgs e)
         {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+            string stariOIB = TrenutniObjekt == null ? "" : ((Korisnik)TrenutniObjekt).OIB;
             if (UnesenTekst())
             {
+                Korisnik korisnik = new Korisnik(
+                    ((TextBox)this.Controls.Find("txtOIB", true)[0]).Text,
+                    ((TextBox)this.Controls.Find("txtIme", true)[0]).Text,
+                    ((TextBox)this.Controls.Find("txtPrezime", true)[0]).Text,
+                    ((TextBox)this.Controls.Find("txtBrojMobitela", true)[0]).Text,
+                    ((TextBox)this.Controls.Find("txtEmail", true)[0]).Text,
+                    ((ComboBox)this.Controls.Find("cmbPrebivaliste", true)[0]).SelectedItem as Mjesto,
+                    ((TextBox)this.Controls.Find("txtAdresaPrebivalista", true)[0]).Text,
+                    ((ComboBox)this.Controls.Find("cmbBoraviste", true)[0]).SelectedItem as Mjesto,
+                    ((TextBox)this.Controls.Find("txtAdresaBoravista", true)[0]).Text,
+                    DateTime.Parse(DateTime.Parse(((TextBox)this.Controls.Find("txtDatumUclanjivanja", true)[0]).Text).Date.ToString("yyyy-MM-dd")),
+                    DateTime.Parse(DateTime.Parse(((TextBox)this.Controls.Find("txtDatumIstekaClanarine", true)[0]).Text).Date.ToString("yyyy-MM-dd")),
+                    ((TextBox)this.Controls.Find("txtLozinka", true)[0]).Text,
+                    ((CheckBox)this.Controls.Find("txtBlokiran", true)[0]).Checked == true ? 1 : 0,
+                    ((ComboBox)this.Controls.Find("cmbTipKorisnika", true)[0]).SelectedItem as TipKorisnika,
+                    int.Parse(((TextBox)this.Controls.Find("txtPokusajiPrijave", true)[0]).Text)
+
+                );
+                if (TrenutniObjekt == null)
+                {
+                    KorisnikRepozitorij.DodajKorisnika(korisnik);
+                }
+                else
+                {
+                    KorisnikRepozitorij.AzurirajKorisnika(stariOIB, korisnik);
+                }
+
+                Close();
             }
             else
             {
@@ -115,6 +209,7 @@ namespace Bibly
         private bool UnesenTekst()
         {
             string poruka = "";
+            foreach (TextBox txt in this.Controls.OfType<TextBox>()) txt.BackColor = Color.FromArgb(254, 255, 242);
             foreach (TextBox txt in this.Controls.OfType<TextBox>())
             {
                 txt.BackColor = Color.FromArgb(254, 255, 242);
@@ -128,37 +223,33 @@ namespace Bibly
                 else
                 {
                     string uzorak = "";
-                    Regex rg;
                     switch (txt.Name)
                     {
                         case "txtOIB":
-                            if (!ProvjeraOIBa(txt.Text))
-                            {
-                                IspisGreske(txt, "Krivi format OIB-a");
-                            }
+                            if (!ProvjeraOIBa(txt.Text)) return IspisGreske(txt, "Krivi format OIB-a");
+                            if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_OIB(txt.Text) != null) return IspisGreske(txt, "OIB već postoji u bazi!");
                             break;
                         case "txtIme":
                         case "txtPrezime":
                             uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,}))?)$";
-                            rg = new Regex(uzorak);
-                            if (!Regex.Match(txt.Text, uzorak).Success) IspisGreske(txt, "Pogrešan format imena/prezimena");
+                            if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format imena/prezimena");
                             break;
                         case "txtBrojMobitela":
                             uzorak = @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
-                            rg = new Regex(uzorak);
-                            if (!Regex.Match(txt.Text, uzorak).Success) IspisGreske(txt, "Pogrešan format broja mobitela");
+                            if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format broja mobitela");
                             break;
                         case "txtEmail":
                             uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,}@[a-z]{2,}[.][a-z][a-z]{1,})$";
-                            rg = new Regex(uzorak);
-                            if (!Regex.Match(txt.Text, uzorak).Success) IspisGreske(txt, "Pogrešan format e-maila");
+                            if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format e-maila");
+                            if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_Mail(txt.Text) != null) return IspisGreske(txt, "E-mail je već unesen!");
                             break;
                         case "txtDatumUclanjivanja":
                         case "txtDatumIstekaClanarine":
-                            if(!DateTime.TryParse(txt.Text, out DateTime test)) IspisGreske(txt,"Pogrešan format datuma");
+                            if (!DateTime.TryParse(txt.Text, out DateTime test)) return IspisGreske(txt, "Pogrešan format datuma");
                             break;
                         case "txtBlokiran":
-                            if (!int.TryParse(txt.Text, out int test_1)) IspisGreske(txt, "Nije unesen broj");
+                        case "txtPokusajiPrijave":
+                            if (!int.TryParse(txt.Text, out int test_1)) return IspisGreske(txt, "Nije unesen broj");
                             break;
                     }
                 }
@@ -171,15 +262,16 @@ namespace Bibly
             return true;
         }
 
-        private void IspisGreske(TextBox kontrola, string poruka)
+        private bool IspisGreske(TextBox kontrola, string poruka)
         {
             kontrola.BackColor = Color.LightCoral;
             MessageBox.Show(kontrola.Name + " - " + poruka);
+            return false;
         }
 
         private bool ProvjeraOIBa(string unos)
         {
-            if (unos.Length != 11 || !long.TryParse(unos,out long test))
+            if (unos.Length != 11 || !long.TryParse(unos, out long test))
             {
                 return false;
             }
@@ -189,7 +281,7 @@ namespace Bibly
             for (int i = 0; i < unos.Length - 1; i++)
             {
                 oibRacun += int.Parse(unos[i].ToString());
-                oibRacun = (oibRacun % 10)==0?10:oibRacun%10;
+                oibRacun = (oibRacun % 10) == 0 ? 10 : oibRacun % 10;
                 oibRacun *= 2;
                 oibRacun %= 11;
             }

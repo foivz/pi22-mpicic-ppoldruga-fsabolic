@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Prijava;
-
+using PodaciKnjige;
 namespace Bibly
 {
     public partial class FrmAdmin : FrmOpcenita
     {
         private string NazivTablice = null;
+        private object TrenutniRed = null;
         public FrmAdmin(string nazivTablice)
         {
             InitializeComponent();
@@ -23,9 +24,12 @@ namespace Bibly
 
         private void PostaviFormu()
         {
-            lblNazivTablice.Text = "Tablica '"+NazivTablice+"'";
+            lblNazivTablice.Text = "Tablica '" + NazivTablice + "'";
             switch (NazivTablice)
             {
+                case "autor_knjige":
+
+                    break;
                 case "korisnici":
                     dgvTablica.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
                     break;
@@ -36,12 +40,48 @@ namespace Bibly
         {
             FrmAdminDodaj frm = new FrmAdminDodaj(NazivTablice);
             frm.ShowDialog();
+            PostaviFormu();
         }
 
         private void btnAzuriraj_Click(object sender, EventArgs e)
         {
-            FrmAdminDodaj frm = new FrmAdminDodaj(NazivTablice,dgvTablica.CurrentRow.DataBoundItem);
-            frm.ShowDialog();
+            if (TrenutniRed != null)
+            {
+                FrmAdminDodaj frm = new FrmAdminDodaj(NazivTablice, TrenutniRed);
+                frm.ShowDialog();
+                PostaviFormu();
+            }
+            else
+            {
+                MessageBox.Show("Nije odabran ni jedan red");
+            }
+        }
+
+        private void dgvTablica_SelectionChanged(object sender, EventArgs e)
+        {
+            TrenutniRed = dgvTablica.CurrentRow.DataBoundItem;
+        }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+
+                switch (NazivTablice)
+                {
+
+                    case "autor_knjige":
+
+                        break;
+                    case "korisnici":
+                        if (TrenutniRed != null)
+                        {
+                            KorisnikRepozitorij.ObrisiKorisnika((Korisnik)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                }
+            }
         }
     }
 }
