@@ -18,7 +18,7 @@ namespace PosudbeIRezervacije
         {
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
-                $"SET broj_produljivanja = {posudba.BrojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja}' WHERE id_posudba = {posudba.Id}";
+                $"SET broj_produljivanja = {posudba.BrojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja.ToString("yyyy-MM-dd")}' WHERE id_posudba = {posudba.Id}";
             BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
