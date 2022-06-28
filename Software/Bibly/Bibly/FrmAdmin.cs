@@ -42,6 +42,10 @@ namespace Bibly
                 case "mjesta":
                     dgvTablica.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
                     break;
+                case "primjerci":
+                    dgvTablica.DataSource = PrimjerakRepozitorij.DohvatiSvePrimjerke();
+                    dgvTablica.Columns[3].Visible = false;
+                    break;
             }
         }
 
@@ -116,6 +120,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             MjestoRepozitorij.ObrisiMjesto((Mjesto)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "primjerci":
+                        if (TrenutniRed != null)
+                        {
+                            PrimjerakRepozitorij.ObrisiPrimjerak((Primjerak)TrenutniRed);
                         }
                         PostaviFormu();
                         break;

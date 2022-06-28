@@ -57,7 +57,7 @@ namespace Bibly
 
                     break;
                 case "primjerci":
-
+                    PostaviFormu_Primjerci();
                     break;
                 case "statusi_primjeraka":
 
@@ -72,6 +72,59 @@ namespace Bibly
                     this.Close();
                     break;
             }
+        }
+
+        private void PostaviFormu_Primjerci()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            ComboBox knjiga = PostaviComboBox("cmbKnjiga", "lblKnjiga", "Knjiga");
+            foreach (Knjiga k in KnjigaRepozitorij.DohvatiSveKnjige())
+            {
+                knjiga.Items.Add(k);
+            }
+            knjiga.SelectedIndex = 0;
+            this.Controls.Add(knjiga);
+            List<StatusPrimjerka> statusiPrimjeraka = new List<StatusPrimjerka>();
+            ComboBox statusPrimjerka = PostaviComboBox("cmbStatusPrimjerka", "lblStatusPrimjerka", "Status primjerka");
+            foreach (StatusPrimjerka item in Enum.GetValues(typeof(StatusPrimjerka)))
+            {
+                statusPrimjerka.Items.Add(item);
+                statusiPrimjeraka.Add(item);
+            }
+            statusPrimjerka.Items.Remove(StatusPrimjerka.Greska);
+            statusPrimjerka.SelectedIndex = 0;
+            this.Controls.Add(statusPrimjerka);
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(PrimjerciValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Primjerak primjerak = (Primjerak)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = primjerak.Id.ToString();
+                List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
+                ((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == primjerak.Knjiga.ISBN));
+                ((ComboBox)this.Controls.Find("cmbStatusPrimjerka", true)[0]).SelectedItem = primjerak.Status;
+
+            }
+        }
+
+        private void PrimjerciValidacija(object sender, EventArgs e)
+        {
+            Primjerak primjerak = new Primjerak(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                (StatusPrimjerka)((ComboBox)this.Controls.Find("cmbStatusPrimjerka", true)[0]).SelectedItem,
+                (Knjiga)((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedItem,
+                null
+                );
+            if (TrenutniObjekt == null)
+            {
+                PrimjerakRepozitorij.DodajPrimjerak(primjerak);
+            }
+            else
+            {
+                PrimjerakRepozitorij.AzurirajPrimjerak(primjerak);
+            }
+            Close();
+
         }
 
         private void PostaviFormu_Mjesta()

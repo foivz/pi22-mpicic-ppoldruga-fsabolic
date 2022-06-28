@@ -12,7 +12,7 @@ namespace PodaciKnjige
         public StatusPrimjerka Status { get; set; }
         public Knjiga Knjiga { get; set; }
         public string DoKadaJeNedostupan { get; set; }
-
+        
         public Primjerak(int id, StatusPrimjerka status, Knjiga knjiga, string doKadaJeNedostupan)
         {
             Id = id;
