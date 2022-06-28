@@ -48,7 +48,7 @@ namespace Bibly
                     PostaviFormu_Korisnici();
                     break;
                 case "mjesta":
-
+                    PostaviFormu_Mjesta();
                     break;
                 case "postavke":
 
@@ -71,6 +71,47 @@ namespace Bibly
                 default:
                     this.Close();
                     break;
+            }
+        }
+
+        private void PostaviFormu_Mjesta()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(MjestaValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Mjesto mjesto = (Mjesto)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = mjesto.ID.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = mjesto.Naziv;
+            }
+        }
+
+        private void MjestaValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                Mjesto mjesto = new Mjesto(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    MjestoRepozitorij.DodajMjesto(mjesto);
+                }
+                else
+                {
+                    MjestoRepozitorij.AzurirajMjesto(mjesto);
+                }
+
+                Close();
             }
         }
 

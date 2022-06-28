@@ -39,6 +39,9 @@ namespace Bibly
                 case "korisnici":
                     dgvTablica.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
                     break;
+                case "mjesta":
+                    dgvTablica.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
+                    break;
             }
         }
 
@@ -106,6 +109,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             KorisnikRepozitorij.ObrisiKorisnika((Korisnik)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "mjesta":
+                        if (TrenutniRed != null)
+                        {
+                            MjestoRepozitorij.ObrisiMjesto((Mjesto)TrenutniRed);
                         }
                         PostaviFormu();
                         break;
