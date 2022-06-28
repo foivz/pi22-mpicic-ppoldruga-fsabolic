@@ -51,6 +51,15 @@ namespace Bibly
             }
         }
 
+        public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
+        {
+            this.Hide();
+            frm.CenterToScreen();
+            frm.Text = naslov;
+            frm.ShowDialog();
+            this.Close();
+        }
+
         private void tsmiOdjava_Click(object sender, EventArgs e)
         {
             if (!Autentifikator.Instanca.OdjavaKorisnika())
@@ -159,13 +168,28 @@ namespace Bibly
             OtvoriNovuFormu(frm);
         }
 
-        public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
+        private void tsmiRezervacije(object sender, EventArgs e)
         {
-            this.Hide();
-            frm.CenterToScreen();
-            frm.Text = naslov;
-            frm.ShowDialog();
-            this.Close();
+            FrmRezervacije frm = new FrmRezervacije();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiPosudbeKorisnika_Click(object sender, EventArgs e)
+        {
+            FrmPosudbe frm = new FrmPosudbe();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiRezervacijeKorisnika_Click(object sender, EventArgs e)
+        {
+            FrmRezervacije frm = new FrmRezervacije();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiRegistracija_Click(object sender, EventArgs e)
+        {
+            FrmRegistracija frm = new FrmRegistracija();
+            OtvoriNovuFormu(frm);
         }
     }
 }
