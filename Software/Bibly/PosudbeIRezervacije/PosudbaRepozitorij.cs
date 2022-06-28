@@ -14,11 +14,11 @@ namespace PosudbeIRezervacije
 {
     public static class PosudbaRepozitorij
     {
-        public static void AzurirajPosudbu(Posudba posudba)
+        public static void ProduljiPosudbu(Posudba posudba, DateTime noviDatumVracanja)
         {
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
-                $"SET broj_produljivanja = {posudba.BrojProduljivanja} WHERE id_posudba = {posudba.Id}";
+                $"SET broj_produljivanja = {posudba.BrojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja}' WHERE id_posudba = {posudba.Id}";
             BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }

@@ -49,7 +49,7 @@ namespace Bibly
             else if (razlikaDana < 0)
             {
                 lblPosudba.Text += $" (Kasnite s vraćanjem!)";
-                double iznosZakasnine = PostavkeRepozitorij.VratiIznosZakasnine();
+                double iznosZakasnine = PostavkeRepozitorij.DohvatiIznosZakasnine();
                 double zakasnina = (-1)*(iznosZakasnine*razlikaDana);
                 odabranaPosudba.Zakasnina = zakasnina;
                 lblZakasnina.Text = string.Format("{0:0.00}", zakasnina) + " HRK";
@@ -63,13 +63,14 @@ namespace Bibly
         private void btnProdulji_Click(object sender, EventArgs e)
         {
             odabranaPosudba.BrojProduljivanja += 1;
-            PosudbaRepozitorij.AzurirajPosudbu(odabranaPosudba);
+            DateTime noviDatumPosudbe = DateTime.Today.AddDays(PostavkeRepozitorij.DohvatiTrajanjeRezervacije());
+            PosudbaRepozitorij.ProduljiPosudbu(odabranaPosudba, noviDatumPosudbe);
             lblBrojProduljivanja.Text = (odabranaPosudba.BrojProduljivanja).ToString();
             OmoguciGumbZaProduljenje();
         }
         private void OmoguciGumbZaProduljenje()
         {
-            int brojPosudbi = PostavkeRepozitorij.VratiMaksimalanBrojProduljivanjaPosudbe();
+            int brojPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe();
             if (int.Parse(lblBrojProduljivanja.Text) >= brojPosudbi || odabranaPosudba.Zakasnina != 0)
             {
                 btnProdulji.Enabled = false;

@@ -11,7 +11,7 @@ namespace Postavke
 {
     public static class PostavkeRepozitorij
     {
-        public static int VratiTrajanjeRezervacije()
+        public static int DohvatiTrajanjeRezervacije()
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
@@ -32,7 +32,28 @@ namespace Postavke
 
             return trajanjeRezervacije[0];
         }
-        public static int VratiMaksimalanBrojMogucihPosudbi()
+        public static int DohvatiTrajanjePosudbe()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT trajanje_rezervacije" +
+                    " FROM postavke";
+
+            List<int> trajanjeRezervacije = new List<int>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                trajanjeRezervacije.Add(int.Parse(reader["trajanje_rezervacije"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return trajanjeRezervacije[0];
+        }
+        public static int DohvatiMaksimalanBrojMogucihPosudbi()
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
@@ -53,7 +74,7 @@ namespace Postavke
 
             return maxBrojPosudbi[0];
         }
-        public static int VratiMaksimalanBrojProduljivanjaPosudbe()
+        public static int DohvatiMaksimalanBrojProduljivanjaPosudbe()
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
@@ -74,7 +95,7 @@ namespace Postavke
 
             return maxBrojProduljenja[0];
         }
-        public static double VratiIznosZakasnine()
+        public static double DohvatiIznosZakasnine()
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
