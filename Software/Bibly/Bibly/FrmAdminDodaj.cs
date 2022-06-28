@@ -93,9 +93,36 @@ namespace Bibly
             this.Controls.Add(knjiga);
 
             btnSpremi.Top = top + 15;
-            btnSpremi.Click += new EventHandler(KorisnikValidacija);
+            btnSpremi.Click += new EventHandler(AutorKnjigeValidacija);
             if (TrenutniObjekt != null)
             {
+                AutorKnjige autorKnjige = (AutorKnjige)TrenutniObjekt;
+            }
+        }
+
+        private void AutorKnjigeValidacija(object sender, EventArgs e)
+        {
+            int stariID = TrenutniObjekt == null ? -1 : ((AutorKnjige)TrenutniObjekt).Autor.Id;
+            string stariISBN = TrenutniObjekt == null ? "" : ((AutorKnjige)TrenutniObjekt).Knjiga.ISBN;
+            AutorKnjige autorKnjige = new AutorKnjige(
+                (Autor)((ComboBox)this.Controls.Find("cmbAutor", true)[0]).SelectedItem,
+                (Knjiga)((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedItem
+                );
+            if (AutorKnjigeRepozitorij.DohvatiSveAutorKnjige().Find(x=>x.Autor.Id==autorKnjige.Autor.Id && x.Knjiga.ISBN==autorKnjige.Knjiga.ISBN) != null)
+            {
+                MessageBox.Show("Ovaj autor je već dodijeljen toj knjizi!");
+            }
+            else
+            {
+                if (TrenutniObjekt==null)
+                {
+                    AutorKnjigeRepozitorij.DodajAutoraKnjige(autorKnjige);
+                }
+                else
+                {
+                    AutorKnjigeRepozitorij.AzurirajAutoraKnjige(stariID,stariISBN,autorKnjige);
+                }
+                Close();
             }
         }
 
