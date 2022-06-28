@@ -66,11 +66,52 @@ namespace Bibly
                     PostaviFormu_TipoviKorisnika();
                     break;
                 case "zanrovi":
-
+                    PostaviFormu_Zanrovi();
                     break;
                 default:
                     this.Close();
                     break;
+            }
+        }
+
+        private void PostaviFormu_Zanrovi()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(ZanrValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Zanr zanr = (Zanr)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = zanr.Id.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = zanr.Naziv;
+            }
+        }
+
+        private void ZanrValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                Zanr zanr = new Zanr(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    ZanrRepozitorij.DodajZanr(zanr);
+                }
+                else
+                {
+                    ZanrRepozitorij.AzurirajZanr(zanr);
+                }
+
+                Close();
             }
         }
 

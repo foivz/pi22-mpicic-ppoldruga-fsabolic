@@ -49,6 +49,9 @@ namespace Bibly
                 case "tipovi_korisnika":
                     dgvTablica.DataSource = TipKorisnikaRepozitorij.DohvatiSveTipoveKorisnika();
                     break;
+                case "zanrovi":
+                    dgvTablica.DataSource = ZanrRepozitorij.DohvatiSveZanrove();
+                    break;
             }
         }
 
@@ -137,6 +140,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             TipKorisnikaRepozitorij.ObrisiTipKorisnika((TipKorisnika)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "zanrovi":
+                        if (TrenutniRed != null)
+                        {
+                            ZanrRepozitorij.ObrisiZanr((Zanr)TrenutniRed);  
                         }
                         PostaviFormu();
                         break;
