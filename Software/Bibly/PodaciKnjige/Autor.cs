@@ -13,6 +13,14 @@ namespace PodaciKnjige
         public string Prezime { get; set; }
         public string Biografija { get; set; }
 
+        public Autor(int id, string ime, string prezime, string biografija)
+        {
+            Id = id;
+            Ime = ime;
+            Prezime = prezime;
+            Biografija = biografija;
+        }
+
         public Autor(string ime, string prezime)
         {
             Ime = ime;
