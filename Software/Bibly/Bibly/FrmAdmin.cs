@@ -46,6 +46,9 @@ namespace Bibly
                     dgvTablica.DataSource = PrimjerakRepozitorij.DohvatiSvePrimjerke();
                     dgvTablica.Columns[3].Visible = false;
                     break;
+                case "tipovi_korisnika":
+                    dgvTablica.DataSource = TipKorisnikaRepozitorij.DohvatiSveTipoveKorisnika();
+                    break;
             }
         }
 
@@ -127,6 +130,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             PrimjerakRepozitorij.ObrisiPrimjerak((Primjerak)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "tipovi_korisnika":
+                        if (TrenutniRed != null)
+                        {
+                            TipKorisnikaRepozitorij.ObrisiTipKorisnika((TipKorisnika)TrenutniRed);
                         }
                         PostaviFormu();
                         break;

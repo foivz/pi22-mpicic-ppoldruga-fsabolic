@@ -63,7 +63,7 @@ namespace Bibly
 
                     break;
                 case "tipovi_korisnika":
-
+                    PostaviFormu_TipoviKorisnika();
                     break;
                 case "zanrovi":
 
@@ -71,6 +71,47 @@ namespace Bibly
                 default:
                     this.Close();
                     break;
+            }
+        }
+
+        private void PostaviFormu_TipoviKorisnika()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(TipKorisnikaValidacija);
+            if (TrenutniObjekt != null)
+            {
+                TipKorisnika tipKorisnika = (TipKorisnika)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = tipKorisnika.ID.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = tipKorisnika.Naziv;
+            }
+        }
+
+        private void TipKorisnikaValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                TipKorisnika tipKorisnika = new TipKorisnika(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    TipKorisnikaRepozitorij.DodajTipKorisnika(tipKorisnika);
+                }
+                else
+                {
+                    TipKorisnikaRepozitorij.AzurirajTipKorisnika(tipKorisnika);
+                }
+
+                Close();
             }
         }
 
