@@ -30,6 +30,12 @@ namespace Bibly
                 case "autor_knjige":
                     dgvTablica.DataSource = AutorKnjigeRepozitorij.DohvatiSveAutorKnjige();
                     break;
+                case "autori":
+                    dgvTablica.DataSource = AutorRepozitorij.DohvatiSveAutore();
+                    break;
+                case "izdavaci":
+                    dgvTablica.DataSource = IzdavacRepozitorij.DohvatiSveIzdavace();
+                    break;
                 case "korisnici":
                     dgvTablica.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
                     break;
@@ -78,6 +84,21 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             AutorKnjigeRepozitorij.ObrisiAutoraKnjige((AutorKnjige)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+
+                    case "autori":
+                        if (TrenutniRed != null)
+                        {
+                            AutorRepozitorij.ObrisiAutora((Autor)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "izdavaci":
+                        if (TrenutniRed != null)
+                        {
+                            IzdavacRepozitorij.ObrisiIzdavaca((Izdavac)TrenutniRed);
                         }
                         PostaviFormu();
                         break;
