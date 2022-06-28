@@ -12,9 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prijava", "Prijava\Prijava.csproj", "{1EA4B4BE-01E1-4B24-988B-4A6BA42D4B69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skener", "Skener\Skener.csproj", "{187CE4B6-5077-4ECE-B9EC-511BED022B96}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosudbeIRezervacije", "PosudbeIRezervacije\PosudbeIRezervacije.csproj", "{4FA5B3B1-97F6-4CA9-A794-B93FDDD703D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postavke", "Postavke\Postavke.csproj", "{51C3B82F-F42D-4E7D-B091-745CFFB44467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testovi", "Testovi\Testovi.csproj", "{9D2356E7-0922-4B5C-9082-053AF55BD785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +53,10 @@ Global
 		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51C3B82F-F42D-4E7D-B091-745CFFB44467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D2356E7-0922-4B5C-9082-053AF55BD785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D2356E7-0922-4B5C-9082-053AF55BD785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D2356E7-0922-4B5C-9082-053AF55BD785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D2356E7-0922-4B5C-9082-053AF55BD785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

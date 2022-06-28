@@ -45,13 +45,17 @@ namespace Bibly
 
         private void OsvjeziPrimjerke()
         {
+            RezervacijaRepozitorij.ProvjeriIstekleRezervacije();
             List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
-            dgvPrimjerci.DataSource = listaPrimjeraka;
-            dgvPrimjerci.Columns[0].Width = 120;
-            dgvPrimjerci.Columns[1].Width = 150;
-            dgvPrimjerci.Columns[2].Visible = false;
-            dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
-            dgvPrimjerci.Columns[3].Width = 383;
+            if(listaPrimjeraka != null)
+            {
+                dgvPrimjerci.DataSource = listaPrimjeraka;
+                dgvPrimjerci.Columns[0].Width = 120;
+                dgvPrimjerci.Columns[1].Width = 150;
+                dgvPrimjerci.Columns[2].Visible = false;
+                dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
+                dgvPrimjerci.Columns[3].Width = 383;
+            }
         }
 
         private void btnRezerviraj_Click(object sender, EventArgs e)
@@ -64,7 +68,7 @@ namespace Bibly
             else
             {
                 Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
-                int trajanjeRezervacije = PostavkeRepozitorij.VratiTrajanjeRezervacije();
+                int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
                 DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
                 Posudba rezervacija = new Posudba(
                     trenutniKorisnik,
@@ -72,7 +76,7 @@ namespace Bibly
                     datumDoKojegVrijediRezervacija
                 );
                 int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
-                int maxBrojMogucihPosudbi = PostavkeRepozitorij.VratiMaksimalanBrojMogucihPosudbi();
+                int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
                 if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
                 {
                     if (RezervacijaRepozitorij.DodajRezervaciju(rezervacija) == 1)
