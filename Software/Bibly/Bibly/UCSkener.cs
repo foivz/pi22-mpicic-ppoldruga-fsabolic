@@ -76,11 +76,11 @@ namespace Bibly
             string result = Skener.Skener.DesifrirajKod(a);
             if (result != "")
             {
-                txtISBN.Invoke(new MethodInvoker(delegate ()
+                txtRezultat.Invoke(new MethodInvoker(delegate ()
                 {
-                    txtISBN.Text = result;
+                    txtRezultat.Text = result;
                 }));
-                if (this.txtISBN.InvokeRequired)
+                if (this.txtRezultat.InvokeRequired)
                 {
                     UspjesnoSkeniranjeCallback d = new UspjesnoSkeniranjeCallback(UspjesnoSkeniranje);
                     this.Invoke(d);
@@ -101,7 +101,7 @@ namespace Bibly
 
         private void btnZaustavi_Click(object sender, EventArgs e)
         {
-            if (this.txtISBN.InvokeRequired)
+            if (this.txtRezultat.InvokeRequired)
             {
                 PrekidSkeniranjeCallback d = new PrekidSkeniranjeCallback(UspjesnoSkeniranje);
                 this.Invoke(d);
@@ -120,9 +120,9 @@ namespace Bibly
         public void PrekidSkeniranja()
         {
             PromijeniBojuObrubaSkenera(Color.Gray);
-            txtISBN.Text = "";
+            txtRezultat.Text = "";
             txtGreske.BackColor = Color.FromArgb(254, 255, 242);
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             ZaustaviSkeniranje();
         }
 
@@ -158,8 +158,8 @@ namespace Bibly
             }
 
 
-            string skeniranaVrijednost = txtISBN.Text;
-            if (UnesenISBNBroj(skeniranaVrijednost))
+            string skeniranaVrijednost = txtRezultat.Text;
+            if (UnesenBroj(skeniranaVrijednost))
             {
                 if (cmbPrimjerci == null)
                 {
@@ -217,14 +217,14 @@ namespace Bibly
                 btnSkeniraj.Enabled = true;
                 btnZaustavi.Enabled = false;
                 txtGreske.Text = "";
-                txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+                txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             }
 
         }
 
         private void IspisGreske(string poruka)
         {
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             txtGreske.BackColor = Color.LightCoral;
             txtGreske.Text = "";
             txtGreske.Text = poruka;
@@ -240,7 +240,7 @@ namespace Bibly
             return !(cmbPrimjerci == null && cmbKorisnici == null);
         }
 
-        private bool UnesenISBNBroj(string unos)
+        private bool UnesenBroj(string unos)
         {
             long ignore = -1;
             return long.TryParse(unos, out ignore);
