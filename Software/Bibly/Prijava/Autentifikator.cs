@@ -25,6 +25,11 @@ namespace Prijava
 
         }
 
+        public void PonovnoUcitajKorisnika()
+        {
+            logiraniKorisnik = KorisnikRepozitorij.DohvatiKorisnika_OIB(logiraniKorisnik.OIB);
+        }
+
         public int PrijavaKorisnika(string email, string lozinka)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email)

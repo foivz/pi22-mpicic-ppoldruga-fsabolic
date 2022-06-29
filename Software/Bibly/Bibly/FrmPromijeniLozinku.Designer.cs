@@ -29,62 +29,57 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblNaslov = new System.Windows.Forms.Label();
-            this.lblStaraLozinka = new System.Windows.Forms.Label();
-            this.lblNovaLozinka = new System.Windows.Forms.Label();
-            this.lblPotvrdaLozinke = new System.Windows.Forms.Label();
+            this.txtStaraLozinka = new System.Windows.Forms.TextBox();
             this.btnSpremiLozinku = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblPotvrdaLozinke = new System.Windows.Forms.Label();
+            this.txtNovaLozinka = new System.Windows.Forms.TextBox();
+            this.lblNovaLozinka = new System.Windows.Forms.Label();
+            this.lblStaraLozinka = new System.Windows.Forms.Label();
+            this.lblNaslov = new System.Windows.Forms.Label();
+            this.txtPotvrdaLozinke = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtStaraLozinka);
             this.panel1.Controls.Add(this.btnSpremiLozinku);
             this.panel1.Controls.Add(this.lblPotvrdaLozinke);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtNovaLozinka);
             this.panel1.Controls.Add(this.lblNovaLozinka);
             this.panel1.Controls.Add(this.lblStaraLozinka);
             this.panel1.Controls.Add(this.lblNaslov);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtPotvrdaLozinke);
             this.panel1.Location = new System.Drawing.Point(53, 51);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 546);
             this.panel1.TabIndex = 1;
             // 
-            // lblNaslov
+            // txtStaraLozinka
             // 
-            this.lblNaslov.AutoSize = true;
-            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaslov.Location = new System.Drawing.Point(89, 99);
-            this.lblNaslov.Name = "lblNaslov";
-            this.lblNaslov.Size = new System.Drawing.Size(289, 31);
-            this.lblNaslov.TabIndex = 0;
-            this.lblNaslov.Text = "PROMJENA LOZINKE";
+            this.txtStaraLozinka.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtStaraLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStaraLozinka.Location = new System.Drawing.Point(201, 169);
+            this.txtStaraLozinka.Name = "txtStaraLozinka";
+            this.txtStaraLozinka.PasswordChar = '*';
+            this.txtStaraLozinka.Size = new System.Drawing.Size(217, 22);
+            this.txtStaraLozinka.TabIndex = 7;
+            this.txtStaraLozinka.TextChanged += new System.EventHandler(this.txtStaraLozinka_TextChanged);
             // 
-            // lblStaraLozinka
+            // btnSpremiLozinku
             // 
-            this.lblStaraLozinka.AutoSize = true;
-            this.lblStaraLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaraLozinka.Location = new System.Drawing.Point(50, 173);
-            this.lblStaraLozinka.Name = "lblStaraLozinka";
-            this.lblStaraLozinka.Size = new System.Drawing.Size(117, 18);
-            this.lblStaraLozinka.TabIndex = 1;
-            this.lblStaraLozinka.Text = "Stara lozinka: ";
-            // 
-            // lblNovaLozinka
-            // 
-            this.lblNovaLozinka.AutoSize = true;
-            this.lblNovaLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNovaLozinka.Location = new System.Drawing.Point(51, 259);
-            this.lblNovaLozinka.Name = "lblNovaLozinka";
-            this.lblNovaLozinka.Size = new System.Drawing.Size(116, 18);
-            this.lblNovaLozinka.TabIndex = 2;
-            this.lblNovaLozinka.Text = "Nova lozinka: ";
+            this.btnSpremiLozinku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnSpremiLozinku.Enabled = false;
+            this.btnSpremiLozinku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpremiLozinku.Location = new System.Drawing.Point(148, 407);
+            this.btnSpremiLozinku.Name = "btnSpremiLozinku";
+            this.btnSpremiLozinku.Size = new System.Drawing.Size(159, 39);
+            this.btnSpremiLozinku.TabIndex = 4;
+            this.btnSpremiLozinku.Text = "Spremi lozinku";
+            this.btnSpremiLozinku.UseVisualStyleBackColor = false;
+            this.btnSpremiLozinku.Click += new System.EventHandler(this.btnSpremiLozinku_Click);
             // 
             // lblPotvrdaLozinke
             // 
@@ -96,43 +91,57 @@
             this.lblPotvrdaLozinke.TabIndex = 3;
             this.lblPotvrdaLozinke.Text = "Potvrda lozinke: ";
             // 
-            // btnSpremiLozinku
+            // txtNovaLozinka
             // 
-            this.btnSpremiLozinku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnSpremiLozinku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpremiLozinku.Location = new System.Drawing.Point(148, 407);
-            this.btnSpremiLozinku.Name = "btnSpremiLozinku";
-            this.btnSpremiLozinku.Size = new System.Drawing.Size(159, 39);
-            this.btnSpremiLozinku.TabIndex = 4;
-            this.btnSpremiLozinku.Text = "Spremi lozinku";
-            this.btnSpremiLozinku.UseVisualStyleBackColor = false;
+            this.txtNovaLozinka.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtNovaLozinka.Enabled = false;
+            this.txtNovaLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNovaLozinka.Location = new System.Drawing.Point(201, 255);
+            this.txtNovaLozinka.Name = "txtNovaLozinka";
+            this.txtNovaLozinka.PasswordChar = '*';
+            this.txtNovaLozinka.Size = new System.Drawing.Size(217, 22);
+            this.txtNovaLozinka.TabIndex = 6;
             // 
-            // textBox1
+            // lblNovaLozinka
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(201, 298);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 22);
-            this.textBox1.TabIndex = 5;
+            this.lblNovaLozinka.AutoSize = true;
+            this.lblNovaLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNovaLozinka.Location = new System.Drawing.Point(51, 259);
+            this.lblNovaLozinka.Name = "lblNovaLozinka";
+            this.lblNovaLozinka.Size = new System.Drawing.Size(116, 18);
+            this.lblNovaLozinka.TabIndex = 2;
+            this.lblNovaLozinka.Text = "Nova lozinka: ";
             // 
-            // textBox2
+            // lblStaraLozinka
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(201, 255);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(217, 22);
-            this.textBox2.TabIndex = 6;
+            this.lblStaraLozinka.AutoSize = true;
+            this.lblStaraLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaraLozinka.Location = new System.Drawing.Point(50, 173);
+            this.lblStaraLozinka.Name = "lblStaraLozinka";
+            this.lblStaraLozinka.Size = new System.Drawing.Size(117, 18);
+            this.lblStaraLozinka.TabIndex = 1;
+            this.lblStaraLozinka.Text = "Stara lozinka: ";
             // 
-            // textBox3
+            // lblNaslov
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(201, 169);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(217, 22);
-            this.textBox3.TabIndex = 7;
+            this.lblNaslov.AutoSize = true;
+            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNaslov.Location = new System.Drawing.Point(89, 99);
+            this.lblNaslov.Name = "lblNaslov";
+            this.lblNaslov.Size = new System.Drawing.Size(289, 31);
+            this.lblNaslov.TabIndex = 0;
+            this.lblNaslov.Text = "PROMJENA LOZINKE";
+            // 
+            // txtPotvrdaLozinke
+            // 
+            this.txtPotvrdaLozinke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtPotvrdaLozinke.Enabled = false;
+            this.txtPotvrdaLozinke.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPotvrdaLozinke.Location = new System.Drawing.Point(201, 298);
+            this.txtPotvrdaLozinke.Name = "txtPotvrdaLozinke";
+            this.txtPotvrdaLozinke.PasswordChar = '*';
+            this.txtPotvrdaLozinke.Size = new System.Drawing.Size(217, 22);
+            this.txtPotvrdaLozinke.TabIndex = 5;
             // 
             // FrmPromijeniLozinku
             // 
@@ -154,9 +163,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtStaraLozinka;
+        private System.Windows.Forms.TextBox txtNovaLozinka;
+        private System.Windows.Forms.TextBox txtPotvrdaLozinke;
         private System.Windows.Forms.Button btnSpremiLozinku;
         private System.Windows.Forms.Label lblPotvrdaLozinke;
         private System.Windows.Forms.Label lblNovaLozinka;
