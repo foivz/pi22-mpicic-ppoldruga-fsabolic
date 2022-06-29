@@ -36,10 +36,10 @@ namespace Bibly
                     PostaviFormu_AutorKnjige();
                     break;
                 case "autori":
-
+                    PostaviFormu_Autori();
                     break;
                 case "izdavaci":
-
+                    PostaviFormu_Izdavaci();
                     break;
                 case "knjige":
 
@@ -48,7 +48,7 @@ namespace Bibly
                     PostaviFormu_Korisnici();
                     break;
                 case "mjesta":
-
+                    PostaviFormu_Mjesta();
                     break;
                 case "postavke":
 
@@ -57,20 +57,286 @@ namespace Bibly
 
                     break;
                 case "primjerci":
-
+                    PostaviFormu_Primjerci();
                     break;
                 case "statusi_primjeraka":
 
                     break;
                 case "tipovi_korisnika":
-
+                    PostaviFormu_TipoviKorisnika();
                     break;
                 case "zanrovi":
-
+                    PostaviFormu_Zanrovi();
                     break;
                 default:
                     this.Close();
                     break;
+            }
+        }
+
+        private void PostaviFormu_Zanrovi()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(ZanrValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Zanr zanr = (Zanr)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = zanr.Id.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = zanr.Naziv;
+            }
+        }
+
+        private void ZanrValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                Zanr zanr = new Zanr(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    ZanrRepozitorij.DodajZanr(zanr);
+                }
+                else
+                {
+                    ZanrRepozitorij.AzurirajZanr(zanr);
+                }
+
+                Close();
+            }
+        }
+
+        private void PostaviFormu_TipoviKorisnika()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(TipKorisnikaValidacija);
+            if (TrenutniObjekt != null)
+            {
+                TipKorisnika tipKorisnika = (TipKorisnika)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = tipKorisnika.ID.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = tipKorisnika.Naziv;
+            }
+        }
+
+        private void TipKorisnikaValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                TipKorisnika tipKorisnika = new TipKorisnika(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    TipKorisnikaRepozitorij.DodajTipKorisnika(tipKorisnika);
+                }
+                else
+                {
+                    TipKorisnikaRepozitorij.AzurirajTipKorisnika(tipKorisnika);
+                }
+
+                Close();
+            }
+        }
+
+        private void PostaviFormu_Primjerci()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            ComboBox knjiga = PostaviComboBox("cmbKnjiga", "lblKnjiga", "Knjiga");
+            foreach (Knjiga k in KnjigaRepozitorij.DohvatiSveKnjige())
+            {
+                knjiga.Items.Add(k);
+            }
+            knjiga.SelectedIndex = 0;
+            this.Controls.Add(knjiga);
+            List<StatusPrimjerka> statusiPrimjeraka = new List<StatusPrimjerka>();
+            ComboBox statusPrimjerka = PostaviComboBox("cmbStatusPrimjerka", "lblStatusPrimjerka", "Status primjerka");
+            foreach (StatusPrimjerka item in Enum.GetValues(typeof(StatusPrimjerka)))
+            {
+                statusPrimjerka.Items.Add(item);
+                statusiPrimjeraka.Add(item);
+            }
+            statusPrimjerka.Items.Remove(StatusPrimjerka.Greska);
+            statusPrimjerka.SelectedIndex = 0;
+            this.Controls.Add(statusPrimjerka);
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(PrimjerciValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Primjerak primjerak = (Primjerak)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = primjerak.Id.ToString();
+                List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
+                ((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == primjerak.Knjiga.ISBN));
+                ((ComboBox)this.Controls.Find("cmbStatusPrimjerka", true)[0]).SelectedItem = primjerak.Status;
+
+            }
+        }
+
+        private void PrimjerciValidacija(object sender, EventArgs e)
+        {
+            Primjerak primjerak = new Primjerak(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                (StatusPrimjerka)((ComboBox)this.Controls.Find("cmbStatusPrimjerka", true)[0]).SelectedItem,
+                (Knjiga)((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedItem,
+                null
+                );
+            if (TrenutniObjekt == null)
+            {
+                PrimjerakRepozitorij.DodajPrimjerak(primjerak);
+            }
+            else
+            {
+                PrimjerakRepozitorij.AzurirajPrimjerak(primjerak);
+            }
+            Close();
+
+        }
+
+        private void PostaviFormu_Mjesta()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(MjestaValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Mjesto mjesto = (Mjesto)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = mjesto.ID.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = mjesto.Naziv;
+            }
+        }
+
+        private void MjestaValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                Mjesto mjesto = new Mjesto(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    MjestoRepozitorij.DodajMjesto(mjesto);
+                }
+                else
+                {
+                    MjestoRepozitorij.AzurirajMjesto(mjesto);
+                }
+
+                Close();
+            }
+        }
+
+        private void PostaviFormu_Izdavaci()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(IzdavaciValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Izdavac izdavac = (Izdavac)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = izdavac.Id.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = izdavac.Naziv;
+            }
+        }
+
+        private void IzdavaciValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+                Izdavac izdavac = new Izdavac(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    IzdavacRepozitorij.DodajIzdavaca(izdavac);
+                }
+                else
+                {
+                    IzdavacRepozitorij.AzurirajIzdavaca(izdavac);
+                }
+
+                Close();
+            }
+        }
+
+        private void PostaviFormu_Autori()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtIme", "lblIme", "Ime"));
+            this.Controls.Add(PostaviTextBox("txtPrezime", "lblPrezime", "Prezime"));
+            this.Controls.Add(PostaviTextBox("txtBiografija", "lblBiografija", "Biografija"));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(AutoriValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Autor autor = (Autor)TrenutniObjekt;
+
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = autor.Id.ToString();
+                ((TextBox)this.Controls.Find("txtIme", true)[0]).Text = autor.Ime;
+                ((TextBox)this.Controls.Find("txtPrezime", true)[0]).Text = autor.Prezime;
+                ((TextBox)this.Controls.Find("txtBiografija", true)[0]).Text = autor.Biografija;
+            }
+        }
+
+        private void AutoriValidacija(object sender, EventArgs e)
+        {
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                list.Add(t);
+            }
+
+            if (UnesenTekst())
+            {
+
+                Autor autor = new Autor(
+                ((String.IsNullOrEmpty(((TextBox)this.Controls.Find("txtID", true)[0]).Text)) ? -1 : int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)),
+                ((TextBox)this.Controls.Find("txtIme", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtPrezime", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtBiografija", true)[0]).Text
+                );
+                if (TrenutniObjekt == null)
+                {
+                    AutorRepozitorij.DodajAutora(autor);
+                }
+                else
+                {
+                    AutorRepozitorij.AzurirajAutora(autor);
+                }
+
+                Close();
             }
         }
 
@@ -97,6 +363,11 @@ namespace Bibly
             if (TrenutniObjekt != null)
             {
                 AutorKnjige autorKnjige = (AutorKnjige)TrenutniObjekt;
+                List<Autor> autori = AutorRepozitorij.DohvatiSveAutore();
+                ((ComboBox)this.Controls.Find("cmbAutor", true)[0]).SelectedIndex = autori.IndexOf(autori.Find(x => x.Id == autorKnjige.Autor.Id));
+                List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
+                ((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == autorKnjige.Knjiga.ISBN));
+
             }
         }
 
@@ -108,19 +379,19 @@ namespace Bibly
                 (Autor)((ComboBox)this.Controls.Find("cmbAutor", true)[0]).SelectedItem,
                 (Knjiga)((ComboBox)this.Controls.Find("cmbKnjiga", true)[0]).SelectedItem
                 );
-            if (AutorKnjigeRepozitorij.DohvatiSveAutorKnjige().Find(x=>x.Autor.Id==autorKnjige.Autor.Id && x.Knjiga.ISBN==autorKnjige.Knjiga.ISBN) != null)
+            if (AutorKnjigeRepozitorij.DohvatiSveAutorKnjige().Find(x => x.Autor.Id == autorKnjige.Autor.Id && x.Knjiga.ISBN == autorKnjige.Knjiga.ISBN) != null)
             {
                 MessageBox.Show("Ovaj autor je već dodijeljen toj knjizi!");
             }
             else
             {
-                if (TrenutniObjekt==null)
+                if (TrenutniObjekt == null)
                 {
                     AutorKnjigeRepozitorij.DodajAutoraKnjige(autorKnjige);
                 }
                 else
                 {
-                    AutorKnjigeRepozitorij.AzurirajAutoraKnjige(stariID,stariISBN,autorKnjige);
+                    AutorKnjigeRepozitorij.AzurirajAutoraKnjige(stariID, stariISBN, autorKnjige);
                 }
                 Close();
             }
@@ -236,11 +507,15 @@ namespace Bibly
         private bool UnesenTekst()
         {
             string poruka = "";
+            List<string> Iznimke = new List<string>()
+            {
+                "txtID"
+            };
             foreach (TextBox txt in this.Controls.OfType<TextBox>()) txt.BackColor = Color.FromArgb(254, 255, 242);
             foreach (TextBox txt in this.Controls.OfType<TextBox>())
             {
                 txt.BackColor = Color.FromArgb(254, 255, 242);
-                if (String.IsNullOrEmpty(txt.Text) || String.IsNullOrWhiteSpace(txt.Text))
+                if ((String.IsNullOrEmpty(txt.Text) || String.IsNullOrWhiteSpace(txt.Text)) && !Iznimke.Contains(txt.Name))
                 {
                     txt.BackColor = Color.LightCoral;
                     poruka += txt.Name + " - nije unesena vrijednost\n";
@@ -258,7 +533,7 @@ namespace Bibly
                             break;
                         case "txtIme":
                         case "txtPrezime":
-                            uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,}))?)$";
+                            uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20}))?)$";
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format imena/prezimena");
                             break;
                         case "txtBrojMobitela":
@@ -266,9 +541,14 @@ namespace Bibly
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format broja mobitela");
                             break;
                         case "txtEmail":
-                            uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,}@[a-z]{2,}[.][a-z][a-z]{1,})$";
+                            uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,30}@[a-z]{2,5}[.][a-z][a-z]{1,3})$";
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format e-maila");
                             if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_Mail(txt.Text) != null) return IspisGreske(txt, "E-mail je već unesen!");
+                            break;
+                        case "txtAdresaPrebivalista":
+                        case "txtAdresaBoravista":
+                        case "Lozinka":
+                            if (!VelicinaUnosa(txt.Text, 50)) IspisGreske(txt, "Prevelik unos");
                             break;
                         case "txtDatumUclanjivanja":
                         case "txtDatumIstekaClanarine":
@@ -296,6 +576,11 @@ namespace Bibly
             return false;
         }
 
+        private bool VelicinaUnosa(string unos, int max)
+        {
+            return !(unos.Length >= max);
+        }
+
         private bool ProvjeraOIBa(string unos)
         {
             if (unos.Length != 11 || !long.TryParse(unos, out long test))
@@ -320,7 +605,7 @@ namespace Bibly
 
         }
 
-        private TextBox PostaviTextBox(string Ime, string LabelIme, string LabelText)
+        private TextBox PostaviTextBox(string Ime, string LabelIme, string LabelText, bool enabled = true)
         {
             TextBox txt = new TextBox();
             txt.Name = Ime;
@@ -329,6 +614,7 @@ namespace Bibly
             txt.Left = 350;
             txt.Width = 200;
             txt.Font = new Font("Microsoft Sans Serif", 12);
+            txt.Enabled = enabled;
             this.Controls.Add(PostaviLabel(LabelIme, LabelText));
             top += 50;
             return txt;

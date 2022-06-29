@@ -37,5 +37,47 @@ namespace Prijava
 
             return mjesta;
         }
+
+
+        public static int DodajMjesto(Mjesto mjesto)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"INSERT INTO mjesta VALUES('{mjesto.Naziv}')";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+        public static int AzurirajMjesto(Mjesto mjesto)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"UPDATE mjesta SET naziv='{mjesto.Naziv}' WHERE id_mjesto={mjesto.ID}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+
+        public static int ObrisiMjesto(Mjesto mjesto)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"DELETE FROM mjesta WHERE id_mjesto={mjesto.ID}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
     }
 }

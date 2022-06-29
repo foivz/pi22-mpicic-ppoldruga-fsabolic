@@ -35,5 +35,46 @@ namespace Prijava
 
             return tipoviKorisnika;
         }
+
+        public static int DodajTipKorisnika(TipKorisnika tipKorisnika)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"INSERT INTO tipovi_korisnika VALUES('{tipKorisnika.Naziv}')";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+        public static int AzurirajTipKorisnika(TipKorisnika tipKorisnika)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"UPDATE tipovi_korisnika SET naziv='{tipKorisnika.Naziv}' WHERE id_tip_korisnika={tipKorisnika.ID}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+
+        public static int ObrisiTipKorisnika(TipKorisnika tipKorisnika)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"DELETE FROM tipovi_korisnika WHERE id_tip_korisnika={tipKorisnika.ID}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
     }
 }

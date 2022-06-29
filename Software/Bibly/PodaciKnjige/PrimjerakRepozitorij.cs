@@ -11,6 +11,102 @@ namespace PodaciKnjige
 {
     public static class PrimjerakRepozitorij
     {
+        public static List<Primjerak> DohvatiSvePrimjerke()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit =
+                    "SELECT p.id_primjerak AS 'p.id_primjerak'" +
+                    ", p.ISBN AS 'p.ISBN'" +
+                    ", p.id_status AS 'p.id_status'" +
+                    ", sp.naziv AS 'sp.naziv'" +
+                    " FROM primjerci p" +
+                    " JOIN statusi_primjeraka sp" +
+                    " ON sp.id_statusa = p.id_status" +
+                    " JOIN knjige k" +
+                    " ON k.ISBN = p.ISBN";
+            List<Primjerak> primjerci = new List<Primjerak>();
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                primjerci.Add(new Primjerak(
+                   int.Parse(reader["p.id_primjerak"].ToString()),
+                   VratiStatusKaoEnum(reader["sp.naziv"].ToString()),
+                   KnjigaRepozitorij.DohvatiKnjigu(reader["p.ISBN"].ToString()),
+                   null
+                   ));
+            }
+            reader.Close();
+            BazaPodataka.Instanca.PrekiniVezu();
+            if (primjerci.Count == 0)
+            {
+                return null;
+            }
+            
+            return primjerci;
+        }
+
+        public static int DodajPrimjerak(Primjerak primjerak)
+        {
+            int status = 1;
+            switch (primjerak.Status)
+            {
+                case StatusPrimjerka.Dostupan:
+                    status = 1;
+                    break;
+                case StatusPrimjerka.Posuđen:
+                    status = 2;
+                    break;
+                case StatusPrimjerka.Rezerviran:
+                    status = 3;
+                    break;
+            }
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = $"INSERT INTO primjerci VALUES('{primjerak.Knjiga.ISBN}',{status})";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+
+        public static int AzurirajPrimjerak(Primjerak primjerak)
+        {
+            int status = 1;
+            switch (primjerak.Status)
+            {
+                case StatusPrimjerka.Dostupan:
+                    status = 1;
+                    break;
+                case StatusPrimjerka.Posuđen:
+                    status = 2;
+                    break;
+                case StatusPrimjerka.Rezerviran:
+                    status = 3;
+                    break;
+            }
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = $"UPDATE primjerci SET ISBN='{primjerak.Knjiga.ISBN}',id_status = {status} WHERE id_primjerak = {primjerak.Id}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+        public static int ObrisiPrimjerak(Primjerak primjerak)
+        {
+
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = $"DELETE FROM primjerci WHERE id_primjerak = {primjerak.Id}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+
         public static List<Primjerak> DohvatiPrimjerkeKnjige(Knjiga knjiga)
         {
             BazaPodataka.Instanca.UspostaviVezu();
