@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.cmbKriterijPretrazivanja = new System.Windows.Forms.ComboBox();
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
@@ -51,6 +52,7 @@
             // 
             // cmbKriterijPretrazivanja
             // 
+            this.cmbKriterijPretrazivanja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKriterijPretrazivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKriterijPretrazivanja.FormattingEnabled = true;
             this.cmbKriterijPretrazivanja.Location = new System.Drawing.Point(537, 160);
@@ -60,11 +62,25 @@
             // 
             // dgvKorisnici
             // 
+            this.dgvKorisnici.AllowUserToAddRows = false;
+            this.dgvKorisnici.AllowUserToDeleteRows = false;
+            this.dgvKorisnici.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKorisnici.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKorisnici.Location = new System.Drawing.Point(31, 201);
             this.dgvKorisnici.Name = "dgvKorisnici";
-            this.dgvKorisnici.Size = new System.Drawing.Size(1020, 337);
+            this.dgvKorisnici.ReadOnly = true;
+            this.dgvKorisnici.RowTemplate.Height = 35;
+            this.dgvKorisnici.Size = new System.Drawing.Size(1020, 454);
             this.dgvKorisnici.TabIndex = 3;
+            this.dgvKorisnici.SelectionChanged += new System.EventHandler(this.dgvKorisnici_SelectionChanged);
             // 
             // txtPretrazivanje
             // 
@@ -79,7 +95,7 @@
             // 
             this.btnUclani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnUclani.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUclani.Location = new System.Drawing.Point(695, 544);
+            this.btnUclani.Location = new System.Drawing.Point(694, 661);
             this.btnUclani.Name = "btnUclani";
             this.btnUclani.Size = new System.Drawing.Size(107, 34);
             this.btnUclani.TabIndex = 5;
@@ -90,7 +106,7 @@
             // 
             this.btnAzuriraj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnAzuriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAzuriraj.Location = new System.Drawing.Point(818, 544);
+            this.btnAzuriraj.Location = new System.Drawing.Point(819, 661);
             this.btnAzuriraj.Name = "btnAzuriraj";
             this.btnAzuriraj.Size = new System.Drawing.Size(109, 34);
             this.btnAzuriraj.TabIndex = 6;
@@ -102,12 +118,13 @@
             // 
             this.btnObrisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
             this.btnObrisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObrisi.Location = new System.Drawing.Point(943, 544);
+            this.btnObrisi.Location = new System.Drawing.Point(943, 661);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(108, 34);
             this.btnObrisi.TabIndex = 7;
             this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // btnPretrazi
             // 
@@ -124,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 613);
+            this.ClientSize = new System.Drawing.Size(1085, 717);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnAzuriraj);
