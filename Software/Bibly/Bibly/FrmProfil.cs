@@ -119,6 +119,7 @@ namespace Bibly
                         }
                         break;
                 }
+
             }
 
 
@@ -133,6 +134,22 @@ namespace Bibly
             azuriranKorisnik.AdresaBoravista = txtAdresaBoravista.Text;
             KorisnikRepozitorij.AzurirajKorisnika(azuriranKorisnik.OIB, azuriranKorisnik);
             Autentifikator.Instanca.PonovnoUcitajKorisnika();
+
+            lblUspjeh.Visible = true;
+            timer1.Start();
+
+        }
+
+        static int vrijeme = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            if (vrijeme++ == 2)
+            {
+                lblUspjeh.Visible = false;
+                vrijeme = 0;
+                timer1.Stop();
+            }
 
         }
     }
