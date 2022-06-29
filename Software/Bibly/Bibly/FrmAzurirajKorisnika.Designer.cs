@@ -316,6 +316,7 @@
             this.btnProdulji.TabIndex = 26;
             this.btnProdulji.Text = "Produlji";
             this.btnProdulji.UseVisualStyleBackColor = false;
+            this.btnProdulji.Click += new System.EventHandler(this.btnProdulji_Click);
             // 
             // btnAzuriraj
             // 
@@ -327,6 +328,7 @@
             this.btnAzuriraj.TabIndex = 27;
             this.btnAzuriraj.Text = "Ažuriraj";
             this.btnAzuriraj.UseVisualStyleBackColor = false;
+            this.btnAzuriraj.Click += new System.EventHandler(this.btnAzuriraj_Click);
             // 
             // btnIsprintaj
             // 

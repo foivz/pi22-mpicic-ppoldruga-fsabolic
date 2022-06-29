@@ -264,6 +264,20 @@ namespace Prijava
             return uspjeh;
         }
 
+        public static int AzurirajKorisnika_DatumIstekaClanarine(Korisnik korisnik,DateTime noviDatum)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = $"UPDATE korisnici SET "+
+                $"datum_isteka_clanarine = '{noviDatum.ToString("yyyy-MM-dd")}' WHERE OIB='{korisnik.OIB}'";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+
         public static int ObrisiKorisnika(Korisnik korisnik)
         {
             BazaPodataka.Instanca.UspostaviVezu();

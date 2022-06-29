@@ -23,6 +23,7 @@ namespace Bibly
         {
             FrmAzurirajKorisnika frm = new FrmAzurirajKorisnika(trenutniRed);
             frm.ShowDialog();
+            dgvKorisnici.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
         }
 
         private void dgvKorisnici_SelectionChanged(object sender, EventArgs e)
@@ -32,13 +33,17 @@ namespace Bibly
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            if(trenutniRed != null)
+            if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                KorisnikRepozitorij.ObrisiKorisnika(trenutniRed);
-            }
-            else
-            {
-                MessageBox.Show("Niste odabrali korisnika!");
+                if (trenutniRed != null)
+                {
+                    KorisnikRepozitorij.ObrisiKorisnika(trenutniRed);
+                    dgvKorisnici.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
+                }
+                else
+                {
+                    MessageBox.Show("Niste odabrali korisnika!");
+                }
             }
         }
     }
