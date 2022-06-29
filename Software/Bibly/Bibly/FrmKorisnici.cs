@@ -21,7 +21,7 @@ namespace Bibly
 
         private void btnAzuriraj_Click(object sender, EventArgs e)
         {
-            FrmAzurirajKorisnika frm = new FrmAzurirajKorisnika();
+            FrmAzurirajKorisnika frm = new FrmAzurirajKorisnika(trenutniRed);
             frm.ShowDialog();
         }
 
