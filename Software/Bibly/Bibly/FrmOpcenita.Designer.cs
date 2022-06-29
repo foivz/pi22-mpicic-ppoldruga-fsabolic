@@ -48,6 +48,9 @@
             this.tsmiZanrovi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpravljanjePosudbamaGlavno = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpravljanjePosudbama = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPregledPosudbi = new System.Windows.Forms.ToolStripMenuItem();
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +65,8 @@
             this.tsmiPosudbeKorisnika,
             this.tsmiAdmin,
             this.tsmiProfil,
-            this.tsmiOdjava});
+            this.tsmiOdjava,
+            this.tsmiUpravljanjePosudbamaGlavno});
             this.glavniMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.glavniMenu.Location = new System.Drawing.Point(0, 0);
             this.glavniMenu.Name = "glavniMenu";
@@ -207,6 +211,28 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
+            // tsmiUpravljanjePosudbamaGlavno
+            // 
+            this.tsmiUpravljanjePosudbamaGlavno.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiUpravljanjePosudbama,
+            this.tsmiPregledPosudbi});
+            this.tsmiUpravljanjePosudbamaGlavno.Name = "tsmiUpravljanjePosudbamaGlavno";
+            this.tsmiUpravljanjePosudbamaGlavno.Size = new System.Drawing.Size(187, 25);
+            this.tsmiUpravljanjePosudbamaGlavno.Text = "Upravljanje posudbama";
+            // 
+            // tsmiUpravljanjePosudbama
+            // 
+            this.tsmiUpravljanjePosudbama.Name = "tsmiUpravljanjePosudbama";
+            this.tsmiUpravljanjePosudbama.Size = new System.Drawing.Size(245, 26);
+            this.tsmiUpravljanjePosudbama.Text = "Upravljanje posudbama";
+            // 
+            // tsmiPregledPosudbi
+            // 
+            this.tsmiPregledPosudbi.Name = "tsmiPregledPosudbi";
+            this.tsmiPregledPosudbi.Size = new System.Drawing.Size(245, 26);
+            this.tsmiPregledPosudbi.Text = "Pregled posudbi";
+            this.tsmiPregledPosudbi.Click += new System.EventHandler(this.tsmiPregledPosudbi_Click);
+            // 
             // FrmOpcenita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +272,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
         private System.Windows.Forms.ToolStripMenuItem tsmiRezervacijeKorisnika;
         private System.Windows.Forms.ToolStripMenuItem tsmiPosudbeKorisnika;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpravljanjePosudbamaGlavno;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpravljanjePosudbama;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPregledPosudbi;
     }
 }
 
