@@ -16,7 +16,7 @@ namespace Bibly
 {
     public partial class UCSkener : UserControl
     {
-        private ComboBox cmbKnjige = null;
+        private ComboBox cmbPrimjerci = null;
         private ComboBox cmbKorisnici = null;
 
         FilterInfoCollection filterInfoCollection;
@@ -29,10 +29,10 @@ namespace Bibly
             UcitajKamere();
         }
 
-        public void PostaviUCSkener(FrmOpcenita frm, ComboBox _cmbKnjige, ComboBox _cmbKorisnici)
+        public void PostaviUCSkener(FrmOpcenita frm, ComboBox _cmbPrimjerci, ComboBox _cmbKorisnici)
         {
             frm.FormClosed += new FormClosedEventHandler(frm_FormClosed);
-            cmbKnjige = _cmbKnjige;
+            cmbPrimjerci = _cmbPrimjerci;
             cmbKorisnici = _cmbKorisnici;
 
         }
@@ -52,7 +52,7 @@ namespace Bibly
         {
             if (!PostojiBaremJedanCMB())
             {
-                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za primjerke --");
 
             }
             else
@@ -126,14 +126,14 @@ namespace Bibly
             ZaustaviSkeniranje();
         }
 
-        private void PopuniCMBKnjige(Knjiga knjiga)
+        private void PopuniCMBPrimjerci(Primjerak primjerak)
         {
-            List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
-            foreach (Knjiga k in knjige)
+            List<Primjerak> primjerci = PrimjerakRepozitorij.DohvatiSvePrimjerke();
+            foreach (Primjerak p in primjerci)
             {
-                cmbKnjige.Items.Add(k);
+                cmbPrimjerci.Items.Add(p);
             }
-            cmbKnjige.SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == knjiga.ISBN));
+            cmbPrimjerci.SelectedIndex = primjerci.IndexOf(primjerci.Find(x => x.Id == primjerak.Id));
         }
 
         private void PopuniCMBKorisnici(Korisnik korisnik)
@@ -153,7 +153,7 @@ namespace Bibly
 
             if (!PostojiBaremJedanCMB())
             {
-                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za primjerke --");
                 return;
             }
 
@@ -161,7 +161,7 @@ namespace Bibly
             string skeniranaVrijednost = txtISBN.Text;
             if (UnesenISBNBroj(skeniranaVrijednost))
             {
-                if (cmbKnjige == null)
+                if (cmbPrimjerci == null)
                 {
                     IspisGreske("Uočen barkod! Pokušajte s QR kodom!");
                     return;
@@ -169,18 +169,18 @@ namespace Bibly
 
                 if (skeniranaVrijednost.Length > 13)
                 {
-                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    IspisGreske($"Primjerak s ID-om {skeniranaVrijednost} nije pronađen!");
                     return;
                 }
 
-                Knjiga knjiga = KnjigaRepozitorij.DohvatiKnjigu(skeniranaVrijednost);
-                if (knjiga == null)
+                Primjerak primjerak = PrimjerakRepozitorij.DohvatiPrimjerak(int.Parse(skeniranaVrijednost));
+                if (primjerak == null)
                 {
-                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    IspisGreske($"Primjerak s ID-om {skeniranaVrijednost} nije pronađen!");
                     return;
                 }
 
-                PopuniCMBKnjige(knjiga);
+                PopuniCMBPrimjerci(primjerak);
 
 
             }
@@ -237,7 +237,7 @@ namespace Bibly
 
         private bool PostojiBaremJedanCMB()
         {
-            return !(cmbKnjige == null && cmbKorisnici == null);
+            return !(cmbPrimjerci == null && cmbKorisnici == null);
         }
 
         private bool UnesenISBNBroj(string unos)

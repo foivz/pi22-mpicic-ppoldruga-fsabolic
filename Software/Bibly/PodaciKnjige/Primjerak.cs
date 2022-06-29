@@ -20,5 +20,10 @@ namespace PodaciKnjige
             Knjiga = knjiga;
             DoKadaJeNedostupan = doKadaJeNedostupan;
         }
+
+        public override string ToString()
+        {
+            return Id + " - " + Knjiga.Naziv;
+        }
     }
 }
