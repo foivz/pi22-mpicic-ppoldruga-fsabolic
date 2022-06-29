@@ -273,7 +273,6 @@
             // txtOIB
             // 
             this.txtOIB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.txtOIB.Enabled = false;
             this.txtOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOIB.Location = new System.Drawing.Point(728, 247);
             this.txtOIB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -348,12 +347,13 @@
             this.btnUclani.TabIndex = 52;
             this.btnUclani.Text = "Učlani";
             this.btnUclani.UseVisualStyleBackColor = false;
+            this.btnUclani.Click += new System.EventHandler(this.btnUclani_Click);
             // 
             // FrmRegistracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 1149);
+            this.ClientSize = new System.Drawing.Size(1287, 1221);
             this.Controls.Add(this.btnUclani);
             this.Controls.Add(this.btnIsprintajQRKod);
             this.Controls.Add(this.btnGenerirajQRKod);
