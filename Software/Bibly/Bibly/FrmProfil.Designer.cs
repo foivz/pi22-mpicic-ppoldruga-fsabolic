@@ -71,11 +71,11 @@
             // 
             this.lblOIB.AutoSize = true;
             this.lblOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOIB.Location = new System.Drawing.Point(184, 122);
+            this.lblOIB.Location = new System.Drawing.Point(189, 122);
             this.lblOIB.Name = "lblOIB";
-            this.lblOIB.Size = new System.Drawing.Size(50, 20);
+            this.lblOIB.Size = new System.Drawing.Size(45, 20);
             this.lblOIB.TabIndex = 2;
-            this.lblOIB.Text = "OIB: ";
+            this.lblOIB.Text = "OIB:";
             // 
             // lblIme
             // 
@@ -141,7 +141,7 @@
             // 
             this.lblBoraviste.AutoSize = true;
             this.lblBoraviste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBoraviste.Location = new System.Drawing.Point(140, 458);
+            this.lblBoraviste.Location = new System.Drawing.Point(140, 452);
             this.lblBoraviste.Name = "lblBoraviste";
             this.lblBoraviste.Size = new System.Drawing.Size(94, 20);
             this.lblBoraviste.TabIndex = 9;
@@ -151,7 +151,7 @@
             // 
             this.lblAdresaBoravista.AutoSize = true;
             this.lblAdresaBoravista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresaBoravista.Location = new System.Drawing.Point(62, 506);
+            this.lblAdresaBoravista.Location = new System.Drawing.Point(80, 500);
             this.lblAdresaBoravista.Name = "lblAdresaBoravista";
             this.lblAdresaBoravista.Size = new System.Drawing.Size(154, 20);
             this.lblAdresaBoravista.TabIndex = 10;
@@ -161,7 +161,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(97, 602);
+            this.label11.Location = new System.Drawing.Point(97, 596);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 20);
             this.label11.TabIndex = 12;
@@ -171,7 +171,7 @@
             // 
             this.lblDatumUclanjivanja.AutoSize = true;
             this.lblDatumUclanjivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatumUclanjivanja.Location = new System.Drawing.Point(64, 554);
+            this.lblDatumUclanjivanja.Location = new System.Drawing.Point(64, 548);
             this.lblDatumUclanjivanja.Name = "lblDatumUclanjivanja";
             this.lblDatumUclanjivanja.Size = new System.Drawing.Size(170, 20);
             this.lblDatumUclanjivanja.TabIndex = 11;
@@ -187,6 +187,7 @@
             this.btnSpremiPromjene.TabIndex = 13;
             this.btnSpremiPromjene.Text = "Spremi promjene";
             this.btnSpremiPromjene.UseVisualStyleBackColor = false;
+            this.btnSpremiPromjene.Click += new System.EventHandler(this.btnSpremiPromjene_Click);
             // 
             // lblPromijeniLozinku
             // 
@@ -205,7 +206,7 @@
             // 
             this.lblTipKorisnika.AutoSize = true;
             this.lblTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipKorisnika.Location = new System.Drawing.Point(115, 650);
+            this.lblTipKorisnika.Location = new System.Drawing.Point(115, 644);
             this.lblTipKorisnika.Name = "lblTipKorisnika";
             this.lblTipKorisnika.Size = new System.Drawing.Size(119, 20);
             this.lblTipKorisnika.TabIndex = 15;
@@ -215,10 +216,10 @@
             // 
             this.txtOIB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtOIB.Enabled = false;
-            this.txtOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOIB.Location = new System.Drawing.Point(266, 120);
             this.txtOIB.Name = "txtOIB";
-            this.txtOIB.Size = new System.Drawing.Size(223, 24);
+            this.txtOIB.Size = new System.Drawing.Size(223, 26);
             this.txtOIB.TabIndex = 16;
             // 
             // txtIme
@@ -279,46 +280,50 @@
             // 
             this.txtDatumUclanjivanja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtDatumUclanjivanja.Enabled = false;
-            this.txtDatumUclanjivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDatumUclanjivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDatumUclanjivanja.Location = new System.Drawing.Point(266, 546);
             this.txtDatumUclanjivanja.Name = "txtDatumUclanjivanja";
-            this.txtDatumUclanjivanja.Size = new System.Drawing.Size(223, 24);
+            this.txtDatumUclanjivanja.Size = new System.Drawing.Size(223, 26);
             this.txtDatumUclanjivanja.TabIndex = 23;
             // 
             // txtIstekClanarine
             // 
             this.txtIstekClanarine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtIstekClanarine.Enabled = false;
-            this.txtIstekClanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIstekClanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIstekClanarine.Location = new System.Drawing.Point(266, 594);
             this.txtIstekClanarine.Name = "txtIstekClanarine";
-            this.txtIstekClanarine.Size = new System.Drawing.Size(223, 24);
+            this.txtIstekClanarine.Size = new System.Drawing.Size(223, 26);
             this.txtIstekClanarine.TabIndex = 24;
             // 
             // txtTipKorisnika
             // 
             this.txtTipKorisnika.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtTipKorisnika.Enabled = false;
-            this.txtTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipKorisnika.Location = new System.Drawing.Point(266, 642);
             this.txtTipKorisnika.Name = "txtTipKorisnika";
-            this.txtTipKorisnika.Size = new System.Drawing.Size(223, 24);
+            this.txtTipKorisnika.Size = new System.Drawing.Size(223, 26);
             this.txtTipKorisnika.TabIndex = 25;
             // 
             // cmbPrebivaliste
             // 
+            this.cmbPrebivaliste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrebivaliste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrebivaliste.FormattingEnabled = true;
             this.cmbPrebivaliste.Location = new System.Drawing.Point(266, 360);
             this.cmbPrebivaliste.Name = "cmbPrebivaliste";
-            this.cmbPrebivaliste.Size = new System.Drawing.Size(223, 21);
+            this.cmbPrebivaliste.Size = new System.Drawing.Size(223, 28);
             this.cmbPrebivaliste.TabIndex = 26;
             // 
             // cmbBoraviste
             // 
+            this.cmbBoraviste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoraviste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoraviste.FormattingEnabled = true;
             this.cmbBoraviste.Location = new System.Drawing.Point(266, 453);
             this.cmbBoraviste.Name = "cmbBoraviste";
-            this.cmbBoraviste.Size = new System.Drawing.Size(223, 21);
+            this.cmbBoraviste.Size = new System.Drawing.Size(223, 28);
             this.cmbBoraviste.TabIndex = 27;
             // 
             // FrmProfil
@@ -356,6 +361,7 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmProfil";
             this.Text = "FrmProfil";
+            this.Load += new System.EventHandler(this.FrmProfil_Load);
             this.Controls.SetChildIndex(this.lblNaslov, 0);
             this.Controls.SetChildIndex(this.lblOIB, 0);
             this.Controls.SetChildIndex(this.lblIme, 0);
