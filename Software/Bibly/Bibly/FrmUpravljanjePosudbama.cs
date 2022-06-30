@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PodaciKnjige;
 using PosudbeIRezervacije;
+using Prijava;
+using Postavke;
 
 namespace Bibly
 {
@@ -33,23 +35,22 @@ namespace Bibly
             }
             else
             {
-                //Primjerak primjerak = cmbPrimjerak.SelectedItem as Primjerak;
-                string idPrimjerka = "9789993329084";
-                string oibKorisnika = "00960620247";
-                int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
+                Primjerak primjerak = cmbPrimjerak.SelectedItem as Primjerak;
+                Korisnik korisnik = new Korisnik();
+                int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(korisnik);
                 int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
                 if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
                 {
                     int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
                     DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
                     Posudba rezervacija = new Posudba(
-                        trenutniKorisnik,
-                        odabraniPrimjerak,
+                        korisnik,
+                        primjerak,
                         datumDoKojegVrijediRezervacija
                     );
                     RezervacijaRepozitorij.DodajRezervaciju(rezervacija);
-                    PrimjerakRepozitorij.AzurirajStatusPrimjerka(odabraniPrimjerak.Id, StatusPrimjerka.Rezerviran);
-                    OsvjeziPrimjerke();
+                    PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Rezerviran);
+                    //OsvjeziPrimjerke();
                 }
             }
         }
