@@ -174,6 +174,10 @@ namespace PodaciKnjige
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
+            if (primjerci.Count == 0)
+            {
+                return null;
+            }
             if (primjerci[0].Status != StatusPrimjerka.Dostupan)
             {
                 primjerci[0].DoKadaJeNedostupan = VratiDatumDostupnosti(primjerci[0].Id);
