@@ -17,7 +17,7 @@ namespace Bibly
         public FrmRegistracija()
         {
             InitializeComponent();
-            AutoScroll = true;
+            this.AutoScroll = true;
             this.CenterToScreen();
             txtDatumUclanjivanja.Text = DateTime.Now.ToString();
             txtIstekClanarine.Text = DateTime.Now.AddYears(1).ToString();
@@ -32,10 +32,14 @@ namespace Bibly
             string prezime = txtPrezime.Text;
             string brojMobitela = txtBrojMobitela.Text;
             string email = txtEmail.Text;
-            int prebivaliste = cmbPrebivaliste.SelectedIndex;
+            Mjesto prebivaliste = cmbPrebivaliste.SelectedItem as Mjesto;
             string adresaPrebivalista = txtAdresaPrebivalista.Text;
-            int boraviste = cmbBoraviste.SelectedIndex;
+            Mjesto boraviste = cmbBoraviste.SelectedItem as Mjesto;
             string adresaBoravista = txtAdresaBoravista.Text;
+            string lozinka = GenerirajLozinku();
+            int pokusajiPrijave = 0;
+            bool blokiran = false;
+            TipKorisnika tipKorisnika = new TipKorisnika(2, null);
             int dobroPopunjeno = ProvjeriUnose(oib, ime, prezime, brojMobitela, email, adresaPrebivalista, adresaBoravista); 
             string poruka = "";
             switch (dobroPopunjeno)
@@ -44,13 +48,13 @@ namespace Bibly
                     poruka = "Niste popunili sva polja!";
                     break;
                 case -2:
-                    poruka = "OIB je neispravnog formata!";
+                    poruka = "OIB je pogrešnog formata!";
                     break;
                 case -3:
-                    poruka = "Pogrešan format imena!";
+                    poruka = "Ime je pogrešnog formata!";
                     break;
                 case -4:
-                    poruka = "Pogrešan format prezimena!";
+                    poruka = "Prezime je pogrešnog formata!";
                     break;
                 case -5:
                     poruka = "Broj mobitela je pogrešnog formata!";
@@ -58,8 +62,34 @@ namespace Bibly
                 case -6:
                     poruka = "Email je pogrešnog formata!";
                     break;
+                case -7:
+                    poruka = "OIB već postoji u bazi!";
+                    break;
                 case 1:
-                    MessageBox.Show("oddd");
+                    Korisnik korisnik = new Korisnik
+                    {
+                        OIB = oib,
+                        Ime = ime,
+                        Prezime = prezime,
+                        BrojMobitela = brojMobitela,
+                        Email = email,
+                        Prebivaliste = prebivaliste,
+                        AdresaPrebivalista = adresaPrebivalista,
+                        Boraviste = boraviste,
+                        AdresaBoravista = adresaBoravista,
+                        DatumUclanjivanja = DateTime.Parse(txtDatumUclanjivanja.Text),
+                        DatumIstekaClanarine = DateTime.Parse(txtIstekClanarine.Text),
+                        Lozinka = lozinka,
+                        TipKorisnika = tipKorisnika,
+                        PokusajiPrijave = pokusajiPrijave,
+                        Blokiran = blokiran,
+
+
+
+
+                    };
+                    MessageBox.Show("dddaaa");
+                    KorisnikRepozitorij.DodajKorisnika(korisnik);
                     break;
             }
 
@@ -97,6 +127,10 @@ namespace Bibly
             else if (!ProvjeraEmaila(email))
             {
                 return -6;
+            }
+            else if (!PostojiOIB(oib))
+            {
+                return -7;
             }
             else
             {
@@ -148,8 +182,28 @@ namespace Bibly
 
         private bool ProvjeraEmaila(string unos)
         {
-            string uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,}@[a-z]{2,}[.][a-z][a-z]{1,})$";
+            string uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-,.]{2,}@[a-z]{2,}[.][a-z][a-z]{1,})$";
             if (!Regex.Match(unos, uzorak).Success) return false; else return true;
+        }
+
+        private bool PostojiOIB (string unos)
+        {
+            if (KorisnikRepozitorij.DohvatiKorisnika_OIB(unos) != null) return false; else return true;
+        }
+
+        private string GenerirajLozinku()
+        {
+            int duljina = 8;
+            string znakovi = "ABCDEFGHIJKLMNOPQRSTUWXYZ1234567890abcdefghijklmnopqrstuwxyz";
+            Random rnd = new Random();
+
+            char[] chars = new char [duljina];
+            for(int i = 0; i < duljina; i++)
+            {
+                chars [i] = znakovi[rnd.Next (0, znakovi.Length)];
+            }
+
+            return new string (chars);
         }
 
 
