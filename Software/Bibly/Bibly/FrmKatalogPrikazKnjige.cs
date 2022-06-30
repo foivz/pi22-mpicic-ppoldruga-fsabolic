@@ -68,26 +68,20 @@ namespace Bibly
             else
             {
                 Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
-                int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
-                DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
-                Posudba rezervacija = new Posudba(
-                    trenutniKorisnik,
-                    odabraniPrimjerak,
-                    datumDoKojegVrijediRezervacija
-                );
                 int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
                 int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
                 if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
                 {
-                    if (RezervacijaRepozitorij.DodajRezervaciju(rezervacija) == 1)
-                    {
-                        PrimjerakRepozitorij.AzurirajStatusPrimjerka(odabraniPrimjerak.Id, StatusPrimjerka.Rezerviran);
-                        OsvjeziPrimjerke();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Rezervacija nije moguća! Primjerak nije dostupan.");
-                    }
+                    int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
+                    DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
+                    Posudba rezervacija = new Posudba(
+                        trenutniKorisnik,
+                        odabraniPrimjerak,
+                        datumDoKojegVrijediRezervacija
+                    );
+                    RezervacijaRepozitorij.DodajRezervaciju(rezervacija);
+                    PrimjerakRepozitorij.AzurirajStatusPrimjerka(odabraniPrimjerak.Id, StatusPrimjerka.Rezerviran);
+                    OsvjeziPrimjerke();
                 }
                 else
                 {
