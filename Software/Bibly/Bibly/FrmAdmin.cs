@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Prijava;
 using PodaciKnjige;
+using PosudbeIRezervacije;
+
 namespace Bibly
 {
     public partial class FrmAdmin : FrmOpcenita
@@ -41,6 +43,10 @@ namespace Bibly
                     break;
                 case "mjesta":
                     dgvTablica.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
+                    break;
+                case "posudbe":
+                    List<Posudba> p = PosudbaRepozitorij.DohvatiSvePosudbe();
+                    dgvTablica.DataSource = PosudbaRepozitorij.DohvatiSvePosudbe();
                     break;
                 case "primjerci":
                     dgvTablica.DataSource = PrimjerakRepozitorij.DohvatiSvePrimjerke();
@@ -126,6 +132,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             MjestoRepozitorij.ObrisiMjesto((Mjesto)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "posudbe":
+                        if (TrenutniRed != null)
+                        {
+                            PosudbaRepozitorij.ObrisiPosudbu((Posudba)TrenutniRed);
                         }
                         PostaviFormu();
                         break;

@@ -25,6 +25,21 @@ namespace PosudbeIRezervacije
 
         }
 
+        public Posudba(int id,DateTime datumPosudbe,DateTime predvidenDatumVracanja,DateTime stvarniDatumVracanja,int brojProduljivanja,
+            double zakasnina, Primjerak primjerak,Korisnik korisnik, DateTime doKadaVrijediRezervacija,int rezervacijaPotvrdena)
+        {
+            Id = id;
+            DatumPosudbe = datumPosudbe;
+            PredvideniDatumVracanja = predvidenDatumVracanja;
+            StvarniDatumVracanja= stvarniDatumVracanja;
+            BrojProduljivanja = brojProduljivanja;
+            Zakasnina = zakasnina;
+            Primjerak = primjerak;
+            Korisnik = korisnik;
+            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
+            RezervacijaPotvrdena = rezervacijaPotvrdena;
+        }
+
         //konstruktor za Prošle posudbe
         public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
         {
