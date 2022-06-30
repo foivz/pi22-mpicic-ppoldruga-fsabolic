@@ -216,19 +216,6 @@ namespace Bibly
                     }
             }
 
-            //int a = int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text)=="";
-            //DateTime b = ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text);
-            //DateTime c = ((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text);
-            //DateTime d = ((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text);
-            //int lokjh = ((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text == "" ? 0 : int.Parse(((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text);
-            //double f = ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text == "" ? 0 : double.Parse(((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text);
-            //Primjerak g = ((ComboBox)this.Controls.Find("cmbPrimjerak", true)[0]).SelectedItem as Primjerak;
-            //Korisnik h = ((ComboBox)this.Controls.Find("cmbKorisnik", true)[0]).SelectedItem as Korisnik;
-            //DateTime aadsf= ((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text);
-            //int sdf = ((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text == "" ? -1 : int.Parse(((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text) % 2;
-
-
-
             Posudba posudba = new Posudba(
                 int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text==""?"-1": ((TextBox)this.Controls.Find("txtID", true)[0]).Text),
             ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text),
