@@ -128,22 +128,14 @@ namespace Bibly
 
         private void PopuniCMBPrimjerci(Primjerak primjerak)
         {
-            List<Primjerak> primjerci = PrimjerakRepozitorij.DohvatiSvePrimjerke();
-            foreach (Primjerak p in primjerci)
-            {
-                cmbPrimjerci.Items.Add(p);
-            }
-            cmbPrimjerci.SelectedIndex = primjerci.IndexOf(primjerci.Find(x => x.Id == primjerak.Id));
+                cmbPrimjerci.Items.Add(primjerak);
+                cmbPrimjerci.SelectedItem = primjerak;
         }
 
         private void PopuniCMBKorisnici(Korisnik korisnik)
         {
-            List<Korisnik> korisnici = KorisnikRepozitorij.DohvatiSveKorisnike();
-            foreach (Korisnik k in korisnici)
-            {
-                cmbKorisnici.Items.Add(k);
-            }
-            cmbKorisnici.SelectedIndex = korisnici.IndexOf(korisnici.Find(x => x.OIB == korisnik.OIB));
+            cmbKorisnici.Items.Add(korisnik);
+            cmbKorisnici.SelectedItem = korisnik;
         }
 
         delegate void UspjesnoSkeniranjeCallback();
@@ -167,7 +159,7 @@ namespace Bibly
                     return;
                 }
 
-                if (skeniranaVrijednost.Length > 13)
+                if (skeniranaVrijednost.Length > 9)
                 {
                     IspisGreske($"Primjerak s ID-om {skeniranaVrijednost} nije pronađen!");
                     return;
