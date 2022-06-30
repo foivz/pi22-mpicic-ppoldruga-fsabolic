@@ -65,6 +65,9 @@ namespace Bibly
                 case -7:
                     poruka = "OIB već postoji u bazi!";
                     break;
+                case -8:
+                    poruka = "E - mail je već unesen!";
+                    break;
                 case 1:
                     Korisnik korisnik = new Korisnik
                     {
@@ -88,8 +91,9 @@ namespace Bibly
 
 
                     };
-                    MessageBox.Show("dddaaa");
+                    MessageBox.Show("Uspješno ste registrirali novog člana!");
                     KorisnikRepozitorij.DodajKorisnika(korisnik);
+
                     break;
             }
 
@@ -131,6 +135,10 @@ namespace Bibly
             else if (!PostojiOIB(oib))
             {
                 return -7;
+            }
+            else if (!PostojiEmail(email))
+            {
+                return -8;
             }
             else
             {
@@ -189,6 +197,11 @@ namespace Bibly
         private bool PostojiOIB (string unos)
         {
             if (KorisnikRepozitorij.DohvatiKorisnika_OIB(unos) != null) return false; else return true;
+        }
+
+        private bool PostojiEmail (string unos)
+        {
+            if (KorisnikRepozitorij.DohvatiKorisnika_Mail(unos) != null) return false; else return true;
         }
 
         private string GenerirajLozinku()
