@@ -26,6 +26,12 @@ namespace PosudbeIRezervacije
 
         }
 
+        //konstruktor za posudivanje knjige
+        public Posudba(DateTime datumPosudbe, DateTime predvideniDatumVracanja, Korisnik korisnik, Primjerak primjerak, int rezervacijaPotvrdena)
+        {
+
+        }
+
         //konstruktor za Prošle posudbe
         public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
         {
@@ -62,18 +68,6 @@ namespace PosudbeIRezervacije
             Korisnik = korisnik;
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-        }
-
-        public bool JeLiKorisnikPresaoGranicuPosudivanja()
-        {
-            Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
-            int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
-            int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
-            if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

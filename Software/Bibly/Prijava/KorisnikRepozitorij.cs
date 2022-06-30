@@ -149,8 +149,6 @@ namespace Prijava
                          reader["tk.naziv"].ToString()
                          )
                     );
-
-
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();

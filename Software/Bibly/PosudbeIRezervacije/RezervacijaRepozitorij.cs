@@ -69,6 +69,36 @@ namespace PosudbeIRezervacije
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
         }
+        public static Posudba DohvatiRezervacijuPrimjerka(Primjerak primjerak)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit =
+                    "SELECT id_posudba" +
+                    ", id_korisnik" +
+                    ", do_kada_vrijedi_rezervacija" +
+                    " FROM posudbe" +
+                    " WHERE rezervacija_potvrdena = 0 " +
+                    $" AND id_primjerak = {primjerak.Id}";
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            List<Posudba> rezervacija = new List<Posudba>();
+            while (reader.Read())
+            {
+                rezervacija.Add(new Posudba(
+                        int.Parse(reader["id_posudba"].ToString()),
+                        KorisnikRepozitorij.DohvatiKorisnika_OIB(reader["id_korisnik"].ToString()),
+                        primjerak,
+                        DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString())
+                    ));
+            }
+            reader.Close();
+            BazaPodataka.Instanca.PrekiniVezu();
+            if(rezervacija.Count == 0)
+            {
+                return null;
+            }
+            return rezervacija[0];
+        }
+
         public static int ZatvoriRezervaciju(int idRezervacije, int idPrimjerka)
         {
             PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);

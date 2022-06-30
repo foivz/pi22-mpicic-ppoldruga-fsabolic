@@ -30,6 +30,24 @@ namespace PosudbeIRezervacije
             BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
+        public static void DodajPosudbuKojaNijeBilaRezervirana(Posudba posudba)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = $"INSERT INTO autor_knjige" +
+                $"(datum_posudbe, predviden_datum_vracanja, id_primjerak, id_korisnik) " +
+                $"VALUES({posudba.Id},'{posudba}')";
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+            BazaPodataka.Instanca.PrekiniVezu();
+        }
+        public static void AzurirajPosudbuKojaJeBilaRezervirana(Posudba posudba)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit = $"INSERT INTO autor_knjige" +
+                $"(datum_posudbe, predviden_datum_vracanja, id_primjerak, id_korisnik) " +
+                $"VALUES({posudba.Id},'{posudba}')";
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+            BazaPodataka.Instanca.PrekiniVezu();
+        }
         public static List<Posudba> DohvatiTrenutnePosudbeKorisnika(Korisnik korisnik)
         {
             BazaPodataka.Instanca.UspostaviVezu();

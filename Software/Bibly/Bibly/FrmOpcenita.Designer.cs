@@ -225,6 +225,7 @@
             this.tsmiUpravljanjePosudbama.Name = "tsmiUpravljanjePosudbama";
             this.tsmiUpravljanjePosudbama.Size = new System.Drawing.Size(245, 26);
             this.tsmiUpravljanjePosudbama.Text = "Upravljanje posudbama";
+            this.tsmiUpravljanjePosudbama.Click += new System.EventHandler(this.tsmiUpravljanjePosudbama_Click);
             // 
             // tsmiPregledPosudbi
             // 
