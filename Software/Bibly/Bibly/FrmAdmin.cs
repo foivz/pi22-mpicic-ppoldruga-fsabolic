@@ -28,6 +28,9 @@ namespace Bibly
             switch (NazivTablice)
             {
                 case "autor_knjige":
+
+
+
                     dgvTablica.DataSource = AutorKnjigeRepozitorij.DohvatiSveAutorKnjige();
                     break;
                 case "autori":
@@ -35,10 +38,12 @@ namespace Bibly
                     break;
                 case "izdavaci":
                     dgvTablica.DataSource = IzdavacRepozitorij.DohvatiSveIzdavace();
+
                     break;
                 case "korisnici":
                     dgvTablica.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
                     break;
+
                 case "mjesta":
                     dgvTablica.DataSource = MjestoRepozitorij.DohvatiSvaMjesta();
                     break;
@@ -85,15 +90,18 @@ namespace Bibly
         {
             if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+
                 if (TrenutniRed == null)
                 {
                     MessageBox.Show("Nije odabran ni jedan red");
                     return;
                 }
+
                 switch (NazivTablice)
                 {
 
                     case "autor_knjige":
+
                         if (TrenutniRed != null)
                         {
                             AutorKnjigeRepozitorij.ObrisiAutoraKnjige((AutorKnjige)TrenutniRed);
@@ -122,6 +130,7 @@ namespace Bibly
                         }
                         PostaviFormu();
                         break;
+
                     case "mjesta":
                         if (TrenutniRed != null)
                         {

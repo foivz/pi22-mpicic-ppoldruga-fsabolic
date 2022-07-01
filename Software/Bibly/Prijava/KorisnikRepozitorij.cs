@@ -264,6 +264,7 @@ namespace Prijava
             return uspjeh;
         }
 
+
         public static int AzurirajKorisnika_Lozinka(Korisnik korisnik,string lozinka)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -290,6 +291,7 @@ namespace Prijava
 
             return uspjeh;
         }
+
 
         public static int ObrisiKorisnika(Korisnik korisnik)
         {

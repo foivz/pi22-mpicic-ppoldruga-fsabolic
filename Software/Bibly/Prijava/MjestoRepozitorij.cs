@@ -38,7 +38,6 @@ namespace Prijava
             return mjesta;
         }
 
-
         public static int DodajMjesto(Mjesto mjesto)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -79,5 +78,6 @@ namespace Prijava
 
             return uspjeh;
         }
+
     }
 }
