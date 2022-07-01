@@ -73,7 +73,7 @@
             this.tsmiProfil,
             this.tsmiOdjava,
 
-            this.tsmiRegistracija});
+            this.tsmiRegistracija,
 
             this.tsmiUpravljanjePosudbamaGlavno});
 
