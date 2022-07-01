@@ -27,7 +27,7 @@ namespace PosudbeIRezervacije
         }
 
         //konstruktor za posudivanje knjige
-        public Posudba(DateTime datumPosudbe, DateTime predvideniDatumVracanja, Korisnik korisnik, Primjerak primjerak, int rezervacijaPotvrdena)
+        public Posudba(DateTime datumPosudbe, DateTime predvideniDatumVracanja, Korisnik korisnik, Primjerak primjerak)
         {
 
         }
