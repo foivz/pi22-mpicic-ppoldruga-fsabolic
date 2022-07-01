@@ -116,5 +116,27 @@ namespace Postavke
 
             return maxBrojProduljenja[0];
         }
+
+        public static List<string> DohvatiRadnoVrijeme()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT radno_vrijeme" +
+                    " FROM postavke";
+
+            List<string> radnoVrijeme = new List<string>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                radnoVrijeme.Add(reader["radno_vrijeme"].ToString());
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return radnoVrijeme;
+        }
     }
 }
