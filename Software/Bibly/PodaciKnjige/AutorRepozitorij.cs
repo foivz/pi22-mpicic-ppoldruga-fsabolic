@@ -17,10 +17,11 @@ namespace PodaciKnjige
 
             string upit =
                     "SELECT " +
-                    "a.id_autor AS 'a.id_autor'"+
+
+                    "a.id_autor AS 'a.id_autor'" +
                     ",a.ime AS 'a.ime'" +
                     ", a.prezime AS 'a.prezime'" +
-                    ",a.biografija AS 'a.biografija'"+
+                    ",a.biografija AS 'a.biografija'" +
                     " FROM autori a" +
                     " JOIN autor_knjige ak" +
                     " ON a.id_autor = ak.id_autor" +
@@ -72,6 +73,46 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.PrekiniVezu();
 
             return autori;
+        }
+
+        public static int DodajAutora(Autor autor)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"INSERT INTO autori VALUES('{autor.Ime}','{autor.Prezime}','{autor.Biografija}')";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+        public static int AzurirajAutora(Autor autor)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"UPDATE autori SET ime='{autor.Ime}',prezime='{autor.Prezime}',biografija='{autor.Biografija}' WHERE id_autor={autor.Id}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
+        public static int ObrisiAutora(Autor autor)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    $"DELETE FROM autori WHERE id_autor={autor.Id}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
         }
     }
 }

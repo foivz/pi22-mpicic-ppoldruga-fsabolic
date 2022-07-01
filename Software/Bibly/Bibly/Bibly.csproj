@@ -121,6 +121,12 @@
     <Compile Include="FrmPosudbe.Designer.cs">
       <DependentUpon>FrmPosudbe.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPregledPosudbi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPregledPosudbi.Designer.cs">
+      <DependentUpon>FrmPregledPosudbi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,12 @@
     </Compile>
     <Compile Include="FrmRezervacije.Designer.cs">
       <DependentUpon>FrmRezervacije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpravljanjePosudbama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpravljanjePosudbama.Designer.cs">
+      <DependentUpon>FrmUpravljanjePosudbama.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRezervacije.resx">
       <DependentUpon>FrmRezervacije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpravljanjePosudbama.resx">
+      <DependentUpon>FrmUpravljanjePosudbama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -30,11 +30,11 @@
         {
             this.cmbKamere = new System.Windows.Forms.ComboBox();
             this.pbSken = new System.Windows.Forms.PictureBox();
-            this.txtISBN = new System.Windows.Forms.TextBox();
+            this.txtRezultat = new System.Windows.Forms.TextBox();
             this.btnSkeniraj = new System.Windows.Forms.Button();
             this.btnZaustavi = new System.Windows.Forms.Button();
             this.txtGreske = new System.Windows.Forms.TextBox();
-            this.lblISBN = new System.Windows.Forms.Label();
+            this.lblRezultat = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbSken)).BeginInit();
             this.SuspendLayout();
@@ -59,16 +59,16 @@
             this.pbSken.TabIndex = 1;
             this.pbSken.TabStop = false;
             // 
-            // txtISBN
+            // txtRezultat
             // 
-            this.txtISBN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.txtISBN.Enabled = false;
-            this.txtISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtISBN.Location = new System.Drawing.Point(109, 344);
-            this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(255, 26);
-            this.txtISBN.TabIndex = 2;
-            this.txtISBN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRezultat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtRezultat.Enabled = false;
+            this.txtRezultat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRezultat.Location = new System.Drawing.Point(109, 344);
+            this.txtRezultat.Name = "txtRezultat";
+            this.txtRezultat.Size = new System.Drawing.Size(255, 26);
+            this.txtRezultat.TabIndex = 2;
+            this.txtRezultat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSkeniraj
             // 
@@ -106,41 +106,41 @@
             this.txtGreske.Size = new System.Drawing.Size(255, 58);
             this.txtGreske.TabIndex = 5;
             // 
-            // lblISBN
+            // lblRezultat
             // 
-            this.lblISBN.AutoSize = true;
-            this.lblISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblISBN.Location = new System.Drawing.Point(32, 350);
-            this.lblISBN.Name = "lblISBN";
-            this.lblISBN.Size = new System.Drawing.Size(51, 20);
-            this.lblISBN.TabIndex = 7;
-            this.lblISBN.Text = "ISBN:";
+            this.lblRezultat.AutoSize = true;
+            this.lblRezultat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRezultat.Location = new System.Drawing.Point(32, 350);
+            this.lblRezultat.Name = "lblRezultat";
+            this.lblRezultat.Size = new System.Drawing.Size(73, 20);
+            this.lblRezultat.TabIndex = 7;
+            this.lblRezultat.Text = "Rezultat:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 382);
+            this.label3.Location = new System.Drawing.Point(27, 379);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Greške:";
             // 
-            // UCSkenerKnjiga
+            // UCSkener
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblISBN);
+            this.Controls.Add(this.lblRezultat);
             this.Controls.Add(this.txtGreske);
             this.Controls.Add(this.btnZaustavi);
             this.Controls.Add(this.btnSkeniraj);
-            this.Controls.Add(this.txtISBN);
+            this.Controls.Add(this.txtRezultat);
             this.Controls.Add(this.pbSken);
             this.Controls.Add(this.cmbKamere);
-            this.Name = "UCSkenerKnjiga";
+            this.Name = "UCSkener";
             this.Size = new System.Drawing.Size(384, 491);
             ((System.ComponentModel.ISupportInitialize)(this.pbSken)).EndInit();
             this.ResumeLayout(false);
@@ -152,11 +152,11 @@
 
         private System.Windows.Forms.ComboBox cmbKamere;
         private System.Windows.Forms.PictureBox pbSken;
-        private System.Windows.Forms.TextBox txtISBN;
+        private System.Windows.Forms.TextBox txtRezultat;
         private System.Windows.Forms.Button btnSkeniraj;
         private System.Windows.Forms.Button btnZaustavi;
         private System.Windows.Forms.TextBox txtGreske;
-        private System.Windows.Forms.Label lblISBN;
+        private System.Windows.Forms.Label lblRezultat;
         private System.Windows.Forms.Label label3;
     }
 }

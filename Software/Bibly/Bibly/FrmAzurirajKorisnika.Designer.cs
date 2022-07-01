@@ -55,6 +55,7 @@
             this.lblAdresaBoravista = new System.Windows.Forms.Label();
             this.btnProdulji = new System.Windows.Forms.Button();
             this.btnAzuriraj = new System.Windows.Forms.Button();
+            this.btnIsprintaj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,9 +72,11 @@
             // pbQRKod
             // 
             this.pbQRKod.BackColor = System.Drawing.Color.Gray;
+            this.pbQRKod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbQRKod.Location = new System.Drawing.Point(50, 165);
             this.pbQRKod.Name = "pbQRKod";
             this.pbQRKod.Size = new System.Drawing.Size(199, 199);
+            this.pbQRKod.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbQRKod.TabIndex = 2;
             this.pbQRKod.TabStop = false;
             // 
@@ -87,6 +90,7 @@
             this.btnGenerirajQRKod.TabIndex = 3;
             this.btnGenerirajQRKod.Text = "Generiraj QR kod";
             this.btnGenerirajQRKod.UseVisualStyleBackColor = false;
+            this.btnGenerirajQRKod.Click += new System.EventHandler(this.btnGenerirajQRKod_Click);
             // 
             // lblOIB
             // 
@@ -264,6 +268,7 @@
             // 
             // cmbPrebivaliste
             // 
+            this.cmbPrebivaliste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrebivaliste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrebivaliste.FormattingEnabled = true;
             this.cmbPrebivaliste.Location = new System.Drawing.Point(477, 403);
@@ -273,6 +278,7 @@
             // 
             // cmbBoraviste
             // 
+            this.cmbBoraviste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoraviste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoraviste.FormattingEnabled = true;
             this.cmbBoraviste.Location = new System.Drawing.Point(477, 499);
@@ -310,6 +316,7 @@
             this.btnProdulji.TabIndex = 26;
             this.btnProdulji.Text = "Produlji";
             this.btnProdulji.UseVisualStyleBackColor = false;
+            this.btnProdulji.Click += new System.EventHandler(this.btnProdulji_Click);
             // 
             // btnAzuriraj
             // 
@@ -321,12 +328,26 @@
             this.btnAzuriraj.TabIndex = 27;
             this.btnAzuriraj.Text = "Ažuriraj";
             this.btnAzuriraj.UseVisualStyleBackColor = false;
+            this.btnAzuriraj.Click += new System.EventHandler(this.btnAzuriraj_Click);
+            // 
+            // btnIsprintaj
+            // 
+            this.btnIsprintaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnIsprintaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsprintaj.Location = new System.Drawing.Point(50, 424);
+            this.btnIsprintaj.Name = "btnIsprintaj";
+            this.btnIsprintaj.Size = new System.Drawing.Size(199, 36);
+            this.btnIsprintaj.TabIndex = 28;
+            this.btnIsprintaj.Text = "Isprintaj QR kod";
+            this.btnIsprintaj.UseVisualStyleBackColor = false;
+            this.btnIsprintaj.Click += new System.EventHandler(this.btnIsprintaj_Click);
             // 
             // FrmAzurirajKorisnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 795);
+            this.Controls.Add(this.btnIsprintaj);
             this.Controls.Add(this.btnAzuriraj);
             this.Controls.Add(this.btnProdulji);
             this.Controls.Add(this.lblAdresaBoravista);
@@ -384,6 +405,7 @@
             this.Controls.SetChildIndex(this.lblAdresaBoravista, 0);
             this.Controls.SetChildIndex(this.btnProdulji, 0);
             this.Controls.SetChildIndex(this.btnAzuriraj, 0);
+            this.Controls.SetChildIndex(this.btnIsprintaj, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -419,5 +441,6 @@
         private System.Windows.Forms.Label lblAdresaBoravista;
         private System.Windows.Forms.Button btnProdulji;
         private System.Windows.Forms.Button btnAzuriraj;
+        private System.Windows.Forms.Button btnIsprintaj;
     }
 }

@@ -16,7 +16,7 @@ namespace Bibly
 {
     public partial class UCSkener : UserControl
     {
-        private ComboBox cmbKnjige = null;
+        private ComboBox cmbPrimjerci = null;
         private ComboBox cmbKorisnici = null;
 
         FilterInfoCollection filterInfoCollection;
@@ -29,10 +29,10 @@ namespace Bibly
             UcitajKamere();
         }
 
-        public void PostaviUCSkener(FrmOpcenita frm, ComboBox _cmbKnjige, ComboBox _cmbKorisnici)
+        public void PostaviUCSkener(FrmOpcenita frm, ComboBox _cmbPrimjerci, ComboBox _cmbKorisnici)
         {
             frm.FormClosed += new FormClosedEventHandler(frm_FormClosed);
-            cmbKnjige = _cmbKnjige;
+            cmbPrimjerci = _cmbPrimjerci;
             cmbKorisnici = _cmbKorisnici;
 
         }
@@ -52,7 +52,7 @@ namespace Bibly
         {
             if (!PostojiBaremJedanCMB())
             {
-                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za primjerke --");
 
             }
             else
@@ -76,11 +76,11 @@ namespace Bibly
             string result = Skener.Skener.DesifrirajKod(a);
             if (result != "")
             {
-                txtISBN.Invoke(new MethodInvoker(delegate ()
+                txtRezultat.Invoke(new MethodInvoker(delegate ()
                 {
-                    txtISBN.Text = result;
+                    txtRezultat.Text = result;
                 }));
-                if (this.txtISBN.InvokeRequired)
+                if (this.txtRezultat.InvokeRequired)
                 {
                     UspjesnoSkeniranjeCallback d = new UspjesnoSkeniranjeCallback(UspjesnoSkeniranje);
                     this.Invoke(d);
@@ -101,7 +101,7 @@ namespace Bibly
 
         private void btnZaustavi_Click(object sender, EventArgs e)
         {
-            if (this.txtISBN.InvokeRequired)
+            if (this.txtRezultat.InvokeRequired)
             {
                 PrekidSkeniranjeCallback d = new PrekidSkeniranjeCallback(UspjesnoSkeniranje);
                 this.Invoke(d);
@@ -120,30 +120,22 @@ namespace Bibly
         public void PrekidSkeniranja()
         {
             PromijeniBojuObrubaSkenera(Color.Gray);
-            txtISBN.Text = "";
+            txtRezultat.Text = "";
             txtGreske.BackColor = Color.FromArgb(254, 255, 242);
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             ZaustaviSkeniranje();
         }
 
-        private void PopuniCMBKnjige(Knjiga knjiga)
+        private void PopuniCMBPrimjerci(Primjerak primjerak)
         {
-            List<Knjiga> knjige = KnjigaRepozitorij.DohvatiSveKnjige();
-            foreach (Knjiga k in knjige)
-            {
-                cmbKnjige.Items.Add(k);
-            }
-            cmbKnjige.SelectedIndex = knjige.IndexOf(knjige.Find(x => x.ISBN == knjiga.ISBN));
+                cmbPrimjerci.Items.Add(primjerak);
+                cmbPrimjerci.SelectedItem = primjerak;
         }
 
         private void PopuniCMBKorisnici(Korisnik korisnik)
         {
-            List<Korisnik> korisnici = KorisnikRepozitorij.DohvatiSveKorisnike();
-            foreach (Korisnik k in korisnici)
-            {
-                cmbKorisnici.Items.Add(k);
-            }
-            cmbKorisnici.SelectedIndex = korisnici.IndexOf(korisnici.Find(x => x.OIB == korisnik.OIB));
+            cmbKorisnici.Items.Add(korisnik);
+            cmbKorisnici.SelectedItem = korisnik;
         }
 
         delegate void UspjesnoSkeniranjeCallback();
@@ -153,34 +145,34 @@ namespace Bibly
 
             if (!PostojiBaremJedanCMB())
             {
-                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za knjige --");
+                IspisGreske("-- E R R O R : Nije proslijeđen ComboBox ni za korisnike ni za primjerke --");
                 return;
             }
 
 
-            string skeniranaVrijednost = txtISBN.Text;
-            if (UnesenISBNBroj(skeniranaVrijednost))
+            string skeniranaVrijednost = txtRezultat.Text;
+            if (UnesenBroj(skeniranaVrijednost))
             {
-                if (cmbKnjige == null)
+                if (cmbPrimjerci == null)
                 {
                     IspisGreske("Uočen barkod! Pokušajte s QR kodom!");
                     return;
                 }
 
-                if (skeniranaVrijednost.Length > 13)
+                if (skeniranaVrijednost.Length > 9)
                 {
-                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    IspisGreske($"Primjerak s ID-om {skeniranaVrijednost} nije pronađen!");
                     return;
                 }
 
-                Knjiga knjiga = KnjigaRepozitorij.DohvatiKnjigu(skeniranaVrijednost);
-                if (knjiga == null)
+                Primjerak primjerak = PrimjerakRepozitorij.DohvatiPrimjerak(int.Parse(skeniranaVrijednost));
+                if (primjerak == null)
                 {
-                    IspisGreske($"Knjiga s ISBN-om {skeniranaVrijednost} nije pronađena!");
+                    IspisGreske($"Primjerak s ID-om {skeniranaVrijednost} nije pronađen!");
                     return;
                 }
 
-                PopuniCMBKnjige(knjiga);
+                PopuniCMBPrimjerci(primjerak);
 
 
             }
@@ -217,14 +209,14 @@ namespace Bibly
                 btnSkeniraj.Enabled = true;
                 btnZaustavi.Enabled = false;
                 txtGreske.Text = "";
-                txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+                txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             }
 
         }
 
         private void IspisGreske(string poruka)
         {
-            txtISBN.BackColor = Color.FromArgb(254, 255, 242);
+            txtRezultat.BackColor = Color.FromArgb(254, 255, 242);
             txtGreske.BackColor = Color.LightCoral;
             txtGreske.Text = "";
             txtGreske.Text = poruka;
@@ -237,10 +229,10 @@ namespace Bibly
 
         private bool PostojiBaremJedanCMB()
         {
-            return !(cmbKnjige == null && cmbKorisnici == null);
+            return !(cmbPrimjerci == null && cmbKorisnici == null);
         }
 
-        private bool UnesenISBNBroj(string unos)
+        private bool UnesenBroj(string unos)
         {
             long ignore = -1;
             return long.TryParse(unos, out ignore);

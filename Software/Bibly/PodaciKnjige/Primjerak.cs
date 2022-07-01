@@ -12,13 +12,18 @@ namespace PodaciKnjige
         public StatusPrimjerka Status { get; set; }
         public Knjiga Knjiga { get; set; }
         public string DoKadaJeNedostupan { get; set; }
-
+        
         public Primjerak(int id, StatusPrimjerka status, Knjiga knjiga, string doKadaJeNedostupan)
         {
             Id = id;
             Status = status;
             Knjiga = knjiga;
             DoKadaJeNedostupan = doKadaJeNedostupan;
+        }
+
+        public override string ToString()
+        {
+            return Id + " - " + Knjiga.Naziv;
         }
     }
 }

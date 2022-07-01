@@ -44,12 +44,17 @@
             this.tsmiPostavke = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPosudbe = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPrimjerci = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiStatusi_Primjeraka = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTipovi_Korisnika = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiZanrovi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
+
             this.tsmiRegistracija = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.tsmiUpravljanjePosudbamaGlavno = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpravljanjePosudbama = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPregledPosudbi = new System.Windows.Forms.ToolStripMenuItem();
+
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +72,11 @@
             this.tsmiAdmin,
             this.tsmiProfil,
             this.tsmiOdjava,
+
             this.tsmiRegistracija});
+
+            this.tsmiUpravljanjePosudbamaGlavno});
+
             this.glavniMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.glavniMenu.Location = new System.Drawing.Point(0, 0);
             this.glavniMenu.Name = "glavniMenu";
@@ -115,7 +124,6 @@
             this.tsmiPostavke,
             this.tsmiPosudbe,
             this.tsmiPrimjerci,
-            this.tsmiStatusi_Primjeraka,
             this.tsmiTipovi_Korisnika,
             this.tsmiZanrovi});
             this.tsmiAdmin.Name = "tsmiAdmin";
@@ -125,84 +133,96 @@
             // tsmiAutor_Knjige
             // 
             this.tsmiAutor_Knjige.Name = "tsmiAutor_Knjige";
-            this.tsmiAutor_Knjige.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiAutor_Knjige.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiAutor_Knjige.Text = "autor_knjige";
             this.tsmiAutor_Knjige.Click += new System.EventHandler(this.tsmiAutor_Knjige_Click);
             // 
             // tsmiAutori
             // 
             this.tsmiAutori.Name = "tsmiAutori";
-            this.tsmiAutori.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiAutori.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiAutori.Text = "autori";
             this.tsmiAutori.Click += new System.EventHandler(this.tsmiAutori_Click);
             // 
             // tsmiIzdavaci
             // 
             this.tsmiIzdavaci.Name = "tsmiIzdavaci";
-            this.tsmiIzdavaci.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiIzdavaci.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiIzdavaci.Text = "izdavaci";
             this.tsmiIzdavaci.Click += new System.EventHandler(this.tsmiIzdavaci_Click);
             // 
             // tsmiKnjige
             // 
             this.tsmiKnjige.Name = "tsmiKnjige";
-            this.tsmiKnjige.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiKnjige.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiKnjige.Text = "knjige";
             this.tsmiKnjige.Click += new System.EventHandler(this.tsmiKnjige_Click);
             // 
             // tsmiKorisnici
             // 
             this.tsmiKorisnici.Name = "tsmiKorisnici";
-            this.tsmiKorisnici.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiKorisnici.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiKorisnici.Text = "korisnici";
             this.tsmiKorisnici.Click += new System.EventHandler(this.tsmiKorisnici_Click);
             // 
             // tsmiMjesta
             // 
             this.tsmiMjesta.Name = "tsmiMjesta";
-            this.tsmiMjesta.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiMjesta.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiMjesta.Text = "mjesta";
             this.tsmiMjesta.Click += new System.EventHandler(this.tsmiMjesta_Click);
             // 
             // tsmiPostavke
             // 
             this.tsmiPostavke.Name = "tsmiPostavke";
-            this.tsmiPostavke.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiPostavke.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiPostavke.Text = "postavke";
             this.tsmiPostavke.Click += new System.EventHandler(this.tsmiPostavke_Click);
             // 
             // tsmiPosudbe
             // 
             this.tsmiPosudbe.Name = "tsmiPosudbe";
-            this.tsmiPosudbe.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiPosudbe.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiPosudbe.Text = "posudbe";
             this.tsmiPosudbe.Click += new System.EventHandler(this.tsmiPosudbe_Click);
             // 
             // tsmiPrimjerci
             // 
             this.tsmiPrimjerci.Name = "tsmiPrimjerci";
-            this.tsmiPrimjerci.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiPrimjerci.Size = new System.Drawing.Size(189, 26);
             this.tsmiPrimjerci.Text = "primjerci";
             this.tsmiPrimjerci.Click += new System.EventHandler(this.tsmiPrimjerci_Click);
-            // 
-            // tsmiStatusi_Primjeraka
-            // 
-            this.tsmiStatusi_Primjeraka.Name = "tsmiStatusi_Primjeraka";
-            this.tsmiStatusi_Primjeraka.Size = new System.Drawing.Size(308, 40);
-            this.tsmiStatusi_Primjeraka.Text = "statusi_primjeraka";
-            this.tsmiStatusi_Primjeraka.Click += new System.EventHandler(this.tsmiStatusi_Primjeraka_Click);
             // 
             // tsmiTipovi_Korisnika
             // 
             this.tsmiTipovi_Korisnika.Name = "tsmiTipovi_Korisnika";
-            this.tsmiTipovi_Korisnika.Size = new System.Drawing.Size(308, 40);
+            this.tsmiTipovi_Korisnika.Size = new System.Drawing.Size(189, 26);
+
             this.tsmiTipovi_Korisnika.Text = "tipovi_korisnika";
             this.tsmiTipovi_Korisnika.Click += new System.EventHandler(this.tsmiTipovi_Korisnika_Click);
             // 
             // tsmiZanrovi
             // 
             this.tsmiZanrovi.Name = "tsmiZanrovi";
-            this.tsmiZanrovi.Size = new System.Drawing.Size(308, 40);
+
+            this.tsmiZanrovi.Size = new System.Drawing.Size(189, 26);
             this.tsmiZanrovi.Text = "zanrovi";
             this.tsmiZanrovi.Click += new System.EventHandler(this.tsmiZanrovi_Click);
             // 
@@ -220,12 +240,36 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
+
             // tsmiRegistracija
             // 
             this.tsmiRegistracija.Name = "tsmiRegistracija";
             this.tsmiRegistracija.Size = new System.Drawing.Size(149, 36);
             this.tsmiRegistracija.Text = "Registracija";
             this.tsmiRegistracija.Click += new System.EventHandler(this.tsmiRegistracija_Click);
+
+            // tsmiUpravljanjePosudbamaGlavno
+            // 
+            this.tsmiUpravljanjePosudbamaGlavno.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiUpravljanjePosudbama,
+            this.tsmiPregledPosudbi});
+            this.tsmiUpravljanjePosudbamaGlavno.Name = "tsmiUpravljanjePosudbamaGlavno";
+            this.tsmiUpravljanjePosudbamaGlavno.Size = new System.Drawing.Size(187, 25);
+            this.tsmiUpravljanjePosudbamaGlavno.Text = "Upravljanje posudbama";
+            // 
+            // tsmiUpravljanjePosudbama
+            // 
+            this.tsmiUpravljanjePosudbama.Name = "tsmiUpravljanjePosudbama";
+            this.tsmiUpravljanjePosudbama.Size = new System.Drawing.Size(245, 26);
+            this.tsmiUpravljanjePosudbama.Text = "Upravljanje posudbama";
+            // 
+            // tsmiPregledPosudbi
+            // 
+            this.tsmiPregledPosudbi.Name = "tsmiPregledPosudbi";
+            this.tsmiPregledPosudbi.Size = new System.Drawing.Size(245, 26);
+            this.tsmiPregledPosudbi.Text = "Pregled posudbi";
+            this.tsmiPregledPosudbi.Click += new System.EventHandler(this.tsmiPregledPosudbi_Click);
+
             // 
             // FrmOpcenita
             // 
@@ -260,7 +304,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPostavke;
         private System.Windows.Forms.ToolStripMenuItem tsmiPosudbe;
         private System.Windows.Forms.ToolStripMenuItem tsmiPrimjerci;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatusi_Primjeraka;
         private System.Windows.Forms.ToolStripMenuItem tsmiTipovi_Korisnika;
         private System.Windows.Forms.ToolStripMenuItem tsmiZanrovi;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfil;
@@ -268,7 +311,13 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiKatalog;
         private System.Windows.Forms.ToolStripMenuItem tsmiRezervacijeKorisnika;
         private System.Windows.Forms.ToolStripMenuItem tsmiPosudbeKorisnika;
+
         private System.Windows.Forms.ToolStripMenuItem tsmiRegistracija;
+
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpravljanjePosudbamaGlavno;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpravljanjePosudbama;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPregledPosudbi;
+
     }
 }
 
