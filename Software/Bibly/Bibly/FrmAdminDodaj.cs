@@ -37,6 +37,7 @@ namespace Bibly
                     PostaviFormu_AutorKnjige();
                     break;
                 case "autori":
+
                     PostaviFormu_Autori();
                     break;
                 case "izdavaci":
@@ -49,6 +50,7 @@ namespace Bibly
                     PostaviFormu_Korisnici();
                     break;
                 case "mjesta":
+
                     PostaviFormu_Mjesta();
                     break;
                 case "postavke":
@@ -58,12 +60,14 @@ namespace Bibly
                     PostaviFormu_Posudbe();
                     break;
                 case "primjerci":
+
                     PostaviFormu_Primjerci();
                     break;
                 case "statusi_primjeraka":
 
                     break;
                 case "tipovi_korisnika":
+
                     PostaviFormu_TipoviKorisnika();
                     break;
                 case "zanrovi":
@@ -506,7 +510,6 @@ namespace Bibly
                 Close();
             }
         }
-
         private void PostaviFormu_AutorKnjige()
         {
 
@@ -526,6 +529,7 @@ namespace Bibly
             this.Controls.Add(knjiga);
 
             btnSpremi.Top = top + 15;
+            
             btnSpremi.Click += new EventHandler(AutorKnjigeValidacija);
             if (TrenutniObjekt != null)
             {
@@ -674,6 +678,7 @@ namespace Bibly
         private bool UnesenTekst()
         {
             string poruka = "";
+
             List<string> Iznimke = new List<string>()
             {
                 "txtID"
@@ -682,6 +687,7 @@ namespace Bibly
             foreach (TextBox txt in this.Controls.OfType<TextBox>())
             {
                 txt.BackColor = Color.FromArgb(254, 255, 242);
+
                 if ((String.IsNullOrEmpty(txt.Text) || String.IsNullOrWhiteSpace(txt.Text)) && !Iznimke.Contains(txt.Name))
                 {
                     txt.BackColor = Color.LightCoral;
@@ -700,7 +706,9 @@ namespace Bibly
                             break;
                         case "txtIme":
                         case "txtPrezime":
+
                             uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20}))?)$";
+                            
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format imena/prezimena");
                             break;
                         case "txtBrojMobitela":
@@ -708,6 +716,7 @@ namespace Bibly
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format broja mobitela");
                             break;
                         case "txtEmail":
+
                             uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,30}@[a-z]{2,5}[.][a-z][a-z]{1,3})$";
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format e-maila");
                             if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_Mail(txt.Text) != null) return IspisGreske(txt, "E-mail je već unesen!");
@@ -717,6 +726,7 @@ namespace Bibly
                         case "Lozinka":
                             if (!VelicinaUnosa(txt.Text, 50)) IspisGreske(txt, "Prevelik unos");
                             break;
+
                         case "txtDatumUclanjivanja":
                         case "txtDatumIstekaClanarine":
                             if (!DateTime.TryParse(txt.Text, out DateTime test)) return IspisGreske(txt, "Pogrešan format datuma");
@@ -743,10 +753,12 @@ namespace Bibly
             return false;
         }
 
+
         private bool VelicinaUnosa(string unos, int max)
         {
             return !(unos.Length >= max);
         }
+
 
         private bool ProvjeraOIBa(string unos)
         {
@@ -772,6 +784,7 @@ namespace Bibly
 
         }
 
+
         private TextBox PostaviTextBox(string Ime, string LabelIme, string LabelText, bool enabled = true)
         {
             TextBox txt = new TextBox();
@@ -781,7 +794,9 @@ namespace Bibly
             txt.Left = 350;
             txt.Width = 200;
             txt.Font = new Font("Microsoft Sans Serif", 12);
+
             txt.Enabled = enabled;
+
             this.Controls.Add(PostaviLabel(LabelIme, LabelText));
             top += 50;
             return txt;

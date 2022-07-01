@@ -17,6 +17,7 @@ namespace PodaciKnjige
 
             string upit =
                     "SELECT " +
+
                     "a.id_autor AS 'a.id_autor'" +
                     ",a.ime AS 'a.ime'" +
                     ", a.prezime AS 'a.prezime'" +
@@ -73,6 +74,7 @@ namespace PodaciKnjige
 
             return autori;
         }
+
         public static int DodajAutora(Autor autor)
         {
             BazaPodataka.Instanca.UspostaviVezu();

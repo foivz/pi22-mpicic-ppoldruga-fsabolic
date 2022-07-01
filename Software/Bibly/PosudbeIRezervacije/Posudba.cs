@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PodaciKnjige;
 using Prijava;
+using Postavke;
 
 namespace PosudbeIRezervacije
 {
@@ -76,6 +77,18 @@ namespace PosudbeIRezervacije
             Korisnik = korisnik;
             Primjerak = primjerak;
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
+        }
+
+        public bool JeLiKorisnikPresaoGranicuPosudivanja()
+        {
+            Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
+            int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
+            int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
+            if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
