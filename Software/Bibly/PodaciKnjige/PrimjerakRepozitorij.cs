@@ -45,6 +45,40 @@ namespace PodaciKnjige
             return primjerci;
         }
 
+        public static List<Primjerak> DohvatiSveDostupnePrimjerke()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit =
+                    "SELECT p.id_primjerak AS 'p.id_primjerak'" +
+                    ", p.ISBN AS 'p.ISBN'" +
+                    ", p.id_status AS 'p.id_status'" +
+                    ", sp.naziv AS 'sp.naziv'" +
+                    " FROM primjerci p" +
+                    " JOIN statusi_primjeraka sp" +
+                    " ON sp.id_statusa = p.id_status" +
+                    " JOIN knjige k" +
+                    " ON k.ISBN = p.ISBN WHERE id_status = 1";
+            List<Primjerak> primjerci = new List<Primjerak>();
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                primjerci.Add(new Primjerak(
+                   int.Parse(reader["p.id_primjerak"].ToString()),
+                   VratiStatusKaoEnum(reader["sp.naziv"].ToString()),
+                   KnjigaRepozitorij.DohvatiKnjigu(reader["p.ISBN"].ToString()),
+                   null
+                   ));
+            }
+            reader.Close();
+            BazaPodataka.Instanca.PrekiniVezu();
+            if (primjerci.Count == 0)
+            {
+                return null;
+            }
+
+            return primjerci;
+        }
+
         public static int DodajPrimjerak(Primjerak primjerak)
         {
             int status = 1;
