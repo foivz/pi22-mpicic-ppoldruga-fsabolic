@@ -15,6 +15,17 @@ namespace Bibly
         public FrmInformacije()
         {
             InitializeComponent();
+            AutoScroll = true;
+        }
+
+        private void FrmInformacije_Load(object sender, EventArgs e)
+        {
+            PopuniTextBokseve();
+        }
+
+        private void PopuniTextBokseve()
+        {
+            throw new NotImplementedException();
         }
     }
 }

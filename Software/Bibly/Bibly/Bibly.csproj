@@ -228,6 +228,9 @@
     <EmbeddedResource Include="FrmAzurirajKorisnika.resx">
       <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformacije.resx">
+      <DependentUpon>FrmInformacije.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKatalog.resx">
       <DependentUpon>FrmKatalog.cs</DependentUpon>
     </EmbeddedResource>
