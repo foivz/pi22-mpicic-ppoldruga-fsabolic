@@ -31,7 +31,7 @@ namespace PosudbeIRezervacije
                 trenutneRezervacijeKorisnika.Add(new Posudba
                 {
                     Id = int.Parse(reader["id_posudba"].ToString()),
-                    Korisnik = KorisnikRepozitorij.DohvatiKorisnika_OIB(reader["id_korisnik"].ToString()),
+                    Korisnik = korisnik,
                     DoKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString()),
                     Primjerak = PrimjerakRepozitorij.DohvatiPrimjerak(int.Parse(reader["id_primjerak"].ToString()))
                 });
