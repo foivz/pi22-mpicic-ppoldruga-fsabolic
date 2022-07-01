@@ -33,18 +33,26 @@ namespace PosudbeIRezervacije
         public static void DodajPosudbuKojaNijeBilaRezervirana(Posudba posudba)
         {
             BazaPodataka.Instanca.UspostaviVezu();
-            string upit = $"INSERT INTO autor_knjige" +
-                $"(datum_posudbe, predviden_datum_vracanja, id_primjerak, id_korisnik) " +
-                $"VALUES({posudba.Id},'{posudba}')";
+            string upit = $"INSERT INTO posudbe" +
+                    $"(datum_posudbe" +
+                    $", predviden_datum_vracanja" +
+                    $", id_primjerak" +
+                    $", id_korisnik) " +
+                $"VALUES(" +
+                    $" '{posudba.DatumPosudbe.ToString("yyyy-MM-dd")}'" +
+                    $", '{posudba.PredvideniDatumVracanja.ToString("yyyy-MM-dd")}'" +
+                    $", {posudba.Primjerak.Id}" +
+                    $", '{posudba.Korisnik.OIB}')";
             int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
         public static void AzurirajPosudbuKojaJeBilaRezervirana(Posudba posudba)
         {
             BazaPodataka.Instanca.UspostaviVezu();
-            string upit = $"INSERT INTO autor_knjige" +
-                $"(datum_posudbe, predviden_datum_vracanja, id_primjerak, id_korisnik) " +
-                $"VALUES({posudba.Id},'{posudba}')";
+            string upit = $"UPDATE posudbe SET " +
+                    $"datum_posudbe = '{posudba.DatumPosudbe.ToString("yyyy-MM-dd")}'" +
+                    $", predviden_datum_vracanja = '{posudba.PredvideniDatumVracanja.ToString("yyyy-MM-dd")}'" +
+                    $", rezervacija_potvrdena = 1";
             int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }

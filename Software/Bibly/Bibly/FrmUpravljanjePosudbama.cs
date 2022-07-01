@@ -80,7 +80,7 @@ namespace Bibly
                 }
                 else
                 {
-                    MessageBox.Show("PONOVI KAO DA JE DOSTUPNA KNJIGA. DODAJ FUNKCIJU KOJU DVA PUTA POZIVAS");
+                    MessageBox.Show("Došlo je do pogreške. Provjerite status primjerka, jer je rezerviran, ali ne postoji trenutna rezervacija.");
                     return;
                 }
             }
