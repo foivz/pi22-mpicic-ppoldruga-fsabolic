@@ -17,6 +17,15 @@ namespace Bibly
         {
             InitializeComponent();
             dgvKorisnici.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
+            List<string> comboboxItems = new List<string>()
+            {
+                "OIB","Ime","Prezime","E-mail"
+            };
+            foreach(string item in comboboxItems)
+            {
+                cmbKriterijPretrazivanja.Items.Add(item);
+            }
+            cmbKriterijPretrazivanja.SelectedIndex = 0;
         }
 
         private void btnAzuriraj_Click(object sender, EventArgs e)
@@ -45,6 +54,17 @@ namespace Bibly
                     MessageBox.Show("Niste odabrali korisnika!");
                 }
             }
+        }
+
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+            dgvKorisnici.DataSource = KorisnikRepozitorij.PretrazivanjeKorisnika(VratiAtribut(cmbKriterijPretrazivanja.SelectedItem as string),txtPretrazivanje.Text);
+        }
+
+        private string VratiAtribut(string naziv)
+        {
+            if (naziv == "OIB") return naziv;
+            return naziv.ToLower().Replace(" ","_").Replace("-","");
         }
     }
 }
