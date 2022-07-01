@@ -11,7 +11,7 @@ using Prijava;
 using System.Text.RegularExpressions;
 using PodaciKnjige;
 using PosudbeIRezervacije;
-
+using Postavke;
 namespace Bibly
 {
     public partial class FrmAdminDodaj : FrmOpcenita
@@ -54,7 +54,7 @@ namespace Bibly
                     PostaviFormu_Mjesta();
                     break;
                 case "postavke":
-
+                    PostaviFormu_Postavke();
                     break;
                 case "posudbe":
                     PostaviFormu_Posudbe();
@@ -74,6 +74,56 @@ namespace Bibly
                 default:
                     this.Close();
                     break;
+            }
+        }
+
+        private void PostaviFormu_Postavke()
+        {
+            this.Controls.Add(PostaviTextBox("txtMaxBrojPosudbi", "lblMaxBrojPosudbi", "Max broj posudbi", true));
+            this.Controls.Add(PostaviTextBox("txtZakasnina", "lblZakasnina", "Zakasnina", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjeRezervacije", "lblTrajanjeRezervacije", "Trajanje rezervacije", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjePosudbe", "lblTrajanjePosudbe", "Trajanje posudbe", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjeProduljenja", "lblTrajanjeProduljenja", "Trajanje produljenja", true));
+            this.Controls.Add(PostaviTextBox("txtRadnoVrijeme", "lblRadnoVrijeme", "Radno vrijeme", true));
+            this.Controls.Add(PostaviTextBox("txtKontakt", "lblKontakt", "Kontakt", true));
+            this.Controls.Add(PostaviTextBox("txtAdresa", "lblAdresa", "Adresa", true));
+            this.Controls.Add(PostaviTextBox("txtClanarina", "lblClanarina", "Članarina", true));
+            ((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
+            ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text = PostavkeRepozitorij.DohvatiIznosZakasnine().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjeRezervacije", true)[0]).Text = PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjePosudbe", true)[0]).Text = PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString();
+            ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text = PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
+            ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text = PostavkeRepozitorij.DohvatiKontakt().ToString();
+            ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text = PostavkeRepozitorij.DohvatiAdresu().ToString();
+            ((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text = PostavkeRepozitorij.DohvatiClanarinu().ToString();
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(PostavkeValidacija);
+
+
+
+        }
+
+        private void PostavkeValidacija(object sender, EventArgs e)
+        {
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                t.BackColor = Color.FromArgb(254, 255, 242);
+            }
+            if (UnesenTekst())
+            {
+                PostavkeRepozitorij.AzurirajPostavke(
+                    int.Parse(((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text),
+                double.Parse(((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjeRezervacije", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjePosudbe", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text),
+                ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text,
+                double.Parse(((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text)
+                );
+                Close();
             }
         }
 
@@ -124,10 +174,10 @@ namespace Bibly
             {
                 t.BackColor = Color.FromArgb(254, 255, 242);
             }
-            
+
             if (UnesenTekst())
             {
-                
+
                 Knjiga knjiga = new Knjiga(
                     ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text,
                     ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text,
@@ -146,7 +196,7 @@ namespace Bibly
                 else
                 {
                     string stariISBN = ((Knjiga)TrenutniObjekt).ISBN;
-                    KnjigaRepozitorij.AzurirajKnjigu(stariISBN,knjiga);
+                    KnjigaRepozitorij.AzurirajKnjigu(stariISBN, knjiga);
                 }
 
                 Close();
@@ -825,6 +875,9 @@ namespace Bibly
                             break;
 
                         case "txtNaziv":
+                        case "txtRadnoVrijeme":
+                        case "kontakt":
+                        case "adresa":
                             if (!VelicinaUnosa(txt.Text, 180)) IspisGreske(txt, "Prevelik unos");
                             break;
 
@@ -836,7 +889,24 @@ namespace Bibly
                         case "txtBlokiran":
                         case "txtPokusajiPrijave":
                         case "txtBrojStranica":
+                        case "txtMaxBrojPosudbi":
+                        case "txtTrajanjeRezervacije":
+                        case "txtTrajanjePosudbe":
+                        case "txtTrajanjeProduljenja":
                             if (!int.TryParse(txt.Text, out int test_1)) return IspisGreske(txt, "Nije unesen broj");
+                            break;
+
+                        case "txtZakasnina":
+                        case "txtClanarina":
+                            if (!double.TryParse(txt.Text, out double test_3))
+                            {
+                                return IspisGreske(txt, "Niste unijeli pravilan format za novac!");
+                            }
+                            double novac = double.Parse(txt.Text);
+                            if (Decimal.Round((Decimal)novac, 2) != (Decimal)novac)
+                            {
+                                return IspisGreske(txt, "Niste unijeli pravilan format za novac!");
+                            }
                             break;
                     }
                 }
