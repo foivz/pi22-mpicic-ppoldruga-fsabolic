@@ -42,6 +42,9 @@ namespace Bibly
                     dgvTablica.DataSource = IzdavacRepozitorij.DohvatiSveIzdavace();
 
                     break;
+                case "knjige":
+                    dgvTablica.DataSource = KnjigaRepozitorij.DohvatiSveKnjige();
+                    break;
                 case "korisnici":
                     dgvTablica.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
                     break;
@@ -126,6 +129,13 @@ namespace Bibly
                         if (TrenutniRed != null)
                         {
                             IzdavacRepozitorij.ObrisiIzdavaca((Izdavac)TrenutniRed);
+                        }
+                        PostaviFormu();
+                        break;
+                    case "knjige":
+                        if (TrenutniRed != null)
+                        {
+                            KnjigaRepozitorij.ObrisiKnjigu((Knjiga)TrenutniRed);
                         }
                         PostaviFormu();
                         break;
