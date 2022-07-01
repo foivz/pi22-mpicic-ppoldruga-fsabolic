@@ -25,8 +25,21 @@ namespace PosudbeIRezervacije
         {
 
         }
-
-        public bool JeLiKorisnikPresaoGranicuPosudivanja()
+        public Posudba(int id, DateTime datumPosudbe, DateTime predvidenDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja,
+            double zakasnina, Primjerak primjerak, Korisnik korisnik, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
+        {
+            Id = id;
+            DatumPosudbe = datumPosudbe;
+            PredvideniDatumVracanja = predvidenDatumVracanja;
+            StvarniDatumVracanja = stvarniDatumVracanja;
+            BrojProduljivanja = brojProduljivanja;
+            Zakasnina = zakasnina;
+            Primjerak = primjerak;
+            Korisnik = korisnik;
+            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
+            RezervacijaPotvrdena = rezervacijaPotvrdena;
+        }
+        public double IzracunajZakasninu()
         {
             TimeSpan pomRazlikaDana = PredvideniDatumVracanja.Subtract(DateTime.Today);
             int razlikaDana = int.Parse(pomRazlikaDana.TotalDays.ToString());
