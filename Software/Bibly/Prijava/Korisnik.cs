@@ -64,9 +64,9 @@ namespace Prijava
             int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
             if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }
