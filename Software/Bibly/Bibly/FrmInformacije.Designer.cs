@@ -50,10 +50,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtClanarina = new System.Windows.Forms.TextBox();
             this.txtZakasnina = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtTrajanjeProduljenja = new System.Windows.Forms.TextBox();
+            this.txtTrajanjePosudbi = new System.Windows.Forms.TextBox();
+            this.txtTrajanjeRezervacije = new System.Windows.Forms.TextBox();
+            this.txtMaxBrojPosudbi = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -64,13 +71,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.naslov = new System.Windows.Forms.Label();
             this.btnUredi = new System.Windows.Forms.Button();
-            this.txtClanarina = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtMaxBrojPosudbi = new System.Windows.Forms.TextBox();
-            this.txtTrajanjeRezervacije = new System.Windows.Forms.TextBox();
-            this.txtTrajanjePosudbi = new System.Windows.Forms.TextBox();
-            this.txtTrajanjeProduljenja = new System.Windows.Forms.TextBox();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel6 = new System.Windows.Forms.Panel();
@@ -102,7 +102,7 @@
             // 
             this.txtRadnoVrijeme.Location = new System.Drawing.Point(524, 38);
             this.txtRadnoVrijeme.Name = "txtRadnoVrijeme";
-            this.txtRadnoVrijeme.Size = new System.Drawing.Size(86, 22);
+            this.txtRadnoVrijeme.Size = new System.Drawing.Size(107, 22);
             this.txtRadnoVrijeme.TabIndex = 2;
             // 
             // label6
@@ -297,6 +297,33 @@
             panel3.Size = new System.Drawing.Size(655, 128);
             panel3.TabIndex = 5;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(440, 82);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(67, 16);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "(godišnja)";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(440, 32);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(87, 16);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "HRK po danu";
+            // 
+            // txtClanarina
+            // 
+            this.txtClanarina.Location = new System.Drawing.Point(387, 76);
+            this.txtClanarina.Name = "txtClanarina";
+            this.txtClanarina.Size = new System.Drawing.Size(47, 22);
+            this.txtClanarina.TabIndex = 10;
+            // 
             // txtZakasnina
             // 
             this.txtZakasnina.Location = new System.Drawing.Point(387, 26);
@@ -352,6 +379,34 @@
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(600, 128);
             panel4.TabIndex = 6;
+            // 
+            // txtTrajanjeProduljenja
+            // 
+            this.txtTrajanjeProduljenja.Location = new System.Drawing.Point(452, 100);
+            this.txtTrajanjeProduljenja.Name = "txtTrajanjeProduljenja";
+            this.txtTrajanjeProduljenja.Size = new System.Drawing.Size(47, 22);
+            this.txtTrajanjeProduljenja.TabIndex = 15;
+            // 
+            // txtTrajanjePosudbi
+            // 
+            this.txtTrajanjePosudbi.Location = new System.Drawing.Point(452, 72);
+            this.txtTrajanjePosudbi.Name = "txtTrajanjePosudbi";
+            this.txtTrajanjePosudbi.Size = new System.Drawing.Size(47, 22);
+            this.txtTrajanjePosudbi.TabIndex = 14;
+            // 
+            // txtTrajanjeRezervacije
+            // 
+            this.txtTrajanjeRezervacije.Location = new System.Drawing.Point(452, 41);
+            this.txtTrajanjeRezervacije.Name = "txtTrajanjeRezervacije";
+            this.txtTrajanjeRezervacije.Size = new System.Drawing.Size(47, 22);
+            this.txtTrajanjeRezervacije.TabIndex = 13;
+            // 
+            // txtMaxBrojPosudbi
+            // 
+            this.txtMaxBrojPosudbi.Location = new System.Drawing.Point(452, 13);
+            this.txtMaxBrojPosudbi.Name = "txtMaxBrojPosudbi";
+            this.txtMaxBrojPosudbi.Size = new System.Drawing.Size(47, 22);
+            this.txtMaxBrojPosudbi.TabIndex = 12;
             // 
             // label22
             // 
@@ -468,61 +523,6 @@
             this.btnUredi.TabIndex = 8;
             this.btnUredi.Text = "Uredi";
             this.btnUredi.UseVisualStyleBackColor = false;
-            // 
-            // txtClanarina
-            // 
-            this.txtClanarina.Location = new System.Drawing.Point(387, 76);
-            this.txtClanarina.Name = "txtClanarina";
-            this.txtClanarina.Size = new System.Drawing.Size(47, 22);
-            this.txtClanarina.TabIndex = 10;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(440, 32);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(87, 16);
-            this.label24.TabIndex = 9;
-            this.label24.Text = "HRK po danu";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(440, 82);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(67, 16);
-            this.label25.TabIndex = 11;
-            this.label25.Text = "(godišnja)";
-            // 
-            // txtMaxBrojPosudbi
-            // 
-            this.txtMaxBrojPosudbi.Location = new System.Drawing.Point(452, 13);
-            this.txtMaxBrojPosudbi.Name = "txtMaxBrojPosudbi";
-            this.txtMaxBrojPosudbi.Size = new System.Drawing.Size(47, 22);
-            this.txtMaxBrojPosudbi.TabIndex = 12;
-            // 
-            // txtTrajanjeRezervacije
-            // 
-            this.txtTrajanjeRezervacije.Location = new System.Drawing.Point(452, 41);
-            this.txtTrajanjeRezervacije.Name = "txtTrajanjeRezervacije";
-            this.txtTrajanjeRezervacije.Size = new System.Drawing.Size(47, 22);
-            this.txtTrajanjeRezervacije.TabIndex = 13;
-            // 
-            // txtTrajanjePosudbi
-            // 
-            this.txtTrajanjePosudbi.Location = new System.Drawing.Point(452, 72);
-            this.txtTrajanjePosudbi.Name = "txtTrajanjePosudbi";
-            this.txtTrajanjePosudbi.Size = new System.Drawing.Size(47, 22);
-            this.txtTrajanjePosudbi.TabIndex = 14;
-            // 
-            // txtTrajanjeProduljenja
-            // 
-            this.txtTrajanjeProduljenja.Location = new System.Drawing.Point(452, 100);
-            this.txtTrajanjeProduljenja.Name = "txtTrajanjeProduljenja";
-            this.txtTrajanjeProduljenja.Size = new System.Drawing.Size(47, 22);
-            this.txtTrajanjeProduljenja.TabIndex = 15;
             // 
             // FrmInformacije
             // 

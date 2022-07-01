@@ -25,7 +25,7 @@ namespace Bibly
 
         private void PopuniTextBokseve()
         {
-            throw new NotImplementedException();
+            txtRadnoVrijeme.Text = Postavke.PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
         }
     }
 }
