@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblAdresaBoravista = new System.Windows.Forms.Label();
             this.lblAdresaPrebivalista = new System.Windows.Forms.Label();
             this.cmbBoraviste = new System.Windows.Forms.ComboBox();
@@ -55,6 +56,8 @@
             this.pbQRKod = new System.Windows.Forms.PictureBox();
             this.btnIsprintajQRKod = new System.Windows.Forms.Button();
             this.btnUclani = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblUspjeh = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +65,7 @@
             // 
             this.lblAdresaBoravista.AutoSize = true;
             this.lblAdresaBoravista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresaBoravista.Location = new System.Drawing.Point(495, 844);
+            this.lblAdresaBoravista.Location = new System.Drawing.Point(495, 884);
             this.lblAdresaBoravista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresaBoravista.Name = "lblAdresaBoravista";
             this.lblAdresaBoravista.Size = new System.Drawing.Size(215, 29);
@@ -73,7 +76,7 @@
             // 
             this.lblAdresaPrebivalista.AutoSize = true;
             this.lblAdresaPrebivalista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresaPrebivalista.Location = new System.Drawing.Point(460, 696);
+            this.lblAdresaPrebivalista.Location = new System.Drawing.Point(460, 736);
             this.lblAdresaPrebivalista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresaPrebivalista.Name = "lblAdresaPrebivalista";
             this.lblAdresaPrebivalista.Size = new System.Drawing.Size(251, 29);
@@ -82,9 +85,10 @@
             // 
             // cmbBoraviste
             // 
+            this.cmbBoraviste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoraviste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoraviste.FormattingEnabled = true;
-            this.cmbBoraviste.Location = new System.Drawing.Point(728, 761);
+            this.cmbBoraviste.Location = new System.Drawing.Point(728, 801);
             this.cmbBoraviste.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbBoraviste.Name = "cmbBoraviste";
             this.cmbBoraviste.Size = new System.Drawing.Size(354, 37);
@@ -92,9 +96,10 @@
             // 
             // cmbPrebivaliste
             // 
+            this.cmbPrebivaliste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrebivaliste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrebivaliste.FormattingEnabled = true;
-            this.cmbPrebivaliste.Location = new System.Drawing.Point(728, 613);
+            this.cmbPrebivaliste.Location = new System.Drawing.Point(728, 653);
             this.cmbPrebivaliste.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbPrebivaliste.Name = "cmbPrebivaliste";
             this.cmbPrebivaliste.Size = new System.Drawing.Size(354, 37);
@@ -105,7 +110,7 @@
             this.txtIstekClanarine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtIstekClanarine.Enabled = false;
             this.txtIstekClanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIstekClanarine.Location = new System.Drawing.Point(728, 985);
+            this.txtIstekClanarine.Location = new System.Drawing.Point(728, 1025);
             this.txtIstekClanarine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtIstekClanarine.Name = "txtIstekClanarine";
             this.txtIstekClanarine.Size = new System.Drawing.Size(354, 33);
@@ -115,7 +120,7 @@
             // 
             this.lblIstekClanarine.AutoSize = true;
             this.lblIstekClanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIstekClanarine.Location = new System.Drawing.Point(513, 991);
+            this.lblIstekClanarine.Location = new System.Drawing.Point(513, 1031);
             this.lblIstekClanarine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIstekClanarine.Name = "lblIstekClanarine";
             this.lblIstekClanarine.Size = new System.Drawing.Size(196, 29);
@@ -127,7 +132,7 @@
             this.txtDatumUclanjivanja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtDatumUclanjivanja.Enabled = false;
             this.txtDatumUclanjivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDatumUclanjivanja.Location = new System.Drawing.Point(728, 911);
+            this.txtDatumUclanjivanja.Location = new System.Drawing.Point(728, 951);
             this.txtDatumUclanjivanja.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDatumUclanjivanja.Name = "txtDatumUclanjivanja";
             this.txtDatumUclanjivanja.Size = new System.Drawing.Size(354, 33);
@@ -137,7 +142,7 @@
             // 
             this.lblDatumUclanjivanja.AutoSize = true;
             this.lblDatumUclanjivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatumUclanjivanja.Location = new System.Drawing.Point(471, 918);
+            this.lblDatumUclanjivanja.Location = new System.Drawing.Point(471, 958);
             this.lblDatumUclanjivanja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDatumUclanjivanja.Name = "lblDatumUclanjivanja";
             this.lblDatumUclanjivanja.Size = new System.Drawing.Size(238, 29);
@@ -148,7 +153,7 @@
             // 
             this.txtAdresaBoravista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtAdresaBoravista.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdresaBoravista.Location = new System.Drawing.Point(728, 838);
+            this.txtAdresaBoravista.Location = new System.Drawing.Point(728, 878);
             this.txtAdresaBoravista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAdresaBoravista.Name = "txtAdresaBoravista";
             this.txtAdresaBoravista.Size = new System.Drawing.Size(354, 33);
@@ -158,7 +163,7 @@
             // 
             this.lblBoraviste.AutoSize = true;
             this.lblBoraviste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBoraviste.Location = new System.Drawing.Point(585, 770);
+            this.lblBoraviste.Location = new System.Drawing.Point(585, 810);
             this.lblBoraviste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBoraviste.Name = "lblBoraviste";
             this.lblBoraviste.Size = new System.Drawing.Size(129, 29);
@@ -169,7 +174,7 @@
             // 
             this.txtAdresaPrebivalista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtAdresaPrebivalista.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdresaPrebivalista.Location = new System.Drawing.Point(728, 690);
+            this.txtAdresaPrebivalista.Location = new System.Drawing.Point(728, 730);
             this.txtAdresaPrebivalista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAdresaPrebivalista.Name = "txtAdresaPrebivalista";
             this.txtAdresaPrebivalista.Size = new System.Drawing.Size(354, 33);
@@ -179,7 +184,7 @@
             // 
             this.lblPrebivaliste.AutoSize = true;
             this.lblPrebivaliste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrebivaliste.Location = new System.Drawing.Point(552, 622);
+            this.lblPrebivaliste.Location = new System.Drawing.Point(552, 662);
             this.lblPrebivaliste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrebivaliste.Name = "lblPrebivaliste";
             this.lblPrebivaliste.Size = new System.Drawing.Size(165, 29);
@@ -190,7 +195,7 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(728, 542);
+            this.txtEmail.Location = new System.Drawing.Point(728, 582);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(354, 33);
@@ -200,7 +205,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(622, 548);
+            this.lblEmail.Location = new System.Drawing.Point(622, 588);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(95, 29);
@@ -211,7 +216,7 @@
             // 
             this.txtBrojMobitela.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtBrojMobitela.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrojMobitela.Location = new System.Drawing.Point(728, 468);
+            this.txtBrojMobitela.Location = new System.Drawing.Point(728, 508);
             this.txtBrojMobitela.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBrojMobitela.Name = "txtBrojMobitela";
             this.txtBrojMobitela.Size = new System.Drawing.Size(354, 33);
@@ -221,7 +226,7 @@
             // 
             this.lblBrojMobitela.AutoSize = true;
             this.lblBrojMobitela.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrojMobitela.Location = new System.Drawing.Point(532, 475);
+            this.lblBrojMobitela.Location = new System.Drawing.Point(532, 515);
             this.lblBrojMobitela.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrojMobitela.Name = "lblBrojMobitela";
             this.lblBrojMobitela.Size = new System.Drawing.Size(183, 29);
@@ -232,7 +237,7 @@
             // 
             this.txtPrezime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrezime.Location = new System.Drawing.Point(728, 395);
+            this.txtPrezime.Location = new System.Drawing.Point(728, 435);
             this.txtPrezime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(354, 33);
@@ -242,7 +247,7 @@
             // 
             this.lblPrezime.AutoSize = true;
             this.lblPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrezime.Location = new System.Drawing.Point(594, 401);
+            this.lblPrezime.Location = new System.Drawing.Point(594, 441);
             this.lblPrezime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrezime.Name = "lblPrezime";
             this.lblPrezime.Size = new System.Drawing.Size(123, 29);
@@ -253,7 +258,7 @@
             // 
             this.txtIme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIme.Location = new System.Drawing.Point(728, 321);
+            this.txtIme.Location = new System.Drawing.Point(728, 361);
             this.txtIme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(354, 33);
@@ -263,7 +268,7 @@
             // 
             this.lblIme.AutoSize = true;
             this.lblIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIme.Location = new System.Drawing.Point(645, 327);
+            this.lblIme.Location = new System.Drawing.Point(645, 367);
             this.lblIme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIme.Name = "lblIme";
             this.lblIme.Size = new System.Drawing.Size(70, 29);
@@ -274,7 +279,7 @@
             // 
             this.txtOIB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
             this.txtOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOIB.Location = new System.Drawing.Point(728, 247);
+            this.txtOIB.Location = new System.Drawing.Point(728, 287);
             this.txtOIB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtOIB.Name = "txtOIB";
             this.txtOIB.Size = new System.Drawing.Size(354, 33);
@@ -284,7 +289,7 @@
             // 
             this.lblOIB.AutoSize = true;
             this.lblOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOIB.Location = new System.Drawing.Point(644, 253);
+            this.lblOIB.Location = new System.Drawing.Point(644, 293);
             this.lblOIB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOIB.Name = "lblOIB";
             this.lblOIB.Size = new System.Drawing.Size(71, 29);
@@ -305,42 +310,47 @@
             // btnGenerirajQRKod
             // 
             this.btnGenerirajQRKod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnGenerirajQRKod.Enabled = false;
             this.btnGenerirajQRKod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerirajQRKod.Location = new System.Drawing.Point(65, 581);
+            this.btnGenerirajQRKod.Location = new System.Drawing.Point(65, 621);
             this.btnGenerirajQRKod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGenerirajQRKod.Name = "btnGenerirajQRKod";
             this.btnGenerirajQRKod.Size = new System.Drawing.Size(298, 55);
             this.btnGenerirajQRKod.TabIndex = 50;
             this.btnGenerirajQRKod.Text = "Generiraj QR kod";
             this.btnGenerirajQRKod.UseVisualStyleBackColor = false;
+            this.btnGenerirajQRKod.Click += new System.EventHandler(this.btnGenerirajQRKod_Click);
             // 
             // pbQRKod
             // 
             this.pbQRKod.BackColor = System.Drawing.Color.Gray;
-            this.pbQRKod.Location = new System.Drawing.Point(65, 247);
+            this.pbQRKod.Location = new System.Drawing.Point(65, 287);
             this.pbQRKod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbQRKod.Name = "pbQRKod";
             this.pbQRKod.Size = new System.Drawing.Size(298, 306);
+            this.pbQRKod.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbQRKod.TabIndex = 49;
             this.pbQRKod.TabStop = false;
             // 
             // btnIsprintajQRKod
             // 
             this.btnIsprintajQRKod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnIsprintajQRKod.Enabled = false;
             this.btnIsprintajQRKod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIsprintajQRKod.Location = new System.Drawing.Point(109, 673);
+            this.btnIsprintajQRKod.Location = new System.Drawing.Point(65, 696);
             this.btnIsprintajQRKod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIsprintajQRKod.Name = "btnIsprintajQRKod";
-            this.btnIsprintajQRKod.Size = new System.Drawing.Size(204, 68);
+            this.btnIsprintajQRKod.Size = new System.Drawing.Size(298, 53);
             this.btnIsprintajQRKod.TabIndex = 51;
             this.btnIsprintajQRKod.Text = "Isprintaj QR kod";
             this.btnIsprintajQRKod.UseVisualStyleBackColor = false;
+            this.btnIsprintajQRKod.Click += new System.EventHandler(this.btnIsprintajQRKod_Click);
             // 
             // btnUclani
             // 
             this.btnUclani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnUclani.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUclani.Location = new System.Drawing.Point(803, 1062);
+            this.btnUclani.Location = new System.Drawing.Point(803, 1102);
             this.btnUclani.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUclani.Name = "btnUclani";
             this.btnUclani.Size = new System.Drawing.Size(195, 54);
@@ -349,11 +359,29 @@
             this.btnUclani.UseVisualStyleBackColor = false;
             this.btnUclani.Click += new System.EventHandler(this.btnUclani_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblUspjeh
+            // 
+            this.lblUspjeh.AutoSize = true;
+            this.lblUspjeh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUspjeh.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lblUspjeh.Location = new System.Drawing.Point(552, 199);
+            this.lblUspjeh.Name = "lblUspjeh";
+            this.lblUspjeh.Size = new System.Drawing.Size(300, 29);
+            this.lblUspjeh.TabIndex = 53;
+            this.lblUspjeh.Text = "Uspješno učlanjen korisnik";
+            this.lblUspjeh.Visible = false;
+            // 
             // FrmRegistracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1287, 1221);
+            this.ClientSize = new System.Drawing.Size(1308, 1239);
+            this.Controls.Add(this.lblUspjeh);
             this.Controls.Add(this.btnUclani);
             this.Controls.Add(this.btnIsprintajQRKod);
             this.Controls.Add(this.btnGenerirajQRKod);
@@ -411,6 +439,7 @@
             this.Controls.SetChildIndex(this.btnGenerirajQRKod, 0);
             this.Controls.SetChildIndex(this.btnIsprintajQRKod, 0);
             this.Controls.SetChildIndex(this.btnUclani, 0);
+            this.Controls.SetChildIndex(this.lblUspjeh, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -446,5 +475,7 @@
         private System.Windows.Forms.PictureBox pbQRKod;
         private System.Windows.Forms.Button btnIsprintajQRKod;
         private System.Windows.Forms.Button btnUclani;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblUspjeh;
     }
 }

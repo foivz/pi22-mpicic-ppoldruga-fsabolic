@@ -93,8 +93,14 @@ namespace Bibly
 
                     };
                     KorisnikRepozitorij.DodajKorisnika(korisnik);
+                    btnGenerirajQRKod.Enabled = true;
+                    btnIsprintajQRKod.Enabled = true;
+                    pbQRKod.Image = Skener.Skener.GenerirajQRKod(korisnik.Email);
+                    lblUspjeh.Visible = true;
+                    timer1.Start();                  
                     PosaljiLozinkuNaMail(korisnik.Lozinka, korisnik.Email, korisnik.Ime);
                     break;
+
             }
 
             if (dobroPopunjeno != 1)
@@ -223,8 +229,7 @@ namespace Bibly
         private void PosaljiLozinkuNaMail(string lozinka, string email, string ime)
         {
             SendMail().Wait();
-            MessageBox.Show("Uspješna registracija, članu je lozinka za prijavu poslana na njegovu email adresu.");
-
+            
             async Task SendMail() {
 
                 string apiKey = "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";
@@ -248,6 +253,37 @@ namespace Bibly
             }
         }
 
+        private void btnGenerirajQRKod_Click(object sender, EventArgs e)
+        {
+            if ( string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Niste unijeli mail, ne može se generirati QR kod!");
+                return;
+            }
+            pbQRKod.Image = Skener.Skener.GenerirajQRKod(txtEmail.Text);
+        }
+
+        private void btnIsprintajQRKod_Click(object sender, EventArgs e)
+        {
+            if (pbQRKod.Image == null)
+            {
+                MessageBox.Show("Niste generirali QR kod!");
+                return;
+            }
+            Skener.Skener.Isprintaj(pbQRKod.Image);
+        }
+
+
+        static int vrijeme = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (vrijeme++ == 2)
+            {
+                lblUspjeh.Visible = false;
+                vrijeme = 0;
+                timer1.Stop();
+            }
+        }
     }
 }
 
