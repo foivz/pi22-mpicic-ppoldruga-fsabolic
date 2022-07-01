@@ -25,7 +25,8 @@ namespace PosudbeIRezervacije
         {
 
         }
-        public double IzracunajZakasninu()
+
+        public bool JeLiKorisnikPresaoGranicuPosudivanja()
         {
             TimeSpan pomRazlikaDana = PredvideniDatumVracanja.Subtract(DateTime.Today);
             int razlikaDana = int.Parse(pomRazlikaDana.TotalDays.ToString());

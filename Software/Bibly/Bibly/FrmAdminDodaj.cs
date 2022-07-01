@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Prijava;
 using System.Text.RegularExpressions;
 using PodaciKnjige;
+using PosudbeIRezervacije;
 
 namespace Bibly
 {
@@ -36,6 +37,7 @@ namespace Bibly
                     PostaviFormu_AutorKnjige();
                     break;
                 case "autori":
+
                     PostaviFormu_Autori();
                     break;
                 case "izdavaci":
@@ -48,21 +50,24 @@ namespace Bibly
                     PostaviFormu_Korisnici();
                     break;
                 case "mjesta":
+
                     PostaviFormu_Mjesta();
                     break;
                 case "postavke":
 
                     break;
                 case "posudbe":
-
+                    PostaviFormu_Posudbe();
                     break;
                 case "primjerci":
+
                     PostaviFormu_Primjerci();
                     break;
                 case "statusi_primjeraka":
 
                     break;
                 case "tipovi_korisnika":
+
                     PostaviFormu_TipoviKorisnika();
                     break;
                 case "zanrovi":
@@ -72,6 +77,172 @@ namespace Bibly
                     this.Close();
                     break;
             }
+        }
+
+
+        private void PostaviFormu_Posudbe()
+        {
+            this.Controls.Add(PostaviTextBox("txtID", "lblID", "ID", false));
+            this.Controls.Add(PostaviTextBox("txtDatumPosudbe", "lblDatumPosudbe", "Datum posudbe", true));
+            this.Controls.Add(PostaviTextBox("txtPredvidenDatumVracanja", "lblPredivenDatumVracanja", "Predviđen datum vraćanja", true));
+            this.Controls.Add(PostaviTextBox("txtStvarniDatumVracanja", "lblStvarniDatumVracanja", "Stvarni datum vraćanja", true));
+            this.Controls.Add(PostaviTextBox("txtBrojProduljivanja", "lblBrojProduljivanja", "Broj produljivanja", true));
+            this.Controls.Add(PostaviTextBox("txtZakasnina", "lblZakasnina", "Zakasnina", true));
+            ComboBox primjerak = PostaviComboBox("cmbPrimjerak", "lblPrimjerak", "Primjerak");
+            foreach (Primjerak p in PrimjerakRepozitorij.DohvatiSvePrimjerke())
+            {
+                primjerak.Items.Add(p);
+            }
+            primjerak.SelectedIndex = 0;
+            this.Controls.Add(primjerak);
+            ComboBox korisnik = PostaviComboBox("cmbKorisnik", "lblKorisnik", "Korisnik");
+            foreach (Korisnik k in KorisnikRepozitorij.DohvatiSveKorisnike())
+            {
+                korisnik.Items.Add(k);
+            }
+            korisnik.SelectedIndex = 0;
+            this.Controls.Add(korisnik);
+            this.Controls.Add(PostaviTextBox("txtDoKadaVrijediRezervacija", "lblDoKadaVrijediRezervacija", "Do kada vrijedi rezervacija", true));
+            this.Controls.Add(PostaviTextBox("txtRezervacijaPotvrdena", "lblRezervacijaPotvrdena", "Rezervacija potvrđena", true));
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(PosudbeValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Posudba posudba = (Posudba)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtID", true)[0]).Text = posudba.Id.ToString();
+                ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text = posudba.DatumPosudbe == default ? "" : posudba.DatumPosudbe.ToString("dd/MM/yyyy");
+                ((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text = posudba.PredvideniDatumVracanja == default ? "" : posudba.PredvideniDatumVracanja.ToString("dd/MM/yyyy");
+                ((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text = posudba.StvarniDatumVracanja == default ? "" : posudba.StvarniDatumVracanja.ToString("dd/MM/yyyy");
+                ((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text = posudba.BrojProduljivanja.ToString();
+                ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text = posudba.Zakasnina.ToString();
+                List<Primjerak> primjerci = PrimjerakRepozitorij.DohvatiSvePrimjerke();
+                ((ComboBox)this.Controls.Find("cmbPrimjerak", true)[0]).SelectedIndex = primjerci.IndexOf(primjerci.Find(x => x.Id == posudba.Primjerak.Id));
+                List<Korisnik> korisnici = KorisnikRepozitorij.DohvatiSveKorisnike();
+                ((ComboBox)this.Controls.Find("cmbKorisnik", true)[0]).SelectedIndex = korisnici.IndexOf(korisnici.Find(x => x.OIB == posudba.Korisnik.OIB));
+                ((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text = posudba.DoKadaVrijediRezervacija == default ? "" : posudba.DoKadaVrijediRezervacija.ToString("dd/MM/yyyy");
+                ((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text = posudba.RezervacijaPotvrdena.ToString() == "-1" ? "" : posudba.RezervacijaPotvrdena.ToString();
+            }
+        }
+
+        private void PosudbeValidacija(object sender, EventArgs e)
+        {
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                t.BackColor = Color.FromArgb(254, 255, 242);
+            }
+            string id = ((TextBox)this.Controls.Find("txtID", true)[0]).Text;
+            string datumPosudbe = ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text;
+            string predvideniDatumVracanja = ((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text;
+            string stvarniDatumVracanja = ((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text;
+            string brojProduljivanja = ((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text;
+            string zakasnina = ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text;
+            string doKadaVrijediRezervacija = ((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text;
+            string rezervacijaPotvrdena = ((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text;
+
+            if ((String.IsNullOrEmpty(datumPosudbe) || String.IsNullOrWhiteSpace(datumPosudbe)) && (String.IsNullOrEmpty(doKadaVrijediRezervacija) || String.IsNullOrWhiteSpace(doKadaVrijediRezervacija)))
+            {
+                MessageBox.Show("Niste unijeli ni posudbu ni rezervaciju!");
+                return;
+            }
+
+            if ((String.IsNullOrEmpty(datumPosudbe) || String.IsNullOrWhiteSpace(datumPosudbe)) && !(String.IsNullOrEmpty(predvideniDatumVracanja) || String.IsNullOrWhiteSpace(predvideniDatumVracanja)))
+            {
+                MessageBox.Show("Niste unijeli datum posudbe, a unijeli ste predviđeni datum vraćanja");
+                return;
+            }
+            if (!(String.IsNullOrEmpty(datumPosudbe) || String.IsNullOrWhiteSpace(datumPosudbe)) && (String.IsNullOrEmpty(predvideniDatumVracanja) || String.IsNullOrWhiteSpace(predvideniDatumVracanja)))
+            {
+                MessageBox.Show("Niste unijeli predviđeni datum vraćanja");
+                return;
+            }
+            if ((String.IsNullOrEmpty(datumPosudbe) || String.IsNullOrWhiteSpace(datumPosudbe)) && !(String.IsNullOrEmpty(stvarniDatumVracanja) || String.IsNullOrWhiteSpace(stvarniDatumVracanja)))
+            {
+                MessageBox.Show("Niste unijeli datum posudbe, a unijeli ste stvarni datum vraćanja");
+                return;
+            }
+            if ((String.IsNullOrEmpty(predvideniDatumVracanja) || String.IsNullOrWhiteSpace(predvideniDatumVracanja)) && !(String.IsNullOrEmpty(stvarniDatumVracanja) || String.IsNullOrWhiteSpace(stvarniDatumVracanja)))
+            {
+                MessageBox.Show("Niste unijeli predviđeni datum vraćanja, a unijeli ste stvarni datum vraćanja");
+                return;
+            }
+
+            if (!(String.IsNullOrEmpty(rezervacijaPotvrdena) || String.IsNullOrWhiteSpace(rezervacijaPotvrdena)) && (String.IsNullOrEmpty(doKadaVrijediRezervacija) || String.IsNullOrWhiteSpace(doKadaVrijediRezervacija)))
+            {
+                MessageBox.Show("Niste unijeli do kada vrijedi rezervacija, a unijeli ste potvrdu rezervacije");
+                return;
+            }
+            if (!(String.IsNullOrEmpty(datumPosudbe) || String.IsNullOrWhiteSpace(datumPosudbe)) && !(String.IsNullOrEmpty(doKadaVrijediRezervacija) || String.IsNullOrWhiteSpace(doKadaVrijediRezervacija)) && (String.IsNullOrEmpty(rezervacijaPotvrdena) || String.IsNullOrWhiteSpace(rezervacijaPotvrdena)))
+            {
+                MessageBox.Show("Krenuli ste unositi posudbu, a niste do kraja unijeli rezervaciju");
+                return;
+            }
+
+            List<TextBox> list = new List<TextBox>();
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                if (!(String.IsNullOrEmpty(t.Text) || String.IsNullOrWhiteSpace(t.Text)))
+                    switch (t.Name)
+                    {
+                        case "txtDatumPosudbe":
+                        case "txtPredvidenDatumVracanja":
+                        case "txtStvarniDatumVracanja":
+                        case "txtDoKadaVrijediRezervacija":
+                            if (!DateTime.TryParse(t.Text, out DateTime test))
+                            {
+                                IspisGreske(t, "Pogrešan format datuma");
+                                return;
+                            }
+                            break;
+                        case "txtBrojProduljivanja":
+                        case "txtRezervacijaPotvrdena":
+                            if (!int.TryParse(t.Text, out int test1))
+                            {
+                                IspisGreske(t, "Nije unesen broj!");
+                                return;
+                            }
+                            break;
+                        case "txtZakasnina":
+                            double test2;
+                            if (!double.TryParse(t.Text, out test2))
+                            {
+                                IspisGreske(t, "Nije unesen pravilan decimalan broj!");
+                                return;
+                            }
+                            else
+                            {
+                                if (Decimal.Round((Decimal)test2, 2) != (Decimal)test2)
+                                {
+                                    IspisGreske(t, "Nije unesen pravilan decimalan broj!");
+                                    return;
+                                }
+                            }
+                            break;
+                    }
+            }
+
+            Posudba posudba = new Posudba(
+                int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text==""?"-1": ((TextBox)this.Controls.Find("txtID", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text == "" ? 0 : int.Parse(((TextBox)this.Controls.Find("txtBrojProduljivanja", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text == "" ? 0 : double.Parse(((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text),
+            ((ComboBox)this.Controls.Find("cmbPrimjerak", true)[0]).SelectedItem as Primjerak,
+            ((ComboBox)this.Controls.Find("cmbKorisnik", true)[0]).SelectedItem as Korisnik,
+            ((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDoKadaVrijediRezervacija", true)[0]).Text),
+            ((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text == "" ? -1 : int.Parse(((TextBox)this.Controls.Find("txtRezervacijaPotvrdena", true)[0]).Text) % 2
+            );
+
+            if (TrenutniObjekt != null)
+            {
+                PosudbaRepozitorij.AzurirajPosudbu(posudba);
+            }
+            else
+            {
+                PosudbaRepozitorij.DodajPosudbu(posudba);
+            }
+            Close();
+
         }
 
         private void PostaviFormu_Zanrovi()
@@ -339,7 +510,6 @@ namespace Bibly
                 Close();
             }
         }
-
         private void PostaviFormu_AutorKnjige()
         {
 
@@ -359,6 +529,7 @@ namespace Bibly
             this.Controls.Add(knjiga);
 
             btnSpremi.Top = top + 15;
+            
             btnSpremi.Click += new EventHandler(AutorKnjigeValidacija);
             if (TrenutniObjekt != null)
             {
@@ -507,6 +678,7 @@ namespace Bibly
         private bool UnesenTekst()
         {
             string poruka = "";
+
             List<string> Iznimke = new List<string>()
             {
                 "txtID"
@@ -515,6 +687,7 @@ namespace Bibly
             foreach (TextBox txt in this.Controls.OfType<TextBox>())
             {
                 txt.BackColor = Color.FromArgb(254, 255, 242);
+
                 if ((String.IsNullOrEmpty(txt.Text) || String.IsNullOrWhiteSpace(txt.Text)) && !Iznimke.Contains(txt.Name))
                 {
                     txt.BackColor = Color.LightCoral;
@@ -533,7 +706,9 @@ namespace Bibly
                             break;
                         case "txtIme":
                         case "txtPrezime":
+
                             uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20}))?)$";
+                            
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format imena/prezimena");
                             break;
                         case "txtBrojMobitela":
@@ -541,6 +716,7 @@ namespace Bibly
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format broja mobitela");
                             break;
                         case "txtEmail":
+
                             uzorak = @"^([A-Z,a-z,ČĆŽĐŠčćžđš][a-z,A-Z,0-9,ČĆŽĐŠčćžđš,_,-]{2,30}@[a-z]{2,5}[.][a-z][a-z]{1,3})$";
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format e-maila");
                             if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_Mail(txt.Text) != null) return IspisGreske(txt, "E-mail je već unesen!");
@@ -550,6 +726,7 @@ namespace Bibly
                         case "Lozinka":
                             if (!VelicinaUnosa(txt.Text, 50)) IspisGreske(txt, "Prevelik unos");
                             break;
+
                         case "txtDatumUclanjivanja":
                         case "txtDatumIstekaClanarine":
                             if (!DateTime.TryParse(txt.Text, out DateTime test)) return IspisGreske(txt, "Pogrešan format datuma");
@@ -576,10 +753,12 @@ namespace Bibly
             return false;
         }
 
+
         private bool VelicinaUnosa(string unos, int max)
         {
             return !(unos.Length >= max);
         }
+
 
         private bool ProvjeraOIBa(string unos)
         {
@@ -605,6 +784,7 @@ namespace Bibly
 
         }
 
+
         private TextBox PostaviTextBox(string Ime, string LabelIme, string LabelText, bool enabled = true)
         {
             TextBox txt = new TextBox();
@@ -614,7 +794,9 @@ namespace Bibly
             txt.Left = 350;
             txt.Width = 200;
             txt.Font = new Font("Microsoft Sans Serif", 12);
+
             txt.Enabled = enabled;
+
             this.Controls.Add(PostaviLabel(LabelIme, LabelText));
             top += 50;
             return txt;
