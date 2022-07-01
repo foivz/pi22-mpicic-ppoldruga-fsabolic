@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Mail;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace Bibly
 {
@@ -87,13 +91,9 @@ namespace Bibly
                         PokusajiPrijave = pokusajiPrijave,
                         Blokiran = blokiran,
 
-
-
-
                     };
-                    MessageBox.Show("Uspješno ste registrirali novog člana!");
                     KorisnikRepozitorij.DodajKorisnika(korisnik);
-
+                    PosaljiLozinkuNaMail(korisnik.Lozinka, korisnik.Email, korisnik.Ime);
                     break;
             }
 
@@ -102,6 +102,7 @@ namespace Bibly
                 MessageBox.Show(poruka);
             }
         }
+
 
         private int ProvjeriUnose(string oib, string ime, string prezime, string brojMobitela, string email, string adresaPrebivalista, string adresaBoravista)
         {
@@ -219,6 +220,34 @@ namespace Bibly
             return new string (chars);
         }
 
+        private void PosaljiLozinkuNaMail(string lozinka, string email, string ime)
+        {
+            SendMail().Wait();
+            MessageBox.Show("Uspješna registracija, članu je lozinka za prijavu poslana na njegovu email adresu.");
+
+            async Task SendMail() {
+
+                string apiKey = "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";
+
+                var client = new SendGridClient(apiKey);
+
+                var senderEmail = new EmailAddress("bibly.knjiznica@gmail.com");
+
+                var recieverEmail = new EmailAddress($"{email}", $"{ime}");
+
+                string emailSubject = "Lozinka za Bibly aplikaciju!";
+
+                string textContent = "plain";
+
+                string htmlContent = $"Čestitamo Vam što ste postali član najbolje knjižnice Bibly :). U aplikaciju se možete prijaviti pomoću vaše email adrese i lozinke koja se nalazi ispod. <br><br>" +
+                    $"<strong>Lozinka: {lozinka}</strong>";
+
+                var msg = MailHelper.CreateSingleEmail(senderEmail, recieverEmail, emailSubject, textContent, htmlContent);
+
+                var resp = await client.SendEmailAsync(msg).ConfigureAwait(false);
+            }
+        }
 
     }
 }
+
