@@ -28,15 +28,13 @@ namespace PosudbeIRezervacije
             IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
             while (reader.Read())
             {
-                int idRezervacije = int.Parse(reader["id_posudba"].ToString());
-                int idPrimjerka = int.Parse(reader["id_primjerak"].ToString());
-                DateTime doKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString());
-                trenutneRezervacijeKorisnika.Add(new Posudba(
-                    idRezervacije,
-                    korisnik,
-                    PrimjerakRepozitorij.DohvatiPrimjerak(idPrimjerka),
-                    doKadaVrijediRezervacija
-                ));
+                trenutneRezervacijeKorisnika.Add(new Posudba
+                {
+                    Id = int.Parse(reader["id_posudba"].ToString()),
+                    Korisnik = KorisnikRepozitorij.DohvatiKorisnika_OIB(reader["id_korisnik"].ToString()),
+                    DoKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString()),
+                    Primjerak = PrimjerakRepozitorij.DohvatiPrimjerak(int.Parse(reader["id_primjerak"].ToString()))
+                });
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
@@ -83,12 +81,13 @@ namespace PosudbeIRezervacije
             List<Posudba> rezervacija = new List<Posudba>();
             while (reader.Read())
             {
-                rezervacija.Add(new Posudba(
-                        int.Parse(reader["id_posudba"].ToString()),
-                        KorisnikRepozitorij.DohvatiKorisnika_OIB(reader["id_korisnik"].ToString()),
-                        primjerak,
-                        DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString())
-                    ));
+                rezervacija.Add(new Posudba
+                {
+                    Id = int.Parse(reader["id_posudba"].ToString()),
+                    Korisnik = KorisnikRepozitorij.DohvatiKorisnika_OIB(reader["id_korisnik"].ToString()),
+                    DoKadaVrijediRezervacija = DateTime.Parse(reader["do_kada_vrijedi_rezervacija"].ToString()),
+                    Primjerak = primjerak
+                });
             }
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();

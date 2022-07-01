@@ -195,6 +195,9 @@
     <EmbeddedResource Include="FrmPosudbe.resx">
       <DependentUpon>FrmPosudbe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPregledPosudbi.resx">
+      <DependentUpon>FrmPregledPosudbi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </EmbeddedResource>

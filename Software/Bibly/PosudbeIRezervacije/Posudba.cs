@@ -25,49 +25,14 @@ namespace PosudbeIRezervacije
         {
 
         }
-
-        //konstruktor za posudivanje knjige
-        public Posudba(DateTime datumPosudbe, DateTime predvideniDatumVracanja, Korisnik korisnik, Primjerak primjerak)
+        public double IzracunajZakasninu()
         {
-
-        }
-
-        //konstruktor za Prošle posudbe
-        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
-        {
-            Id = id;
-            DatumPosudbe = datumPosudbe;
-            PredvideniDatumVracanja = predvideniDatumVracanja;
-            StvarniDatumVracanja = stvarniDatumVracanja;
-            BrojProduljivanja = brojProduljivanja;
-            Zakasnina = zakasnina;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-        }
-        //konstruktor za Trenutne posudbe
-        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
-        {
-            Id = id;
-            DatumPosudbe = datumPosudbe;
-            PredvideniDatumVracanja = predvideniDatumVracanja;
-            BrojProduljivanja = brojProduljivanja;
-            Zakasnina = zakasnina;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-        }
-        //konstruktori za Rezervaciju
-        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
-        {
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-        }
-        public Posudba(int id, Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
-        {
-            Id = id;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
+            TimeSpan pomRazlikaDana = PredvideniDatumVracanja.Subtract(DateTime.Today);
+            int razlikaDana = int.Parse(pomRazlikaDana.TotalDays.ToString());
+            double iznosZakasnine = PostavkeRepozitorij.DohvatiIznosZakasnine();
+            Zakasnina = (-1) * (iznosZakasnine * razlikaDana);
+            PosudbaRepozitorij.AzurirajZakasninu(Id, Zakasnina);
+            return Zakasnina;
         }
     }
 }

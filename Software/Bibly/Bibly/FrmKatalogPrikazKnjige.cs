@@ -21,6 +21,7 @@ namespace Bibly
         {
             InitializeComponent();
             knjiga = prikazanaKnjiga;
+            groupBox1.Visible = (Autentifikator.Instanca.UlogaKorisnika() > 2) ? true : false;
         }
 
         private void FrmKatalogPrikazKnjige_Load(object sender, EventArgs e)
@@ -68,24 +69,23 @@ namespace Bibly
             else
             {
                 Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
-                int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
-                int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
-                if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
+                if (!trenutniKorisnik.JeLiKorisnikPresaoGranicuPosudivanja())
                 {
                     int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
                     DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
-                    Posudba rezervacija = new Posudba(
-                        trenutniKorisnik,
-                        odabraniPrimjerak,
-                        datumDoKojegVrijediRezervacija
-                    );
+                    Posudba rezervacija = new Posudba
+                    {
+                        Korisnik = trenutniKorisnik,
+                        Primjerak = odabraniPrimjerak,
+                        DoKadaVrijediRezervacija = datumDoKojegVrijediRezervacija
+                    };
                     RezervacijaRepozitorij.DodajRezervaciju(rezervacija);
                     PrimjerakRepozitorij.AzurirajStatusPrimjerka(odabraniPrimjerak.Id, StatusPrimjerka.Rezerviran);
                     OsvjeziPrimjerke();
                 }
                 else
                 {
-                    MessageBox.Show($"Rezervacija nije moguća! Prešli ste maximalan broj posudbi. Maksimalan broj posudbi je {maxBrojMogucihPosudbi}.");
+                    MessageBox.Show($"Rezervacija nije moguća! Prešli ste maximalan broj posudbi.");
                 }
             }
         }

@@ -49,9 +49,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblISBN = new System.Windows.Forms.Label();
             this.btnOdustani = new System.Windows.Forms.Button();
+            this.btnVrati = new System.Windows.Forms.Button();
+            this.btnPosudi = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbKorisnik = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimjerci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPrimjerci
@@ -80,14 +87,14 @@
             this.dgvPrimjerci.Location = new System.Drawing.Point(37, 677);
             this.dgvPrimjerci.Name = "dgvPrimjerci";
             this.dgvPrimjerci.RowTemplate.Height = 35;
-            this.dgvPrimjerci.Size = new System.Drawing.Size(696, 234);
+            this.dgvPrimjerci.Size = new System.Drawing.Size(696, 203);
             this.dgvPrimjerci.TabIndex = 0;
             // 
             // btnRezerviraj
             // 
             this.btnRezerviraj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnRezerviraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRezerviraj.Location = new System.Drawing.Point(510, 930);
+            this.btnRezerviraj.Location = new System.Drawing.Point(506, 906);
             this.btnRezerviraj.Name = "btnRezerviraj";
             this.btnRezerviraj.Size = new System.Drawing.Size(110, 32);
             this.btnRezerviraj.TabIndex = 6;
@@ -281,7 +288,7 @@
             // 
             this.btnOdustani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
             this.btnOdustani.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOdustani.Location = new System.Drawing.Point(626, 930);
+            this.btnOdustani.Location = new System.Drawing.Point(622, 906);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(110, 32);
             this.btnOdustani.TabIndex = 21;
@@ -289,22 +296,92 @@
             this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
+            // btnVrati
+            // 
+            this.btnVrati.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnVrati.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVrati.Location = new System.Drawing.Point(146, 77);
+            this.btnVrati.Name = "btnVrati";
+            this.btnVrati.Size = new System.Drawing.Size(107, 32);
+            this.btnVrati.TabIndex = 40;
+            this.btnVrati.Text = "Vrati";
+            this.btnVrati.UseVisualStyleBackColor = false;
+            // 
+            // btnPosudi
+            // 
+            this.btnPosudi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnPosudi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPosudi.Location = new System.Drawing.Point(25, 77);
+            this.btnPosudi.Name = "btnPosudi";
+            this.btnPosudi.Size = new System.Drawing.Size(106, 32);
+            this.btnPosudi.TabIndex = 39;
+            this.btnPosudi.Text = "Posudi";
+            this.btnPosudi.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 20);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Korisnik:";
+            // 
+            // cmbKorisnik
+            // 
+            this.cmbKorisnik.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKorisnik.FormattingEnabled = true;
+            this.cmbKorisnik.Location = new System.Drawing.Point(122, 29);
+            this.cmbKorisnik.Name = "cmbKorisnik";
+            this.cmbKorisnik.Size = new System.Drawing.Size(261, 28);
+            this.cmbKorisnik.TabIndex = 37;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(269, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 32);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Rezerviraj";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnVrati);
+            this.groupBox1.Controls.Add(this.cmbKorisnik);
+            this.groupBox1.Controls.Add(this.btnPosudi);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(36, 897);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(402, 123);
+            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ručno upravljanje:";
+            // 
             // FrmKatalogPrikazKnjige
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(774, 986);
+            this.ClientSize = new System.Drawing.Size(774, 1026);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnRezerviraj);
             this.Controls.Add(this.pbNaslovnica);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.naslov);
             this.Controls.Add(this.dgvPrimjerci);
+            this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmKatalogPrikazKnjige";
             this.Text = "Pregled knjige";
             this.Load += new System.EventHandler(this.FrmKatalogPrikazKnjige_Load);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.dgvPrimjerci, 0);
             this.Controls.SetChildIndex(this.naslov, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -315,6 +392,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,5 +420,11 @@
         private System.Windows.Forms.Button btnOdustani;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblZanr;
+        private System.Windows.Forms.Button btnVrati;
+        private System.Windows.Forms.Button btnPosudi;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbKorisnik;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
