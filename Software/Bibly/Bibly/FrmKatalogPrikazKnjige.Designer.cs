@@ -53,7 +53,7 @@
             this.btnPosudi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbKorisnik = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRezerviraj2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimjerci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
@@ -84,7 +84,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrimjerci.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrimjerci.GridColor = System.Drawing.Color.White;
-            this.dgvPrimjerci.Location = new System.Drawing.Point(37, 677);
+            this.dgvPrimjerci.Location = new System.Drawing.Point(37, 660);
             this.dgvPrimjerci.Name = "dgvPrimjerci";
             this.dgvPrimjerci.RowTemplate.Height = 35;
             this.dgvPrimjerci.Size = new System.Drawing.Size(696, 203);
@@ -94,7 +94,7 @@
             // 
             this.btnRezerviraj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnRezerviraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRezerviraj.Location = new System.Drawing.Point(506, 906);
+            this.btnRezerviraj.Location = new System.Drawing.Point(506, 889);
             this.btnRezerviraj.Name = "btnRezerviraj";
             this.btnRezerviraj.Size = new System.Drawing.Size(110, 32);
             this.btnRezerviraj.TabIndex = 6;
@@ -288,7 +288,7 @@
             // 
             this.btnOdustani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
             this.btnOdustani.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOdustani.Location = new System.Drawing.Point(622, 906);
+            this.btnOdustani.Location = new System.Drawing.Point(622, 889);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(110, 32);
             this.btnOdustani.TabIndex = 21;
@@ -306,6 +306,7 @@
             this.btnVrati.TabIndex = 40;
             this.btnVrati.Text = "Vrati";
             this.btnVrati.UseVisualStyleBackColor = false;
+            this.btnVrati.Click += new System.EventHandler(this.btnVrati_Click);
             // 
             // btnPosudi
             // 
@@ -317,6 +318,7 @@
             this.btnPosudi.TabIndex = 39;
             this.btnPosudi.Text = "Posudi";
             this.btnPosudi.UseVisualStyleBackColor = false;
+            this.btnPosudi.Click += new System.EventHandler(this.btnPosudi_Click);
             // 
             // label1
             // 
@@ -339,25 +341,26 @@
             this.cmbKorisnik.Size = new System.Drawing.Size(261, 28);
             this.cmbKorisnik.TabIndex = 37;
             // 
-            // button1
+            // btnRezerviraj2
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(269, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 32);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Rezerviraj";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRezerviraj2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnRezerviraj2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRezerviraj2.Location = new System.Drawing.Point(269, 77);
+            this.btnRezerviraj2.Name = "btnRezerviraj2";
+            this.btnRezerviraj2.Size = new System.Drawing.Size(114, 32);
+            this.btnRezerviraj2.TabIndex = 36;
+            this.btnRezerviraj2.Text = "Rezerviraj";
+            this.btnRezerviraj2.UseVisualStyleBackColor = false;
+            this.btnRezerviraj2.Click += new System.EventHandler(this.btnRezerviraj2_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnVrati);
             this.groupBox1.Controls.Add(this.cmbKorisnik);
             this.groupBox1.Controls.Add(this.btnPosudi);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnRezerviraj2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 897);
+            this.groupBox1.Location = new System.Drawing.Point(36, 880);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(402, 123);
             this.groupBox1.TabIndex = 41;
@@ -424,7 +427,7 @@
         private System.Windows.Forms.Button btnPosudi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbKorisnik;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRezerviraj2;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

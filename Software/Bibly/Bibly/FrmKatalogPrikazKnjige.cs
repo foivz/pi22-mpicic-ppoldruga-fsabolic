@@ -41,22 +41,13 @@ namespace Bibly
             lblISBN.Text = knjiga.ISBN;
             lblOpisKnjige.Text = knjiga.Opis;
             pbNaslovnica.Image = knjiga.Naslovnica;
-            OsvjeziPrimjerke();
-        }
-
-        private void OsvjeziPrimjerke()
-        {
-            RezervacijaRepozitorij.ProvjeriIstekleRezervacije();
-            List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
-            if(listaPrimjeraka != null)
+            List<string> listaEmailova = new List<string>();
+            foreach(Korisnik korisnik in KorisnikRepozitorij.DohvatiSveKorisnike())
             {
-                dgvPrimjerci.DataSource = listaPrimjeraka;
-                dgvPrimjerci.Columns[0].Width = 120;
-                dgvPrimjerci.Columns[1].Width = 150;
-                dgvPrimjerci.Columns[2].Visible = false;
-                dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
-                dgvPrimjerci.Columns[3].Width = 383;
+                listaEmailova.Add(korisnik.Email);
             }
+            cmbKorisnik.DataSource = listaEmailova;
+            OsvjeziPrimjerke();
         }
 
         private void btnRezerviraj_Click(object sender, EventArgs e)
@@ -89,10 +80,135 @@ namespace Bibly
                 }
             }
         }
-
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void btnPosudi_Click(object sender, EventArgs e)
+        {
+            Korisnik korisnik = KorisnikRepozitorij.DohvatiKorisnika_Mail(cmbKorisnik.SelectedItem as string);
+            Primjerak primjerak = dgvPrimjerci.CurrentRow.DataBoundItem as Primjerak;
+            if (korisnik.JeLiKorisnikPresaoGranicuPosudivanja() && primjerak.Status != StatusPrimjerka.Rezerviran)
+            {
+                MessageBox.Show("Korisnik je prešao granicu broja posudbi!");
+                return;
+            }
+            int trajanjePosudbe = PostavkeRepozitorij.DohvatiTrajanjePosudbe();
+            DateTime datumDoKojegVrijediPosudba = DateTime.Now.Date.AddDays(trajanjePosudbe);
+            if (primjerak.Status == StatusPrimjerka.Posuđen)
+            {
+                MessageBox.Show("Primjerak je posuđen!");
+                return;
+            }
+            else if (primjerak.Status == StatusPrimjerka.Dostupan)
+            {
+                Posudba posudba = new Posudba {
+                    DatumPosudbe = DateTime.Today,
+                    PredvideniDatumVracanja = datumDoKojegVrijediPosudba,
+                    Korisnik = korisnik,
+                    Primjerak = primjerak
+                };
+                PosudbaRepozitorij.DodajPosudbuKojaNijeBilaRezervirana(posudba);
+                PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Posuđen);
+                primjerak.Status = StatusPrimjerka.Posuđen;
+                OsvjeziPrimjerke();
+            }
+            else if(primjerak.Status == StatusPrimjerka.Rezerviran)
+            {
+                Posudba rezervacija = RezervacijaRepozitorij.DohvatiRezervacijuPrimjerka(primjerak);
+                if(rezervacija != null)
+                {
+                    if(rezervacija.Korisnik.OIB == korisnik.OIB)
+                    {
+                        rezervacija.DatumPosudbe = DateTime.Today;
+                        rezervacija.PredvideniDatumVracanja = datumDoKojegVrijediPosudba;
+                        rezervacija.RezervacijaPotvrdena = 1;
+                        PosudbaRepozitorij.AzurirajPosudbuKojaJeBilaRezervirana(rezervacija);
+                        PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Posuđen);
+                        primjerak.Status = StatusPrimjerka.Posuđen;
+                        OsvjeziPrimjerke();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Knjiga je rezervirana na nekog drugog. Molimo odaberite drugi primjerak.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do pogreške. Provjerite status primjerka, jer je rezerviran, ali ne postoji trenutna rezervacija.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Došlo je do greške!");
+                return;
+            }
+        }
+        private void btnVrati_Click(object sender, EventArgs e)
+        {
+            Primjerak primjerak = dgvPrimjerci.CurrentRow.DataBoundItem as Primjerak;
+            if (primjerak.Status != StatusPrimjerka.Posuđen)
+            {
+                MessageBox.Show("Knjigu se ne može vratiti, jer je pod statusom: Dostupan!");
+                return;
+            }
+            Posudba posudba = PosudbaRepozitorij.DohvatiPosudbuPrimjerka(primjerak);
+            posudba.StvarniDatumVracanja = DateTime.Today;
+            if (posudba.StvarniDatumVracanja > posudba.PredvideniDatumVracanja)
+            {
+                posudba.IzracunajZakasninu();
+            }
+            else
+            {
+                posudba.Zakasnina = 0;
+            }
+            PosudbaRepozitorij.ZatvortiPosudbu(posudba);
+            PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Dostupan);
+            primjerak.Status = StatusPrimjerka.Dostupan;
+            OsvjeziPrimjerke();
+        }
+        private void btnRezerviraj2_Click(object sender, EventArgs e)
+        {
+            Korisnik korisnik = KorisnikRepozitorij.DohvatiKorisnika_Mail(cmbKorisnik.SelectedItem as string);
+            Primjerak primjerak = dgvPrimjerci.CurrentRow.DataBoundItem as Primjerak;
+            if (korisnik.JeLiKorisnikPresaoGranicuPosudivanja())
+            {
+                MessageBox.Show("Korisnik je prešao granicu broja posudbi!");
+                return;
+            }
+            if (primjerak.Status != StatusPrimjerka.Dostupan)
+            {
+                MessageBox.Show("Primjerak nije dostupan!");
+                return;
+            }
+            int trajanjeRezervacije = PostavkeRepozitorij.DohvatiTrajanjeRezervacije();
+            DateTime datumDoKojegVrijediRezervacija = DateTime.Now.Date.AddDays(trajanjeRezervacije);
+            Posudba rezervacija = new Posudba
+            {
+                Korisnik = korisnik,
+                Primjerak = primjerak,
+                DoKadaVrijediRezervacija = datumDoKojegVrijediRezervacija
+            };
+            RezervacijaRepozitorij.DodajRezervaciju(rezervacija);
+            PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Rezerviran);
+            primjerak.Status = StatusPrimjerka.Rezerviran;
+            OsvjeziPrimjerke();
+        }
+        private void OsvjeziPrimjerke()
+        {
+            RezervacijaRepozitorij.ProvjeriIstekleRezervacije();
+            List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
+            if (listaPrimjeraka != null)
+            {
+                dgvPrimjerci.DataSource = listaPrimjeraka;
+                dgvPrimjerci.Columns[0].Width = 120;
+                dgvPrimjerci.Columns[1].Width = 150;
+                dgvPrimjerci.Columns[2].Visible = false;
+                dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
+                dgvPrimjerci.Columns[3].Width = 383;
+            }
         }
     }
 }

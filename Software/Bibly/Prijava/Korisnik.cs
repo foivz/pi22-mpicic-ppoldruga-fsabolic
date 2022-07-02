@@ -53,7 +53,6 @@ namespace Prijava
             TipKorisnika = tipKorisnika;
             PokusajiPrijave = pokusajiPrijave;
         }
-
         public override string ToString()
         {
             return Ime + " " + Prezime;
