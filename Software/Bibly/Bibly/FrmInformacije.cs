@@ -15,12 +15,11 @@ namespace Bibly
         public FrmInformacije()
         {
             InitializeComponent();
-            //AutoScroll = true;
+            AutoScroll = true;
         }
 
         private void FrmInformacije_Load(object sender, EventArgs e)
         {
-            AutoScroll = true;
             PopuniTextBokseve();
             int uloga = Prijava.Autentifikator.Instanca.UlogaKorisnika();
             if (uloga != 4)
@@ -34,6 +33,18 @@ namespace Bibly
                 txtTrajanjeProduljenja.Enabled = false;
                 txtTrajanjeRezervacije.Enabled = false;
                 txtZakasnina.Enabled = false;
+            }
+            if (uloga == 4)
+            {
+                txtRadnoVrijeme.Enabled = false;
+                txtClanarina.Enabled = false;
+                txtMaxBrojPosudbi.Enabled = false;
+                txtTelefon.Enabled = false;
+                txtTrajanjePosudbi.Enabled = false;
+                txtTrajanjeProduljenja.Enabled = false;
+                txtTrajanjeRezervacije.Enabled = false;
+                txtZakasnina.Enabled = false;
+                btnUredi.Show();
             }
         }
 
@@ -50,7 +61,40 @@ namespace Bibly
 
         }
 
-        
+        private void btnUredi_Click(object sender, EventArgs e)
+        {
+            btnUredi.Enabled = false;
+            btnSpremi.Show();
+            txtRadnoVrijeme.Enabled = true;
+            txtClanarina.Enabled = true;
+            txtMaxBrojPosudbi.Enabled = true;
+            txtTelefon.Enabled = true;
+            txtTrajanjePosudbi.Enabled = true;
+            txtTrajanjeProduljenja.Enabled = true;
+            txtTrajanjeRezervacije.Enabled = true;
+            txtZakasnina.Enabled = true;
+            txtRadnoVrijeme.BackColor = Color.White;
+            txtRadnoVrijeme.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefon.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefon.BackColor = Color.White;
+            txtZakasnina.BackColor = Color.White;
+            txtZakasnina.BorderStyle = BorderStyle.FixedSingle;
+            txtClanarina.BorderStyle = BorderStyle.FixedSingle;
+            txtClanarina.BackColor = Color.White;
+            txtMaxBrojPosudbi.BackColor = Color.White;
+            txtMaxBrojPosudbi.BorderStyle = BorderStyle.FixedSingle;
+            txtTrajanjePosudbi.BorderStyle = BorderStyle.FixedSingle;
+            txtTrajanjePosudbi.BackColor = Color.White;
+            txtTrajanjeProduljenja.BackColor = Color.White;
+            txtTrajanjeProduljenja.BorderStyle = BorderStyle.FixedSingle;
+            txtTrajanjeRezervacije.BackColor = Color.White;
+            txtTrajanjeRezervacije.BorderStyle = BorderStyle.FixedSingle;
+        }
 
+        private void btnSpremi_Click(object sender, EventArgs e)
+        {
+            btnSpremi.Hide();
+            btnUredi.Enabled = true;
+        }
     }
 }

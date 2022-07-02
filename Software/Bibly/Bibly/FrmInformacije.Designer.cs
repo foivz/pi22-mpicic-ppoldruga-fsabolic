@@ -70,6 +70,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.naslov = new System.Windows.Forms.Label();
             this.btnUredi = new System.Windows.Forms.Button();
+            this.btnSpremi = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel6 = new System.Windows.Forms.Panel();
@@ -561,19 +562,35 @@
             this.btnUredi.AutoSize = true;
             this.btnUredi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnUredi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUredi.Location = new System.Drawing.Point(590, 1311);
+            this.btnUredi.Location = new System.Drawing.Point(549, 1311);
             this.btnUredi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUredi.Name = "btnUredi";
-            this.btnUredi.Size = new System.Drawing.Size(165, 49);
+            this.btnUredi.Size = new System.Drawing.Size(225, 49);
             this.btnUredi.TabIndex = 8;
             this.btnUredi.Text = "Uredi";
             this.btnUredi.UseVisualStyleBackColor = false;
+            this.btnUredi.Click += new System.EventHandler(this.btnUredi_Click);
+            // 
+            // btnSpremi
+            // 
+            this.btnSpremi.AutoSize = true;
+            this.btnSpremi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnSpremi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpremi.Location = new System.Drawing.Point(549, 1395);
+            this.btnSpremi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSpremi.Name = "btnSpremi";
+            this.btnSpremi.Size = new System.Drawing.Size(225, 55);
+            this.btnSpremi.TabIndex = 9;
+            this.btnSpremi.Text = "Spremi promjene";
+            this.btnSpremi.UseVisualStyleBackColor = false;
+            this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
             // FrmInformacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 1416);
+            this.ClientSize = new System.Drawing.Size(1360, 1475);
+            this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.btnUredi);
             this.Controls.Add(panel5);
             this.Controls.Add(panel4);
@@ -593,6 +610,7 @@
             this.Controls.SetChildIndex(panel4, 0);
             this.Controls.SetChildIndex(panel5, 0);
             this.Controls.SetChildIndex(this.btnUredi, 0);
+            this.Controls.SetChildIndex(this.btnSpremi, 0);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -647,5 +665,6 @@
         private System.Windows.Forms.TextBox txtTrajanjeRezervacije;
         private System.Windows.Forms.TextBox txtMaxBrojPosudbi;
         private System.Windows.Forms.Label lblClanarina;
+        private System.Windows.Forms.Button btnSpremi;
     }
 }
