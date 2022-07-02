@@ -26,25 +26,11 @@ namespace Bibly
             {
                 btnSpremi.Hide();
                 btnUredi.Hide();
-                txtRadnoVrijeme.Enabled = false;
-                txtClanarina.Enabled = false;
-                txtMaxBrojPosudbi.Enabled = false;
-                txtTelefon.Enabled = false;
-                txtTrajanjePosudbi.Enabled = false;
-                txtTrajanjeProduljenja.Enabled = false;
-                txtTrajanjeRezervacije.Enabled = false;
-                txtZakasnina.Enabled = false;
+
             }
             if (uloga == 4)
             {
-                txtRadnoVrijeme.Enabled = false;
-                txtClanarina.Enabled = false;
-                txtMaxBrojPosudbi.Enabled = false;
-                txtTelefon.Enabled = false;
-                txtTrajanjePosudbi.Enabled = false;
-                txtTrajanjeProduljenja.Enabled = false;
-                txtTrajanjeRezervacije.Enabled = false;
-                txtZakasnina.Enabled = false;
+
                 btnUredi.Show();
                 btnSpremi.Hide();
             }
@@ -54,12 +40,12 @@ namespace Bibly
         {
             txtRadnoVrijeme.Text = Postavke.PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
             txtTelefon.Text = Postavke.PostavkeRepozitorij.DohvatiTelefon().ToString();
-            txtZakasnina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosZakasnine().ToString() + "  HRK  po danu";
-            txtClanarina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosClanarine().ToString() + "  HRK  (godišnja)";
+            txtZakasnina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosZakasnine().ToString();
+            txtClanarina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosClanarine().ToString();
             txtMaxBrojPosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
-            txtTrajanjeRezervacije.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString() + " dana";
-            txtTrajanjePosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString() + " dana";
-            txtTrajanjeProduljenja.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString() + " puta (max)";
+            txtTrajanjeRezervacije.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString();
+            txtTrajanjePosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString();
+            txtTrajanjeProduljenja.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString();
 
             txtRadnoVrijeme.Enabled = false;
             txtClanarina.Enabled = false;
@@ -93,6 +79,7 @@ namespace Bibly
         {
             btnUredi.Enabled = false;
             btnSpremi.Show();
+
             txtRadnoVrijeme.Enabled = true;
             txtClanarina.Enabled = true;
             txtMaxBrojPosudbi.Enabled = true;
@@ -101,6 +88,7 @@ namespace Bibly
             txtTrajanjeProduljenja.Enabled = true;
             txtTrajanjeRezervacije.Enabled = true;
             txtZakasnina.Enabled = true;
+
             txtRadnoVrijeme.BackColor = Color.White;
             txtRadnoVrijeme.BorderStyle = BorderStyle.FixedSingle;
             txtTelefon.BorderStyle = BorderStyle.FixedSingle;
@@ -124,7 +112,19 @@ namespace Bibly
             btnSpremi.Hide();
             btnUredi.Enabled = true;
 
+            int maxBrojPosudbi = int.Parse(txtMaxBrojPosudbi.Text);
+            double zakasnina = double.Parse(txtZakasnina.Text);
+            int trajanjeRezervacije = int.Parse(txtTrajanjeRezervacije.Text);
+            int trajanjePosudbe = int.Parse(txtTrajanjePosudbi.Text);
+            int trajanjeProduljenja = int.Parse(txtTrajanjeProduljenja.Text);
+            string radnoVrijeme = txtRadnoVrijeme.Text;
+            string kontakt = txtTelefon.Text;
+            double clanarina = double.Parse(txtClanarina.Text);
+
+            Postavke.PostavkeRepozitorij.AzurirajInformacije(maxBrojPosudbi, zakasnina, trajanjeRezervacije, trajanjePosudbe, trajanjeProduljenja, radnoVrijeme, kontakt, clanarina);
+
             PopuniTextBokseve();
         }
+
     }
 }

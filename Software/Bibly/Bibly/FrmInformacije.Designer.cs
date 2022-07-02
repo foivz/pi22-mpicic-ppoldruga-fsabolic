@@ -50,12 +50,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.lblClanarina = new System.Windows.Forms.Label();
             this.txtClanarina = new System.Windows.Forms.TextBox();
             this.txtZakasnina = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.txtTrajanjeProduljenja = new System.Windows.Forms.TextBox();
             this.txtTrajanjePosudbi = new System.Windows.Forms.TextBox();
             this.txtTrajanjeRezervacije = new System.Windows.Forms.TextBox();
@@ -71,6 +74,9 @@
             this.naslov = new System.Windows.Forms.Label();
             this.btnUredi = new System.Windows.Forms.Button();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel6 = new System.Windows.Forms.Panel();
@@ -309,6 +315,8 @@
             // 
             panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel3.Controls.Add(this.label25);
+            panel3.Controls.Add(this.label24);
             panel3.Controls.Add(this.lblClanarina);
             panel3.Controls.Add(this.txtClanarina);
             panel3.Controls.Add(this.txtZakasnina);
@@ -321,6 +329,30 @@
             panel3.Name = "panel3";
             panel3.Size = new System.Drawing.Size(982, 196);
             panel3.TabIndex = 5;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label25.Location = new System.Drawing.Point(619, 122);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(145, 25);
+            this.label25.TabIndex = 13;
+            this.label25.Text = "HRK (godišnja)";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label24.Location = new System.Drawing.Point(619, 47);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(129, 25);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "HRK po danu";
             // 
             // lblClanarina
             // 
@@ -339,7 +371,7 @@
             this.txtClanarina.Location = new System.Drawing.Point(580, 122);
             this.txtClanarina.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtClanarina.Name = "txtClanarina";
-            this.txtClanarina.Size = new System.Drawing.Size(225, 23);
+            this.txtClanarina.Size = new System.Drawing.Size(32, 23);
             this.txtClanarina.TabIndex = 10;
             // 
             // txtZakasnina
@@ -349,7 +381,7 @@
             this.txtZakasnina.Location = new System.Drawing.Point(580, 49);
             this.txtZakasnina.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtZakasnina.Name = "txtZakasnina";
-            this.txtZakasnina.Size = new System.Drawing.Size(197, 23);
+            this.txtZakasnina.Size = new System.Drawing.Size(32, 23);
             this.txtZakasnina.TabIndex = 9;
             // 
             // label12
@@ -389,6 +421,10 @@
             // 
             panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel4.Controls.Add(this.label29);
+            panel4.Controls.Add(this.label28);
+            panel4.Controls.Add(this.label27);
+            panel4.Controls.Add(this.label26);
             panel4.Controls.Add(this.txtTrajanjeProduljenja);
             panel4.Controls.Add(this.txtTrajanjePosudbi);
             panel4.Controls.Add(this.txtTrajanjeRezervacije);
@@ -405,6 +441,18 @@
             panel4.Size = new System.Drawing.Size(899, 196);
             panel4.TabIndex = 6;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label26.Location = new System.Drawing.Point(723, 61);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(56, 25);
+            this.label26.TabIndex = 14;
+            this.label26.Text = "dana";
+            // 
             // txtTrajanjeProduljenja
             // 
             this.txtTrajanjeProduljenja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -412,7 +460,7 @@
             this.txtTrajanjeProduljenja.Location = new System.Drawing.Point(695, 152);
             this.txtTrajanjeProduljenja.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTrajanjeProduljenja.Name = "txtTrajanjeProduljenja";
-            this.txtTrajanjeProduljenja.Size = new System.Drawing.Size(124, 23);
+            this.txtTrajanjeProduljenja.Size = new System.Drawing.Size(27, 23);
             this.txtTrajanjeProduljenja.TabIndex = 15;
             // 
             // txtTrajanjePosudbi
@@ -422,7 +470,7 @@
             this.txtTrajanjePosudbi.Location = new System.Drawing.Point(695, 111);
             this.txtTrajanjePosudbi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTrajanjePosudbi.Name = "txtTrajanjePosudbi";
-            this.txtTrajanjePosudbi.Size = new System.Drawing.Size(124, 23);
+            this.txtTrajanjePosudbi.Size = new System.Drawing.Size(27, 23);
             this.txtTrajanjePosudbi.TabIndex = 14;
             // 
             // txtTrajanjeRezervacije
@@ -432,7 +480,7 @@
             this.txtTrajanjeRezervacije.Location = new System.Drawing.Point(695, 63);
             this.txtTrajanjeRezervacije.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTrajanjeRezervacije.Name = "txtTrajanjeRezervacije";
-            this.txtTrajanjeRezervacije.Size = new System.Drawing.Size(124, 23);
+            this.txtTrajanjeRezervacije.Size = new System.Drawing.Size(28, 23);
             this.txtTrajanjeRezervacije.TabIndex = 13;
             // 
             // txtMaxBrojPosudbi
@@ -442,7 +490,7 @@
             this.txtMaxBrojPosudbi.Location = new System.Drawing.Point(695, 14);
             this.txtMaxBrojPosudbi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaxBrojPosudbi.Name = "txtMaxBrojPosudbi";
-            this.txtMaxBrojPosudbi.Size = new System.Drawing.Size(124, 23);
+            this.txtMaxBrojPosudbi.Size = new System.Drawing.Size(28, 23);
             this.txtMaxBrojPosudbi.TabIndex = 12;
             // 
             // label22
@@ -517,24 +565,24 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label14.Location = new System.Drawing.Point(351, 120);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(170, 29);
+            this.label14.Size = new System.Drawing.Size(144, 25);
             this.label14.TabIndex = 7;
             this.label14.Text = "Varaždin, 4200";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label13.Location = new System.Drawing.Point(351, 46);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(233, 29);
+            this.label13.Size = new System.Drawing.Size(189, 25);
             this.label13.TabIndex = 6;
             this.label13.Text = "Ulica Julija Merlića 9";
             // 
@@ -588,6 +636,42 @@
             this.btnSpremi.Text = "Spremi promjene";
             this.btnSpremi.UseVisualStyleBackColor = false;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label27.Location = new System.Drawing.Point(723, 109);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(56, 25);
+            this.label27.TabIndex = 16;
+            this.label27.Text = "dana";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label28.Location = new System.Drawing.Point(723, 155);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(106, 25);
+            this.label28.TabIndex = 17;
+            this.label28.Text = "puta (max)";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label29.Location = new System.Drawing.Point(723, 18);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(50, 25);
+            this.label29.TabIndex = 18;
+            this.label29.Text = "puta";
             // 
             // FrmInformacije
             // 
@@ -670,5 +754,11 @@
         private System.Windows.Forms.TextBox txtMaxBrojPosudbi;
         private System.Windows.Forms.Label lblClanarina;
         private System.Windows.Forms.Button btnSpremi;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label29;
     }
 }
