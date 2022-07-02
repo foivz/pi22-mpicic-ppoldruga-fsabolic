@@ -100,9 +100,11 @@
             // 
             // txtRadnoVrijeme
             // 
-            this.txtRadnoVrijeme.Location = new System.Drawing.Point(524, 38);
+            this.txtRadnoVrijeme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtRadnoVrijeme.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRadnoVrijeme.Location = new System.Drawing.Point(524, 41);
             this.txtRadnoVrijeme.Name = "txtRadnoVrijeme";
-            this.txtRadnoVrijeme.Size = new System.Drawing.Size(107, 22);
+            this.txtRadnoVrijeme.Size = new System.Drawing.Size(63, 15);
             this.txtRadnoVrijeme.TabIndex = 2;
             // 
             // label6
@@ -181,9 +183,11 @@
             // 
             // txtTelefon
             // 
+            this.txtTelefon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtTelefon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefon.Location = new System.Drawing.Point(413, 54);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(101, 22);
+            this.txtTelefon.Size = new System.Drawing.Size(101, 15);
             this.txtTelefon.TabIndex = 6;
             // 
             // label17

@@ -26,6 +26,7 @@ namespace Bibly
         private void PopuniTextBokseve()
         {
             txtRadnoVrijeme.Text = Postavke.PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
+            txtTelefon.Text = Postavke.PostavkeRepozitorij.DohvatiTelefon().ToString();
         }
     }
 }

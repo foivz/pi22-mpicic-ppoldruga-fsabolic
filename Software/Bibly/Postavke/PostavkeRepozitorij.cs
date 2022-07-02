@@ -138,5 +138,28 @@ namespace Postavke
 
             return radnoVrijeme;
         }
+
+        public static string DohvatiTelefon()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT kontakt" +
+                    " FROM postavke";
+
+            string kontakt = "";
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                kontakt = reader["kontakt"].ToString();
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return kontakt;
+        }
+
     }
 }
