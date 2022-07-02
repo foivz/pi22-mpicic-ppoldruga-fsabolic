@@ -291,6 +291,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCKnjigaPocetna.resx">
+      <DependentUpon>UCKnjigaPocetna.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCPosudbeKnjigaProsla.resx">
       <DependentUpon>UCPosudbeKnjigaProsla.cs</DependentUpon>
     </EmbeddedResource>

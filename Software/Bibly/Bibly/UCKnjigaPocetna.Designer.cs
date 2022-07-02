@@ -28,10 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pbNaslovnica = new System.Windows.Forms.PictureBox();
+            this.lblAutor = new System.Windows.Forms.Label();
+            this.lblNaslov = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblAutor);
+            this.panel1.Controls.Add(this.lblNaslov);
+            this.panel1.Controls.Add(this.pbNaslovnica);
+            this.panel1.Location = new System.Drawing.Point(16, 18);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(337, 508);
+            this.panel1.TabIndex = 11;
+            // 
+            // pbNaslovnica
+            // 
+            this.pbNaslovnica.Location = new System.Drawing.Point(31, 32);
+            this.pbNaslovnica.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbNaslovnica.Name = "pbNaslovnica";
+            this.pbNaslovnica.Size = new System.Drawing.Size(271, 312);
+            this.pbNaslovnica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbNaslovnica.TabIndex = 12;
+            this.pbNaslovnica.TabStop = false;
+            // 
+            // lblAutor
+            // 
+            this.lblAutor.AutoSize = true;
+            this.lblAutor.BackColor = System.Drawing.Color.White;
+            this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutor.Location = new System.Drawing.Point(131, 436);
+            this.lblAutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAutor.Name = "lblAutor";
+            this.lblAutor.Size = new System.Drawing.Size(64, 25);
+            this.lblAutor.TabIndex = 14;
+            this.lblAutor.Text = "label2";
+            // 
+            // lblNaslov
+            // 
+            this.lblNaslov.AutoSize = true;
+            this.lblNaslov.BackColor = System.Drawing.Color.White;
+            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNaslov.Location = new System.Drawing.Point(121, 369);
+            this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNaslov.Name = "lblNaslov";
+            this.lblNaslov.Size = new System.Drawing.Size(85, 29);
+            this.lblNaslov.TabIndex = 13;
+            this.lblNaslov.Text = "label1";
+            // 
+            // UCKnjigaPocetna
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
+            this.Name = "UCKnjigaPocetna";
+            this.Size = new System.Drawing.Size(369, 546);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbNaslovnica;
+        private System.Windows.Forms.Label lblAutor;
+        private System.Windows.Forms.Label lblNaslov;
     }
 }
