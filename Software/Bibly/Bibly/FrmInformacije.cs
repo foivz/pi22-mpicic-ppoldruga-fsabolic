@@ -24,6 +24,7 @@ namespace Bibly
             int uloga = Prijava.Autentifikator.Instanca.UlogaKorisnika();
             if (uloga != 4)
             {
+                btnSpremi.Hide();
                 btnUredi.Hide();
                 txtRadnoVrijeme.Enabled = false;
                 txtClanarina.Enabled = false;
@@ -45,6 +46,7 @@ namespace Bibly
                 txtTrajanjeRezervacije.Enabled = false;
                 txtZakasnina.Enabled = false;
                 btnUredi.Show();
+                btnSpremi.Hide();
             }
         }
 
@@ -58,6 +60,32 @@ namespace Bibly
             txtTrajanjeRezervacije.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString() + " dana";
             txtTrajanjePosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString() + " dana";
             txtTrajanjeProduljenja.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString() + " puta (max)";
+
+            txtRadnoVrijeme.Enabled = false;
+            txtClanarina.Enabled = false;
+            txtMaxBrojPosudbi.Enabled = false;
+            txtTelefon.Enabled = false;
+            txtTrajanjePosudbi.Enabled = false;
+            txtTrajanjeProduljenja.Enabled = false;
+            txtTrajanjeRezervacije.Enabled = false;
+            txtZakasnina.Enabled = false;
+
+            txtRadnoVrijeme.BackColor = Color.FromArgb(224, 224, 224); 
+            txtRadnoVrijeme.BorderStyle = BorderStyle.None;
+            txtTelefon.BorderStyle = BorderStyle.None;
+            txtTelefon.BackColor = Color.FromArgb(224, 224, 224);
+            txtZakasnina.BackColor = Color.FromArgb(224, 224, 224);
+            txtZakasnina.BorderStyle = BorderStyle.None;
+            txtClanarina.BorderStyle = BorderStyle.None;
+            txtClanarina.BackColor = Color.FromArgb(224, 224, 224);
+            txtMaxBrojPosudbi.BackColor = Color.FromArgb(224, 224, 224);
+            txtMaxBrojPosudbi.BorderStyle = BorderStyle.None;
+            txtTrajanjePosudbi.BorderStyle = BorderStyle.None;
+            txtTrajanjePosudbi.BackColor = Color.FromArgb(224, 224, 224);
+            txtTrajanjeProduljenja.BackColor = Color.FromArgb(224, 224, 224);
+            txtTrajanjeProduljenja.BorderStyle = BorderStyle.None;
+            txtTrajanjeRezervacije.BackColor = Color.FromArgb(224, 224, 224);
+            txtTrajanjeRezervacije.BorderStyle = BorderStyle.None;
 
         }
 
@@ -95,6 +123,8 @@ namespace Bibly
         {
             btnSpremi.Hide();
             btnUredi.Enabled = true;
+
+            PopuniTextBokseve();
         }
     }
 }
