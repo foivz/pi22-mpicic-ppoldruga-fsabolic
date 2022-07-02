@@ -27,6 +27,14 @@ namespace Bibly
         {
             txtRadnoVrijeme.Text = Postavke.PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
             txtTelefon.Text = Postavke.PostavkeRepozitorij.DohvatiTelefon().ToString();
+            txtZakasnina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosZakasnine().ToString() + "  HRK  po danu";
+            txtClanarina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosClanarine().ToString() + "  HRK  (godišnja)";
+            txtMaxBrojPosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
+            txtTrajanjeRezervacije.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString() + " dana";
+            txtTrajanjePosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString() + " dana";
+            txtTrajanjeProduljenja.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString() + " puta (max)";
+
         }
+
     }
 }

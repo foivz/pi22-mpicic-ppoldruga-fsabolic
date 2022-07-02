@@ -161,5 +161,27 @@ namespace Postavke
             return kontakt;
         }
 
+        public static double DohvatiIznosClanarine()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT clanarina" +
+                    " FROM postavke";
+
+            List<double> clanarina = new List<double>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                clanarina.Add(double.Parse(reader["clanarina"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return clanarina[0];
+        }
+
     }
 }
