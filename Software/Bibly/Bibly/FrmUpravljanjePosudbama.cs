@@ -115,7 +115,7 @@ namespace Bibly
             {
                 posudba.Zakasnina = 0;
             }
-            PosudbaRepozitorij.ZatvortiPosudbu(posudba);
+            PosudbaRepozitorij.ZatvoriPosudbu(posudba);
             PrimjerakRepozitorij.AzurirajStatusPrimjerka(primjerak.Id, StatusPrimjerka.Dostupan);
             primjerak.Status = StatusPrimjerka.Dostupan;
             OsvjeziPodatke(posudba);

@@ -14,7 +14,7 @@ namespace PosudbeIRezervacije
 {
     public static class PosudbaRepozitorij
     {
-        public static void ZatvortiPosudbu(Posudba posudba)
+        public static void ZatvoriPosudbu(Posudba posudba)
         {
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
@@ -53,11 +53,13 @@ namespace PosudbeIRezervacije
             }
             return posudba[0];
         }
-        public static void ProduljiPosudbu(Posudba posudba, DateTime noviDatumVracanja)
+        public static void ProduljiPosudbu(Posudba posudba)
         {
+            DateTime noviDatumVracanja = DateTime.Now.AddDays(PostavkeRepozitorij.DohvatiTrajanjePosudbe());
+            int brojProduljivanja = posudba.BrojProduljivanja + 1;
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
-                $"SET broj_produljivanja = {posudba.BrojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja:yyyy-MM-dd}' WHERE id_posudba = {posudba.Id}";
+                $"SET broj_produljivanja = {brojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja:yyyy-MM-dd}' WHERE id_posudba = {posudba.Id}";
             BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
@@ -69,7 +71,6 @@ namespace PosudbeIRezervacije
             BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
-
         public static void DodajPosudbuKojaNijeBilaRezervirana(Posudba posudba)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -97,7 +98,6 @@ namespace PosudbeIRezervacije
             int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
         }
-
         public static List<Posudba> DohvatiSvePosudbe()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -129,7 +129,6 @@ namespace PosudbeIRezervacije
             }
             return posudbe;
         }
-
         public static List<Posudba> DohvatiTrenutnePosudbeKorisnika(Korisnik korisnik)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -207,7 +206,6 @@ namespace PosudbeIRezervacije
             }
             return proslePosudbeKorisnika;
         }
-
         public static int DodajPosudbu(Posudba posudba)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -245,7 +243,6 @@ namespace PosudbeIRezervacije
 
             return uspjeh;
         }
-
         private static string VratiVrijednostDatuma(DateTime datum)
         {
             return datum == default ? "NULL" : "'" + datum.ToString("yyyy-MM-dd") + "'";
