@@ -86,7 +86,6 @@ namespace Bibly
             this.Controls.Add(PostaviTextBox("txtTrajanjeProduljenja", "lblTrajanjeProduljenja", "Trajanje produljenja", true));
             this.Controls.Add(PostaviTextBox("txtRadnoVrijeme", "lblRadnoVrijeme", "Radno vrijeme", true));
             this.Controls.Add(PostaviTextBox("txtKontakt", "lblKontakt", "Kontakt", true));
-            this.Controls.Add(PostaviTextBox("txtAdresa", "lblAdresa", "Adresa", true));
             this.Controls.Add(PostaviTextBox("txtClanarina", "lblClanarina", "Članarina", true));
             ((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
             ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text = PostavkeRepozitorij.DohvatiIznosZakasnine().ToString();
@@ -95,7 +94,6 @@ namespace Bibly
             ((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString();
             ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text = PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
             ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text = PostavkeRepozitorij.DohvatiKontakt().ToString();
-            ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text = PostavkeRepozitorij.DohvatiAdresu().ToString();
             ((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text = PostavkeRepozitorij.DohvatiClanarinu().ToString();
             btnSpremi.Top = top + 15;
             btnSpremi.Click += new EventHandler(PostavkeValidacija);
@@ -112,7 +110,7 @@ namespace Bibly
             }
             if (UnesenTekst())
             {
-                PostavkeRepozitorij.AzurirajPostavke(
+                PostavkeRepozitorij.AzurirajInformacije(
                     int.Parse(((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text),
                 double.Parse(((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text),
                 int.Parse(((TextBox)this.Controls.Find("txtTrajanjeRezervacije", true)[0]).Text),
@@ -120,7 +118,6 @@ namespace Bibly
                 int.Parse(((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text),
                 ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text,
                 ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text,
-                ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text,
                 double.Parse(((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text)
                 );
                 Close();
