@@ -15,7 +15,7 @@ namespace Bibly
     {
         private static int top = 200;
 
-        List<Knjiga> listaKnjiga = new List<Knjiga>();
+        private List<Knjiga> listaKnjiga = new List<Knjiga>();
 
         public FrmKatalog()
         {
@@ -27,7 +27,7 @@ namespace Bibly
         {
             listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
             DodajUCKnjigaKatalog(listaKnjiga);
-            cboxKriteriji.SelectedIndex = 0;
+            cmbKriteriji.SelectedIndex = 0;
             top = 200;
         }
 
@@ -38,8 +38,8 @@ namespace Bibly
                 Controls.Remove(item);
             }
             top = 200;
-            string kriterijPretrazivanja = cboxKriteriji.Text;
-            string kljucnaRijec = tboxUnosKljucneRijeci.Text.ToLower();
+            string kriterijPretrazivanja = cmbKriteriji.Text;
+            string kljucnaRijec = txtUnosKljucneRijeci.Text.ToLower();
             if (kljucnaRijec == "" || kriterijPretrazivanja == "Kriterij pretraživanja")
             {
                 listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();

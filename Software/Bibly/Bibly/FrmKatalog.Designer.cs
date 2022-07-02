@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.naslov = new System.Windows.Forms.Label();
-            this.cboxKriteriji = new System.Windows.Forms.ComboBox();
-            this.tboxUnosKljucneRijeci = new System.Windows.Forms.TextBox();
+            this.cmbKriteriji = new System.Windows.Forms.ComboBox();
+            this.txtUnosKljucneRijeci = new System.Windows.Forms.TextBox();
             this.btnPretrazi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -45,29 +45,29 @@
             this.naslov.Text = "KATALOG";
             this.naslov.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cboxKriteriji
+            // cmbKriteriji
             // 
-            this.cboxKriteriji.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxKriteriji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxKriteriji.FormattingEnabled = true;
-            this.cboxKriteriji.Items.AddRange(new object[] {
+            this.cmbKriteriji.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKriteriji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKriteriji.FormattingEnabled = true;
+            this.cmbKriteriji.Items.AddRange(new object[] {
             "Autor",
             "Izdavač",
             "Naslov knjige",
             "Žanr"});
-            this.cboxKriteriji.Location = new System.Drawing.Point(331, 167);
-            this.cboxKriteriji.Name = "cboxKriteriji";
-            this.cboxKriteriji.Size = new System.Drawing.Size(174, 28);
-            this.cboxKriteriji.TabIndex = 2;
+            this.cmbKriteriji.Location = new System.Drawing.Point(331, 167);
+            this.cmbKriteriji.Name = "cmbKriteriji";
+            this.cmbKriteriji.Size = new System.Drawing.Size(174, 28);
+            this.cmbKriteriji.TabIndex = 2;
             // 
-            // tboxUnosKljucneRijeci
+            // txtUnosKljucneRijeci
             // 
-            this.tboxUnosKljucneRijeci.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.tboxUnosKljucneRijeci.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxUnosKljucneRijeci.Location = new System.Drawing.Point(511, 169);
-            this.tboxUnosKljucneRijeci.Name = "tboxUnosKljucneRijeci";
-            this.tboxUnosKljucneRijeci.Size = new System.Drawing.Size(201, 26);
-            this.tboxUnosKljucneRijeci.TabIndex = 3;
+            this.txtUnosKljucneRijeci.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtUnosKljucneRijeci.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnosKljucneRijeci.Location = new System.Drawing.Point(511, 169);
+            this.txtUnosKljucneRijeci.Name = "txtUnosKljucneRijeci";
+            this.txtUnosKljucneRijeci.Size = new System.Drawing.Size(201, 26);
+            this.txtUnosKljucneRijeci.TabIndex = 3;
             // 
             // btnPretrazi
             // 
@@ -89,16 +89,16 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1172, 622);
             this.Controls.Add(this.btnPretrazi);
-            this.Controls.Add(this.tboxUnosKljucneRijeci);
-            this.Controls.Add(this.cboxKriteriji);
+            this.Controls.Add(this.txtUnosKljucneRijeci);
+            this.Controls.Add(this.cmbKriteriji);
             this.Controls.Add(this.naslov);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmKatalog";
             this.Text = "Katalog knjiga";
             this.Load += new System.EventHandler(this.FrmKatalog_Load);
             this.Controls.SetChildIndex(this.naslov, 0);
-            this.Controls.SetChildIndex(this.cboxKriteriji, 0);
-            this.Controls.SetChildIndex(this.tboxUnosKljucneRijeci, 0);
+            this.Controls.SetChildIndex(this.cmbKriteriji, 0);
+            this.Controls.SetChildIndex(this.txtUnosKljucneRijeci, 0);
             this.Controls.SetChildIndex(this.btnPretrazi, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,8 +108,8 @@
         #endregion
 
         private System.Windows.Forms.Label naslov;
-        private System.Windows.Forms.ComboBox cboxKriteriji;
-        private System.Windows.Forms.TextBox tboxUnosKljucneRijeci;
+        private System.Windows.Forms.ComboBox cmbKriteriji;
+        private System.Windows.Forms.TextBox txtUnosKljucneRijeci;
         private System.Windows.Forms.Button btnPretrazi;
     }
 }
