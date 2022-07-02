@@ -573,7 +573,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 1414);
+            this.ClientSize = new System.Drawing.Size(1360, 1416);
             this.Controls.Add(this.btnUredi);
             this.Controls.Add(panel5);
             this.Controls.Add(panel4);

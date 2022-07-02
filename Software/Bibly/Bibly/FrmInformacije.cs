@@ -15,12 +15,26 @@ namespace Bibly
         public FrmInformacije()
         {
             InitializeComponent();
-            AutoScroll = true;
+            //AutoScroll = true;
         }
 
         private void FrmInformacije_Load(object sender, EventArgs e)
         {
+            AutoScroll = true;
             PopuniTextBokseve();
+            int uloga = Prijava.Autentifikator.Instanca.UlogaKorisnika();
+            if (uloga != 4)
+            {
+                btnUredi.Hide();
+                txtRadnoVrijeme.Enabled = false;
+                txtClanarina.Enabled = false;
+                txtMaxBrojPosudbi.Enabled = false;
+                txtTelefon.Enabled = false;
+                txtTrajanjePosudbi.Enabled = false;
+                txtTrajanjeProduljenja.Enabled = false;
+                txtTrajanjeRezervacije.Enabled = false;
+                txtZakasnina.Enabled = false;
+            }
         }
 
         private void PopuniTextBokseve()
@@ -35,6 +49,8 @@ namespace Bibly
             txtTrajanjeProduljenja.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString() + " puta (max)";
 
         }
+
+        
 
     }
 }
