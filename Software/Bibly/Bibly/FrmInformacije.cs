@@ -32,7 +32,8 @@ namespace Bibly
             {
 
                 btnUredi.Show();
-                btnSpremi.Hide();
+                btnSpremi.Show();
+                btnSpremi.Enabled = false;
             }
         }
 
@@ -78,7 +79,7 @@ namespace Bibly
         private void btnUredi_Click(object sender, EventArgs e)
         {
             btnUredi.Enabled = false;
-            btnSpremi.Show();
+            btnSpremi.Enabled = true;
 
             txtRadnoVrijeme.Enabled = true;
             txtClanarina.Enabled = true;
@@ -109,7 +110,7 @@ namespace Bibly
 
         private void btnSpremi_Click(object sender, EventArgs e)
         {
-            btnSpremi.Hide();
+            btnSpremi.Enabled = false;
             btnUredi.Enabled = true;
 
             int maxBrojPosudbi = int.Parse(txtMaxBrojPosudbi.Text);

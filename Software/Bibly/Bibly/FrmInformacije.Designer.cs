@@ -58,6 +58,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.txtTrajanjeProduljenja = new System.Windows.Forms.TextBox();
             this.txtTrajanjePosudbi = new System.Windows.Forms.TextBox();
@@ -74,9 +77,6 @@
             this.naslov = new System.Windows.Forms.Label();
             this.btnUredi = new System.Windows.Forms.Button();
             this.btnSpremi = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel6 = new System.Windows.Forms.Panel();
@@ -99,7 +99,7 @@
             panel1.Controls.Add(this.label6);
             panel1.Controls.Add(this.label1);
             panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            panel1.Location = new System.Drawing.Point(114, 169);
+            panel1.Location = new System.Drawing.Point(146, 225);
             panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(1146, 196);
@@ -149,7 +149,7 @@
             panel2.Controls.Add(this.label8);
             panel2.Controls.Add(this.label2);
             panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            panel2.Location = new System.Drawing.Point(150, 395);
+            panel2.Location = new System.Drawing.Point(182, 451);
             panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(1070, 196);
@@ -324,7 +324,7 @@
             panel3.Controls.Add(this.label11);
             panel3.Controls.Add(this.label3);
             panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            panel3.Location = new System.Drawing.Point(189, 618);
+            panel3.Location = new System.Drawing.Point(221, 674);
             panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             panel3.Name = "panel3";
             panel3.Size = new System.Drawing.Size(982, 196);
@@ -435,11 +435,47 @@
             panel4.Controls.Add(this.label7);
             panel4.Controls.Add(this.label5);
             panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            panel4.Location = new System.Drawing.Point(231, 846);
+            panel4.Location = new System.Drawing.Point(263, 902);
             panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(899, 196);
             panel4.TabIndex = 6;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label29.Location = new System.Drawing.Point(723, 18);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(50, 25);
+            this.label29.TabIndex = 18;
+            this.label29.Text = "puta";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label28.Location = new System.Drawing.Point(723, 155);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(106, 25);
+            this.label28.TabIndex = 17;
+            this.label28.Text = "puta (max)";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label27.Location = new System.Drawing.Point(723, 109);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(56, 25);
+            this.label27.TabIndex = 16;
+            this.label27.Text = "dana";
             // 
             // label26
             // 
@@ -556,7 +592,7 @@
             panel5.Controls.Add(this.label13);
             panel5.Controls.Add(this.label4);
             panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            panel5.Location = new System.Drawing.Point(273, 1069);
+            panel5.Location = new System.Drawing.Point(305, 1125);
             panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             panel5.Name = "panel5";
             panel5.Size = new System.Drawing.Size(814, 196);
@@ -601,7 +637,7 @@
             // 
             this.naslov.AutoSize = true;
             this.naslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naslov.Location = new System.Drawing.Point(460, 68);
+            this.naslov.Location = new System.Drawing.Point(492, 124);
             this.naslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.naslov.Name = "naslov";
             this.naslov.Size = new System.Drawing.Size(448, 69);
@@ -614,8 +650,8 @@
             this.btnUredi.AutoSize = true;
             this.btnUredi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnUredi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUredi.Location = new System.Drawing.Point(549, 1311);
-            this.btnUredi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUredi.Location = new System.Drawing.Point(446, 1376);
+            this.btnUredi.Margin = new System.Windows.Forms.Padding(15);
             this.btnUredi.Name = "btnUredi";
             this.btnUredi.Size = new System.Drawing.Size(225, 49);
             this.btnUredi.TabIndex = 8;
@@ -628,8 +664,8 @@
             this.btnSpremi.AutoSize = true;
             this.btnSpremi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnSpremi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpremi.Location = new System.Drawing.Point(549, 1395);
-            this.btnSpremi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSpremi.Location = new System.Drawing.Point(818, 1373);
+            this.btnSpremi.Margin = new System.Windows.Forms.Padding(15);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(225, 55);
             this.btnSpremi.TabIndex = 9;
@@ -637,47 +673,11 @@
             this.btnSpremi.UseVisualStyleBackColor = false;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label27.Location = new System.Drawing.Point(723, 109);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(56, 25);
-            this.label27.TabIndex = 16;
-            this.label27.Text = "dana";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label28.Location = new System.Drawing.Point(723, 155);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(106, 25);
-            this.label28.TabIndex = 17;
-            this.label28.Text = "puta (max)";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label29.Location = new System.Drawing.Point(723, 18);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(50, 25);
-            this.label29.TabIndex = 18;
-            this.label29.Text = "puta";
-            // 
             // FrmInformacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 1475);
+            this.ClientSize = new System.Drawing.Size(1478, 1544);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.btnUredi);
             this.Controls.Add(panel5);
