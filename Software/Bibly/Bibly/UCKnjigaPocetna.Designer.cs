@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbNaslovnica = new System.Windows.Forms.PictureBox();
+            this.pbSlikaKnjige = new System.Windows.Forms.PictureBox();
             this.lblAutor = new System.Windows.Forms.Label();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlikaKnjige)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -42,22 +42,22 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblAutor);
             this.panel1.Controls.Add(this.lblNaslov);
-            this.panel1.Controls.Add(this.pbNaslovnica);
+            this.panel1.Controls.Add(this.pbSlikaKnjige);
             this.panel1.Location = new System.Drawing.Point(16, 18);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(337, 508);
             this.panel1.TabIndex = 11;
             // 
-            // pbNaslovnica
+            // pbSlikaKnjige
             // 
-            this.pbNaslovnica.Location = new System.Drawing.Point(31, 32);
-            this.pbNaslovnica.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbNaslovnica.Name = "pbNaslovnica";
-            this.pbNaslovnica.Size = new System.Drawing.Size(271, 312);
-            this.pbNaslovnica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbNaslovnica.TabIndex = 12;
-            this.pbNaslovnica.TabStop = false;
+            this.pbSlikaKnjige.Location = new System.Drawing.Point(31, 32);
+            this.pbSlikaKnjige.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbSlikaKnjige.Name = "pbSlikaKnjige";
+            this.pbSlikaKnjige.Size = new System.Drawing.Size(271, 312);
+            this.pbSlikaKnjige.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSlikaKnjige.TabIndex = 12;
+            this.pbSlikaKnjige.TabStop = false;
             // 
             // lblAutor
             // 
@@ -92,7 +92,7 @@
             this.Size = new System.Drawing.Size(369, 546);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlikaKnjige)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -100,7 +100,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbNaslovnica;
+        private System.Windows.Forms.PictureBox pbSlikaKnjige;
         private System.Windows.Forms.Label lblAutor;
         private System.Windows.Forms.Label lblNaslov;
     }

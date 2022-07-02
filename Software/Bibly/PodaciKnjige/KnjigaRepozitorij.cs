@@ -204,5 +204,32 @@ namespace PodaciKnjige
             }
             return slika;
         }
+
+        public static List<Knjiga> DohvatiNajcitanijeKnjigaMjeseca()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                "SELECT TOP 10 k.ISBN,COUNT(po.id_posudba) AS broj_posudbi " +
+                "FROM posudbe po RIGHT JOIN primjerci p ON p.id_primjerak=po.id_posudba " +
+                "RIGHT JOIN knjige k ON k.ISBN = p.ISBN WHERE (po.datum_posudbe between DATEADD(DAY,-30,GETDATE()) " +
+                "and  GETDATE()) OR (po.datum_posudbe is null AND po.do_kada_vrijedi_rezervacija is null)" +
+                " GROUP BY k.ISBN ORDER BY broj_posudbi DESC";
+
+            List<Knjiga> knjige = new List<Knjiga>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+
+            while (reader.Read())
+            {
+                knjige.Add(DohvatiKnjigu(reader["k.ISBN"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return knjige;
+
+        }
     }
 }
