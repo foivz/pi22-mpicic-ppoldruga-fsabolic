@@ -66,5 +66,13 @@ namespace Bibly
             if (naziv == "OIB") return naziv;
             return naziv.ToLower().Replace(" ","_").Replace("-","");
         }
+
+        private void btnUclani_Click(object sender, EventArgs e)
+        {
+            FrmRegistracija frm = new FrmRegistracija();
+            frm.PostaviGlavniMenu(1);
+            frm.ShowDialog();
+            dgvKorisnici.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
+        }
     }
 }
