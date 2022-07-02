@@ -212,5 +212,11 @@ namespace Bibly
             FrmInformacije frm = new FrmInformacije();
             OtvoriNovuFormu(frm);
         }
+
+        private void tsmiPocetna_Click(object sender, EventArgs e)
+        {
+            FrmPocetna frm = new FrmPocetna();
+            OtvoriNovuFormu(frm);
+        }
     }
 }
