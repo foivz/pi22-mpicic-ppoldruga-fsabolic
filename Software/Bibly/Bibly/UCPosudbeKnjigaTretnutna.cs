@@ -58,10 +58,10 @@ namespace Bibly
         }
         private void btnProdulji_Click(object sender, EventArgs e)
         {
+            PosudbaRepozitorij.ProduljiPosudbu(odabranaPosudba);
             odabranaPosudba.BrojProduljivanja += 1;
-            DateTime noviDatumPosudbe = DateTime.Today.AddDays(PostavkeRepozitorij.DohvatiTrajanjePosudbe());
-            PosudbaRepozitorij.ProduljiPosudbu(odabranaPosudba, noviDatumPosudbe);
             lblBrojProduljivanja.Text = (odabranaPosudba.BrojProduljivanja).ToString();
+            DateTime noviDatumPosudbe = DateTime.Today.AddDays(PostavkeRepozitorij.DohvatiTrajanjePosudbe());
             lblPosudba.Text = noviDatumPosudbe.ToShortDateString();
             PrikaziBrojDanaDoPovratka();
             OmoguciGumbZaProduljenje();
