@@ -112,8 +112,8 @@ namespace Bibly
 
         private void tsmiPostavke_Click(object sender, EventArgs e)
         {
-            FrmAdmin frm = new FrmAdmin("postavke");
-            OtvoriNovuFormu(frm);
+            FrmAdminDodaj frm = new FrmAdminDodaj("postavke");
+            frm.ShowDialog();
 
         }
 

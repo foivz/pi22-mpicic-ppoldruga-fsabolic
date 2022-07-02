@@ -49,11 +49,7 @@ namespace Bibly
             else if (razlikaDana < 0)
             {
                 lblPosudba.Text += $" (Kasnite s vraćanjem!)";
-                double iznosZakasnine = PostavkeRepozitorij.DohvatiIznosZakasnine();
-                double zakasnina = (-1)*(iznosZakasnine*razlikaDana);
-                odabranaPosudba.Zakasnina = zakasnina;
-                lblZakasnina.Text = string.Format("{0:0.00}", zakasnina) + " HRK";
-                PosudbaRepozitorij.AzurirajZakasninu(odabranaPosudba.Id, zakasnina);
+                lblZakasnina.Text = string.Format("{0:0.00}", odabranaPosudba.IzracunajZakasninu()) + " HRK";
             }
             else
             {

@@ -56,6 +56,10 @@
       <Project>{af93170b-21c0-452b-acdf-53e9b055ba3d}</Project>
       <Name>Baza</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Postavke\Postavke.csproj">
+      <Project>{51c3b82f-f42d-4e7d-b091-745cffb44467}</Project>
+      <Name>Postavke</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

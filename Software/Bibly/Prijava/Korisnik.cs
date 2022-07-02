@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Postavke;
 
 namespace Prijava
 {
@@ -57,6 +58,15 @@ namespace Prijava
         {
             return Ime + " " + Prezime;
         }
-
+        public bool JeLiKorisnikPresaoGranicuPosudivanja()
+        {
+            int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(this);
+            int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
+            if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

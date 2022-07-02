@@ -11,7 +11,7 @@ using Prijava;
 using System.Text.RegularExpressions;
 using PodaciKnjige;
 using PosudbeIRezervacije;
-
+using Postavke;
 namespace Bibly
 {
     public partial class FrmAdminDodaj : FrmOpcenita
@@ -44,7 +44,7 @@ namespace Bibly
                     PostaviFormu_Izdavaci();
                     break;
                 case "knjige":
-
+                    PostaviFormu_Knjige();
                     break;
                 case "korisnici":
                     PostaviFormu_Korisnici();
@@ -54,7 +54,7 @@ namespace Bibly
                     PostaviFormu_Mjesta();
                     break;
                 case "postavke":
-
+                    PostaviFormu_Postavke();
                     break;
                 case "posudbe":
                     PostaviFormu_Posudbe();
@@ -63,9 +63,7 @@ namespace Bibly
 
                     PostaviFormu_Primjerci();
                     break;
-                case "statusi_primjeraka":
 
-                    break;
                 case "tipovi_korisnika":
 
                     PostaviFormu_TipoviKorisnika();
@@ -79,6 +77,151 @@ namespace Bibly
             }
         }
 
+        private void PostaviFormu_Postavke()
+        {
+            this.Controls.Add(PostaviTextBox("txtMaxBrojPosudbi", "lblMaxBrojPosudbi", "Max broj posudbi", true));
+            this.Controls.Add(PostaviTextBox("txtZakasnina", "lblZakasnina", "Zakasnina", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjeRezervacije", "lblTrajanjeRezervacije", "Trajanje rezervacije", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjePosudbe", "lblTrajanjePosudbe", "Trajanje posudbe", true));
+            this.Controls.Add(PostaviTextBox("txtTrajanjeProduljenja", "lblTrajanjeProduljenja", "Trajanje produljenja", true));
+            this.Controls.Add(PostaviTextBox("txtRadnoVrijeme", "lblRadnoVrijeme", "Radno vrijeme", true));
+            this.Controls.Add(PostaviTextBox("txtKontakt", "lblKontakt", "Kontakt", true));
+            this.Controls.Add(PostaviTextBox("txtAdresa", "lblAdresa", "Adresa", true));
+            this.Controls.Add(PostaviTextBox("txtClanarina", "lblClanarina", "Članarina", true));
+            ((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
+            ((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text = PostavkeRepozitorij.DohvatiIznosZakasnine().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjeRezervacije", true)[0]).Text = PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjePosudbe", true)[0]).Text = PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString();
+            ((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text = PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe().ToString();
+            ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text = PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
+            ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text = PostavkeRepozitorij.DohvatiKontakt().ToString();
+            ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text = PostavkeRepozitorij.DohvatiAdresu().ToString();
+            ((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text = PostavkeRepozitorij.DohvatiClanarinu().ToString();
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(PostavkeValidacija);
+
+
+
+        }
+
+        private void PostavkeValidacija(object sender, EventArgs e)
+        {
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                t.BackColor = Color.FromArgb(254, 255, 242);
+            }
+            if (UnesenTekst())
+            {
+                PostavkeRepozitorij.AzurirajPostavke(
+                    int.Parse(((TextBox)this.Controls.Find("txtMaxBrojPosudbi", true)[0]).Text),
+                double.Parse(((TextBox)this.Controls.Find("txtZakasnina", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjeRezervacije", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjePosudbe", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtTrajanjeProduljenja", true)[0]).Text),
+                ((TextBox)this.Controls.Find("txtRadnoVrijeme", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtKontakt", true)[0]).Text,
+                ((TextBox)this.Controls.Find("txtAdresa", true)[0]).Text,
+                double.Parse(((TextBox)this.Controls.Find("txtClanarina", true)[0]).Text)
+                );
+                Close();
+            }
+        }
+
+        private void PostaviFormu_Knjige()
+        {
+            this.Controls.Add(PostaviTextBox("txtISBN", "lblISBN", "ISBN", true));
+            this.Controls.Add(PostaviTextBox("txtNaziv", "lblNaziv", "Naziv", true));
+            ComboBox izdavac = PostaviComboBox("cmbIzdavac", "lblIzdavac", "Izdavač");
+            foreach (Izdavac i in IzdavacRepozitorij.DohvatiSveIzdavace())
+            {
+                izdavac.Items.Add(i);
+            }
+            izdavac.SelectedIndex = 0;
+            this.Controls.Add(izdavac);
+            ComboBox zanr = PostaviComboBox("cmbZanr", "lblZanr", "Žanr");
+            foreach (Zanr z in ZanrRepozitorij.DohvatiSveZanrove())
+            {
+                zanr.Items.Add(z);
+            }
+            zanr.SelectedIndex = 0;
+            this.Controls.Add(zanr);
+            this.Controls.Add(PostaviTextBox("txtDatumIzdavanja", "lblDatumIzdavanja", "Datum izdavanja", true));
+            this.Controls.Add(PostaviTextBox("txtBrojStranica", "lblBrojStranica", "Broj stranica", true));
+            this.Controls.Add(PostaviTextBox("txtOpisKnjige", "lblOpisKnjige", "Opis knjige", true));
+            this.Controls.Add(PostaviPictureBox("pbNaslovnica", "lblNaslovnica", "Naslovnica"));
+            ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).MouseClick += new MouseEventHandler(PostaviSliku);
+            btnSpremi.Top = top + 15;
+            btnSpremi.Click += new EventHandler(KnjigeValidacija);
+            if (TrenutniObjekt != null)
+            {
+                Knjiga knjiga = (Knjiga)TrenutniObjekt;
+                ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text = knjiga.ISBN.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = knjiga.Naziv.ToString();
+                List<Izdavac> izdavaci = IzdavacRepozitorij.DohvatiSveIzdavace();
+                ((ComboBox)this.Controls.Find("cmbIzdavac", true)[0]).SelectedIndex = izdavaci.IndexOf(izdavaci.Find(x => x.Id == knjiga.Izdavac.Id));
+                List<Zanr> zanrovi = ZanrRepozitorij.DohvatiSveZanrove();
+                ((ComboBox)this.Controls.Find("cmbZanr", true)[0]).SelectedIndex = zanrovi.IndexOf(zanrovi.Find(x => x.Id == knjiga.Zanr.Id));
+                ((TextBox)this.Controls.Find("txtDatumIzdavanja", true)[0]).Text = knjiga.DatumIzdavanja.ToString();
+                ((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text = knjiga.BrojStranica.ToString();
+                ((TextBox)this.Controls.Find("txtOpisKnjige", true)[0]).Text = knjiga.Opis.ToString();
+                ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image = knjiga.Naslovnica;
+            }
+        }
+
+        private void KnjigeValidacija(object sender, EventArgs e)
+        {
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                t.BackColor = Color.FromArgb(254, 255, 242);
+            }
+
+            if (UnesenTekst())
+            {
+
+                Knjiga knjiga = new Knjiga(
+                    ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text,
+                    ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text,
+                    ((ComboBox)this.Controls.Find("cmbIzdavac", true)[0]).SelectedItem as Izdavac,
+                    ((ComboBox)this.Controls.Find("cmbZanr", true)[0]).SelectedItem as Zanr,
+                    DateTime.Parse(DateTime.Parse(((TextBox)this.Controls.Find("txtDatumIzdavanja", true)[0]).Text).Date.ToString("yyyy-MM-dd")),
+                    int.Parse(((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text),
+                    ((TextBox)this.Controls.Find("txtOpisKnjige", true)[0]).Text == "" ? null : ((TextBox)this.Controls.Find("txtOpisKnjige", true)[0]).Text,
+                    ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image,
+                    null);
+
+                if (TrenutniObjekt == null)
+                {
+                    KnjigaRepozitorij.DodajKnjigu(knjiga);
+                }
+                else
+                {
+                    string stariISBN = ((Knjiga)TrenutniObjekt).ISBN;
+                    KnjigaRepozitorij.AzurirajKnjigu(stariISBN, knjiga);
+                }
+
+                Close();
+            }
+        }
+
+        private void PostaviSliku(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                OpenFileDialog OD = new OpenFileDialog();
+                OD.FileName = "";
+                OD.Filter = "Supported Images |*.jpg;*.jpeg;*.png";
+                if (OD.ShowDialog() == DialogResult.OK)
+                {
+                    ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Load(OD.FileName);
+
+                }
+            }
+            else
+            {
+                ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image = null;
+            }
+
+        }
 
         private void PostaviFormu_Posudbe()
         {
@@ -221,7 +364,7 @@ namespace Bibly
             }
 
             Posudba posudba = new Posudba(
-                int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text==""?"-1": ((TextBox)this.Controls.Find("txtID", true)[0]).Text),
+                int.Parse(((TextBox)this.Controls.Find("txtID", true)[0]).Text == "" ? "-1" : ((TextBox)this.Controls.Find("txtID", true)[0]).Text),
             ((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtDatumPosudbe", true)[0]).Text),
             ((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtPredvidenDatumVracanja", true)[0]).Text),
             ((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text == "" ? default : DateTime.Parse(((TextBox)this.Controls.Find("txtStvarniDatumVracanja", true)[0]).Text),
@@ -529,7 +672,7 @@ namespace Bibly
             this.Controls.Add(knjiga);
 
             btnSpremi.Top = top + 15;
-            
+
             btnSpremi.Click += new EventHandler(AutorKnjigeValidacija);
             if (TrenutniObjekt != null)
             {
@@ -626,7 +769,6 @@ namespace Bibly
                 ((ComboBox)this.Controls.Find("cmbTipKorisnika", true)[0]).SelectedIndex = tipoviKorisnika.IndexOf(tipoviKorisnika.Find(x => x.ID == korisnik.TipKorisnika.ID));
                 ((TextBox)this.Controls.Find("txtPokusajiPrijave", true)[0]).Text = korisnik.PokusajiPrijave.ToString();
             }
-
         }
 
         private void KorisnikValidacija(object sender, EventArgs e)
@@ -681,7 +823,7 @@ namespace Bibly
 
             List<string> Iznimke = new List<string>()
             {
-                "txtID"
+                "txtID","txtOpisKnjige"
             };
             foreach (TextBox txt in this.Controls.OfType<TextBox>()) txt.BackColor = Color.FromArgb(254, 255, 242);
             foreach (TextBox txt in this.Controls.OfType<TextBox>())
@@ -700,15 +842,20 @@ namespace Bibly
                     string uzorak = "";
                     switch (txt.Name)
                     {
+
                         case "txtOIB":
-                            if (!ProvjeraOIBa(txt.Text)) return IspisGreske(txt, "Krivi format OIB-a");
+                            if (!ProvjeraOIBa(txt.Text)) return IspisGreske(txt, "Pogrešan format OIB-a");
                             if (TrenutniObjekt == null) if (KorisnikRepozitorij.DohvatiKorisnika_OIB(txt.Text) != null) return IspisGreske(txt, "OIB već postoji u bazi!");
+                            break;
+                        case "txtISBN":
+                            if (!long.TryParse(txt.Text, out long test) || txt.Text.Length != 13) return IspisGreske(txt, "Pogrešan format ISBN-a");
+                            if (TrenutniObjekt == null) if (KnjigaRepozitorij.DohvatiKnjigu(txt.Text) != null) return IspisGreske(txt, "Ovaj ISBN već postoji!");
                             break;
                         case "txtIme":
                         case "txtPrezime":
 
                             uzorak = @"^(([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20})(([ ]|[-])([A-Z,ČĆŽĐŠ][a-z,čćžđš]{1,20}))?)$";
-                            
+
                             if (!Regex.Match(txt.Text, uzorak).Success) return IspisGreske(txt, "Pogrešan format imena/prezimena");
                             break;
                         case "txtBrojMobitela":
@@ -727,13 +874,39 @@ namespace Bibly
                             if (!VelicinaUnosa(txt.Text, 50)) IspisGreske(txt, "Prevelik unos");
                             break;
 
+                        case "txtNaziv":
+                        case "txtRadnoVrijeme":
+                        case "kontakt":
+                        case "adresa":
+                            if (!VelicinaUnosa(txt.Text, 180)) IspisGreske(txt, "Prevelik unos");
+                            break;
+
                         case "txtDatumUclanjivanja":
                         case "txtDatumIstekaClanarine":
-                            if (!DateTime.TryParse(txt.Text, out DateTime test)) return IspisGreske(txt, "Pogrešan format datuma");
+                        case "txtDatumIzdavanja":
+                            if (!DateTime.TryParse(txt.Text, out DateTime test_2)) return IspisGreske(txt, "Pogrešan format datuma");
                             break;
                         case "txtBlokiran":
                         case "txtPokusajiPrijave":
+                        case "txtBrojStranica":
+                        case "txtMaxBrojPosudbi":
+                        case "txtTrajanjeRezervacije":
+                        case "txtTrajanjePosudbe":
+                        case "txtTrajanjeProduljenja":
                             if (!int.TryParse(txt.Text, out int test_1)) return IspisGreske(txt, "Nije unesen broj");
+                            break;
+
+                        case "txtZakasnina":
+                        case "txtClanarina":
+                            if (!double.TryParse(txt.Text, out double test_3))
+                            {
+                                return IspisGreske(txt, "Niste unijeli pravilan format za novac!");
+                            }
+                            double novac = double.Parse(txt.Text);
+                            if (Decimal.Round((Decimal)novac, 2) != (Decimal)novac)
+                            {
+                                return IspisGreske(txt, "Niste unijeli pravilan format za novac!");
+                            }
                             break;
                     }
                 }
@@ -839,6 +1012,21 @@ namespace Bibly
             lbl.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
             lbl.TextAlign = ContentAlignment.MiddleRight;
             return lbl;
+        }
+        private PictureBox PostaviPictureBox(string Ime, string LabelIme, string LabelText)
+        {
+            PictureBox pb = new PictureBox();
+            pb.Name = Ime;
+            pb.Top = top;
+            pb.Left = 350;
+            pb.Width = 200;
+            pb.BackColor = Color.Gray;
+            pb.Height = 240;
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.BorderStyle = BorderStyle.FixedSingle;
+            this.Controls.Add(PostaviLabel(LabelIme, LabelText));
+            top += 250;
+            return pb;
         }
 
     }

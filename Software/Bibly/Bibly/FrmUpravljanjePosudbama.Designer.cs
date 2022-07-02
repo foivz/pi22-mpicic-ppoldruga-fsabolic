@@ -39,9 +39,9 @@
             this.btnVrati = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblBrojProduljivanja = new System.Windows.Forms.Label();
+            this.lblZakasnina = new System.Windows.Forms.Label();
+            this.lblVrijediDo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPodNaslov = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,6 +70,7 @@
             this.btnRezerviraj.TabIndex = 22;
             this.btnRezerviraj.Text = "Rezerviraj";
             this.btnRezerviraj.UseVisualStyleBackColor = false;
+            this.btnRezerviraj.Click += new System.EventHandler(this.btnRezerviraj_Click);
             // 
             // ucSkener1
             // 
@@ -144,6 +145,7 @@
             this.btnVrati.TabIndex = 35;
             this.btnVrati.Text = "Vrati";
             this.btnVrati.UseVisualStyleBackColor = false;
+            this.btnVrati.Click += new System.EventHandler(this.btnVrati_Click);
             // 
             // panel1
             // 
@@ -156,9 +158,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblBrojProduljivanja);
+            this.panel2.Controls.Add(this.lblZakasnina);
+            this.panel2.Controls.Add(this.lblVrijediDo);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblPodNaslov);
             this.panel2.Controls.Add(this.label3);
@@ -168,38 +170,38 @@
             this.panel2.Size = new System.Drawing.Size(598, 232);
             this.panel2.TabIndex = 37;
             // 
-            // label7
+            // lblBrojProduljivanja
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(207, 176);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 20);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "0";
+            this.lblBrojProduljivanja.AutoSize = true;
+            this.lblBrojProduljivanja.BackColor = System.Drawing.Color.White;
+            this.lblBrojProduljivanja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrojProduljivanja.Location = new System.Drawing.Point(207, 176);
+            this.lblBrojProduljivanja.Name = "lblBrojProduljivanja";
+            this.lblBrojProduljivanja.Size = new System.Drawing.Size(18, 20);
+            this.lblBrojProduljivanja.TabIndex = 44;
+            this.lblBrojProduljivanja.Text = "0";
             // 
-            // label6
+            // lblZakasnina
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(153, 131);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 20);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "0.00 HRK";
+            this.lblZakasnina.AutoSize = true;
+            this.lblZakasnina.BackColor = System.Drawing.Color.White;
+            this.lblZakasnina.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZakasnina.Location = new System.Drawing.Point(153, 131);
+            this.lblZakasnina.Name = "lblZakasnina";
+            this.lblZakasnina.Size = new System.Drawing.Size(78, 20);
+            this.lblZakasnina.TabIndex = 43;
+            this.lblZakasnina.Text = "0.00 HRK";
             // 
-            // label5
+            // lblVrijediDo
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(139, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 20);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "datum";
+            this.lblVrijediDo.AutoSize = true;
+            this.lblVrijediDo.BackColor = System.Drawing.Color.White;
+            this.lblVrijediDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVrijediDo.Location = new System.Drawing.Point(139, 86);
+            this.lblVrijediDo.Name = "lblVrijediDo";
+            this.lblVrijediDo.Size = new System.Drawing.Size(54, 20);
+            this.lblVrijediDo.TabIndex = 42;
+            this.lblVrijediDo.Text = "datum";
             // 
             // label4
             // 
@@ -302,8 +304,8 @@
         private System.Windows.Forms.Label lblPodNaslov;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblBrojProduljivanja;
+        private System.Windows.Forms.Label lblZakasnina;
+        private System.Windows.Forms.Label lblVrijediDo;
     }
 }

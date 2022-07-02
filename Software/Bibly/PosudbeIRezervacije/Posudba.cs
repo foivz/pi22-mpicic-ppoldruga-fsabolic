@@ -25,14 +25,13 @@ namespace PosudbeIRezervacije
         {
 
         }
-
-        public Posudba(int id,DateTime datumPosudbe,DateTime predvidenDatumVracanja,DateTime stvarniDatumVracanja,int brojProduljivanja,
-            double zakasnina, Primjerak primjerak,Korisnik korisnik, DateTime doKadaVrijediRezervacija,int rezervacijaPotvrdena)
+        public Posudba(int id, DateTime datumPosudbe, DateTime predvidenDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja,
+            double zakasnina, Primjerak primjerak, Korisnik korisnik, DateTime doKadaVrijediRezervacija, int rezervacijaPotvrdena)
         {
             Id = id;
             DatumPosudbe = datumPosudbe;
             PredvideniDatumVracanja = predvidenDatumVracanja;
-            StvarniDatumVracanja= stvarniDatumVracanja;
+            StvarniDatumVracanja = stvarniDatumVracanja;
             BrojProduljivanja = brojProduljivanja;
             Zakasnina = zakasnina;
             Primjerak = primjerak;
@@ -40,55 +39,14 @@ namespace PosudbeIRezervacije
             DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
             RezervacijaPotvrdena = rezervacijaPotvrdena;
         }
-
-        //konstruktor za Prošle posudbe
-        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, DateTime stvarniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
+        public double IzracunajZakasninu()
         {
-            Id = id;
-            DatumPosudbe = datumPosudbe;
-            PredvideniDatumVracanja = predvideniDatumVracanja;
-            StvarniDatumVracanja = stvarniDatumVracanja;
-            BrojProduljivanja = brojProduljivanja;
-            Zakasnina = zakasnina;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-        }
-        //konstruktor za Trenutne posudbe
-        public Posudba(int id, DateTime datumPosudbe, DateTime predvideniDatumVracanja, int brojProduljivanja, double zakasnina, Korisnik korisnik, Primjerak primjerak)
-        {
-            Id = id;
-            DatumPosudbe = datumPosudbe;
-            PredvideniDatumVracanja = predvideniDatumVracanja;
-            BrojProduljivanja = brojProduljivanja;
-            Zakasnina = zakasnina;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-        }
-        //konstruktori za Rezervaciju
-        public Posudba(Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
-        {
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-        }
-        public Posudba(int id, Korisnik korisnik, Primjerak primjerak, DateTime doKadaVrijediRezervacija)
-        {
-            Id = id;
-            Korisnik = korisnik;
-            Primjerak = primjerak;
-            DoKadaVrijediRezervacija = doKadaVrijediRezervacija;
-        }
-
-        public bool JeLiKorisnikPresaoGranicuPosudivanja()
-        {
-            Korisnik trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
-            int trenutniBrojPosudbiKorisnika = KorisnikRepozitorij.TrenutniBrojPosudbi(trenutniKorisnik);
-            int maxBrojMogucihPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi();
-            if (trenutniBrojPosudbiKorisnika + 1 <= maxBrojMogucihPosudbi)
-            {
-                return true;
-            }
-            return false;
+            TimeSpan pomRazlikaDana = PredvideniDatumVracanja.Subtract(DateTime.Today);
+            int razlikaDana = int.Parse(pomRazlikaDana.TotalDays.ToString());
+            double iznosZakasnine = PostavkeRepozitorij.DohvatiIznosZakasnine();
+            Zakasnina = (-1) * (iznosZakasnine * razlikaDana);
+            PosudbaRepozitorij.AzurirajZakasninu(Id, Zakasnina);
+            return Zakasnina;
         }
     }
 }
