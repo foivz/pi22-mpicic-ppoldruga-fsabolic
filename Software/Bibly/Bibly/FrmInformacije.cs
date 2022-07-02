@@ -40,9 +40,9 @@ namespace Bibly
         private void PopuniTextBokseve()
         {
             txtRadnoVrijeme.Text = Postavke.PostavkeRepozitorij.DohvatiRadnoVrijeme().ToString();
-            txtTelefon.Text = Postavke.PostavkeRepozitorij.DohvatiTelefon().ToString();
+            txtTelefon.Text = Postavke.PostavkeRepozitorij.DohvatiKontakt().ToString();
             txtZakasnina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosZakasnine().ToString();
-            txtClanarina.Text = Postavke.PostavkeRepozitorij.DohvatiIznosClanarine().ToString();
+            txtClanarina.Text = Postavke.PostavkeRepozitorij.DohvatiClanarinu().ToString();
             txtMaxBrojPosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiMaksimalanBrojMogucihPosudbi().ToString();
             txtTrajanjeRezervacije.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjeRezervacije().ToString();
             txtTrajanjePosudbi.Text = Postavke.PostavkeRepozitorij.DohvatiTrajanjePosudbe().ToString();
