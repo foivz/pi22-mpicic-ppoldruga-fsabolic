@@ -86,33 +86,54 @@ namespace PodaciKnjige
                         $", naslovnica) VALUES('{dodanaKnjiga.ISBN}','{dodanaKnjiga.Naziv}',{dodanaKnjiga.Izdavac.Id},{dodanaKnjiga.Zanr.Id},'{dodanaKnjiga.DatumIzdavanja.Date.ToString("yyyy-MM-dd")}'," +
                         $"{dodanaKnjiga.BrojStranica},'{dodanaKnjiga.Opis}',NULL)";
 
-            
+
             int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
 
             BazaPodataka.Instanca.PrekiniVezu();
 
-            DodajNaslovnicuKnjige(dodanaKnjiga.ISBN, dodanaKnjiga.Naslovnica);
+            if(dodanaKnjiga.Naslovnica!=null) DodajNaslovnicuKnjige(dodanaKnjiga.ISBN, dodanaKnjiga.Naslovnica);
 
             return i;
         }
 
-        public static void DodajNaslovnicuKnjige(string ISBN,Image slika)
+        public static void DodajNaslovnicuKnjige(string ISBN, Image slika)
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
             string upit = $"UPDATE knjige SET naslovnica = @slika WHERE ISBN='{ISBN}'";
 
-            BazaPodataka.Instanca.IzvrsiNaredbuParamImage(upit,slika);
+            BazaPodataka.Instanca.IzvrsiNaredbuParamImage(upit, slika);
 
             BazaPodataka.Instanca.PrekiniVezu();
         }
         public static int ObrisiKnjigu(Knjiga dodanaKnjiga)
         {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = $"DELETE FROM knjige WHERE ISBN='{dodanaKnjiga.ISBN}'";
+
+            BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
             return 0;
         }
-        public static int AzurirajKnjigu(Knjiga dodanaKnjiga)
+        public static int AzurirajKnjigu(string isbn,Knjiga dodanaKnjiga)
         {
-            return 0;
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = "UPDATE knjige" +
+                        $" SET ISBN='{dodanaKnjiga.ISBN}',naziv = '{dodanaKnjiga.Naziv}',id_izdavac = {dodanaKnjiga.Izdavac.Id}," +
+                        $"id_zanr = {dodanaKnjiga.Zanr.Id},datum_izdavanja = '{dodanaKnjiga.DatumIzdavanja.Date.ToString("yyyy-MM-dd")}'," +
+                        $"broj_stranica = {dodanaKnjiga.BrojStranica},opis_knjige = '{dodanaKnjiga.Opis}',naslovnica = NULL WHERE ISBN = '{isbn}'";
+
+
+            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            if (dodanaKnjiga.Naslovnica != null) DodajNaslovnicuKnjige(dodanaKnjiga.ISBN, dodanaKnjiga.Naslovnica);
+
+            return i;
         }
         public static Knjiga DohvatiKnjigu(string ISBN)
         {

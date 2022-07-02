@@ -116,5 +116,103 @@ namespace Postavke
 
             return maxBrojProduljenja[0];
         }
+        public static string DohvatiRadnoVrijeme()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT radno_vrijeme" +
+                    " FROM postavke";
+
+            List<string> radnoVrijeme = new List<string>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                radnoVrijeme.Add(reader["radno_vrijeme"].ToString());
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return radnoVrijeme[0];
+        }
+
+        public static string DohvatiKontakt()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT kontakt" +
+                    " FROM postavke";
+
+            List<string> kontakt = new List<string>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                kontakt.Add(reader["kontakt"].ToString());
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return kontakt[0];
+        }
+        public static string DohvatiAdresu()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT adresa" +
+                    " FROM postavke";
+
+            List<string> adresa = new List<string>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                adresa.Add(reader["adresa"].ToString());
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return adresa[0];
+        }
+        public static double DohvatiClanarinu()
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit =
+                    "SELECT clanarina" +
+                    " FROM postavke";
+
+            List<double> clanarina = new List<double>();
+
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                clanarina.Add(double.Parse(reader["clanarina"].ToString()));
+            }
+            reader.Close();
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return clanarina[0];
+        }
+
+        public static int AzurirajPostavke(int maxBrojPosudbi, double zakasnina, int trajanjeRezervacije,int trajanjePosudbe,int trajanjeProduljenja,string radnoVrijeme,string kontakt,string adresa,double clanarina)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+
+            string upit = $"UPDATE postavke SET max_broj_posudbi={maxBrojPosudbi},zakasnina={zakasnina},trajanje_rezervacije={trajanjeRezervacije},trajanje_posudbe={trajanjePosudbe},trajanje_produljenja={trajanjeProduljenja},radno_vrijeme='{radnoVrijeme}',kontakt='{kontakt}',adresa='{adresa}',clanarina={clanarina}";
+
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+
+            BazaPodataka.Instanca.PrekiniVezu();
+
+            return uspjeh;
+        }
     }
 }
