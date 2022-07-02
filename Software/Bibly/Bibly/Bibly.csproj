@@ -109,6 +109,12 @@
     <Compile Include="FrmAzurirajKorisnika.Designer.cs">
       <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInformacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformacije.Designer.cs">
+      <DependentUpon>FrmInformacije.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAzurirajKorisnika.resx">
       <DependentUpon>FrmAzurirajKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformacije.resx">
+      <DependentUpon>FrmInformacije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKatalog.resx">
       <DependentUpon>FrmKatalog.cs</DependentUpon>

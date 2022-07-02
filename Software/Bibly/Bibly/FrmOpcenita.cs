@@ -206,5 +206,11 @@ namespace Bibly
 
             OtvoriNovuFormu(frm);
         }
+
+        private void tsmiInformacije_Click(object sender, EventArgs e)
+        {
+            FrmInformacije frm = new FrmInformacije();
+            OtvoriNovuFormu(frm);
+        }
     }
 }

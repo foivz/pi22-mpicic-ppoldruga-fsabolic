@@ -202,11 +202,11 @@ namespace Postavke
             return clanarina[0];
         }
 
-        public static int AzurirajPostavke(int maxBrojPosudbi, double zakasnina, int trajanjeRezervacije,int trajanjePosudbe,int trajanjeProduljenja,string radnoVrijeme,string kontakt,string adresa,double clanarina)
+        public static int AzurirajInformacije(int maxBrojPosudbi, double zakasnina, int trajanjeRezervacije, int trajanjePosudbe, int trajanjeProduljenja, string radnoVrijeme, string kontakt, double clanarina)
         {
             BazaPodataka.Instanca.UspostaviVezu();
 
-            string upit = $"UPDATE postavke SET max_broj_posudbi={maxBrojPosudbi},zakasnina={zakasnina},trajanje_rezervacije={trajanjeRezervacije},trajanje_posudbe={trajanjePosudbe},trajanje_produljenja={trajanjeProduljenja},radno_vrijeme='{radnoVrijeme}',kontakt='{kontakt}',adresa='{adresa}',clanarina={clanarina}";
+            string upit = $"UPDATE postavke SET max_broj_posudbi={maxBrojPosudbi},zakasnina={zakasnina},trajanje_rezervacije={trajanjeRezervacije},trajanje_posudbe={trajanjePosudbe},trajanje_produljenja={trajanjeProduljenja},radno_vrijeme='{radnoVrijeme}',kontakt='{kontakt}',clanarina={clanarina}";
 
             int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
 
@@ -214,5 +214,6 @@ namespace Postavke
 
             return uspjeh;
         }
+
     }
 }
