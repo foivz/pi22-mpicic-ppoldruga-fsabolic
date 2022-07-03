@@ -15,7 +15,7 @@ namespace Bibly
     {
         List<Knjiga> listaKnjiga = new List<Knjiga>();
 
-        private static int top = 200;
+        private static int top = 150;
 
         public FrmPocetna()
         {
@@ -27,7 +27,7 @@ namespace Bibly
         {
             listaKnjiga = KnjigaRepozitorij.DohvatiNajcitanijeKnjigaMjeseca();
             DodajUCKnjigaPocetna(listaKnjiga);
-            top = 200;
+            top = 150;
         }
 
         private void DodajUCKnjigaPocetna(List<Knjiga> listaKnjiga)
