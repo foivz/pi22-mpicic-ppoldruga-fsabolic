@@ -65,7 +65,6 @@ namespace PodaciKnjige
 
             return knjige;
         }
-
         public static List<Knjiga> DohvatiNajcitanijeKnjige()
         {
             List<Knjiga> knjiga = new List<Knjiga>();
@@ -95,7 +94,6 @@ namespace PodaciKnjige
 
             return i;
         }
-
         public static void DodajNaslovnicuKnjige(string ISBN, Image slika)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -193,7 +191,6 @@ namespace PodaciKnjige
 
             return knjige[0];
         }
-
         private static Image DohvatiNaslovnicuKnjige(IDataReader reader)
         {
             Image slika = null;

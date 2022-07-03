@@ -78,19 +78,7 @@ namespace PodaciKnjige
         }
         public static int DodajPrimjerak(Primjerak primjerak)
         {
-            int status = 1;
-            switch (primjerak.Status)
-            {
-                case StatusPrimjerka.Dostupan:
-                    status = 1;
-                    break;
-                case StatusPrimjerka.Posuđen:
-                    status = 2;
-                    break;
-                case StatusPrimjerka.Rezerviran:
-                    status = 3;
-                    break;
-            }
+            int status = VratiStatusKaoBroj(primjerak.Status);
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"INSERT INTO primjerci VALUES('{primjerak.Knjiga.ISBN}',{status})";
 
@@ -102,19 +90,7 @@ namespace PodaciKnjige
         }
         public static int AzurirajPrimjerak(Primjerak primjerak)
         {
-            int status = 1;
-            switch (primjerak.Status)
-            {
-                case StatusPrimjerka.Dostupan:
-                    status = 1;
-                    break;
-                case StatusPrimjerka.Posuđen:
-                    status = 2;
-                    break;
-                case StatusPrimjerka.Rezerviran:
-                    status = 3;
-                    break;
-            }
+            int status = VratiStatusKaoBroj(primjerak.Status);
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE primjerci SET ISBN='{primjerak.Knjiga.ISBN}',id_status = {status} WHERE id_primjerak = {primjerak.Id}";
 

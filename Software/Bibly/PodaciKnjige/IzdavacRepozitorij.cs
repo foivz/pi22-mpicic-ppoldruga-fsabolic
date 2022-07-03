@@ -34,7 +34,6 @@ namespace PodaciKnjige
 
             return izdavaci;
         }
-
         public static int DodajIzdavaca(Izdavac izdavac)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -61,7 +60,6 @@ namespace PodaciKnjige
 
             return uspjeh;
         }
-
         public static int ObrisiIzdavaca(Izdavac izdavac)
         {
             BazaPodataka.Instanca.UspostaviVezu();

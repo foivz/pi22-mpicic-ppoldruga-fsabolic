@@ -37,8 +37,6 @@ namespace PodaciKnjige
 
             return zanrovi;
         }
-
-
         public static int DodajZanr(Zanr zanr)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -65,7 +63,6 @@ namespace PodaciKnjige
 
             return uspjeh;
         }
-
         public static int ObrisiZanr(Zanr zanr)
         {
             BazaPodataka.Instanca.UspostaviVezu();
