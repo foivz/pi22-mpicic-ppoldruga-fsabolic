@@ -37,5 +37,12 @@ namespace Bibly
             pbSlikaKnjige.Image = knjiga.Naslovnica;
 
         }
+
+        private void UCKnjigaPocetna_Click(object sender, EventArgs e)
+        {
+            FrmKatalogPrikazKnjige frm = new FrmKatalogPrikazKnjige(prikazanaKnjiga);
+            FrmOpcenita forma = new FrmOpcenita();
+            forma.OtvoriNovuFormu(frm);
+        }
     }
 }
