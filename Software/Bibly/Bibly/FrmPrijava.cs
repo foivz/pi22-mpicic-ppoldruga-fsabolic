@@ -58,7 +58,7 @@ namespace Bibly
                     poruka = "Istekla Vam je članarina! Produljite članarinu u knjižnici!";
                     break;
                 case 1:
-                    FrmProfil frm = new FrmProfil();
+                    FrmPocetna frm = new FrmPocetna();
                     OtvoriNovuFormu(frm);
                     break;
             }
