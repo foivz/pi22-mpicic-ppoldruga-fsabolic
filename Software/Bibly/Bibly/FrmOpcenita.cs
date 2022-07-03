@@ -50,6 +50,11 @@ namespace Bibly
                 tsmiAdmin.Visible = false;
 
             }
+
+            if (uloga != 3)
+            {
+                tsmiRegistracija.Visible = false;
+            }
         }
 
         public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
@@ -210,6 +215,12 @@ namespace Bibly
         private void tsmiInformacije_Click(object sender, EventArgs e)
         {
             FrmInformacije frm = new FrmInformacije();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiPocetna_Click(object sender, EventArgs e)
+        {
+            FrmPocetna frm = new FrmPocetna();
             OtvoriNovuFormu(frm);
         }
     }
