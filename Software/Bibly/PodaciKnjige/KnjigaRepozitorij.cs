@@ -210,11 +210,7 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.UspostaviVezu();
 
             string upit =
-                "SELECT TOP 10 k.ISBN  AS 'k.ISBN',COUNT(po.id_posudba) AS broj_posudbi " +
-                "FROM posudbe po RIGHT JOIN primjerci p ON p.id_primjerak=po.id_posudba " +
-                "RIGHT JOIN knjige k ON k.ISBN = p.ISBN WHERE (po.datum_posudbe between DATEADD(DAY,-30,GETDATE()) " +
-                "and  GETDATE()) OR (po.datum_posudbe is null AND po.do_kada_vrijedi_rezervacija is null)" +
-                " GROUP BY k.ISBN ORDER BY broj_posudbi DESC";
+                "select TOP 10 k.ISBN as 'k.ISBN',count(po.id_posudba) AS broj_posudbi from posudbe po RIGHT join primjerci pr ON pr.id_primjerak = po.id_primjerak LEFT JOIN knjige k ON k.ISBN = pr.ISBN WHERE(datum_posudbe >= DATEADD(DAY, -30, GETDATE()) AND datum_posudbe <= GETDATE()) OR(datum_posudbe is null AND po.do_kada_vrijedi_rezervacija is null) GROUP BY k.ISBN ORDER BY count(po.id_posudba) desc";
 
             List<Knjiga> knjige = new List<Knjiga>();
 
