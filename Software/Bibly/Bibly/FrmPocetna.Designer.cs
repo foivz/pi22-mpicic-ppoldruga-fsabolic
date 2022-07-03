@@ -35,7 +35,7 @@
             // 
             this.naslov.AutoSize = true;
             this.naslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naslov.Location = new System.Drawing.Point(440, 79);
+            this.naslov.Location = new System.Drawing.Point(764, 74);
             this.naslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.naslov.Name = "naslov";
             this.naslov.Size = new System.Drawing.Size(739, 69);
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1539, 967);
+            this.ClientSize = new System.Drawing.Size(2320, 1335);
             this.Controls.Add(this.naslov);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmPocetna";

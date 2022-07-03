@@ -15,7 +15,7 @@ namespace Bibly
     {
         List<Knjiga> listaKnjiga = new List<Knjiga>();
 
-        private static int top = 150;
+        private static int left = 20;
 
         public FrmPocetna()
         {
@@ -27,20 +27,39 @@ namespace Bibly
         {
             listaKnjiga = KnjigaRepozitorij.DohvatiNajcitanijeKnjigaMjeseca();
             DodajUCKnjigaPocetna(listaKnjiga);
-            top = 150;
+
         }
 
         private void DodajUCKnjigaPocetna(List<Knjiga> listaKnjiga)
         {
-            foreach (Knjiga knjiga in listaKnjiga)
+
+            for(int i = 0; i < listaKnjiga.Count; i++)
             {
                 UCKnjigaPocetna uc = new UCKnjigaPocetna();
-                uc.Top = top;
-                uc.Left = 20;
-                uc.PostaviLabele(knjiga);
-                Controls.Add(uc);
-                top += 450;
+
+                if (i < 5)
+                {
+
+                    uc.Top = 150;
+                    uc.Left = left;
+                    uc.PostaviLabele(listaKnjiga[i]);
+                    Controls.Add(uc);
+                    left += 300;
+
+                }
+                else
+                {
+                    uc.Top = 550;
+                    uc.Left = left - 300;
+                    uc.PostaviLabele(listaKnjiga[i]);
+                    Controls.Add(uc);
+                    left -= 300;
+                }
+
+
             }
+
+                    
         }
     }
 }
