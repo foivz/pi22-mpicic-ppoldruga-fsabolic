@@ -47,7 +47,6 @@ namespace PodaciKnjige
 
             return autori;
         }
-
         public static List<Autor> DohvatiSveAutore()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -74,7 +73,6 @@ namespace PodaciKnjige
 
             return autori;
         }
-
         public static int DodajAutora(Autor autor)
         {
             BazaPodataka.Instanca.UspostaviVezu();
