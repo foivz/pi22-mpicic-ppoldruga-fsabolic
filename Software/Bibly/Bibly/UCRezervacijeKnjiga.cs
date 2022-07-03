@@ -24,6 +24,7 @@ namespace Bibly
             odabranaRezervacija = posudba;
             lblNaslov.Text = posudba.Primjerak.Knjiga.Naziv;
             lblRezervacija.Text = posudba.DoKadaVrijediRezervacija.ToShortDateString();
+            pbNaslovnica.Image = posudba.Primjerak.Knjiga.Naslovnica;
         }
 
         private void btnOtkaziRezervaciju_Click(object sender, EventArgs e)

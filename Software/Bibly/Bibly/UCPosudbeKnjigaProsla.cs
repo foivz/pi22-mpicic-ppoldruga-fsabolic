@@ -22,6 +22,7 @@ namespace Bibly
             lblNaslov.Text = posudba.Primjerak.Knjiga.Naziv;
             lblZakasnina.Text = posudba.Zakasnina.ToString() + " HRK";
             lblPosudba.Text = posudba.StvarniDatumVracanja.ToShortDateString();
+            pbNaslovnica.Image = posudba.Primjerak.Knjiga.Naslovnica;
         }
     }
 }

@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbNaslovnica = new System.Windows.Forms.PictureBox();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnOtkaziRezervaciju = new System.Windows.Forms.Button();
             this.lblRezervacija = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbNaslovnica
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(38, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 250);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.pbNaslovnica.Location = new System.Drawing.Point(38, 41);
+            this.pbNaslovnica.Name = "pbNaslovnica";
+            this.pbNaslovnica.Size = new System.Drawing.Size(186, 250);
+            this.pbNaslovnica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbNaslovnica.TabIndex = 15;
+            this.pbNaslovnica.TabStop = false;
             // 
             // lblNaslov
             // 
@@ -108,12 +109,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbNaslovnica);
             this.Controls.Add(this.lblNaslov);
             this.Controls.Add(this.panel1);
             this.Name = "UCRezervacijeKnjiga";
             this.Size = new System.Drawing.Size(568, 339);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -122,7 +123,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbNaslovnica;
         private System.Windows.Forms.Label lblNaslov;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnOtkaziRezervaciju;

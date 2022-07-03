@@ -137,7 +137,6 @@ namespace Postavke
 
             return radnoVrijeme[0];
         }
-
         public static string DohvatiKontakt()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -201,7 +200,6 @@ namespace Postavke
 
             return clanarina[0];
         }
-
         public static int AzurirajInformacije(int maxBrojPosudbi, double zakasnina, int trajanjeRezervacije, int trajanjePosudbe, int trajanjeProduljenja, string radnoVrijeme, string kontakt, double clanarina)
         {
             BazaPodataka.Instanca.UspostaviVezu();

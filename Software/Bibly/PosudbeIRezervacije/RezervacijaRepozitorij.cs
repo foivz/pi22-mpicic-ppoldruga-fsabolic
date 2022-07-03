@@ -97,7 +97,6 @@ namespace PosudbeIRezervacije
             }
             return rezervacija[0];
         }
-
         public static int ZatvoriRezervaciju(int idRezervacije, int idPrimjerka)
         {
             PrimjerakRepozitorij.AzurirajStatusPrimjerka(idPrimjerka, StatusPrimjerka.Dostupan);

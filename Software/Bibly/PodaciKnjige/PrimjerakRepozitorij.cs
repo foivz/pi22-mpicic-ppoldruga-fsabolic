@@ -44,7 +44,6 @@ namespace PodaciKnjige
             
             return primjerci;
         }
-
         public static List<Primjerak> DohvatiSveDostupnePrimjerke()
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -75,10 +74,8 @@ namespace PodaciKnjige
             {
                 return null;
             }
-
             return primjerci;
         }
-
         public static int DodajPrimjerak(Primjerak primjerak)
         {
             int status = 1;
@@ -103,7 +100,6 @@ namespace PodaciKnjige
 
             return uspjeh;
         }
-
         public static int AzurirajPrimjerak(Primjerak primjerak)
         {
             int status = 1;
@@ -140,7 +136,6 @@ namespace PodaciKnjige
 
             return uspjeh;
         }
-
         public static List<Primjerak> DohvatiPrimjerkeKnjige(Knjiga knjiga)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -218,6 +213,16 @@ namespace PodaciKnjige
             }
             return primjerci[0];
         }
+        public static int AzurirajStatusPrimjerka(int idPrimjerka, StatusPrimjerka noviStatus)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            int brojStatusa = VratiStatusKaoBroj(noviStatus);
+            string upit = $"UPDATE primjerci " +
+                $"SET id_status = '{brojStatusa}' WHERE id_primjerak = {idPrimjerka}";
+            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+            BazaPodataka.Instanca.PrekiniVezu();
+            return i;
+        }
         private static string VratiDatumDostupnosti(int idPrimjerka)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -255,16 +260,6 @@ namespace PodaciKnjige
             reader.Close();
             BazaPodataka.Instanca.PrekiniVezu();
             return doKadaJeNedostupan;
-        }
-        public static int AzurirajStatusPrimjerka(int idPrimjerka, StatusPrimjerka noviStatus)
-        {
-            BazaPodataka.Instanca.UspostaviVezu();
-            int brojStatusa = VratiStatusKaoBroj(noviStatus);
-            string upit = $"UPDATE primjerci " +
-                $"SET id_status = '{brojStatusa}' WHERE id_primjerak = {idPrimjerka}";
-            int i = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
-            BazaPodataka.Instanca.PrekiniVezu();
-            return i;
         }
         private static int VratiStatusKaoBroj(StatusPrimjerka status)
         {

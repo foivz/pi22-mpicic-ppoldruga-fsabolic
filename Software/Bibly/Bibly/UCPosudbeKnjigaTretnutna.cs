@@ -30,6 +30,8 @@ namespace Bibly
 
             lblPosudba.Text = posudba.PredvideniDatumVracanja.ToShortDateString();
 
+            pbNaslovnica.Image = posudba.Primjerak.Knjiga.Naslovnica;
+
             OmoguciGumbZaProduljenje();
             PrikaziBrojDanaDoPovratka();
         }
