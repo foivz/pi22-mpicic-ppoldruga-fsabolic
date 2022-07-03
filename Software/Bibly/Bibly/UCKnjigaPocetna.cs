@@ -24,7 +24,7 @@ namespace Bibly
         {
             prikazanaKnjiga = knjiga;
             lblNaslov.Text = knjiga.Naziv;
-
+        
             string autori = "";
             int brojAutora = knjiga.ListaAutora.Count;
             for (int indexAutora = 0; indexAutora < brojAutora; indexAutora++)
