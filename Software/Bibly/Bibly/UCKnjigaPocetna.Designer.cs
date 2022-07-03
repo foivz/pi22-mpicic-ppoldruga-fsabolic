@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbSlikaKnjige = new System.Windows.Forms.PictureBox();
             this.lblAutor = new System.Windows.Forms.Label();
             this.lblNaslov = new System.Windows.Forms.Label();
+            this.pbSlikaKnjige = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaKnjige)).BeginInit();
             this.SuspendLayout();
@@ -46,8 +46,34 @@
             this.panel1.Location = new System.Drawing.Point(16, 18);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(337, 508);
+            this.panel1.Size = new System.Drawing.Size(337, 593);
             this.panel1.TabIndex = 11;
+            // 
+            // lblAutor
+            // 
+            this.lblAutor.AutoSize = true;
+            this.lblAutor.BackColor = System.Drawing.Color.White;
+            this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutor.Location = new System.Drawing.Point(26, 466);
+            this.lblAutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAutor.MaximumSize = new System.Drawing.Size(300, 0);
+            this.lblAutor.Name = "lblAutor";
+            this.lblAutor.Size = new System.Drawing.Size(64, 25);
+            this.lblAutor.TabIndex = 14;
+            this.lblAutor.Text = "label2";
+            // 
+            // lblNaslov
+            // 
+            this.lblNaslov.AutoSize = true;
+            this.lblNaslov.BackColor = System.Drawing.Color.White;
+            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNaslov.Location = new System.Drawing.Point(26, 366);
+            this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNaslov.MaximumSize = new System.Drawing.Size(250, 0);
+            this.lblNaslov.Name = "lblNaslov";
+            this.lblNaslov.Size = new System.Drawing.Size(85, 29);
+            this.lblNaslov.TabIndex = 13;
+            this.lblNaslov.Text = "label1";
             // 
             // pbSlikaKnjige
             // 
@@ -59,37 +85,13 @@
             this.pbSlikaKnjige.TabIndex = 12;
             this.pbSlikaKnjige.TabStop = false;
             // 
-            // lblAutor
-            // 
-            this.lblAutor.AutoSize = true;
-            this.lblAutor.BackColor = System.Drawing.Color.White;
-            this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutor.Location = new System.Drawing.Point(131, 436);
-            this.lblAutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAutor.Name = "lblAutor";
-            this.lblAutor.Size = new System.Drawing.Size(64, 25);
-            this.lblAutor.TabIndex = 14;
-            this.lblAutor.Text = "label2";
-            // 
-            // lblNaslov
-            // 
-            this.lblNaslov.AutoSize = true;
-            this.lblNaslov.BackColor = System.Drawing.Color.White;
-            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaslov.Location = new System.Drawing.Point(121, 369);
-            this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNaslov.Name = "lblNaslov";
-            this.lblNaslov.Size = new System.Drawing.Size(85, 29);
-            this.lblNaslov.TabIndex = 13;
-            this.lblNaslov.Text = "label1";
-            // 
             // UCKnjigaPocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "UCKnjigaPocetna";
-            this.Size = new System.Drawing.Size(369, 546);
+            this.Size = new System.Drawing.Size(369, 626);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaKnjige)).EndInit();

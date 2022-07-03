@@ -39,7 +39,7 @@ namespace Bibly
                 uc.Left = 20;
                 uc.PostaviLabele(knjiga);
                 Controls.Add(uc);
-                top += 350;
+                top += 450;
             }
         }
     }
