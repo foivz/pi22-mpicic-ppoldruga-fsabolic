@@ -50,6 +50,11 @@ namespace Bibly
                 tsmiAdmin.Visible = false;
 
             }
+
+            if (uloga != 3)
+            {
+                tsmiRegistracija.Visible = false;
+            }
         }
 
         public void OtvoriNovuFormu(FrmOpcenita frm, string naslov = "Bibly")
