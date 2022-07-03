@@ -21,7 +21,6 @@ namespace PodaciKnjige
             }
             return autoriKnjige;
         }
-
         public static int DodajAutoraKnjige(AutorKnjige autorKnjige)
         {
             BazaPodataka.Instanca.UspostaviVezu();
@@ -44,7 +43,6 @@ namespace PodaciKnjige
             BazaPodataka.Instanca.PrekiniVezu();
             return uspjeh;
         }
-
         public static int ObrisiAutoraKnjige(AutorKnjige autorKnjige)
         {
             BazaPodataka.Instanca.UspostaviVezu();
