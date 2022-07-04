@@ -121,12 +121,6 @@
     <Compile Include="FrmInventar.Designer.cs">
       <DependentUpon>FrmInventar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInventarPregledKnjige.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInventarPregledKnjige.Designer.cs">
-      <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,9 +251,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInventar.resx">
       <DependentUpon>FrmInventar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInventarPregledKnjige.resx">
-      <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKatalog.resx">
       <DependentUpon>FrmKatalog.cs</DependentUpon>
