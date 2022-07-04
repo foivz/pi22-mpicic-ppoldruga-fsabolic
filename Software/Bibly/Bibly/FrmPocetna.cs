@@ -21,6 +21,7 @@ namespace Bibly
         {
             this.AutoScroll = true;
             InitializeComponent();
+            PostaviHelp("Pocetna.htm");
         }
 
         private void FrmPocetna_Load(object sender, EventArgs e)

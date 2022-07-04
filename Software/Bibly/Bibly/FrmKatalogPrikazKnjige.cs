@@ -22,6 +22,7 @@ namespace Bibly
             InitializeComponent();
             knjiga = prikazanaKnjiga;
             groupBox1.Visible = (Autentifikator.Instanca.UlogaKorisnika() > 2) ? true : false;
+            PostaviHelp("Pregled knjige.htm");
         }
 
         private void FrmKatalogPrikazKnjige_Load(object sender, EventArgs e)
