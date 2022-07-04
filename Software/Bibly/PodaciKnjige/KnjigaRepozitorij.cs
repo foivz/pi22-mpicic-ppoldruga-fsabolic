@@ -16,7 +16,7 @@ namespace PodaciKnjige
         public static List<Knjiga> DohvatiSveKnjige()
         {
             BazaPodataka.Instanca.UspostaviVezu();
-
+             
             string upit =
                     "SELECT k.ISBN AS 'k.ISBN'" +
                     ", k.naziv AS 'k.naziv'" +

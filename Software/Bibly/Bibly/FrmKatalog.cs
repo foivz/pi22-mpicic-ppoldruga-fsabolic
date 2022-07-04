@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -106,10 +106,9 @@ namespace Bibly
         {
             foreach (Knjiga knjiga in listaKnjiga)
             {
-                UCKnjigaKatalog ucKnjigaKataloga = new UCKnjigaKatalog();
+                UCKnjigaKatalog ucKnjigaKataloga = new UCKnjigaKatalog(knjiga);
                 ucKnjigaKataloga.Top = top;
                 ucKnjigaKataloga.Left = 20;
-                ucKnjigaKataloga.PostaviLabele(knjiga);
                 Controls.Add(ucKnjigaKataloga);
                 top += 350;
             }
