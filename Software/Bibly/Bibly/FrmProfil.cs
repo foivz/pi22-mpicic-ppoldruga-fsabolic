@@ -18,6 +18,7 @@ namespace Bibly
         {
             InitializeComponent();
             lblPromijeniLozinku.ForeColor = System.Drawing.Color.Blue;
+            PostaviHelp("Profil.htm");
         }
 
 

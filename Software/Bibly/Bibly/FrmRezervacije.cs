@@ -20,6 +20,7 @@ namespace Bibly
         public FrmRezervacije()
         {
             InitializeComponent();
+            PostaviHelp("Pregled rezervacija.htm");
         }
 
         private void FrmRezervacije_Load(object sender, EventArgs e)

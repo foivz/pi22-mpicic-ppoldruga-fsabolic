@@ -27,6 +27,7 @@ namespace Bibly
             NazivTablice = nazivTablice;
             this.AutoScroll = true;
             PostaviKontrole();
+            PostaviHelp("AdminDodaj.htm");
         }
 
         private void PostaviKontrole()

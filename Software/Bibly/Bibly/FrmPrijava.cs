@@ -16,22 +16,9 @@ namespace Bibly
         public FrmPrijava()
         {
             InitializeComponent();
-            lblUclanjivanje.ForeColor = System.Drawing.Color.Blue;
             this.CenterToScreen();
+            PostaviHelp("Prijava.htm");
 
-        }
-
-        private void lblUclanjivanje_MouseHover(object sender, EventArgs e)
-        {
-            lblUclanjivanje.ForeColor = System.Drawing.Color.Gray;
-            lblUclanjivanje.Font = new Font(lblUclanjivanje.Font, FontStyle.Italic);
-        }
-
-        private void lblUclanjivanje_MouseLeave(object sender, EventArgs e)
-        {
-
-            lblUclanjivanje.ForeColor = System.Drawing.Color.Blue;
-            lblUclanjivanje.Font = new Font(lblUclanjivanje.Font, FontStyle.Regular);
         }
 
         private void btnPrijava_Click(object sender, EventArgs e)

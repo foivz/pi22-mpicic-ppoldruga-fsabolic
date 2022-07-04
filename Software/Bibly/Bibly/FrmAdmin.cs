@@ -22,6 +22,7 @@ namespace Bibly
             InitializeComponent();
             NazivTablice = nazivTablice;
             PostaviFormu();
+            PostaviHelp("Admin.htm");
         }
 
         private void PostaviFormu()

@@ -20,6 +20,7 @@ namespace Bibly
         public FrmKatalog()
         {
             InitializeComponent();
+            PostaviHelp("Katalog.htm");
             
         }
 
