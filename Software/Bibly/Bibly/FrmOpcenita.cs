@@ -43,6 +43,7 @@ namespace Bibly
             {
                 tsmi_Korisnici.Visible = false;
                 tsmiUpravljanjePosudbamaGlavno.Visible = false;
+                tsmiInventar.Visible = false;
             }
 
             if (uloga < 4)
