@@ -22,6 +22,7 @@ namespace Bibly
             this.Text = "Bibly";
             this.CenterToScreen();
             trenutniKorisnik = Autentifikator.Instanca.VratiKorisnika();
+            PostaviHelp("PromijeniLozinku.htm");
         }
 
         private void btnSpremiLozinku_Click(object sender, EventArgs e)

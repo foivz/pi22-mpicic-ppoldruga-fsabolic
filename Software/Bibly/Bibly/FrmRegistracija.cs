@@ -21,6 +21,7 @@ namespace Bibly
         public FrmRegistracija()
         {
             InitializeComponent();
+            PostaviHelp("Uclanjivanje.htm");
             this.AutoScroll = true;
             this.CenterToScreen();
             txtDatumUclanjivanja.Text = DateTime.Now.ToString();

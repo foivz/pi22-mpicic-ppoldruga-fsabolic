@@ -19,6 +19,7 @@ namespace Bibly
         public FrmUpravljanjePosudbama()
         {
             InitializeComponent();
+            PostaviHelp("Upravljanje posudbama.htm");
             ucSkener1.PostaviUCSkener(this, cmbPrimjerak, cmbKorisnik);
         }
         private void FrmUpravljanjePosudbama_Load(object sender, EventArgs e)
