@@ -44,17 +44,13 @@ namespace Bibly
                 tsmi_Korisnici.Visible = false;
                 tsmiUpravljanjePosudbamaGlavno.Visible = false;
                 tsmiInventar.Visible = false;
+                tsmiRegistracija.Visible = false;
             }
 
             if (uloga < 4)
             {
                 tsmiAdmin.Visible = false;
 
-            }
-
-            if (uloga != 3)
-            {
-                tsmiRegistracija.Visible = false;
             }
         }
 
