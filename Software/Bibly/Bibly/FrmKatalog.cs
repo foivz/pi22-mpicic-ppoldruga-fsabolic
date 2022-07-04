@@ -1,4 +1,4 @@
-﻿ using System;
+﻿   using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,14 +40,13 @@ namespace Bibly
             top = 200;
             string kriterijPretrazivanja = cmbKriteriji.Text;
             string kljucnaRijec = txtUnosKljucneRijeci.Text.ToLower();
-            if (kljucnaRijec == "" || kriterijPretrazivanja == "Kriterij pretraživanja")
+            List<Knjiga> listaKnjiga2 = new List<Knjiga>();
+            if (kljucnaRijec == "" )
             {
-                listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
-                DodajUCKnjigaKatalog(listaKnjiga);
+                listaKnjiga2 = KnjigaRepozitorij.DohvatiSveKnjige();
             }
             else
             {
-                List<Knjiga> listaKnjigaSTrazenomRijecju = new List<Knjiga>();
                 switch (kriterijPretrazivanja)
                 {
                     case "Izdavač":
@@ -56,7 +55,7 @@ namespace Bibly
                             {
                                 if (knjiga.Izdavac.Naziv.ToLower().Contains(kljucnaRijec))
                                 {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
+                                    listaKnjiga2.Add(knjiga);
                                 }
                             }
                             break;
@@ -67,9 +66,9 @@ namespace Bibly
                             {
                                 foreach(Autor autor in knjiga.ListaAutora)
                                 {
-                                    if((autor.Ime.ToLower().Contains(kljucnaRijec) || autor.Prezime.ToLower().Contains(kljucnaRijec)) && !listaKnjigaSTrazenomRijecju.Contains(knjiga))
+                                    if((autor.Ime.ToLower().Contains(kljucnaRijec) || autor.Prezime.ToLower().Contains(kljucnaRijec)) && !listaKnjiga2.Contains(knjiga))
                                     {
-                                        listaKnjigaSTrazenomRijecju.Add(knjiga);
+                                        listaKnjiga2.Add(knjiga);
                                     }
                                 }
                             }
@@ -81,7 +80,7 @@ namespace Bibly
                             {
                                 if (knjiga.Naziv.ToLower().Contains(kljucnaRijec))
                                 {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
+                                    listaKnjiga2.Add(knjiga);
                                 }
                             }
                             break;
@@ -92,14 +91,14 @@ namespace Bibly
                             {
                                 if (knjiga.Zanr.Naziv.Contains(kljucnaRijec))
                                 {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
+                                    listaKnjiga2.Add(knjiga);
                                 }
                             }
                             break;
                         }
                 }
-                DodajUCKnjigaKatalog(listaKnjigaSTrazenomRijecju);
             }
+            DodajUCKnjigaKatalog(listaKnjiga2);
         }
 
         private void DodajUCKnjigaKatalog(List<Knjiga> listaKnjiga)
