@@ -115,6 +115,12 @@
     <Compile Include="FrmInformacije.Designer.cs">
       <DependentUpon>FrmInformacije.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInventar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventar.Designer.cs">
+      <DependentUpon>FrmInventar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
