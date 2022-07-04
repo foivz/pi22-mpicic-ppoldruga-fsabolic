@@ -17,8 +17,11 @@ namespace Bibly
         {
             InitializeComponent();
             lblUclanjivanje.ForeColor = System.Drawing.Color.Blue;
-            this.CenterToScreen();
-
+            this.CenterToScreen(); 
+            string fbPath = Application.StartupPath;
+            string fname = "pomoc.chm";
+            string filename = fbPath + @"\" + fname;
+            Help.ShowHelp(this, filename, HelpNavigator.Topic,"prva.htm");
         }
 
         private void lblUclanjivanje_MouseHover(object sender, EventArgs e)
