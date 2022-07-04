@@ -88,7 +88,7 @@ namespace Bibly
                     case "Žanr":
                         {
                             foreach (Knjiga knjiga in listaKnjiga)
-                            {
+                            { 
                                 if (knjiga.Zanr.Naziv.Contains(kljucnaRijec))
                                 {
                                     listaKnjiga2.Add(knjiga);
