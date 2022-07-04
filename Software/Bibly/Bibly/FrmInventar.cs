@@ -15,6 +15,9 @@ namespace Bibly
         public FrmInventar()
         {
             InitializeComponent();
+            dgvInventar.DataSource = PodaciKnjige.KnjigaRepozitorij.DohvatiSveKnjige();
+            dgvInventar.Columns[6].Visible = false;
+            dgvInventar.Columns[7].Visible = false;
         }
     }
 }
