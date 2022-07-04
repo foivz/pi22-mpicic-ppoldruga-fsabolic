@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Bibly
 {
-    public partial class FrmInventar : Form
+    public partial class FrmInventar : FrmOpcenita
     {
         public FrmInventar()
         {

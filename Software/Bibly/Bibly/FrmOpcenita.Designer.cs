@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOpcenita));
             this.glavniMenu = new System.Windows.Forms.MenuStrip();
+            this.tsmiPocetna = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiKatalog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_Korisnici = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRezervacijeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPosudbeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInventar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpravljanjePosudbamaGlavno = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpravljanjePosudbama = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPregledPosudbi = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +55,6 @@
             this.tsmiInformacije = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPocetna = new System.Windows.Forms.ToolStripMenuItem();
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +70,7 @@
             this.tsmi_Korisnici,
             this.tsmiRezervacijeKorisnika,
             this.tsmiPosudbeKorisnika,
+            this.tsmiInventar,
             this.tsmiUpravljanjePosudbamaGlavno,
             this.tsmiAdmin,
             this.tsmiRegistracija,
@@ -78,10 +80,16 @@
             this.glavniMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.glavniMenu.Location = new System.Drawing.Point(0, 0);
             this.glavniMenu.Name = "glavniMenu";
-            this.glavniMenu.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.glavniMenu.Size = new System.Drawing.Size(1620, 68);
             this.glavniMenu.TabIndex = 0;
             this.glavniMenu.Text = "menuStrip1";
+            // 
+            // tsmiPocetna
+            // 
+            this.tsmiPocetna.Name = "tsmiPocetna";
+            this.tsmiPocetna.Size = new System.Drawing.Size(114, 36);
+            this.tsmiPocetna.Text = "Početna";
+            this.tsmiPocetna.Click += new System.EventHandler(this.tsmiPocetna_Click);
             // 
             // tsmiKatalog
             // 
@@ -110,6 +118,13 @@
             this.tsmiPosudbeKorisnika.Size = new System.Drawing.Size(121, 36);
             this.tsmiPosudbeKorisnika.Text = "Posudbe";
             this.tsmiPosudbeKorisnika.Click += new System.EventHandler(this.tsmiPosudbeKorisnika_Click);
+            // 
+            // tsmiInventar
+            // 
+            this.tsmiInventar.Name = "tsmiInventar";
+            this.tsmiInventar.Size = new System.Drawing.Size(117, 36);
+            this.tsmiInventar.Text = "Inventar";
+            this.tsmiInventar.Click += new System.EventHandler(this.tsmiInventar_Click);
             // 
             // tsmiUpravljanjePosudbamaGlavno
             // 
@@ -257,13 +272,6 @@
             this.tsmiOdjava.Text = "Odjava";
             this.tsmiOdjava.Click += new System.EventHandler(this.tsmiOdjava_Click);
             // 
-            // tsmiPocetna
-            // 
-            this.tsmiPocetna.Name = "tsmiPocetna";
-            this.tsmiPocetna.Size = new System.Drawing.Size(114, 36);
-            this.tsmiPocetna.Text = "Početna";
-            this.tsmiPocetna.Click += new System.EventHandler(this.tsmiPocetna_Click);
-            // 
             // FrmOpcenita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -312,6 +320,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPregledPosudbi;
         private System.Windows.Forms.ToolStripMenuItem tsmiInformacije;
         private System.Windows.Forms.ToolStripMenuItem tsmiPocetna;
+        private System.Windows.Forms.ToolStripMenuItem tsmiInventar;
     }
 }
 

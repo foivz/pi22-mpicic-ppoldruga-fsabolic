@@ -223,5 +223,11 @@ namespace Bibly
             FrmPocetna frm = new FrmPocetna();
             OtvoriNovuFormu(frm);
         }
+
+        private void tsmiInventar_Click(object sender, EventArgs e)
+        {
+            FrmInventar frm = new FrmInventar();
+            OtvoriNovuFormu(frm);
+        }
     }
 }
