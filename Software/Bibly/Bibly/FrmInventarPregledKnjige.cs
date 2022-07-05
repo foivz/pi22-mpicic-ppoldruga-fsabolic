@@ -24,6 +24,7 @@ namespace Bibly
 
         private void FrmInventarPregledKnjige_Load(object sender, EventArgs e)
         {
+            groupBox1.Visible = false;
             lblNaslovKnjige.Text = knjiga.Naziv;
             string autori = "";
             int brojAutora = knjiga.ListaAutora.Count;
