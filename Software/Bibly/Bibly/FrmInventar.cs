@@ -18,7 +18,7 @@ namespace Bibly
         public FrmInventar()
         {
             InitializeComponent();
-            OsvjetiInventar();
+            OsvjeziInventar();
         }
 
         private void dgvInventar_SelectionChanged(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace Bibly
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Brišete knjigu iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
 
                 if (trenutniRed == null)
@@ -43,12 +43,14 @@ namespace Bibly
                     MessageBox.Show("Nije odabran ni jedan red");
                     return;
                 }
+                KnjigaRepozitorij.ObrisiKnjigu(trenutniRed);
+                OsvjeziInventar();
 
 
             }
         }
 
-        private void OsvjetiInventar()
+        private void OsvjeziInventar()
         {
             dgvInventar.DataSource = PodaciKnjige.KnjigaRepozitorij.DohvatiSveKnjige();
             dgvInventar.Columns[6].Visible = false;
