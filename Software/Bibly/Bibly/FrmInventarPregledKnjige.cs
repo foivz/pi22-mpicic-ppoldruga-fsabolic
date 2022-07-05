@@ -14,7 +14,10 @@ namespace Bibly
 {
     public partial class FrmInventarPregledKnjige : FrmOpcenita
     {
+        private Primjerak trenutniRed = null;
+
         private Knjiga knjiga = new Knjiga();
+
         public FrmInventarPregledKnjige(Knjiga odabranaKnjiga)
         {
             knjiga = odabranaKnjiga;
@@ -58,5 +61,25 @@ namespace Bibly
             }
         }
 
+        private void dgvPrimjerci_SelectionChanged(object sender, EventArgs e)
+        {
+            trenutniRed = dgvPrimjerci.CurrentRow.DataBoundItem as Primjerak;
+        }
+
+        private void btnObrisiPrimjerak_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+
+                if (trenutniRed == null)
+                {
+                    MessageBox.Show("Nije odabran ni jedan red");
+                    return;
+                }
+
+                PrimjerakRepozitorij.ObrisiPrimjerak(trenutniRed);
+                OsvjeziPrimjerke();
+            }
+        }
     }
 }
