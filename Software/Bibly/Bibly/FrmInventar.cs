@@ -31,7 +31,7 @@ namespace Bibly
         private void btnPregledajKnjigu_Click(object sender, EventArgs e)
         {
 
-            FrmInventarPregledKnjige frm = new FrmInventarPregledKnjige();
+            FrmInventarPregledKnjige frm = new FrmInventarPregledKnjige(trenutniRed);
             frm.ShowDialog();
         }
     }
