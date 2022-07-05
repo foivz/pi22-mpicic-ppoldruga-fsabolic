@@ -52,7 +52,6 @@
             this.pbBarKod = new System.Windows.Forms.PictureBox();
             this.btnIsprintaj = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblNaslov = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.panel1.SuspendLayout();
@@ -100,6 +99,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.lblNaslovKnjige);
             this.panel1.Controls.Add(this.lblBrojStranica);
@@ -337,6 +337,7 @@
             this.btnIsprintaj.TabIndex = 36;
             this.btnIsprintaj.Text = "Isprintaj Bar-kod";
             this.btnIsprintaj.UseVisualStyleBackColor = false;
+            this.btnIsprintaj.Click += new System.EventHandler(this.btnIsprintaj_Click);
             // 
             // label8
             // 
@@ -347,14 +348,6 @@
             this.label8.Size = new System.Drawing.Size(92, 25);
             this.label8.TabIndex = 48;
             this.label8.Text = "Primjerci:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(794, 2342);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 20);
-            this.label4.TabIndex = 49;
             // 
             // lblNaslov
             // 
@@ -372,9 +365,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1256, 1126);
+            this.AutoScrollMargin = new System.Drawing.Size(30, 30);
+            this.ClientSize = new System.Drawing.Size(1256, 1286);
             this.Controls.Add(this.lblNaslov);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnObrisiPrimjerak);
             this.Controls.Add(this.btnDodajPrimjerak);
@@ -394,7 +387,6 @@
             this.Controls.SetChildIndex(this.btnDodajPrimjerak, 0);
             this.Controls.SetChildIndex(this.btnObrisiPrimjerak, 0);
             this.Controls.SetChildIndex(this.label8, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.lblNaslov, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -430,7 +422,6 @@
         private System.Windows.Forms.PictureBox pbBarKod;
         private System.Windows.Forms.Button btnIsprintaj;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNaslov;
     }
 }
