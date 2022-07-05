@@ -84,6 +84,7 @@
             this.btnObrisi.TabIndex = 10;
             this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // btnPregledajKnjigu
             // 
