@@ -20,7 +20,7 @@ namespace Bibly
 
         private void FrmInventarPregledKnjige_Load(object sender, EventArgs e)
         {
-
+            lab
         }
     }
 }

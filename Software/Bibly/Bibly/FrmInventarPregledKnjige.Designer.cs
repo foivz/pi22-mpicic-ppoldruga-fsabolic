@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblNaslov = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnObrisiPrimjerak = new System.Windows.Forms.Button();
             this.btnDodajPrimjerak = new System.Windows.Forms.Button();
             this.pbNaslovnica = new System.Windows.Forms.PictureBox();
@@ -53,6 +52,7 @@
             this.btnIsprintaj = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.pbBarKod = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimjerci)).BeginInit();
@@ -60,25 +60,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBarKod)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblNaslov
-            // 
-            this.lblNaslov.AutoSize = true;
-            this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaslov.Location = new System.Drawing.Point(370, 40);
-            this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNaslov.Name = "lblNaslov";
-            this.lblNaslov.Size = new System.Drawing.Size(549, 69);
-            this.lblNaslov.TabIndex = 3;
-            this.lblNaslov.Text = "PREGLED KNJIGE";
-            // 
             // btnObrisiPrimjerak
             // 
             this.btnObrisiPrimjerak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
             this.btnObrisiPrimjerak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObrisiPrimjerak.Location = new System.Drawing.Point(977, 1312);
+            this.btnObrisiPrimjerak.Location = new System.Drawing.Point(925, 1269);
             this.btnObrisiPrimjerak.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnObrisiPrimjerak.Name = "btnObrisiPrimjerak";
-            this.btnObrisiPrimjerak.Size = new System.Drawing.Size(165, 77);
+            this.btnObrisiPrimjerak.Size = new System.Drawing.Size(218, 77);
             this.btnObrisiPrimjerak.TabIndex = 46;
             this.btnObrisiPrimjerak.Text = "Obriši primjerak";
             this.btnObrisiPrimjerak.UseVisualStyleBackColor = false;
@@ -87,17 +76,17 @@
             // 
             this.btnDodajPrimjerak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnDodajPrimjerak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDodajPrimjerak.Location = new System.Drawing.Point(803, 1312);
+            this.btnDodajPrimjerak.Location = new System.Drawing.Point(663, 1269);
             this.btnDodajPrimjerak.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDodajPrimjerak.Name = "btnDodajPrimjerak";
-            this.btnDodajPrimjerak.Size = new System.Drawing.Size(165, 77);
+            this.btnDodajPrimjerak.Size = new System.Drawing.Size(220, 77);
             this.btnDodajPrimjerak.TabIndex = 43;
             this.btnDodajPrimjerak.Text = "Dodaj primjerak";
             this.btnDodajPrimjerak.UseVisualStyleBackColor = false;
             // 
             // pbNaslovnica
             // 
-            this.pbNaslovnica.Location = new System.Drawing.Point(131, 193);
+            this.pbNaslovnica.Location = new System.Drawing.Point(132, 150);
             this.pbNaslovnica.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbNaslovnica.Name = "pbNaslovnica";
             this.pbNaslovnica.Size = new System.Drawing.Size(279, 385);
@@ -121,7 +110,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblOpisKnjige);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(100, 155);
+            this.panel1.Location = new System.Drawing.Point(101, 112);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1044, 716);
@@ -284,27 +273,27 @@
             // dgvPrimjerci
             // 
             this.dgvPrimjerci.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrimjerci.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrimjerci.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvPrimjerci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrimjerci.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrimjerci.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvPrimjerci.GridColor = System.Drawing.Color.White;
-            this.dgvPrimjerci.Location = new System.Drawing.Point(100, 959);
+            this.dgvPrimjerci.Location = new System.Drawing.Point(101, 916);
             this.dgvPrimjerci.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPrimjerci.Name = "dgvPrimjerci";
             this.dgvPrimjerci.RowHeadersWidth = 62;
@@ -316,7 +305,7 @@
             // 
             this.groupBox1.Controls.Add(this.pbBarKod);
             this.groupBox1.Controls.Add(this.btnIsprintaj);
-            this.groupBox1.Location = new System.Drawing.Point(98, 1298);
+            this.groupBox1.Location = new System.Drawing.Point(99, 1255);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -341,7 +330,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(95, 916);
+            this.label8.Location = new System.Drawing.Point(96, 873);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 25);
             this.label8.TabIndex = 48;
@@ -355,10 +344,20 @@
             this.pbBarKod.TabIndex = 37;
             this.pbBarKod.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(529, 1561);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.TabIndex = 49;
+            // 
             // FrmInventarPregledKnjige
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1256, 1590);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnObrisiPrimjerak);
             this.Controls.Add(this.btnDodajPrimjerak);
@@ -366,13 +365,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvPrimjerci);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblNaslov);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmInventarPregledKnjige";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInventarPregledKnjige";
             this.Load += new System.EventHandler(this.FrmInventarPregledKnjige_Load);
-            this.Controls.SetChildIndex(this.lblNaslov, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.dgvPrimjerci, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -380,6 +377,7 @@
             this.Controls.SetChildIndex(this.btnDodajPrimjerak, 0);
             this.Controls.SetChildIndex(this.btnObrisiPrimjerak, 0);
             this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -392,8 +390,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblNaslov;
         private System.Windows.Forms.Button btnObrisiPrimjerak;
         private System.Windows.Forms.Button btnDodajPrimjerak;
         private System.Windows.Forms.PictureBox pbNaslovnica;
@@ -416,5 +412,6 @@
         private System.Windows.Forms.PictureBox pbBarKod;
         private System.Windows.Forms.Button btnIsprintaj;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
     }
 }
