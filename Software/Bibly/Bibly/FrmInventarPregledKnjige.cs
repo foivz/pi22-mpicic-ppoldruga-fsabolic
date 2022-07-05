@@ -39,8 +39,23 @@ namespace Bibly
             lblISBN.Text = knjiga.ISBN;
             lblOpisKnjige.Text = knjiga.Opis;
             pbNaslovnica.Image = knjiga.Naslovnica;
+            OsvjeziPrimjerke();
         }
 
+        private void OsvjeziPrimjerke()
+        {
+            RezervacijaRepozitorij.ProvjeriIstekleRezervacije();
+            List<Primjerak> listaPrimjeraka = PrimjerakRepozitorij.DohvatiPrimjerkeKnjige(knjiga);
+            if (listaPrimjeraka != null)
+            {
+                dgvPrimjerci.DataSource = listaPrimjeraka;
+                dgvPrimjerci.Columns[0].Width = 120;
+                dgvPrimjerci.Columns[1].Width = 150;
+                dgvPrimjerci.Columns[2].Visible = false;
+                dgvPrimjerci.Columns[3].HeaderText = "Nedostupno do";
+                dgvPrimjerci.Columns[3].Width = 383;
+            }
+        }
 
     }
 }
