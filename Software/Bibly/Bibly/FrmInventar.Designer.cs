@@ -110,6 +110,7 @@
             this.btnDodajKnjigu.TabIndex = 12;
             this.btnDodajKnjigu.Text = "Dodaj knjigu";
             this.btnDodajKnjigu.UseVisualStyleBackColor = false;
+            this.btnDodajKnjigu.Click += new System.EventHandler(this.btnDodajKnjigu_Click);
             // 
             // button2
             // 

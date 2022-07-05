@@ -121,6 +121,12 @@
     <Compile Include="FrmInventar.Designer.cs">
       <DependentUpon>FrmInventar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInventarDodajKnjigu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajKnjigu.Designer.cs">
+      <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInventarPregledKnjige.cs">
       <SubType>Form</SubType>
     </Compile>

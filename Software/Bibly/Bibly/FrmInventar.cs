@@ -56,5 +56,10 @@ namespace Bibly
             dgvInventar.Columns[6].Visible = false;
             dgvInventar.Columns[7].Visible = false;
         }
+
+        private void btnDodajKnjigu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
