@@ -70,7 +70,7 @@ namespace Bibly
 
         private void btnObrisiPrimjerak_Click(object sender, EventArgs e)
        {
-            if (MessageBox.Show("Brišete redak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Brišete primjerak iz baze! Jeste li sigurni?", "Potvrdi", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
 
                 if (trenutniRed == null)
