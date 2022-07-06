@@ -20,7 +20,7 @@ namespace Bibly
 
         private void btnSpremi_Click(object sender, EventArgs e)
         {
-            string unos = txtNaziv.Text;
+            string unos = txtIme.Text;
 
             string poruka = "";
 
