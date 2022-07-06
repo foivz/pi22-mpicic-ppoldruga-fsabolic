@@ -60,12 +60,16 @@ namespace Bibly
         private void btnDodajKnjigu_Click(object sender, EventArgs e)
         {
             FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu();
-            OtvoriNovuFormu(frm);
+            frm.ShowDialog();
+            OsvjeziInventar();
         }
 
         private void btnAzuriraj_Click(object sender, EventArgs e)
         {
-
+            FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu();
+            frm.ShowDialog();
+            OsvjeziInventar();
+            
         }
     }
 }
