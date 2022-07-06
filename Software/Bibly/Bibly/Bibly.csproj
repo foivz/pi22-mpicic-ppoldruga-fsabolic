@@ -121,6 +121,12 @@
     <Compile Include="FrmInventar.Designer.cs">
       <DependentUpon>FrmInventar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInventarDodajIzdavaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajIzdavaca.Designer.cs">
+      <DependentUpon>FrmInventarDodajIzdavaca.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInventarDodajKnjigu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInventar.resx">
       <DependentUpon>FrmInventar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajIzdavaca.resx">
+      <DependentUpon>FrmInventarDodajIzdavaca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInventarDodajKnjigu.resx">
       <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>

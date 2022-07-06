@@ -88,7 +88,8 @@ namespace Bibly
 
         private void btnDodajIzdavaca_Click(object sender, EventArgs e)
         {
-
+            FrmInventarDodajIzdavaca frm = new FrmInventarDodajIzdavaca();
+            frm.ShowDialog();
         }
     }
 }
