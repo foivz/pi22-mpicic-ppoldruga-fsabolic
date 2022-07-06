@@ -255,6 +255,7 @@
             this.btnDodajZanr.TabIndex = 21;
             this.btnDodajZanr.Text = "Dodaj žanr";
             this.btnDodajZanr.UseVisualStyleBackColor = false;
+            this.btnDodajZanr.Click += new System.EventHandler(this.btnDodajZanr_Click);
             // 
             // btnPlus
             // 

@@ -19,6 +19,8 @@ namespace Bibly
         {
             InitializeComponent();
             PopuniComboBoxeve();
+            cmbIzdavac.SelectedIndex = 0;
+            cmbZanr.SelectedIndex = 0;
 
         }
 
@@ -41,8 +43,6 @@ namespace Bibly
 
             }
 
-            cmbIzdavac.SelectedIndex = 0;
-            cmbZanr.SelectedIndex = 0;
         }
 
         private void PostaviSliku(object sender, MouseEventArgs e)
@@ -90,6 +90,12 @@ namespace Bibly
         {
             FrmInventarDodajIzdavaca frm = new FrmInventarDodajIzdavaca();
             frm.ShowDialog();
+            PopuniComboBoxeve();
+        }
+
+        private void btnDodajZanr_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
