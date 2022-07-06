@@ -43,11 +43,14 @@
             this.txtOpis = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cmbIzdavac = new System.Windows.Forms.ComboBox();
-            this.cmbZanr = new System.Windows.Forms.ComboBox();
             this.btnDodajIzdavaca = new System.Windows.Forms.Button();
             this.btnDodajZanr = new System.Windows.Forms.Button();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.cmbIzdavac = new System.Windows.Forms.ComboBox();
+            this.cmbZanr = new System.Windows.Forms.ComboBox();
+            this.ucAutor1 = new Bibly.UCAutor();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +58,7 @@
             // 
             this.lblNaslov.AutoSize = true;
             this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaslov.Location = new System.Drawing.Point(666, 82);
+            this.lblNaslov.Location = new System.Drawing.Point(678, 69);
             this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNaslov.Name = "lblNaslov";
             this.lblNaslov.Size = new System.Drawing.Size(469, 69);
@@ -220,36 +223,6 @@
             this.label8.TabIndex = 32;
             this.label8.Text = "Žanr:";
             // 
-            // cmbIzdavac
-            // 
-            this.cmbIzdavac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIzdavac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbIzdavac.FormattingEnabled = true;
-            this.cmbIzdavac.Items.AddRange(new object[] {
-            "Ime i prezime korisnika",
-            "Id primjeraka",
-            "Naziv knjige"});
-            this.cmbIzdavac.Location = new System.Drawing.Point(678, 916);
-            this.cmbIzdavac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbIzdavac.Name = "cmbIzdavac";
-            this.cmbIzdavac.Size = new System.Drawing.Size(361, 37);
-            this.cmbIzdavac.TabIndex = 33;
-            // 
-            // cmbZanr
-            // 
-            this.cmbZanr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbZanr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbZanr.FormattingEnabled = true;
-            this.cmbZanr.Items.AddRange(new object[] {
-            "Ime i prezime korisnika",
-            "Id primjeraka",
-            "Naziv knjige"});
-            this.cmbZanr.Location = new System.Drawing.Point(678, 1004);
-            this.cmbZanr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbZanr.Name = "cmbZanr";
-            this.cmbZanr.Size = new System.Drawing.Size(361, 37);
-            this.cmbZanr.TabIndex = 34;
-            // 
             // btnDodajIzdavaca
             // 
             this.btnDodajIzdavaca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
@@ -286,18 +259,77 @@
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = false;
             // 
+            // btnPlus
+            // 
+            this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(739, 1104);
+            this.btnPlus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(69, 49);
+            this.btnPlus.TabIndex = 39;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = false;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(878, 1104);
+            this.btnMinus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(69, 49);
+            this.btnMinus.TabIndex = 40;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = false;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // cmbIzdavac
+            // 
+            this.cmbIzdavac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIzdavac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbIzdavac.FormattingEnabled = true;
+            this.cmbIzdavac.Location = new System.Drawing.Point(678, 916);
+            this.cmbIzdavac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbIzdavac.Name = "cmbIzdavac";
+            this.cmbIzdavac.Size = new System.Drawing.Size(389, 37);
+            this.cmbIzdavac.TabIndex = 41;
+            // 
+            // cmbZanr
+            // 
+            this.cmbZanr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbZanr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbZanr.FormattingEnabled = true;
+            this.cmbZanr.Location = new System.Drawing.Point(678, 1012);
+            this.cmbZanr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbZanr.Name = "cmbZanr";
+            this.cmbZanr.Size = new System.Drawing.Size(389, 37);
+            this.cmbZanr.TabIndex = 42;
+            // 
+            // ucAutor1
+            // 
+            this.ucAutor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
+            this.ucAutor1.Location = new System.Drawing.Point(544, 1174);
+            this.ucAutor1.Name = "ucAutor1";
+            this.ucAutor1.Size = new System.Drawing.Size(523, 65);
+            this.ucAutor1.TabIndex = 43;
+            // 
             // FrmInventarDodajKnjigu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(50, 50);
-            this.ClientSize = new System.Drawing.Size(1663, 1383);
+            this.ClientSize = new System.Drawing.Size(1663, 1590);
+            this.Controls.Add(this.ucAutor1);
+            this.Controls.Add(this.cmbZanr);
+            this.Controls.Add(this.cmbIzdavac);
+            this.Controls.Add(this.btnMinus);
+            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.btnDodajZanr);
             this.Controls.Add(this.btnDodajIzdavaca);
-            this.Controls.Add(this.cmbZanr);
-            this.Controls.Add(this.cmbIzdavac);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtOpis);
@@ -331,11 +363,14 @@
             this.Controls.SetChildIndex(this.txtOpis, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.label8, 0);
-            this.Controls.SetChildIndex(this.cmbIzdavac, 0);
-            this.Controls.SetChildIndex(this.cmbZanr, 0);
             this.Controls.SetChildIndex(this.btnDodajIzdavaca, 0);
             this.Controls.SetChildIndex(this.btnDodajZanr, 0);
             this.Controls.SetChildIndex(this.btnSpremi, 0);
+            this.Controls.SetChildIndex(this.btnPlus, 0);
+            this.Controls.SetChildIndex(this.btnMinus, 0);
+            this.Controls.SetChildIndex(this.cmbIzdavac, 0);
+            this.Controls.SetChildIndex(this.cmbZanr, 0);
+            this.Controls.SetChildIndex(this.ucAutor1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -359,10 +394,13 @@
         private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cmbIzdavac;
-        private System.Windows.Forms.ComboBox cmbZanr;
         private System.Windows.Forms.Button btnDodajIzdavaca;
         private System.Windows.Forms.Button btnDodajZanr;
         private System.Windows.Forms.Button btnSpremi;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.ComboBox cmbIzdavac;
+        private System.Windows.Forms.ComboBox cmbZanr;
+        private UCAutor ucAutor1;
     }
 }

@@ -213,6 +213,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCAutor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAutor.Designer.cs">
+      <DependentUpon>UCAutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCKnjigaPocetna.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -319,6 +325,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCAutor.resx">
+      <DependentUpon>UCAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCKnjigaPocetna.resx">
       <DependentUpon>UCKnjigaPocetna.cs</DependentUpon>
     </EmbeddedResource>

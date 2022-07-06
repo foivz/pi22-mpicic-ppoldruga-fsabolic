@@ -37,7 +37,7 @@
             this.cmbAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAutor.FormattingEnabled = true;
-            this.cmbAutor.Location = new System.Drawing.Point(152, 31);
+            this.cmbAutor.Location = new System.Drawing.Point(126, 15);
             this.cmbAutor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbAutor.Name = "cmbAutor";
             this.cmbAutor.Size = new System.Drawing.Size(389, 37);
@@ -48,10 +48,10 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 31);
+            this.label8.Location = new System.Drawing.Point(6, 15);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 44);
+            this.label8.Size = new System.Drawing.Size(81, 29);
             this.label8.TabIndex = 43;
             this.label8.Text = "Autor:";
             // 
@@ -63,7 +63,7 @@
             this.Controls.Add(this.cmbAutor);
             this.Controls.Add(this.label8);
             this.Name = "UCAutor";
-            this.Size = new System.Drawing.Size(573, 99);
+            this.Size = new System.Drawing.Size(523, 65);
             this.Load += new System.EventHandler(this.UCAutor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
