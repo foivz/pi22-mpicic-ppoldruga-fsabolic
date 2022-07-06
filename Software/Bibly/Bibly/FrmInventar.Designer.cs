@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.dgvInventar = new System.Windows.Forms.DataGridView();
             this.btnObrisi = new System.Windows.Forms.Button();
             this.btnPregledajKnjigu = new System.Windows.Forms.Button();
             this.btnDodajKnjigu = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAzuriraj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,14 +55,14 @@
             this.dgvInventar.AllowUserToDeleteRows = false;
             this.dgvInventar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvInventar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventar.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventar.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInventar.Location = new System.Drawing.Point(105, 297);
             this.dgvInventar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvInventar.Name = "dgvInventar";
@@ -112,24 +112,25 @@
             this.btnDodajKnjigu.UseVisualStyleBackColor = false;
             this.btnDodajKnjigu.Click += new System.EventHandler(this.btnDodajKnjigu_Click);
             // 
-            // button2
+            // btnAzuriraj
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1259, 940);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 52);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Ažuriraj knjigu";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnAzuriraj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnAzuriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAzuriraj.Location = new System.Drawing.Point(1259, 940);
+            this.btnAzuriraj.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAzuriraj.Name = "btnAzuriraj";
+            this.btnAzuriraj.Size = new System.Drawing.Size(223, 52);
+            this.btnAzuriraj.TabIndex = 13;
+            this.btnAzuriraj.Text = "Ažuriraj knjigu";
+            this.btnAzuriraj.UseVisualStyleBackColor = false;
+            this.btnAzuriraj.Click += new System.EventHandler(this.btnAzuriraj_Click);
             // 
             // FrmInventar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1850, 1106);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAzuriraj);
             this.Controls.Add(this.btnDodajKnjigu);
             this.Controls.Add(this.btnPregledajKnjigu);
             this.Controls.Add(this.btnObrisi);
@@ -143,7 +144,7 @@
             this.Controls.SetChildIndex(this.btnObrisi, 0);
             this.Controls.SetChildIndex(this.btnPregledajKnjigu, 0);
             this.Controls.SetChildIndex(this.btnDodajKnjigu, 0);
-            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.btnAzuriraj, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,6 +158,6 @@
         private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.Button btnPregledajKnjigu;
         private System.Windows.Forms.Button btnDodajKnjigu;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAzuriraj;
     }
 }

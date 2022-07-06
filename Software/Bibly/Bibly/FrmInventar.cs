@@ -62,5 +62,10 @@ namespace Bibly
             FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu();
             OtvoriNovuFormu(frm);
         }
+
+        private void btnAzuriraj_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
