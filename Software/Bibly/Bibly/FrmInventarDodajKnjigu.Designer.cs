@@ -46,11 +46,11 @@
             this.btnDodajIzdavaca = new System.Windows.Forms.Button();
             this.btnDodajZanr = new System.Windows.Forms.Button();
             this.btnSpremi = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
             this.cmbIzdavac = new System.Windows.Forms.ComboBox();
             this.cmbZanr = new System.Windows.Forms.ComboBox();
             this.ucAutor1 = new Bibly.UCAutor();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             // 
             this.lblNaslov.AutoSize = true;
             this.lblNaslov.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaslov.Location = new System.Drawing.Point(678, 69);
+            this.lblNaslov.Location = new System.Drawing.Point(666, 61);
             this.lblNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNaslov.Name = "lblNaslov";
             this.lblNaslov.Size = new System.Drawing.Size(469, 69);
@@ -67,7 +67,7 @@
             // 
             // pbNaslovnica
             // 
-            this.pbNaslovnica.BackColor = System.Drawing.Color.Silver;
+            this.pbNaslovnica.BackColor = System.Drawing.Color.Gray;
             this.pbNaslovnica.Location = new System.Drawing.Point(47, 401);
             this.pbNaslovnica.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbNaslovnica.Name = "pbNaslovnica";
@@ -75,6 +75,7 @@
             this.pbNaslovnica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbNaslovnica.TabIndex = 17;
             this.pbNaslovnica.TabStop = false;
+            this.pbNaslovnica.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PostaviSliku);
             // 
             // label2
             // 
@@ -259,32 +260,6 @@
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = false;
             // 
-            // btnPlus
-            // 
-            this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlus.Location = new System.Drawing.Point(739, 1104);
-            this.btnPlus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(69, 49);
-            this.btnPlus.TabIndex = 39;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = false;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(878, 1104);
-            this.btnMinus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(69, 49);
-            this.btnMinus.TabIndex = 40;
-            this.btnMinus.Text = "-";
-            this.btnMinus.UseVisualStyleBackColor = false;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
-            // 
             // cmbIzdavac
             // 
             this.cmbIzdavac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -315,6 +290,30 @@
             this.ucAutor1.Size = new System.Drawing.Size(523, 65);
             this.ucAutor1.TabIndex = 43;
             // 
+            // btnPlus
+            // 
+            this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(720, 1102);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(79, 49);
+            this.btnPlus.TabIndex = 44;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = false;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(218)))), ((int)(((byte)(166)))));
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(906, 1102);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(79, 49);
+            this.btnMinus.TabIndex = 45;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = false;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
             // FrmInventarDodajKnjigu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -322,11 +321,11 @@
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(50, 50);
             this.ClientSize = new System.Drawing.Size(1663, 1590);
+            this.Controls.Add(this.btnMinus);
+            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.ucAutor1);
             this.Controls.Add(this.cmbZanr);
             this.Controls.Add(this.cmbIzdavac);
-            this.Controls.Add(this.btnMinus);
-            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.btnDodajZanr);
             this.Controls.Add(this.btnDodajIzdavaca);
@@ -366,11 +365,11 @@
             this.Controls.SetChildIndex(this.btnDodajIzdavaca, 0);
             this.Controls.SetChildIndex(this.btnDodajZanr, 0);
             this.Controls.SetChildIndex(this.btnSpremi, 0);
-            this.Controls.SetChildIndex(this.btnPlus, 0);
-            this.Controls.SetChildIndex(this.btnMinus, 0);
             this.Controls.SetChildIndex(this.cmbIzdavac, 0);
             this.Controls.SetChildIndex(this.cmbZanr, 0);
             this.Controls.SetChildIndex(this.ucAutor1, 0);
+            this.Controls.SetChildIndex(this.btnPlus, 0);
+            this.Controls.SetChildIndex(this.btnMinus, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbNaslovnica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -397,10 +396,10 @@
         private System.Windows.Forms.Button btnDodajIzdavaca;
         private System.Windows.Forms.Button btnDodajZanr;
         private System.Windows.Forms.Button btnSpremi;
-        private System.Windows.Forms.Button btnPlus;
-        private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.ComboBox cmbIzdavac;
         private System.Windows.Forms.ComboBox cmbZanr;
         private UCAutor ucAutor1;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMinus;
     }
 }

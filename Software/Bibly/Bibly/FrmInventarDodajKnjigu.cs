@@ -42,16 +42,6 @@ namespace Bibly
 
         }
 
-        private void btnPlus_Click(object sender, EventArgs e)
-        {
-            List<Autor> autori = AutorRepozitorij.DohvatiSveAutore();
-            UCAutor uc = new UCAutor();
-            uc.Postavi(autori);
-            uc.Left = 200;
-            uc.Top = top;
-            Controls.Add(uc);
-            top += 50;
-        }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
@@ -66,5 +56,36 @@ namespace Bibly
             }
         }
 
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            List<Autor> autori = AutorRepozitorij.DohvatiSveAutore();
+            UCAutor uc = new UCAutor();
+            uc.Postavi(autori);
+            uc.Left = 200;
+            uc.Top = top;
+            Controls.Add(uc);
+            top += 50;
+
+        }
+
+        private void PostaviSliku(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                OpenFileDialog OD = new OpenFileDialog();
+                OD.FileName = "";
+                OD.Filter = "Supported Images |*.jpg;*.jpeg;*.png";
+                if (OD.ShowDialog() == DialogResult.OK)
+                {
+                    ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Load(OD.FileName);
+
+                }
+            }
+            else
+            {
+                ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image = null;
+            }
+
+        }
     }
 }
