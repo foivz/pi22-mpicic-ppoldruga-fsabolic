@@ -104,7 +104,6 @@ namespace Bibly
         {
             FrmInventarDodajAutora frm = new FrmInventarDodajAutora();
             frm.ShowDialog();
-            PopuniComboBoxeve();
         }
     }
 }

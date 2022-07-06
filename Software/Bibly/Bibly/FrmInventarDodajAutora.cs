@@ -20,24 +20,35 @@ namespace Bibly
 
         private void btnSpremi_Click(object sender, EventArgs e)
         {
-            string unos = txtIme.Text;
+            string ime = txtIme.Text;
+
+            string prezime = txtPrezime.Text;
+
+            string biografija = txtBiografija.Text;
 
             string poruka = "";
 
-            int dobroPopunjeno = ProvjeriUnos(unos);
+            int dobroPopunjeno = ProvjeriUnos(ime, prezime, biografija);
 
             switch (dobroPopunjeno)
             {
                 case -1:
-                    poruka = "Niste unijeli naziv!";
+                    poruka = "Niste unijeli ime!";
+                    break;
+                case -2:
+                    poruka = "Niste unijeli prezime!";
+                    break;
+                case -3:
+                    poruka = "Niste unijeli biografiju!";
                     break;
                 case 1:
-                    //Autor novi = new Autor
-                    //{
-                    //    Naziv = unos
-                    //};
-                    //AutorRepozitorij.DodajAutora(novi);
-                    //this.Close();
+                    AutorRepozitorij.DodajAutora(new Autor
+                    {
+                        Ime = ime,
+                        Prezime = prezime,
+                        Biografija = biografija
+                    });
+                    this.Close();
                     break;
 
             }
@@ -48,11 +59,19 @@ namespace Bibly
             }
         }
 
-        private int ProvjeriUnos(string unos)
+        private int ProvjeriUnos(string ime, string prezime, string biografija)
         {
-            if (string.IsNullOrEmpty(unos) || string.IsNullOrWhiteSpace(unos))
+            if (string.IsNullOrEmpty(ime) || string.IsNullOrWhiteSpace(ime))
             {
                 return -1;
+            }
+            else if (string.IsNullOrEmpty(prezime) || string.IsNullOrWhiteSpace(prezime))
+            {
+                return -2;
+            }
+            else if (string.IsNullOrEmpty(biografija) || string.IsNullOrWhiteSpace(biografija))
+            {
+                return -3;
             }
             else
             {

@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrezime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
+            this.txtBiografija = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -98,15 +98,15 @@
             this.label2.TabIndex = 29;
             this.label2.Text = "Prezime:";
             // 
-            // txtNaziv
+            // txtBiografija
             // 
-            this.txtNaziv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
-            this.txtNaziv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNaziv.Location = new System.Drawing.Point(211, 349);
-            this.txtNaziv.Multiline = true;
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(744, 503);
-            this.txtNaziv.TabIndex = 32;
+            this.txtBiografija.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(242)))));
+            this.txtBiografija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBiografija.Location = new System.Drawing.Point(211, 349);
+            this.txtBiografija.Multiline = true;
+            this.txtBiografija.Name = "txtBiografija";
+            this.txtBiografija.Size = new System.Drawing.Size(744, 503);
+            this.txtBiografija.TabIndex = 32;
             // 
             // label4
             // 
@@ -124,7 +124,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(995, 993);
-            this.Controls.Add(this.txtNaziv);
+            this.Controls.Add(this.txtBiografija);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.label2);
@@ -133,6 +133,7 @@
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label3);
             this.Name = "FrmInventarDodajAutora";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodavanje novog autora";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,7 +148,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNaziv;
+        private System.Windows.Forms.TextBox txtBiografija;
         private System.Windows.Forms.Label label4;
     }
 }
