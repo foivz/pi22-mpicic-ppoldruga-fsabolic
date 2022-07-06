@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.cmbAutor = new System.Windows.Forms.ComboBox();
-            this.lblAutor = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbAutor
@@ -37,27 +37,23 @@
             this.cmbAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAutor.FormattingEnabled = true;
-            this.cmbAutor.Items.AddRange(new object[] {
-            "Ime i prezime korisnika",
-            "Id primjeraka",
-            "Naziv knjige"});
-            this.cmbAutor.Location = new System.Drawing.Point(177, 33);
+            this.cmbAutor.Location = new System.Drawing.Point(152, 31);
             this.cmbAutor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbAutor.Name = "cmbAutor";
-            this.cmbAutor.Size = new System.Drawing.Size(361, 37);
-            this.cmbAutor.TabIndex = 35;
+            this.cmbAutor.Size = new System.Drawing.Size(389, 37);
+            this.cmbAutor.TabIndex = 44;
             // 
-            // lblAutor
+            // label8
             // 
-            this.lblAutor.AutoSize = true;
-            this.lblAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
-            this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutor.Location = new System.Drawing.Point(22, 36);
-            this.lblAutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAutor.Name = "lblAutor";
-            this.lblAutor.Size = new System.Drawing.Size(122, 44);
-            this.lblAutor.TabIndex = 34;
-            this.lblAutor.Text = "Autor:";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(32, 31);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 44);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Autor:";
             // 
             // UCAutor
             // 
@@ -65,7 +61,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.cmbAutor);
-            this.Controls.Add(this.lblAutor);
+            this.Controls.Add(this.label8);
             this.Name = "UCAutor";
             this.Size = new System.Drawing.Size(573, 99);
             this.Load += new System.EventHandler(this.UCAutor_Load);
@@ -77,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbAutor;
-        private System.Windows.Forms.Label lblAutor;
+        private System.Windows.Forms.Label label8;
     }
 }
