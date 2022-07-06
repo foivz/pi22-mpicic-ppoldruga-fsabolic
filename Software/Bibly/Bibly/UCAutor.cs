@@ -16,6 +16,7 @@ namespace Bibly
         public UCAutor()
         {
             InitializeComponent();
+            PopuniComboBox(AutorRepozitorij.DohvatiSveAutore());
         }
 
         public void Postavi(List<Autor> autori, int lijevo, int gore)
@@ -27,6 +28,7 @@ namespace Bibly
 
         public void PopuniComboBox(List<Autor> autori)
         {
+            cmbAutor.Items.Clear();
             foreach (Autor autor in autori)
             {
                 cmbAutor.Items.Add(autor);
