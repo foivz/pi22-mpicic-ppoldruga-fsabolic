@@ -65,6 +65,7 @@
             this.btnSpremiKnjigu.TabIndex = 1;
             this.btnSpremiKnjigu.Text = "Spremi knjigu";
             this.btnSpremiKnjigu.UseVisualStyleBackColor = false;
+            this.btnSpremiKnjigu.Click += new System.EventHandler(this.btnSpremiKnjigu_Click);
             // 
             // pbNaslovnica
             // 

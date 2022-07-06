@@ -106,5 +106,11 @@ namespace Bibly
             frm.ShowDialog();
             ucAutor1.PopuniComboBox(AutorRepozitorij.DohvatiSveAutore());
         }
+
+
+        private void btnSpremiKnjigu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
