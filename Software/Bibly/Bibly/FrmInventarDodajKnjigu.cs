@@ -104,6 +104,7 @@ namespace Bibly
         {
             FrmInventarDodajAutora frm = new FrmInventarDodajAutora();
             frm.ShowDialog();
+            ucAutor1.PopuniComboBox(AutorRepozitorij.DohvatiSveAutore());
         }
     }
 }
