@@ -265,6 +265,9 @@
     <EmbeddedResource Include="FrmInventar.resx">
       <DependentUpon>FrmInventar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajKnjigu.resx">
+      <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInventarPregledKnjige.resx">
       <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>
     </EmbeddedResource>

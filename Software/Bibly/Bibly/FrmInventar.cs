@@ -59,7 +59,8 @@ namespace Bibly
 
         private void btnDodajKnjigu_Click(object sender, EventArgs e)
         {
-
+            FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu();
+            OtvoriNovuFormu(frm);
         }
     }
 }
