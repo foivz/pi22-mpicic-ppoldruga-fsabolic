@@ -15,14 +15,15 @@ namespace Bibly
 {
     public partial class UCPosudbeKnjigaTretnutna : UserControl
     {
-        private Posudba odabranaPosudba = new Posudba();
-        public UCPosudbeKnjigaTretnutna()
+        private Posudba posudba = new Posudba();
+        public UCPosudbeKnjigaTretnutna(Posudba odabranaPosudba)
         {
+            posudba = odabranaPosudba;
             InitializeComponent();
+            PostaviLabele();
         }
-        public void PostaviLabele(Posudba posudba)
+        public void PostaviLabele()
         {
-            odabranaPosudba = posudba;
             lblNaslov.Text = posudba.Primjerak.Knjiga.Naziv;
 
             lblBrojProduljivanja.Text = posudba.BrojProduljivanja.ToString();
@@ -37,7 +38,7 @@ namespace Bibly
         }
         private void PrikaziBrojDanaDoPovratka()
         {
-            TimeSpan pomRazlikaDana = odabranaPosudba.PredvideniDatumVracanja.Subtract(DateTime.Today);
+            TimeSpan pomRazlikaDana = posudba.PredvideniDatumVracanja.Subtract(DateTime.Today);
             int razlikaDana = int.Parse(pomRazlikaDana.TotalDays.ToString());
             //razlike je negativna ako je datum nakon danas, a pozitivan ako je prije danas
             if (razlikaDana == 1)
@@ -51,7 +52,7 @@ namespace Bibly
             else if (razlikaDana < 0)
             {
                 lblPosudba.Text += $" (Kasnite s vraćanjem!)";
-                lblZakasnina.Text = string.Format("{0:0.00}", odabranaPosudba.IzracunajZakasninu()) + " HRK";
+                lblZakasnina.Text = string.Format("{0:0.00}", posudba.IzracunajZakasninu()) + " HRK";
             }
             else
             {
@@ -60,9 +61,9 @@ namespace Bibly
         }
         private void btnProdulji_Click(object sender, EventArgs e)
         {
-            PosudbaRepozitorij.ProduljiPosudbu(odabranaPosudba);
-            odabranaPosudba.BrojProduljivanja += 1;
-            lblBrojProduljivanja.Text = (odabranaPosudba.BrojProduljivanja).ToString();
+            PosudbaRepozitorij.ProduljiPosudbu(posudba);
+            posudba.BrojProduljivanja += 1;
+            lblBrojProduljivanja.Text = (posudba.BrojProduljivanja).ToString();
             DateTime noviDatumPosudbe = DateTime.Today.AddDays(PostavkeRepozitorij.DohvatiTrajanjePosudbe());
             lblPosudba.Text = noviDatumPosudbe.ToShortDateString();
             PrikaziBrojDanaDoPovratka();
@@ -71,7 +72,7 @@ namespace Bibly
         private void OmoguciGumbZaProduljenje()
         {
             int brojPosudbi = PostavkeRepozitorij.DohvatiMaksimalanBrojProduljivanjaPosudbe();
-            if (int.Parse(lblBrojProduljivanja.Text) >= brojPosudbi || odabranaPosudba.Zakasnina != 0)
+            if (int.Parse(lblBrojProduljivanja.Text) >= brojPosudbi || posudba.Zakasnina != 0)
             {
                 btnProdulji.Enabled = false;
                 btnProdulji.BackColor = Color.Gray;

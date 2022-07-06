@@ -53,15 +53,16 @@ namespace PosudbeIRezervacije
             }
             return posudba[0];
         }
-        public static void ProduljiPosudbu(Posudba posudba)
+        public static int ProduljiPosudbu(Posudba posudba)
         {
             DateTime noviDatumVracanja = DateTime.Now.AddDays(PostavkeRepozitorij.DohvatiTrajanjePosudbe());
             int brojProduljivanja = posudba.BrojProduljivanja + 1;
             BazaPodataka.Instanca.UspostaviVezu();
             string upit = $"UPDATE posudbe " +
                 $"SET broj_produljivanja = {brojProduljivanja}, predviden_datum_vracanja = '{noviDatumVracanja:yyyy-MM-dd}' WHERE id_posudba = {posudba.Id}";
-            BazaPodataka.Instanca.IzvrsiNaredbu(upit);
+            int uspjeh = BazaPodataka.Instanca.IzvrsiNaredbu(upit);
             BazaPodataka.Instanca.PrekiniVezu();
+            return uspjeh;
         }
         public static void AzurirajZakasninu(int idPosudbe, double zakasnina)
         {
