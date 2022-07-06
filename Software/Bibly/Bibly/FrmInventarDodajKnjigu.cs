@@ -102,7 +102,9 @@ namespace Bibly
 
         private void btnDodajAutora_Click(object sender, EventArgs e)
         {
-
+            FrmInventarDodajAutora frm = new FrmInventarDodajAutora();
+            frm.ShowDialog();
+            PopuniComboBoxeve();
         }
     }
 }
