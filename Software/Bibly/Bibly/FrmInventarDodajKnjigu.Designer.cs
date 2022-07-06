@@ -298,6 +298,7 @@
             this.btnDodajAutora.TabIndex = 25;
             this.btnDodajAutora.Text = "Dodaj autora";
             this.btnDodajAutora.UseVisualStyleBackColor = false;
+            this.btnDodajAutora.Click += new System.EventHandler(this.btnDodajAutora_Click);
             // 
             // FrmInventarDodajKnjigu
             // 

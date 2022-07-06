@@ -133,6 +133,12 @@
     <Compile Include="FrmInventarDodajKnjigu.Designer.cs">
       <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInventarDodajZanr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajZanr.Designer.cs">
+      <DependentUpon>FrmInventarDodajZanr.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInventarPregledKnjige.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInventarDodajKnjigu.resx">
       <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajZanr.resx">
+      <DependentUpon>FrmInventarDodajZanr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInventarPregledKnjige.resx">
       <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>

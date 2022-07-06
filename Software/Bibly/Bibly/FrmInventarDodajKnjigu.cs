@@ -95,6 +95,13 @@ namespace Bibly
 
         private void btnDodajZanr_Click(object sender, EventArgs e)
         {
+            FrmInventarDodajZanr frm = new FrmInventarDodajZanr();
+            frm.ShowDialog();
+            PopuniComboBoxeve();
+        }
+
+        private void btnDodajAutora_Click(object sender, EventArgs e)
+        {
 
         }
     }
