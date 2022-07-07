@@ -70,6 +70,7 @@
             // pbNaslovnica
             // 
             this.pbNaslovnica.BackColor = System.Drawing.Color.Gray;
+            this.pbNaslovnica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbNaslovnica.Location = new System.Drawing.Point(51, 372);
             this.pbNaslovnica.Name = "pbNaslovnica";
             this.pbNaslovnica.Size = new System.Drawing.Size(425, 546);
