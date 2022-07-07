@@ -47,7 +47,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2320, 1335);
+            this.AutoScrollMargin = new System.Drawing.Size(30, 30);
+            this.ClientSize = new System.Drawing.Size(2320, 1477);
             this.Controls.Add(this.naslov);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmPocetna";

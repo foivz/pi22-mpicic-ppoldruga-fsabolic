@@ -130,6 +130,42 @@
     <Compile Include="FrmInformacije.Designer.cs">
       <DependentUpon>FrmInformacije.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInventar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventar.Designer.cs">
+      <DependentUpon>FrmInventar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarDodajAutora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajAutora.Designer.cs">
+      <DependentUpon>FrmInventarDodajAutora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarDodajIzdavaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajIzdavaca.Designer.cs">
+      <DependentUpon>FrmInventarDodajIzdavaca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarDodajKnjigu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajKnjigu.Designer.cs">
+      <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarDodajZanr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarDodajZanr.Designer.cs">
+      <DependentUpon>FrmInventarDodajZanr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarPregledKnjige.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventarPregledKnjige.Designer.cs">
+      <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +246,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCAutor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAutor.Designer.cs">
+      <DependentUpon>UCAutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCKnjigaPocetna.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -257,6 +299,25 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInformacije.resx">
       <DependentUpon>FrmInformacije.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventar.resx">
+      <DependentUpon>FrmInventar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajAutora.resx">
+      <DependentUpon>FrmInventarDodajAutora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajIzdavaca.resx">
+      <DependentUpon>FrmInventarDodajIzdavaca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajKnjigu.resx">
+      <DependentUpon>FrmInventarDodajKnjigu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarDodajZanr.resx">
+      <DependentUpon>FrmInventarDodajZanr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarPregledKnjige.resx">
+      <DependentUpon>FrmInventarPregledKnjige.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKatalog.resx">
       <DependentUpon>FrmKatalog.cs</DependentUpon>
@@ -306,6 +367,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCAutor.resx">
+      <DependentUpon>UCAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCKnjigaPocetna.resx">
       <DependentUpon>UCKnjigaPocetna.cs</DependentUpon>
     </EmbeddedResource>

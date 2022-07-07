@@ -53,17 +53,14 @@ namespace Bibly
             {
                 tsmi_Korisnici.Visible = false;
                 tsmiUpravljanjePosudbamaGlavno.Visible = false;
+                tsmiInventar.Visible = false;
+                tsmiRegistracija.Visible = false;
             }
 
             if (uloga < 4)
             {
                 tsmiAdmin.Visible = false;
 
-            }
-
-            if (uloga != 3)
-            {
-                tsmiRegistracija.Visible = false;
             }
         }
 
@@ -231,6 +228,12 @@ namespace Bibly
         private void tsmiPocetna_Click(object sender, EventArgs e)
         {
             FrmPocetna frm = new FrmPocetna();
+            OtvoriNovuFormu(frm);
+        }
+
+        private void tsmiInventar_Click(object sender, EventArgs e)
+        {
+            FrmInventar frm = new FrmInventar();
             OtvoriNovuFormu(frm);
         }
     }
