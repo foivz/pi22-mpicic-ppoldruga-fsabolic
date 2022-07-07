@@ -145,6 +145,7 @@ namespace Bibly
             string isbn = txtISBN.Text;
             string naziv = txtISBN.Text;
             string opisKnjige = txtOpis.Text;
+            string datum = txtDatumIzdavanja.Text;
 
             List<Autor> autori = new List<Autor>();
             foreach(UCAutor uc in this.Controls.OfType<UCAutor>())
