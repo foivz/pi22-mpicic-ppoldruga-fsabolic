@@ -19,6 +19,7 @@ namespace Bibly
         public FrmPosudbe()
         {
             InitializeComponent();
+            PostaviHelp("Pregled posudbi.htm");
         }
         private void FrmPosudbe_Load(object sender, EventArgs e)
         {
@@ -44,10 +45,9 @@ namespace Bibly
         {
             foreach (Posudba posudba in listaPosudbi)
             {
-                UCPosudbeKnjigaTretnutna ucPosudbeKnjigaTretnutna = new UCPosudbeKnjigaTretnutna();
+                UCPosudbeKnjigaTretnutna ucPosudbeKnjigaTretnutna = new UCPosudbeKnjigaTretnutna(posudba);
                 ucPosudbeKnjigaTretnutna.Top = top;
                 ucPosudbeKnjigaTretnutna.Left = 20;
-                ucPosudbeKnjigaTretnutna.PostaviLabele(posudba);
                 Controls.Add(ucPosudbeKnjigaTretnutna);
                 top += 350;
             }
@@ -73,10 +73,9 @@ namespace Bibly
         {
             foreach (Posudba posudba in listaPosudbi)
             {
-                UCPosudbeKnjigaProsla ucPosudbeKnjigaProsla = new UCPosudbeKnjigaProsla();
+                UCPosudbeKnjigaProsla ucPosudbeKnjigaProsla = new UCPosudbeKnjigaProsla(posudba);
                 ucPosudbeKnjigaProsla.Top = top;
                 ucPosudbeKnjigaProsla.Left = 20;
-                ucPosudbeKnjigaProsla.PostaviLabele(posudba);
                 Controls.Add(ucPosudbeKnjigaProsla);
                 top += 350;
             }

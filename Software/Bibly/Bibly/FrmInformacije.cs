@@ -16,6 +16,7 @@ namespace Bibly
         {
             InitializeComponent();
             AutoScroll = true;
+            PostaviHelp("Informacije.htm");
         }
 
         private void FrmInformacije_Load(object sender, EventArgs e)

@@ -13,11 +13,14 @@ namespace Bibly
 {
     public partial class UCPosudbeKnjigaProsla : UserControl
     {
-        public UCPosudbeKnjigaProsla()
+        private Posudba posudba = new Posudba();
+        public UCPosudbeKnjigaProsla(Posudba odabranaPosudba)
         {
+            posudba = odabranaPosudba;
             InitializeComponent();
+            PostaviLabele();
         }
-        public void PostaviLabele(Posudba posudba)
+        public void PostaviLabele()
         {
             lblNaslov.Text = posudba.Primjerak.Knjiga.Naziv;
             lblZakasnina.Text = posudba.Zakasnina.ToString() + " HRK";

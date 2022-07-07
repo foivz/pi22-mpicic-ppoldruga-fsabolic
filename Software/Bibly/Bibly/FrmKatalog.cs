@@ -1,4 +1,4 @@
-﻿using System;
+﻿   using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +15,12 @@ namespace Bibly
     {
         private static int top = 200;
 
-        private List<Knjiga> listaKnjiga = new List<Knjiga>();
+        private List<Knjiga> listaKnjiga = new List<Knjiga>(); 
 
         public FrmKatalog()
         {
             InitializeComponent();
+            PostaviHelp("Katalog.htm");
             
         }
 
@@ -33,72 +34,83 @@ namespace Bibly
 
         private void btnPretrazi_Click(object sender, EventArgs e)
         {
-            foreach (Control item in Controls.OfType<UCKnjigaKatalog>().ToList())
-            {
-                Controls.Remove(item);
-            }
+            IzbrisiUCKnjgaKatalog();
             top = 200;
             string kriterijPretrazivanja = cmbKriteriji.Text;
             string kljucnaRijec = txtUnosKljucneRijeci.Text.ToLower();
-            if (kljucnaRijec == "" || kriterijPretrazivanja == "Kriterij pretraživanja")
+            List<Knjiga> listaKnjiga2;
+            if (kljucnaRijec == "")
             {
-                listaKnjiga = KnjigaRepozitorij.DohvatiSveKnjige();
-                DodajUCKnjigaKatalog(listaKnjiga);
+                listaKnjiga2 = KnjigaRepozitorij.DohvatiSveKnjige();
             }
             else
             {
-                List<Knjiga> listaKnjigaSTrazenomRijecju = new List<Knjiga>();
-                switch (kriterijPretrazivanja)
-                {
-                    case "Izdavač":
+                listaKnjiga2 = VratiKnjigeSKljucnomRijecju(kriterijPretrazivanja, kljucnaRijec);
+            }
+            DodajUCKnjigaKatalog(listaKnjiga2);
+        }
+
+        private List<Knjiga> VratiKnjigeSKljucnomRijecju(string kriterijPretrazivanja, string kljucnaRijec)
+        {
+            List<Knjiga> sortiraneKnjige = new List<Knjiga>();
+            switch (kriterijPretrazivanja)
+            {
+                case "Izdavač":
+                    {
+                        foreach (Knjiga knjiga in listaKnjiga)
                         {
-                            foreach (Knjiga knjiga in listaKnjiga)
+                            if (knjiga.Izdavac.Naziv.ToLower().Contains(kljucnaRijec))
                             {
-                                if (knjiga.Izdavac.Naziv.ToLower().Contains(kljucnaRijec))
+                                sortiraneKnjige.Add(knjiga);
+                            }
+                        }
+                        break;
+                    }
+                case "Autor":
+                    {
+                        foreach (Knjiga knjiga in listaKnjiga)
+                        {
+                            foreach (Autor autor in knjiga.ListaAutora)
+                            {
+                                if ((autor.Ime.ToLower().Contains(kljucnaRijec) || autor.Prezime.ToLower().Contains(kljucnaRijec)) && !sortiraneKnjige.Contains(knjiga))
                                 {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
+                                    sortiraneKnjige.Add(knjiga);
                                 }
                             }
-                            break;
                         }
-                    case "Autor":
+                        break;
+                    }
+                case "Naslov knjige":
+                    {
+                        foreach (Knjiga knjiga in listaKnjiga)
                         {
-                            foreach (Knjiga knjiga in listaKnjiga)
+                            if (knjiga.Naziv.ToLower().Contains(kljucnaRijec))
                             {
-                                foreach(Autor autor in knjiga.ListaAutora)
-                                {
-                                    if((autor.Ime.ToLower().Contains(kljucnaRijec) || autor.Prezime.ToLower().Contains(kljucnaRijec)) && !listaKnjigaSTrazenomRijecju.Contains(knjiga))
-                                    {
-                                        listaKnjigaSTrazenomRijecju.Add(knjiga);
-                                    }
-                                }
+                                sortiraneKnjige.Add(knjiga);
                             }
-                            break;
                         }
-                    case "Naslov knjige":
+                        break;
+                    }
+                case "Žanr":
+                    {
+                        foreach (Knjiga knjiga in listaKnjiga)
                         {
-                            foreach (Knjiga knjiga in listaKnjiga)
+                            if (knjiga.Zanr.Naziv.Contains(kljucnaRijec))
                             {
-                                if (knjiga.Naziv.ToLower().Contains(kljucnaRijec))
-                                {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
-                                }
+                                sortiraneKnjige.Add(knjiga);
                             }
-                            break;
                         }
-                    case "Žanr":
-                        {
-                            foreach (Knjiga knjiga in listaKnjiga)
-                            {
-                                if (knjiga.Zanr.Naziv.Contains(kljucnaRijec))
-                                {
-                                    listaKnjigaSTrazenomRijecju.Add(knjiga);
-                                }
-                            }
-                            break;
-                        }
-                }
-                DodajUCKnjigaKatalog(listaKnjigaSTrazenomRijecju);
+                        break;
+                    }
+            }
+            return sortiraneKnjige;
+        }
+
+        private void IzbrisiUCKnjgaKatalog()
+        {
+            foreach (Control item in Controls.OfType<UCKnjigaKatalog>().ToList())
+            {
+                Controls.Remove(item);
             }
         }
 
@@ -106,10 +118,9 @@ namespace Bibly
         {
             foreach (Knjiga knjiga in listaKnjiga)
             {
-                UCKnjigaKatalog ucKnjigaKataloga = new UCKnjigaKatalog();
+                UCKnjigaKatalog ucKnjigaKataloga = new UCKnjigaKatalog(knjiga);
                 ucKnjigaKataloga.Top = top;
                 ucKnjigaKataloga.Left = 20;
-                ucKnjigaKataloga.PostaviLabele(knjiga);
                 Controls.Add(ucKnjigaKataloga);
                 top += 350;
             }

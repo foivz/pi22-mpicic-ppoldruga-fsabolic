@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblUclanjivanje = new System.Windows.Forms.Label();
             this.btnPrijava = new System.Windows.Forms.Button();
             this.txtLozinka = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -43,7 +42,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblUclanjivanje);
             this.panel1.Controls.Add(this.btnPrijava);
             this.panel1.Controls.Add(this.txtLozinka);
             this.panel1.Controls.Add(this.txtEmail);
@@ -54,18 +52,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(436, 363);
             this.panel1.TabIndex = 1;
-            // 
-            // lblUclanjivanje
-            // 
-            this.lblUclanjivanje.AutoSize = true;
-            this.lblUclanjivanje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUclanjivanje.Location = new System.Drawing.Point(166, 292);
-            this.lblUclanjivanje.Name = "lblUclanjivanje";
-            this.lblUclanjivanje.Size = new System.Drawing.Size(120, 18);
-            this.lblUclanjivanje.TabIndex = 6;
-            this.lblUclanjivanje.Text = "Kako se učlaniti?";
-            this.lblUclanjivanje.MouseLeave += new System.EventHandler(this.lblUclanjivanje_MouseLeave);
-            this.lblUclanjivanje.MouseHover += new System.EventHandler(this.lblUclanjivanje_MouseHover);
             // 
             // btnPrijava
             // 
@@ -148,7 +134,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPrijava;
-        private System.Windows.Forms.Label lblUclanjivanje;
         private System.Windows.Forms.Button btnPrijava;
         private System.Windows.Forms.TextBox txtLozinka;
         private System.Windows.Forms.TextBox txtEmail;

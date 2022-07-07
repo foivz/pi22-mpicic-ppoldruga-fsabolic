@@ -20,6 +20,16 @@ namespace Bibly
             PostaviGlavniMenu();
         }
 
+        public void PostaviHelp(string nazivStranice)
+        {
+            string fbPath = Application.StartupPath;
+            string fname = @"Pomoc\Bibly.chm";
+            string filename = fbPath + @"\" + fname;
+            helpProvider.HelpNamespace = filename;
+            helpProvider.SetHelpKeyword(this, nazivStranice);
+            helpProvider.SetHelpNavigator(this, HelpNavigator.Topic);
+        }
+
         public void PostaviGlavniMenu(int sakrijMenu = 0)
         {
             if (sakrijMenu == 1)

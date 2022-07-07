@@ -16,6 +16,7 @@ namespace Bibly
         public FrmKorisnici()
         {
             InitializeComponent();
+            PostaviHelp("Korisnici.htm");
             dgvKorisnici.DataSource = KorisnikRepozitorij.DohvatiSveKorisnike();
             List<string> comboboxItems = new List<string>()
             {

@@ -19,6 +19,7 @@ namespace Bibly
         public FrmPregledPosudbi()
         {
             InitializeComponent();
+            PostaviHelp("Moderator pregled posudbi.htm");
         }
 
         private void FrmPregledPosudbi_Load(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace Bibly
             trenutniKorisnik = korisnik;
             PopuniFormu();
             PostaviBtnProduljivanje();
-
+            PostaviHelp("AzurirajeKorisnika.htm");
         }
 
         private void PopuniFormu()

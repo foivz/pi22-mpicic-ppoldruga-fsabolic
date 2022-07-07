@@ -14,33 +14,30 @@ namespace Bibly
     public partial class UCKnjigaKatalog : UserControl
     {
         private Knjiga prikazanaKnjiga = new Knjiga();
-        public UCKnjigaKatalog()
+        public UCKnjigaKatalog(Knjiga knjiga)
         {
             InitializeComponent();
+            prikazanaKnjiga = knjiga;
+            PostaviLabele();
         }
 
-        public void PostaviLabele(Knjiga knjiga)
+        public void PostaviLabele()
         {
-            prikazanaKnjiga = knjiga;
-            lblNaslov.Text = knjiga.Naziv;
+            lblNaslov.Text = prikazanaKnjiga.Naziv;
 
             string autori = "";
-            int brojAutora = knjiga.ListaAutora.Count;
+            int brojAutora = prikazanaKnjiga.ListaAutora.Count;
             for (int indexAutora = 0; indexAutora < brojAutora; indexAutora++)
             {
-                autori += knjiga.ListaAutora[indexAutora].Ime + " " + knjiga.ListaAutora[indexAutora].Prezime;
+                autori += prikazanaKnjiga.ListaAutora[indexAutora].Ime + " " + prikazanaKnjiga.ListaAutora[indexAutora].Prezime;
                 autori += (indexAutora == brojAutora - 1) ? "" : ", ";
             }
             lblAutor.Text = autori;
 
-            lblBrojStranica.Text = knjiga.BrojStranica.ToString();
-
-            lblIzdavac.Text = knjiga.Izdavac.ToString();
-
-            lblOpisKnjige.Text = knjiga.Opis;
-
-            pbNaslovnica.Image = knjiga.Naslovnica;
-            
+            lblBrojStranica.Text = prikazanaKnjiga.BrojStranica.ToString();
+            lblIzdavac.Text = prikazanaKnjiga.Izdavac.ToString();
+            lblOpisKnjige.Text = prikazanaKnjiga.Opis;
+            pbNaslovnica.Image = prikazanaKnjiga.Naslovnica;
         }
 
         private void UCKnjigaKataloga_Click(object sender, EventArgs e)

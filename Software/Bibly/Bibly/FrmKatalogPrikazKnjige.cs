@@ -22,6 +22,7 @@ namespace Bibly
             InitializeComponent();
             knjiga = prikazanaKnjiga;
             groupBox1.Visible = (Autentifikator.Instanca.UlogaKorisnika() > 2) ? true : false;
+            PostaviHelp("Pregled knjige.htm");
         }
 
         private void FrmKatalogPrikazKnjige_Load(object sender, EventArgs e)
@@ -41,13 +42,19 @@ namespace Bibly
             lblISBN.Text = knjiga.ISBN;
             lblOpisKnjige.Text = knjiga.Opis;
             pbNaslovnica.Image = knjiga.Naslovnica;
+
+            DodajKorisnikeUPadajucuListu();
+            OsvjeziPrimjerke();
+        }
+
+        private void DodajKorisnikeUPadajucuListu()
+        {
             List<string> listaEmailova = new List<string>();
-            foreach(Korisnik korisnik in KorisnikRepozitorij.DohvatiSveKorisnike())
+            foreach (Korisnik korisnik in KorisnikRepozitorij.DohvatiSveKorisnike())
             {
                 listaEmailova.Add(korisnik.Email);
             }
             cmbKorisnik.DataSource = listaEmailova;
-            OsvjeziPrimjerke();
         }
 
         private void btnRezerviraj_Click(object sender, EventArgs e)
