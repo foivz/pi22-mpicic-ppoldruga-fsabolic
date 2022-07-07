@@ -13,14 +13,30 @@ namespace Bibly
 {
     public partial class FrmInventarDodajKnjigu : FrmOpcenita
     {
+        Knjiga OdabranaKnjiga = null;
+
         private static int topcina = 650;
 
-        public FrmInventarDodajKnjigu()
+        public FrmInventarDodajKnjigu(Knjiga odabranaKnjiga = null)
         {
             InitializeComponent();
+            OdabranaKnjiga = odabranaKnjiga;
             PopuniComboBoxeve();
             cmbIzdavac.SelectedIndex = 0;
             cmbZanr.SelectedIndex = 0;
+            if (OdabranaKnjiga != null)
+            {
+                ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text = odabranaKnjiga.ISBN.ToString();
+                ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text = odabranaKnjiga.Naziv.ToString();
+                List<Izdavac> izdavaci = IzdavacRepozitorij.DohvatiSveIzdavace();
+                ((ComboBox)this.Controls.Find("cmbIzdavac", true)[0]).SelectedIndex = izdavaci.IndexOf(izdavaci.Find(x => x.Id == odabranaKnjiga.Izdavac.Id));
+                List<Zanr> zanrovi = ZanrRepozitorij.DohvatiSveZanrove();
+                ((ComboBox)this.Controls.Find("cmbZanr", true)[0]).SelectedIndex = zanrovi.IndexOf(zanrovi.Find(x => x.Id == odabranaKnjiga.Zanr.Id));
+                ((TextBox)this.Controls.Find("txtDatumIzdavanja", true)[0]).Text = odabranaKnjiga.DatumIzdavanja.ToString();
+                ((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text = odabranaKnjiga.BrojStranica.ToString();
+                ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text = odabranaKnjiga.Opis.ToString();
+                ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image = odabranaKnjiga.Naslovnica;
+            }
 
         }
 

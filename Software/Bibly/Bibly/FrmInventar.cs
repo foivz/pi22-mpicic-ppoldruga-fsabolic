@@ -66,9 +66,17 @@ namespace Bibly
 
         private void btnAzuriraj_Click(object sender, EventArgs e)
         {
-            FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu();
-            frm.ShowDialog();
-            OsvjeziInventar();
+            if (trenutniRed != null)
+            {
+                FrmInventarDodajKnjigu frm = new FrmInventarDodajKnjigu(trenutniRed);
+                frm.ShowDialog();
+                OsvjeziInventar();
+            }
+            else
+            {
+                MessageBox.Show("Nije odabran nijedan red (knjiga) iz tablice!");
+            }
+            
             
         }
     }
