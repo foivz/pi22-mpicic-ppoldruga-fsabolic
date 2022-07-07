@@ -103,7 +103,7 @@ namespace Bibly
             Primjerak primjerak = cmbPrimjerak.SelectedItem as Primjerak;
             if (primjerak.Status != StatusPrimjerka.Posuđen)
             {
-                MessageBox.Show("Knjigu se ne može vratiti, jer je pod statusom: Dostupan!");
+                MessageBox.Show("Knjigu se ne može vratiti, jer nije pod statusom: Posuđen!");
                 return;
             }
             Posudba posudba = PosudbaRepozitorij.DohvatiPosudbuPrimjerka(primjerak);
