@@ -334,6 +334,7 @@
             this.Controls.Add(this.btnSpremiKnjigu);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmInventarDodajKnjigu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInventarDodajKnjigu";
             this.Controls.SetChildIndex(this.btnSpremiKnjigu, 0);
             this.Controls.SetChildIndex(this.pbNaslovnica, 0);
