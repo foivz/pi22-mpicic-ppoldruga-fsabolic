@@ -20,6 +20,7 @@ namespace Bibly
         public FrmKatalogPrikazKnjige(Knjiga prikazanaKnjiga)
         {
             InitializeComponent();
+            PostaviGlavniMenu(1);
             knjiga = prikazanaKnjiga;
             groupBox1.Visible = (Autentifikator.Instanca.UlogaKorisnika() > 2) ? true : false;
             PostaviHelp("Pregled knjige.htm");
