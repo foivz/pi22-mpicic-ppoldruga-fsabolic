@@ -22,6 +22,7 @@ namespace Bibly
         public FrmAdminDodaj(string nazivTablice, object trenutniObjekt = null)
         {
             InitializeComponent();
+            this.CenterToScreen();
             PostaviGlavniMenu(1);
             TrenutniObjekt = trenutniObjekt;
             NazivTablice = nazivTablice;

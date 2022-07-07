@@ -35,6 +35,7 @@
             this.tsmi_Korisnici = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRezervacijeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPosudbeKorisnika = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInventar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpravljanjePosudbamaGlavno = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpravljanjePosudbama = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPregledPosudbi = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,9 @@
             this.tsmiInformacije = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfil = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOdjava = new System.Windows.Forms.ToolStripMenuItem();
+
             this.helpProvider = new System.Windows.Forms.HelpProvider();
+
             this.glavniMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +72,7 @@
             this.tsmi_Korisnici,
             this.tsmiRezervacijeKorisnika,
             this.tsmiPosudbeKorisnika,
+            this.tsmiInventar,
             this.tsmiUpravljanjePosudbamaGlavno,
             this.tsmiAdmin,
             this.tsmiRegistracija,
@@ -78,15 +82,21 @@
             this.glavniMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.glavniMenu.Location = new System.Drawing.Point(0, 0);
             this.glavniMenu.Name = "glavniMenu";
+
+            this.glavniMenu.Size = new System.Drawing.Size(1620, 68);
+
             this.glavniMenu.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.glavniMenu.Size = new System.Drawing.Size(1080, 27);
+
+
             this.glavniMenu.TabIndex = 0;
             this.glavniMenu.Text = "menuStrip1";
             // 
             // tsmiPocetna
             // 
             this.tsmiPocetna.Name = "tsmiPocetna";
-            this.tsmiPocetna.Size = new System.Drawing.Size(76, 25);
+
+            this.tsmiPocetna.Size = new System.Drawing.Size(114, 36);
+
             this.tsmiPocetna.Text = "Početna";
             this.tsmiPocetna.Click += new System.EventHandler(this.tsmiPocetna_Click);
             // 
@@ -117,6 +127,13 @@
             this.tsmiPosudbeKorisnika.Size = new System.Drawing.Size(81, 25);
             this.tsmiPosudbeKorisnika.Text = "Posudbe";
             this.tsmiPosudbeKorisnika.Click += new System.EventHandler(this.tsmiPosudbeKorisnika_Click);
+            // 
+            // tsmiInventar
+            // 
+            this.tsmiInventar.Name = "tsmiInventar";
+            this.tsmiInventar.Size = new System.Drawing.Size(117, 36);
+            this.tsmiInventar.Text = "Inventar";
+            this.tsmiInventar.Click += new System.EventHandler(this.tsmiInventar_Click);
             // 
             // tsmiUpravljanjePosudbamaGlavno
             // 
@@ -312,7 +329,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPregledPosudbi;
         private System.Windows.Forms.ToolStripMenuItem tsmiInformacije;
         private System.Windows.Forms.ToolStripMenuItem tsmiPocetna;
+
+        private System.Windows.Forms.ToolStripMenuItem tsmiInventar;
+
         private System.Windows.Forms.HelpProvider helpProvider;
+
     }
 }
 

@@ -400,5 +400,28 @@ namespace Prijava
             BazaPodataka.Instanca.PrekiniVezu();
             return brojPosudbi[0];
         }
+
+        public static int DohvatiPokusajePrijave(string email)
+        {
+            BazaPodataka.Instanca.UspostaviVezu();
+            string upit =
+                    "SELECT " +
+                    
+                    "k.pokusaji_prijave AS 'k.pokusaji_prijave' " +
+                    
+                    "FROM korisnici k " +
+                   
+                    $"WHERE k.email='{email}'";
+            int pokusajiPrijave = 0;
+            IDataReader reader = BazaPodataka.Instanca.DohvatiDataReader(upit);
+            while (reader.Read())
+            {
+                pokusajiPrijave = int.Parse(reader["k.pokusaji_prijave"].ToString());
+            }
+            reader.Close();
+            BazaPodataka.Instanca.PrekiniVezu();
+            return pokusajiPrijave;
+        }
+
     }
 }

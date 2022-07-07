@@ -19,6 +19,7 @@ namespace Bibly
         public FrmAzurirajKorisnika(Korisnik korisnik)
         {
             InitializeComponent();
+            PostaviGlavniMenu(1);
             this.CenterToScreen();
             trenutniKorisnik = korisnik;
             PopuniFormu();

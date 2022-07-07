@@ -380,6 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScrollMargin = new System.Drawing.Size(30, 30);
             this.ClientSize = new System.Drawing.Size(1308, 1239);
             this.Controls.Add(this.lblUspjeh);
             this.Controls.Add(this.btnUclani);
