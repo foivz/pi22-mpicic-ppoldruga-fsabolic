@@ -167,11 +167,14 @@ namespace Bibly
                     {
                         KnjigaRepozitorij.DodajKnjigu(knjiga);
                         this.Close();
+                        MessageBox.Show("Knjiga je dodana u bazu.");
                     }
                     else
                     {
                         string stariISBN = OdabranaKnjiga.ISBN;
                         KnjigaRepozitorij.AzurirajKnjigu(stariISBN, knjiga);
+                        MessageBox.Show("Knjiga je uspješno ažurirana.");
+                        this.Close();
                     }
                     break;
             }
