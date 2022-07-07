@@ -23,6 +23,7 @@ namespace Bibly
 
         private void btnPrijava_Click(object sender, EventArgs e)
         {
+
             string email = txtEmail.Text;
             string lozinka = txtLozinka.Text;
             int uspjehPrijave = Autentifikator.Instanca.PrijavaKorisnika(email, lozinka);
@@ -37,6 +38,19 @@ namespace Bibly
                     break;
                 case -3:
                     poruka = "Pogrešna lozinka!";
+                    Korisnik korisnik = KorisnikRepozitorij.DohvatiKorisnika_Mail(email);
+                    korisnik.PokusajiPrijave = KorisnikRepozitorij.DohvatiPokusajePrijave(email);
+                    korisnik.PokusajiPrijave++;
+                    if (korisnik.PokusajiPrijave > 3)
+                    {
+                        korisnik.Blokiran = true;
+                        poruka += " Blokirani ste! Javite se administratoru!";
+                    }
+                    else
+                    {
+                        poruka += " Preostali broj pokušaja: " +(4-korisnik.PokusajiPrijave).ToString();
+                    }
+                    KorisnikRepozitorij.AzurirajKorisnika(korisnik.OIB,korisnik);
                     break;
                 case -4:
                     poruka = "Blokirani ste! Javite se administratoru!";
@@ -45,6 +59,9 @@ namespace Bibly
                     poruka = "Istekla Vam je članarina! Produljite članarinu u knjižnici!";
                     break;
                 case 1:
+                    Korisnik korisnik1 = Autentifikator.Instanca.VratiKorisnika();
+                    korisnik1.PokusajiPrijave = 0;
+                    KorisnikRepozitorij.AzurirajKorisnika(korisnik1.OIB, korisnik1);
                     FrmPocetna frm = new FrmPocetna();
                     OtvoriNovuFormu(frm);
                     break;
