@@ -184,17 +184,23 @@ namespace Bibly
                 case -3:
                     poruka = "Ovaj ISBN već postoji!";
                     break;
+                case -4:
+                    poruka = "Pogrešan format datuma!";
+                    break;
+                case -5:
+                    poruka = "Za broj stranica ste unijeli tekst, a ne broj!";
+                    break;
                 case 1:
-                   Knjiga knjiga = new Knjiga(
-                   ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text,
-                   ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text,
-                   ((ComboBox)this.Controls.Find("cmbIzdavac", true)[0]).SelectedItem as Izdavac,
-                   ((ComboBox)this.Controls.Find("cmbZanr", true)[0]).SelectedItem as Zanr,
-                   DateTime.Parse(DateTime.Parse(((TextBox)this.Controls.Find("txtDatumIzdavanja", true)[0]).Text).Date.ToString("yyyy-MM-dd")),
-                   int.Parse(((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text),
-                   ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text == "" ? null : ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text,
-                   ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image,
-                   null);
+                    Knjiga knjiga = new Knjiga(
+                     ((TextBox)this.Controls.Find("txtISBN", true)[0]).Text,
+                     ((TextBox)this.Controls.Find("txtNaziv", true)[0]).Text,
+                     ((ComboBox)this.Controls.Find("cmbIzdavac", true)[0]).SelectedItem as Izdavac,
+                     ((ComboBox)this.Controls.Find("cmbZanr", true)[0]).SelectedItem as Zanr,
+                     DateTime.Parse(DateTime.Parse(((TextBox)this.Controls.Find("txtDatumIzdavanja", true)[0]).Text).Date.ToString("yyyy-MM-dd")),
+                     int.Parse(((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text),
+                     ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text == "" ? null : ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text,
+                     ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image,
+                     null);
 
                     if (OdabranaKnjiga == null)
                     {
@@ -205,7 +211,7 @@ namespace Bibly
                             
                         }
                         this.Close();
-                        MessageBox.Show("Knjiga je dodana u bazu.");
+                        
                     }
                     else
                     {
@@ -220,7 +226,6 @@ namespace Bibly
                             AutorKnjigeRepozitorij.DodajAutoraKnjige(new AutorKnjige(autor, knjiga));
                         }
                         KnjigaRepozitorij.AzurirajKnjigu(stariISBN, knjiga);
-                        MessageBox.Show("Knjiga je uspješno ažurirana.");
                         this.Close();
                     }
                     break;
@@ -250,10 +255,37 @@ namespace Bibly
             {
                 return -3;
             }
+            else if (!ProvjeriDatum(datum))
+            {
+                return -4;
+            }
+            else if (!ProvjeriBrojStranica(brStr))
+            {
+                return -5;
+            }
             else
             {
                 return 1;
             }
+        }
+
+        private bool ProvjeriBrojStranica(string brStr)
+        {
+            if (!int.TryParse(brStr, out int test_3))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        private bool ProvjeriDatum(string datum)
+        {
+            if (!DateTime.TryParse(datum, out DateTime test_2))
+            {
+                return false;
+            }
+            else return true;
+                
         }
 
         private bool PostojiISBN(string isbn)
