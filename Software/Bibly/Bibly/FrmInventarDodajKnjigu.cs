@@ -131,12 +131,8 @@ namespace Bibly
         {
             string isbn = txtISBN.Text;
             string naziv = txtISBN.Text;
-            //int brojStranica = int.Parse(txtBrojStranica.Text.ToString());
-            //DateTime datumIzdavanja = DateTime.Parse(DateTime.Parse(txtDatumIzdavanja.Text).Date.ToString("yyyy-MM-dd"));
             string opisKnjige = txtOpis.Text;
-            Image naslovnica = pbNaslovnica.Image;
-
-
+ 
             int dobroPopunjeno = ProvjeriUnose(isbn, naziv, txtBrojStranica.Text.ToString(), txtDatumIzdavanja.Text.ToString(), opisKnjige,
                 cmbIzdavac.Text.ToString(), cmbZanr.Text.ToString());
             string poruka = "";
