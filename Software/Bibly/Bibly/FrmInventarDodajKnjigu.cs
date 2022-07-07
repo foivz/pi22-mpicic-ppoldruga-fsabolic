@@ -165,7 +165,7 @@ namespace Bibly
             if (string.IsNullOrEmpty(isbn) || string.IsNullOrWhiteSpace(isbn) || string.IsNullOrEmpty(naziv) || string.IsNullOrWhiteSpace(naziv) ||
                 string.IsNullOrEmpty(brStr) || string.IsNullOrWhiteSpace(brStr) || string.IsNullOrEmpty(datum) || string.IsNullOrWhiteSpace(datum) ||
                 string.IsNullOrEmpty(opis) || string.IsNullOrWhiteSpace(opis) || string.IsNullOrEmpty(izdavac) || string.IsNullOrWhiteSpace(izdavac) ||
-                string.IsNullOrEmpty(zanr) || string.IsNullOrWhiteSpace(zanr) )
+                string.IsNullOrEmpty(zanr) || string.IsNullOrWhiteSpace(zanr) || cmbIzdavac.SelectedItem == null || cmbZanr.SelectedItem == null)
             {
                 return -1;
             }
