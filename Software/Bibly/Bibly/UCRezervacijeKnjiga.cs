@@ -14,22 +14,23 @@ namespace Bibly
 {
     public partial class UCRezervacijeKnjiga : UserControl
     {
-        private Posudba odabranaRezervacija = new Posudba();
-        public UCRezervacijeKnjiga()
+        private Posudba rezervacija = new Posudba();
+        public UCRezervacijeKnjiga(Posudba odabranaRezervacija)
         {
+            rezervacija = odabranaRezervacija;
             InitializeComponent();
+            PostaviLabele();
         }
-        public void PostaviLabele(Posudba posudba)
+        public void PostaviLabele()
         {
-            odabranaRezervacija = posudba;
-            lblNaslov.Text = posudba.Primjerak.Knjiga.Naziv;
-            lblRezervacija.Text = posudba.DoKadaVrijediRezervacija.ToShortDateString();
-            pbNaslovnica.Image = posudba.Primjerak.Knjiga.Naslovnica;
+            lblNaslov.Text = rezervacija.Primjerak.Knjiga.Naziv;
+            lblRezervacija.Text = rezervacija.DoKadaVrijediRezervacija.ToShortDateString();
+            pbNaslovnica.Image = rezervacija.Primjerak.Knjiga.Naslovnica;
         }
 
         private void btnOtkaziRezervaciju_Click(object sender, EventArgs e)
         {
-            RezervacijaRepozitorij.ZatvoriRezervaciju(odabranaRezervacija.Id, odabranaRezervacija.Primjerak.Id);
+            RezervacijaRepozitorij.ZatvoriRezervaciju(rezervacija.Id, rezervacija.Primjerak.Id);
             lblRezervacija.Text = "Otkazano";
             btnOtkaziRezervaciju.Enabled = false;
         }

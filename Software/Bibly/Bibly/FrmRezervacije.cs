@@ -43,10 +43,9 @@ namespace Bibly
         {
             foreach (Posudba posudba in listaRezervacija)
             {
-                UCRezervacijeKnjiga ucRezervacijeKnjigaa = new UCRezervacijeKnjiga();
+                UCRezervacijeKnjiga ucRezervacijeKnjigaa = new UCRezervacijeKnjiga(posudba);
                 ucRezervacijeKnjigaa.Top = top;
                 ucRezervacijeKnjigaa.Left = 20;
-                ucRezervacijeKnjigaa.PostaviLabele(posudba);
                 Controls.Add(ucRezervacijeKnjigaa);
                 top += 350;
             }
