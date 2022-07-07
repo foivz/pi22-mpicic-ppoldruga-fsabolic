@@ -22,6 +22,7 @@ namespace Bibly
         {
             knjiga = odabranaKnjiga;
             InitializeComponent();
+            PostaviHelp("Pregled knjige.htm");
             PostaviGlavniMenu(1);
             this.Height = 800;
 

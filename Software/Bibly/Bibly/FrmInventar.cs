@@ -19,6 +19,7 @@ namespace Bibly
         {
             InitializeComponent();
             OsvjeziInventar();
+            PostaviHelp("Inventar.htm");
         }
 
         private void dgvInventar_SelectionChanged(object sender, EventArgs e)

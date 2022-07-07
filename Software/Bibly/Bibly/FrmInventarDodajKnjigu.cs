@@ -20,6 +20,7 @@ namespace Bibly
         public FrmInventarDodajKnjigu(Knjiga odabranaKnjiga = null)
         {
             InitializeComponent();
+            PostaviHelp("Dodaj knjigu.htm");
             OdabranaKnjiga = odabranaKnjiga;
             PopuniComboBoxeve();
             cmbIzdavac.SelectedIndex = 0;
