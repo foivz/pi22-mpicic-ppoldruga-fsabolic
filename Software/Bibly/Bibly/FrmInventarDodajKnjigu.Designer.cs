@@ -285,6 +285,7 @@
             // 
             // ucAutor1
             // 
+            this.ucAutor1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ucAutor1.Location = new System.Drawing.Point(662, 1254);
             this.ucAutor1.Name = "ucAutor1";
             this.ucAutor1.Size = new System.Drawing.Size(586, 66);
@@ -337,6 +338,7 @@
             this.Name = "FrmInventarDodajKnjigu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInventarDodajKnjigu";
+            this.Load += new System.EventHandler(this.FrmInventarDodajKnjigu_Load);
             this.Controls.SetChildIndex(this.btnSpremiKnjigu, 0);
             this.Controls.SetChildIndex(this.pbNaslovnica, 0);
             this.Controls.SetChildIndex(this.lblNaslov, 0);

@@ -37,6 +37,18 @@ namespace Bibly
                 ((TextBox)this.Controls.Find("txtBrojStranica", true)[0]).Text = odabranaKnjiga.BrojStranica.ToString();
                 ((TextBox)this.Controls.Find("txtOpis", true)[0]).Text = odabranaKnjiga.Opis.ToString();
                 ((PictureBox)this.Controls.Find("pbNaslovnica", true)[0]).Image = odabranaKnjiga.Naslovnica;
+                this.Controls.Remove(ucAutor1);
+                topcina =800;
+                List<Autor> autori = AutorRepozitorij.DohvatiAutoreKnjige(odabranaKnjiga.ISBN);
+                foreach(Autor autor in autori)
+                {
+                    UCAutor uc = new UCAutor();
+                    uc.Top = topcina;
+                    uc.Left = 440;
+                    uc.PostaviAutora(autor);
+                    Controls.Add(uc);
+                    topcina += 50;
+                }
 
                 
             }
@@ -85,9 +97,9 @@ namespace Bibly
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            List<Autor> autori = AutorRepozitorij.DohvatiSveAutore();
             UCAutor uc = new UCAutor();
-            uc.Postavi(autori, 440, topcina);
+            uc.Top = topcina;
+            uc.Left = 440;
             Controls.Add(uc);
             topcina += 50;
         }
@@ -123,7 +135,7 @@ namespace Bibly
         {
             FrmInventarDodajAutora frm = new FrmInventarDodajAutora();
             frm.ShowDialog();
-            ucAutor1.PopuniComboBox(AutorRepozitorij.DohvatiSveAutore());
+            ucAutor1.PopuniComboBox();
         }
 
 
@@ -132,7 +144,30 @@ namespace Bibly
             string isbn = txtISBN.Text;
             string naziv = txtISBN.Text;
             string opisKnjige = txtOpis.Text;
- 
+
+            List<Autor> autori = new List<Autor>();
+            foreach(UCAutor uc in this.Controls.OfType<UCAutor>())
+            {
+                int zbroj = 0;
+                foreach(UCAutor uc1 in this.Controls.OfType<UCAutor>())
+                {
+                    if(uc.VratiVrijednost().Id == uc1.VratiVrijednost().Id)
+                    {
+                        zbroj++;
+                    }
+                }
+                if (zbroj == 1)
+                {
+                    autori.Add(uc.VratiVrijednost());
+                }
+                else
+                {
+                    MessageBox.Show("Unijeli ste više istih autora!");
+                    return;
+                }
+            }
+
+
             int dobroPopunjeno = ProvjeriUnose(isbn, naziv, txtBrojStranica.Text.ToString(), txtDatumIzdavanja.Text.ToString(), opisKnjige,
                 cmbIzdavac.Text.ToString(), cmbZanr.Text.ToString());
             string poruka = "";
@@ -162,12 +197,26 @@ namespace Bibly
                     if (OdabranaKnjiga == null)
                     {
                         KnjigaRepozitorij.DodajKnjigu(knjiga);
+                        foreach(Autor autor in autori)
+                        {
+                            AutorKnjigeRepozitorij.DodajAutoraKnjige(new AutorKnjige(autor,knjiga));
+                            
+                        }
                         this.Close();
                         MessageBox.Show("Knjiga je dodana u bazu.");
                     }
                     else
                     {
                         string stariISBN = OdabranaKnjiga.ISBN;
+                        List<Autor> stariAutori = AutorRepozitorij.DohvatiAutoreKnjige(stariISBN);
+                        foreach(Autor stariAutor in stariAutori)
+                        {
+                            AutorKnjigeRepozitorij.ObrisiAutoraKnjige(new AutorKnjige(stariAutor,OdabranaKnjiga));
+                        }
+                        foreach (Autor autor in autori)
+                        {
+                            AutorKnjigeRepozitorij.DodajAutoraKnjige(new AutorKnjige(autor, knjiga));
+                        }
                         KnjigaRepozitorij.AzurirajKnjigu(stariISBN, knjiga);
                         MessageBox.Show("Knjiga je uspješno ažurirana.");
                         this.Close();
@@ -221,6 +270,11 @@ namespace Bibly
                 return false;
             }
             else return true;
+        }
+
+        private void FrmInventarDodajKnjigu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

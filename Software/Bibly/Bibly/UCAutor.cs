@@ -13,21 +13,16 @@ namespace Bibly
 {
     public partial class UCAutor : UserControl
     {
+        private List<Autor> autori = null;
         public UCAutor()
         {
             InitializeComponent();
-            PopuniComboBox(AutorRepozitorij.DohvatiSveAutore());
+            PopuniComboBox();
         }
 
-        public void Postavi(List<Autor> autori, int lijevo, int gore)
+        public void PopuniComboBox()
         {
-            this.Top = gore;
-            this.Left = lijevo;
-            PopuniComboBox(autori);
-        }
-
-        public void PopuniComboBox(List<Autor> autori)
-        {
+            autori = AutorRepozitorij.DohvatiSveAutore();
             cmbAutor.Items.Clear();
             foreach (Autor autor in autori)
             {
@@ -36,5 +31,15 @@ namespace Bibly
             cmbAutor.SelectedIndex = 0;
         }
 
+
+        public Autor VratiVrijednost()
+        {
+            return this.cmbAutor.SelectedItem as Autor;
+        }
+
+        public void PostaviAutora(Autor autor)
+        {
+            cmbAutor.SelectedIndex = autori.IndexOf(autori.Find(x => x.Id == autor.Id));
+        }
     }
 }
