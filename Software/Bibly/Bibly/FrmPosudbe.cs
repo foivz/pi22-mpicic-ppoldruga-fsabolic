@@ -24,10 +24,10 @@ namespace Bibly
         private void FrmPosudbe_Load(object sender, EventArgs e)
         {
             top = 200;
-            DohvatiTrenutneRezervacije();
-            DohvatiProsleRezervacije();
+            DohvatiTrenutnePosudbe();
+            DohvatiProslePosudbe();
         }
-        private void DohvatiTrenutneRezervacije()
+        private void DohvatiTrenutnePosudbe()
         {
             listaPosudbi = PosudbaRepozitorij.DohvatiTrenutnePosudbeKorisnika(Autentifikator.Instanca.VratiKorisnika());
             if (listaPosudbi != null)
@@ -52,7 +52,7 @@ namespace Bibly
                 top += 350;
             }
         }
-        private void DohvatiProsleRezervacije()
+        private void DohvatiProslePosudbe()
         {
             lblProslePosudbe.Visible = true;
             lblProslePosudbe.Top = top;
